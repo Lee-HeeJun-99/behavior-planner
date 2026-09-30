@@ -1,0 +1,18 @@
+planning_node:
+  ros__parameters:
+    global_path_file: map/map_final_0921/0-0.txt
+    constant_cruise_velocity: 2.5
+    planning_period_ms: 50
+    lateral_offsets: [-1.5, -1.2, -0.9, -0.6, -0.3, 0.0, 0.3, 0.6, 0.9, 1.2, 1.5]
+    transition_points: 120
+    road_left_bound: 2.5
+    road_right_bound: 2.5
+    vehicle_half_width: 0.6
+    vehicle_front: 1.6
+    vehicle_rear: 0.7
+    safety_margin: 0.25
+    maximum_curvature: 0.45
+    detection_confirmation_count: 3
+    clear_confirmation_count: 5
+    minimum_behavior_duration_ms: 500
+    stop_hold_duration_ms: 2000
