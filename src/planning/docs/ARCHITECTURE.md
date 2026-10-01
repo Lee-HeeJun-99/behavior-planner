@@ -33,7 +33,7 @@ legacy integer `/Planning/mission`.
 |---|---|---|---|
 | `common/planning_types.hpp` | Shared context/path/behavior types | — | Typed domain data |
 | `map/GlobalPath` | CSV loading and nearest path index | map file, vehicle XY | preferred path/index |
-| `context/ContextManager` | Normalize vehicle, obstacles, map stops, free space | localization, map, LiDAR | `BehaviorContext` |
+| `context/ContextManager` | Normalize vehicle, obstacles, speed-sign state, free space | localization, map, LiDAR, speed limit | `BehaviorContext` |
 | `behavior/BehaviorPlanner` | CRUISE/AVOID/STOP/WAIT/EMERGENCY_STOP with debounce | `BehaviorContext` | `Behavior` |
 | `local/PathGenerator` | Smooth lateral SL-like candidates | preferred path, behavior | candidate paths |
 | `local/CollisionChecker` | Boundary, footprint, clearance, curvature checks | candidates/context | valid or INVALID |
@@ -49,10 +49,11 @@ legacy integer `/Planning/mission`.
 | planning_node | Subscribe | `/Local/heading` | `std_msgs/Float64` | vehicle yaw |
 | planning_node | Subscribe | `/Convert/small_object_UTM`, `/Convert/big_object_UTM` | `std_msgs/Float64MultiArray` | static obstacle XY pairs |
 | planning_node | Subscribe | `/LiDAR/dynamic_stop` | `std_msgs/Bool` | existing emergency-stop signal |
+| planning_node | Subscribe | `/Perception/speed_limit` | `std_msgs/Int16` | filtered speed-sign value (`0`, `30`, `40`, `50`) |
 | planning_node | Publish | `/Planning/local_path` | `std_msgs/Float64MultiArray` | controller-compatible interleaved XY path |
 | planning_node | Publish | `/Planning/path_yaw` | `std_msgs/Float64MultiArray` | controller-compatible yaw array |
 | planning_node | Publish | `/Planning/curvature` | `std_msgs/Float64MultiArray` | path debug/compatibility |
-| planning_node | Publish | `/Planning/target_velocity` | `std_msgs/Float64` | constant cruise or existing zero-stop contract |
+| planning_node | Publish | `/Planning/target_velocity` | `std_msgs/Float64` | active speed-limit target or zero-stop contract |
 | planning_node | Publish | `/Planning/mission` | `std_msgs/Int16` | controller compatibility only, never planning selection |
 | planning_node | Publish | `/Planning/behavior` | `std_msgs/String` | explicit behavior state |
 | planning_node | Publish | `/Planning/debug/local_path` | `nav_msgs/Path` | RViz selected path |
@@ -65,16 +66,17 @@ legacy integer `/Planning/mission`.
   lowest valid spatial cost. After confirmed clearance, CRUISE regenerates the zero-offset path, so
   recovery starts at the vehicle's current signed lateral offset and converges smoothly to the preferred
   path without a RETURN_TO_PATH state.
-- Stop: surveyed `stop_points` enters trigger radius -> STOP -> existing target-velocity-zero contract;
-  after the configured hold it is latched served until the vehicle leaves the release radius.
-- Stop plus obstacle: WAIT takes priority until the obstacle clears; then normal STOP hold runs.
+- Speed sign: the same supported sign must meet the confirmation count before it replaces the active
+  limit. A zero/no-detection message clears only the instantaneous detection, not the active limit.
+- STOP and WAIT enum values remain available for future traffic-control inputs, but V1 no longer creates
+  them from map stop points.
 - No feasible candidate, missing localization, or emergency input -> EMERGENCY_STOP.
 
 ## Scope and deployment notes
 
 There is no acceleration, deceleration, velocity-profile, dynamic prediction, or controller code here.
 Static boundaries are V1 lateral bounds from configuration; occupancy-grid boundaries are not available
-in the current workspace interface. Before vehicle deployment, populate surveyed `stop_points`, tune the
+in the current workspace interface. Before vehicle deployment, tune the speed-target mapping and
 vehicle footprint/bounds, replay representative rosbags, and inspect the debug `nav_msgs/Path` in RViz.
 The production bounds are currently ±1.5 m; the wider bounds used by integration tests are isolated in
 `test/integration_planning.yaml` and must not be treated as surveyed deployment boundaries.

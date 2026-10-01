@@ -1,13 +1,17 @@
 #include "planning_pkg_2025/context/context_manager.hpp"
 
 #include <cmath>
-#include <utility>
+#include <algorithm>
 
 namespace planning
 {
 namespace {double distance(const Point2d & a, const Point2d & b) {return std::hypot(a.x - b.x, a.y - b.y);}}
 
-ContextManager::ContextManager(ContextConfig config) : config_(config) {}
+ContextManager::ContextManager(ContextConfig config) : config_(config)
+{
+  speed_.active_limit_kph = config_.default_speed_limit_kph;
+  speed_.target_velocity = targetVelocityForLimit(speed_.active_limit_kph);
+}
 
 void ContextManager::updateVehicle(const Point2d & position, double yaw)
 {
@@ -17,13 +21,46 @@ void ContextManager::updateVehicle(const Point2d & position, double yaw)
 }
 
 void ContextManager::updateObstacles(const std::vector<Point2d> & points) {raw_obstacles_ = points;}
-void ContextManager::setStopPoints(std::vector<Point2d> stop_points) {stop_points_ = std::move(stop_points);}
+
+bool ContextManager::isSupportedSpeedLimit(int limit_kph) const
+{
+  return limit_kph == 30 || limit_kph == 40 || limit_kph == 50;
+}
+
+double ContextManager::targetVelocityForLimit(int limit_kph) const
+{
+  if (limit_kph == 40) {return config_.speed_limit_40_target;}
+  if (limit_kph == 50) {return config_.speed_limit_50_target;}
+  return config_.speed_limit_30_target;
+}
+
+void ContextManager::updateSpeedLimitDetection(int detected_limit_kph)
+{
+  speed_.detected_limit_kph = detected_limit_kph;
+  speed_.detection_valid = isSupportedSpeedLimit(detected_limit_kph);
+  if (!speed_.detection_valid) {
+    speed_candidate_kph_ = 0;
+    speed_candidate_count_ = 0;
+    return;
+  }
+  if (speed_candidate_kph_ == detected_limit_kph) {
+    ++speed_candidate_count_;
+  } else {
+    speed_candidate_kph_ = detected_limit_kph;
+    speed_candidate_count_ = 1;
+  }
+  if (speed_candidate_count_ >= std::max(1, config_.speed_sign_confirmation_count)) {
+    speed_.active_limit_kph = detected_limit_kph;
+    speed_.target_velocity = targetVelocityForLimit(detected_limit_kph);
+  }
+}
 
 BehaviorContext ContextManager::build(const Path & global_path, std::size_t nearest_index) const
 {
   BehaviorContext context;
   context.vehicle = vehicle_;
   context.path = {&global_path, nearest_index};
+  context.speed = speed_;
   context.free_space = {config_.road_left_bound, config_.road_right_bound};
   context.emergency_stop = emergency_stop_;
   for (const auto & point : raw_obstacles_) {
@@ -31,12 +68,6 @@ BehaviorContext ContextManager::build(const Path & global_path, std::size_t near
       context.obstacles.push_back({point, config_.obstacle_radius});
     }
   }
-  for (const auto & stop : stop_points_) {
-    const double d = distance(vehicle_.position, stop);
-    if (d < context.stop.distance) {context.stop.distance = d;}
-  }
-  context.stop.stop_required = context.stop.distance <= config_.stop_trigger_distance;
-  context.stop.stop_completed = context.stop.distance > config_.stop_release_distance;
   return context;
 }
 }  // namespace planning

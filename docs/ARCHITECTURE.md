@@ -23,6 +23,8 @@ VLP-16 -> velodyne_driver -> velodyne_transform -> /velodyne_points      |
                                                      |
                                       /Convert/small_object_UTM
                                                      |
+Camera -> traffic_sign_perception -> /Perception/speed_limit ------------+
+                                                     |
                                                      v
                                               planning_node
                          ContextManager -> BehaviorPlanner -> LocalPlanner
@@ -62,6 +64,14 @@ road conversion branches from the runtime.
 
 Workspace source packages are under `src/`. ROS 2, PCL, Velodyne drivers, Python scientific/serial
 modules, and nlohmann-json are system dependencies and are intentionally not copied into this repository.
+
+## Speed-sign integration
+
+`traffic_sign_perception` subscribes to a camera `sensor_msgs/Image`, classifies the direct YOLO classes
+`speed_30`, `speed_40`, and `speed_50`, applies a short consecutive-detection filter, and publishes only
+an integer result. Planning applies its own configurable confirmation threshold and treats a confirmed
+sign as an event: a subsequent zero detection does not erase the active limit. `ContextManager` maps the
+active limit to the configured ERP target; STOP, WAIT, and EMERGENCY_STOP still force zero output.
 
 ## Safety
 

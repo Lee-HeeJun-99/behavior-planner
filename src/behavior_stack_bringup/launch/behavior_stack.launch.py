@@ -11,12 +11,15 @@ def generate_launch_description():
     enable_imu = LaunchConfiguration('enable_imu')
     enable_localization = LaunchConfiguration('enable_localization')
     enable_lidar = LaunchConfiguration('enable_lidar')
+    enable_camera_sign = LaunchConfiguration('enable_camera_sign')
     enable_vehicle_interface = LaunchConfiguration('enable_vehicle_interface')
 
     gps_port = LaunchConfiguration('gps_port')
     imu_port = LaunchConfiguration('imu_port')
     erp_port = LaunchConfiguration('erp_port')
     velodyne_ip = LaunchConfiguration('velodyne_ip')
+    camera_image_topic = LaunchConfiguration('camera_image_topic')
+    speed_sign_weights = LaunchConfiguration('speed_sign_weights')
 
     calibration = PathJoinSubstitution(
         [FindPackageShare('velodyne_pointcloud'), 'params', 'VLP16db.yaml']
@@ -30,12 +33,15 @@ def generate_launch_description():
         DeclareLaunchArgument('enable_imu', default_value='true'),
         DeclareLaunchArgument('enable_localization', default_value='true'),
         DeclareLaunchArgument('enable_lidar', default_value='true'),
+        DeclareLaunchArgument('enable_camera_sign', default_value='false'),
         # Safety default: a dry run never opens the ERP actuator serial port.
         DeclareLaunchArgument('enable_vehicle_interface', default_value='false'),
         DeclareLaunchArgument('gps_port', default_value='/dev/ttyUSB0'),
         DeclareLaunchArgument('imu_port', default_value='/dev/ttyUSB1'),
         DeclareLaunchArgument('erp_port', default_value='/dev/ttyUSB2'),
         DeclareLaunchArgument('velodyne_ip', default_value='192.168.1.201'),
+        DeclareLaunchArgument('camera_image_topic', default_value='/camera/image_raw'),
+        DeclareLaunchArgument('speed_sign_weights', default_value=''),
 
         Node(
             package='nmea_navsat_driver',
@@ -83,6 +89,16 @@ def generate_launch_description():
             executable='relative_2_UTM',
             name='relative_2_utm',
             condition=IfCondition(enable_lidar),
+        ),
+        Node(
+            package='traffic_sign_perception',
+            executable='speed_sign_node',
+            name='speed_sign_node',
+            parameters=[{
+                'image_topic': camera_image_topic,
+                'weights_path': speed_sign_weights,
+            }],
+            condition=IfCondition(enable_camera_sign),
         ),
 
         Node(

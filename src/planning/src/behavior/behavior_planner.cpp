@@ -33,17 +33,6 @@ Behavior BehaviorPlanner::update(const BehaviorContext & context, std::chrono::s
   if (!context.vehicle.localization_valid || context.emergency_stop) {
     transition(Behavior::EMERGENCY_STOP, now); return current_;
   }
-  if (context.stop.stop_completed) {stop_served_ = false; stop_started_ = {};}
-  if (context.stop.stop_required && !stop_served_) {
-    if (!context.obstacles.empty()) {transition(Behavior::WAIT, now); return current_;}
-    if (stop_started_.time_since_epoch().count() == 0) {stop_started_ = now;}
-    transition(Behavior::STOP, now);
-    if (now - stop_started_ >= config_.stop_hold_duration) {
-      stop_served_ = true;
-      transition(Behavior::CRUISE, now);
-    }
-    return current_;
-  }
   const bool blocked = pathBlocked(context);
   detection_count_ = blocked ? detection_count_ + 1 : 0;
   clear_count_ = blocked ? 0 : clear_count_ + 1;

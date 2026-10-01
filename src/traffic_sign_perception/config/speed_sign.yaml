@@ -1,0 +1,7 @@
+speed_sign_node:
+  ros__parameters:
+    image_topic: /camera/image_raw
+    weights_path: ""
+    confidence_threshold: 0.6
+    confirmation_count: 2
+    device: ""

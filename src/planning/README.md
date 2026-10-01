@@ -9,9 +9,9 @@ interface is preserved; acceleration and velocity-profile planning are intention
 ## Architecture
 
 ```text
-Localization + Map + Static Obstacles
-                  ↓
-            ContextManager
+Localization + Map + Static Obstacles + Speed Limit
+                         ↓
+                   ContextManager
                   ↓
            BehaviorPlanner
                   ↓
@@ -39,6 +39,7 @@ Localization + Map + Static Obstacles
 | `/Convert/small_object_UTM` | `std_msgs/msg/Float64MultiArray` |
 | `/Convert/big_object_UTM` | `std_msgs/msg/Float64MultiArray` |
 | `/LiDAR/dynamic_stop` | `std_msgs/msg/Bool` |
+| `/Perception/speed_limit` | `std_msgs/msg/Int16` (`0`, `30`, `40`, `50`) |
 
 ## Output
 
@@ -74,14 +75,13 @@ colcon test-result --verbose
 ```
 
 The ROS graph integration probe is kept in `test/ros2_local_planner_integration.py` with its isolated
-`test/integration_planning.yaml` configuration.
+`test/integration_planning.yaml` configuration. Speed state transitions are covered by the core tests.
 
 ## Current Scope
 
 - Fixed route
-- Low, constant cruise speed
+- Configurable 30/40/50 speed-sign state and ERP target mapping
 - Static obstacles
-- Map stop points
 - Spatial local-path planning
 
 ## Not Included
@@ -94,8 +94,9 @@ The ROS graph integration probe is kept in `test/ros2_local_planner_integration.
 ## Known Limitations
 
 - Production road bounds are configured as ±1.5 m and are not a substitute for surveyed boundaries.
-- Stop points must be populated from the deployed map survey.
 - Vehicle footprint, safety margin, road bounds, and candidate offsets require vehicle-site validation.
 - V1 consumes obstacle centers rather than an occupancy-grid boundary.
+- Camera/YOLO runs in the separate `traffic_sign_perception` package; trained weights are not included.
+- `speed_limit_*_target` values are provisional and require safe vehicle-site tuning.
 
 See `docs/ARCHITECTURE.md` for migration decisions, module responsibilities, and interface details.

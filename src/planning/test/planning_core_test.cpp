@@ -4,6 +4,7 @@
 #include <iostream>
 #include <gtest/gtest.h>
 #include "planning_pkg_2025/behavior/behavior_planner.hpp"
+#include "planning_pkg_2025/context/context_manager.hpp"
 #include "planning_pkg_2025/local/local_planner.hpp"
 #include "planning_pkg_2025/map/global_path.hpp"
 namespace planning {
@@ -16,13 +17,67 @@ TEST(BehaviorPlanner, ConfirmsAndClearsAvoidance) {
   EXPECT_EQ(planner.update(c,now),Behavior::CRUISE); EXPECT_EQ(planner.update(c,now),Behavior::AVOID);
   c.obstacles.clear(); EXPECT_EQ(planner.update(c,now),Behavior::AVOID); EXPECT_EQ(planner.update(c,now),Behavior::CRUISE);
 }
-TEST(BehaviorPlanner, HoldsStopThenReleasesIt) {
-  auto path=straightPath(); BehaviorContext c; c.vehicle.localization_valid=true; c.path={&path,0};
-  c.stop.stop_required=true; c.stop.stop_completed=false; BehaviorConfig cfg;
-  cfg.stop_hold_duration=std::chrono::milliseconds(100); BehaviorPlanner planner(cfg);
-  auto now=std::chrono::steady_clock::now(); EXPECT_EQ(planner.update(c,now),Behavior::STOP);
-  EXPECT_EQ(planner.update(c,now+std::chrono::milliseconds(101)),Behavior::CRUISE);
-  EXPECT_EQ(planner.update(c,now+std::chrono::milliseconds(102)),Behavior::CRUISE);
+ContextConfig speedConfig() {
+  ContextConfig config; config.speed_sign_confirmation_count=3;
+  config.speed_limit_30_target=2.5; config.speed_limit_40_target=3.5; config.speed_limit_50_target=4.5;
+  return config;
+}
+TEST(SpeedContext, StartsAtDefaultSpeed) {
+  auto path=straightPath(); ContextManager manager(speedConfig()); manager.updateVehicle({0,0},0);
+  const auto context=manager.build(path,0);
+  EXPECT_EQ(context.speed.active_limit_kph,30); EXPECT_DOUBLE_EQ(context.speed.target_velocity,2.5);
+  EXPECT_DOUBLE_EQ(calculateTargetVelocity(Behavior::CRUISE,context),2.5);
+}
+TEST(SpeedContext, ConfirmsThirtySign) {
+  auto path=straightPath(); ContextManager manager(speedConfig()); manager.updateVehicle({0,0},0);
+  manager.updateSpeedLimitDetection(30); manager.updateSpeedLimitDetection(30); manager.updateSpeedLimitDetection(30);
+  const auto context=manager.build(path,0);
+  EXPECT_TRUE(context.speed.detection_valid); EXPECT_EQ(context.speed.detected_limit_kph,30);
+  EXPECT_EQ(context.speed.active_limit_kph,30);
+}
+TEST(SpeedContext, IgnoresSingleFalseFiftyDetection) {
+  auto path=straightPath(); ContextManager manager(speedConfig()); manager.updateVehicle({0,0},0);
+  manager.updateSpeedLimitDetection(50);
+  EXPECT_EQ(manager.build(path,0).speed.active_limit_kph,30);
+}
+TEST(SpeedContext, ActivatesConfirmedFiftyLimit) {
+  auto path=straightPath(); ContextManager manager(speedConfig()); manager.updateVehicle({0,0},0);
+  manager.updateSpeedLimitDetection(50); manager.updateSpeedLimitDetection(50); manager.updateSpeedLimitDetection(50);
+  const auto context=manager.build(path,0);
+  EXPECT_EQ(context.speed.active_limit_kph,50); EXPECT_DOUBLE_EQ(context.speed.target_velocity,4.5);
+}
+TEST(SpeedContext, KeepsActiveLimitWhenDetectionDisappears) {
+  auto path=straightPath(); ContextManager manager(speedConfig()); manager.updateVehicle({0,0},0);
+  manager.updateSpeedLimitDetection(50); manager.updateSpeedLimitDetection(50); manager.updateSpeedLimitDetection(50);
+  manager.updateSpeedLimitDetection(0); const auto context=manager.build(path,0);
+  EXPECT_FALSE(context.speed.detection_valid); EXPECT_EQ(context.speed.active_limit_kph,50);
+  EXPECT_DOUBLE_EQ(context.speed.target_velocity,4.5);
+}
+TEST(SpeedContext, AvoidancePreservesActiveLimit) {
+  auto path=straightPath(); ContextManager manager(speedConfig()); manager.updateVehicle({0,0},0);
+  manager.updateSpeedLimitDetection(50); manager.updateSpeedLimitDetection(50); manager.updateSpeedLimitDetection(50);
+  manager.updateObstacles({{8,0}}); auto context=manager.build(path,0); context.free_space={2.5,2.5};
+  BehaviorConfig behavior_config; behavior_config.detection_confirmation_count=1;
+  behavior_config.minimum_behavior_duration=std::chrono::milliseconds(0);
+  BehaviorPlanner behavior_planner(behavior_config); const auto now=std::chrono::steady_clock::now();
+  EXPECT_EQ(behavior_planner.update(context,now),Behavior::AVOID);
+  PathGeneratorConfig generator; generator.lateral_offsets={-1.5,0,1.5};
+  auto plan=LocalPlanner(PathGenerator(generator),CollisionChecker{},CostEvaluator{}).plan(Behavior::AVOID,context);
+  EXPECT_TRUE(plan.feasible); EXPECT_EQ(context.speed.active_limit_kph,50);
+  EXPECT_DOUBLE_EQ(calculateTargetVelocity(Behavior::AVOID,context),4.5);
+}
+TEST(SpeedContext, EmergencyStopPreservesLimitAndResumesIt) {
+  auto path=straightPath(); ContextManager manager(speedConfig()); manager.updateVehicle({0,0},0);
+  manager.updateSpeedLimitDetection(50); manager.updateSpeedLimitDetection(50); manager.updateSpeedLimitDetection(50);
+  BehaviorPlanner planner; const auto now=std::chrono::steady_clock::now();
+  auto context=manager.build(path,0); EXPECT_EQ(planner.update(context,now),Behavior::CRUISE);
+  manager.setEmergencyStop(true); context=manager.build(path,0);
+  EXPECT_EQ(planner.update(context,now),Behavior::EMERGENCY_STOP);
+  EXPECT_DOUBLE_EQ(calculateTargetVelocity(Behavior::EMERGENCY_STOP,context),0.0);
+  EXPECT_EQ(context.speed.active_limit_kph,50);
+  manager.setEmergencyStop(false); context=manager.build(path,0);
+  EXPECT_EQ(planner.update(context,now),Behavior::CRUISE);
+  EXPECT_DOUBLE_EQ(calculateTargetVelocity(Behavior::CRUISE,context),4.5);
 }
 TEST(LocalPlanner, SelectsCollisionFreeOffsetAndRecovers) {
   auto path=straightPath(); BehaviorContext c; c.vehicle.localization_valid=true; c.path={&path,0};

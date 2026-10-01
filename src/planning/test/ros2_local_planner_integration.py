@@ -9,7 +9,7 @@ import rclpy
 from geometry_msgs.msg import PointStamped
 from rclpy.node import Node
 from rclpy.qos import QoSHistoryPolicy, QoSProfile, QoSReliabilityPolicy
-from std_msgs.msg import Float64, Float64MultiArray, String
+from std_msgs.msg import Bool, Float64, Float64MultiArray, Int16, String
 
 
 def load_path(filename):
@@ -34,6 +34,8 @@ class Probe(Node):
         self.position_pub = self.create_publisher(PointStamped, "/Local/utm", qos)
         self.heading_pub = self.create_publisher(Float64, "/Local/heading", qos)
         self.obstacle_pub = self.create_publisher(Float64MultiArray, "/Convert/small_object_UTM", qos)
+        self.speed_limit_pub = self.create_publisher(Int16, "/Perception/speed_limit", qos)
+        self.emergency_pub = self.create_publisher(Bool, "/LiDAR/dynamic_stop", qos)
         self.create_subscription(String, "/Planning/behavior", self.behavior_callback, qos)
         self.create_subscription(Float64, "/Planning/target_velocity", self.velocity_callback, qos)
         self.create_subscription(Float64MultiArray, "/Planning/local_path", self.path_callback, qos)
@@ -48,6 +50,8 @@ class Probe(Node):
         self.curvatures = []
         self.candidates = []
         self.obstacles = []
+        self.speed_events = []
+        self.emergency_stop = False
         self.vehicle = list(global_path[0][:3])
         self.timer = self.create_timer(0.05, self.publish_inputs)
 
@@ -81,6 +85,12 @@ class Probe(Node):
         self.heading_pub.publish(Float64(data=yaw))
         flat = [coordinate for point in self.obstacles for coordinate in point]
         self.obstacle_pub.publish(Float64MultiArray(data=flat))
+        self.emergency_pub.publish(Bool(data=self.emergency_stop))
+        if self.speed_events:
+            self.speed_limit_pub.publish(Int16(data=self.speed_events.pop(0)))
+
+    def detect_speed(self, *limits):
+        self.speed_events.extend(limits)
 
     def metrics(self):
         valid = [candidate for candidate in self.candidates if candidate[1] >= 0.0]
@@ -155,6 +165,15 @@ def main():
     results = {}
     spin_for(probe, 1.5)
     results["CRUISE"] = probe.metrics()
+    probe.detect_speed(50, 0)
+    spin_for(probe, 0.5)
+    results["SINGLE_FALSE_50"] = probe.metrics()
+    probe.detect_speed(50, 50, 50)
+    spin_for(probe, 0.5)
+    results["CONFIRMED_50"] = probe.metrics()
+    probe.detect_speed(0)
+    spin_for(probe, 0.5)
+    results["NO_DETECTION_AFTER_50"] = probe.metrics()
     probe.obstacles = offset_obstacles(path, args.station_index, [0.0])
     spin_for(probe, 1.5)
     results["SINGLE_OBSTACLE"] = probe.metrics()
@@ -163,6 +182,12 @@ def main():
     probe.obstacles = []
     spin_for(probe, 1.5)
     results["RECOVERY"] = probe.metrics()
+    probe.emergency_stop = True
+    spin_for(probe, 0.5)
+    results["EMERGENCY_STOP"] = probe.metrics()
+    probe.emergency_stop = False
+    spin_for(probe, 0.7)
+    results["EMERGENCY_RELEASE"] = probe.metrics()
     probe.obstacles = offset_obstacles(path, args.station_index, [-2.0, -1.5, -1.0, -0.5, 0.0, 0.5, 1.0, 1.5, 2.0])
     spin_for(probe, 1.5)
     results["BLOCKED"] = probe.metrics()

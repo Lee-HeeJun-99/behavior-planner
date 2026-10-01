@@ -4,8 +4,14 @@ planning_node:
     global_path_file: map/map_final_0921/0-0.txt
 
     # runtime
-    constant_cruise_velocity: 2.5
     planning_period_ms: 50
+
+    # speed-limit signs and vehicle target mapping
+    default_speed_limit_kph: 30
+    speed_sign_confirmation_count: 3
+    speed_limit_30_target: 2.5
+    speed_limit_40_target: 3.5
+    speed_limit_50_target: 4.5
 
     # path generation
     lateral_offsets: [-1.2, -0.9, -0.6, -0.3, 0.0, 0.3, 0.6, 0.9, 1.2]
@@ -24,8 +30,3 @@ planning_node:
     detection_confirmation_count: 3
     clear_confirmation_count: 5
     minimum_behavior_duration_ms: 500
-
-    # stop
-    stop_hold_duration_ms: 2000
-    # Add `stop_points: [x0, y0, x1, y1, ...]` after the deployed map survey.
-    # ROS 2 Humble cannot infer the type of an empty YAML array, so the unset default is empty.

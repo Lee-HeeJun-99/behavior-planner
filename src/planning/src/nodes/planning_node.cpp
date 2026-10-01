@@ -44,6 +44,9 @@ public:
         big_obstacles_ = decodePoints(msg->data);});
     emergency_sub_ = create_subscription<std_msgs::msg::Bool>(
       "/LiDAR/dynamic_stop", qos, [this](std_msgs::msg::Bool::SharedPtr msg) {emergency_stop_ = msg->data;});
+    speed_limit_sub_ = create_subscription<std_msgs::msg::Int16>(
+      "/Perception/speed_limit", qos, [this](std_msgs::msg::Int16::SharedPtr msg) {
+        context_manager_.updateSpeedLimitDetection(msg->data);});
 
     path_pub_ = create_publisher<std_msgs::msg::Float64MultiArray>("/Planning/local_path", qos);
     yaw_pub_ = create_publisher<std_msgs::msg::Float64MultiArray>("/Planning/path_yaw", qos);
@@ -61,9 +64,7 @@ private:
   void declareParameters()
   {
     declare_parameter<std::string>("global_path_file", "map/map_final_0921/0-0.txt");
-    declare_parameter<double>("constant_cruise_velocity", 2.5);
     declare_parameter<int>("planning_period_ms", 50);
-    declare_parameter<std::vector<double>>("stop_points", std::vector<double>{});
     declare_parameter<std::vector<double>>("lateral_offsets", {-1.2, -0.9, -0.6, -0.3, 0.0, 0.3, 0.6, 0.9, 1.2});
     declare_parameter<int>("transition_points", 120);
     declare_parameter<double>("road_left_bound", 1.5);
@@ -76,7 +77,11 @@ private:
     declare_parameter<int>("detection_confirmation_count", 3);
     declare_parameter<int>("clear_confirmation_count", 5);
     declare_parameter<int>("minimum_behavior_duration_ms", 500);
-    declare_parameter<int>("stop_hold_duration_ms", 2000);
+    declare_parameter<int>("default_speed_limit_kph", 30);
+    declare_parameter<int>("speed_sign_confirmation_count", 3);
+    declare_parameter<double>("speed_limit_30_target", 2.5);
+    declare_parameter<double>("speed_limit_40_target", 3.5);
+    declare_parameter<double>("speed_limit_50_target", 4.5);
   }
 
   void configureModules()
@@ -84,19 +89,18 @@ private:
     ContextConfig context_config;
     context_config.road_left_bound = get_parameter("road_left_bound").as_double();
     context_config.road_right_bound = get_parameter("road_right_bound").as_double();
+    context_config.default_speed_limit_kph = get_parameter("default_speed_limit_kph").as_int();
+    context_config.speed_sign_confirmation_count = get_parameter("speed_sign_confirmation_count").as_int();
+    context_config.speed_limit_30_target = get_parameter("speed_limit_30_target").as_double();
+    context_config.speed_limit_40_target = get_parameter("speed_limit_40_target").as_double();
+    context_config.speed_limit_50_target = get_parameter("speed_limit_50_target").as_double();
     context_manager_ = ContextManager(context_config);
-    std::vector<Point2d> stops;
-    const auto flat_stops = get_parameter("stop_points").as_double_array();
-    for (std::size_t i = 0; i + 1 < flat_stops.size(); i += 2) {stops.push_back({flat_stops[i], flat_stops[i + 1]});}
-    context_manager_.setStopPoints(std::move(stops));
 
     BehaviorConfig behavior_config;
     behavior_config.detection_confirmation_count = get_parameter("detection_confirmation_count").as_int();
     behavior_config.clear_confirmation_count = get_parameter("clear_confirmation_count").as_int();
     behavior_config.minimum_behavior_duration =
       std::chrono::milliseconds(get_parameter("minimum_behavior_duration_ms").as_int());
-    behavior_config.stop_hold_duration =
-      std::chrono::milliseconds(get_parameter("stop_hold_duration_ms").as_int());
     behavior_planner_ = BehaviorPlanner(behavior_config);
 
     PathGeneratorConfig generator_config;
@@ -149,10 +153,10 @@ private:
     if (!plan.feasible) {
       behavior = Behavior::EMERGENCY_STOP;
     }
-    publish(plan, behavior);
+    publish(plan, behavior, context);
   }
 
-  void publish(const LocalPlan & plan, Behavior behavior)
+  void publish(const LocalPlan & plan, Behavior behavior, const BehaviorContext & context)
   {
     std_msgs::msg::Float64MultiArray positions;
     std_msgs::msg::Float64MultiArray yaws;
@@ -174,8 +178,7 @@ private:
       candidates.data.push_back(candidate.minimum_clearance);
     }
     std_msgs::msg::Float64 velocity;
-    velocity.data = (behavior == Behavior::STOP || behavior == Behavior::WAIT || behavior == Behavior::EMERGENCY_STOP) ?
-      0.0 : get_parameter("constant_cruise_velocity").as_double();
+    velocity.data = calculateTargetVelocity(behavior, context);
     std_msgs::msg::Int16 mission;
     mission.data = behavior == Behavior::AVOID ? 14 :
       (behavior == Behavior::CRUISE ? 0 : 33);
@@ -202,6 +205,7 @@ private:
   rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr small_obstacles_sub_;
   rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr big_obstacles_sub_;
   rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr emergency_sub_;
+  rclcpp::Subscription<std_msgs::msg::Int16>::SharedPtr speed_limit_sub_;
   rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr path_pub_, yaw_pub_, curvature_pub_, candidates_pub_;
   rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr target_velocity_pub_;
   rclcpp::Publisher<std_msgs::msg::Int16>::SharedPtr mission_pub_;

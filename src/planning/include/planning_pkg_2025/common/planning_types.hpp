@@ -37,11 +37,12 @@ struct PathContext
   std::size_t nearest_index{0};
 };
 
-struct StopContext
+struct SpeedContext
 {
-  bool stop_required{false};
-  bool stop_completed{false};
-  double distance{std::numeric_limits<double>::infinity()};
+  int detected_limit_kph{0};
+  int active_limit_kph{30};
+  double target_velocity{2.5};
+  bool detection_valid{false};
 };
 
 struct ObstacleContext
@@ -60,7 +61,7 @@ struct BehaviorContext
 {
   VehicleContext vehicle;
   PathContext path;
-  StopContext stop;
+  SpeedContext speed;
   std::vector<ObstacleContext> obstacles;
   FreeSpaceContext free_space;
   bool emergency_stop{false};
@@ -78,6 +79,16 @@ inline const char * toString(Behavior behavior)
     case Behavior::EMERGENCY_STOP: return "EMERGENCY_STOP";
   }
   return "UNKNOWN";
+}
+
+inline double calculateTargetVelocity(Behavior behavior, const BehaviorContext & context)
+{
+  if (behavior == Behavior::STOP || behavior == Behavior::WAIT ||
+    behavior == Behavior::EMERGENCY_STOP)
+  {
+    return 0.0;
+  }
+  return context.speed.target_velocity;
 }
 
 struct CandidatePath

@@ -12,9 +12,9 @@ controller, and ERP42 serial bridge that participate in the current runtime grap
 GPS + IMU + ERP feedback -> Localization --------------------+
                                                               |
 Velodyne -> small-static clustering -> relative-to-UTM -------+-> Planning
-                                                                  -> Controller
-                                                                  -> ERP serial bridge
-                                                                  -> ERP42
+                                                              |      -> Controller
+Camera -> YOLO speed-sign classification ---------------------+      -> ERP serial bridge
+                                                                     -> ERP42
 ```
 
 See `docs/ARCHITECTURE.md` for the topic-level graph and `docs/PACKAGE_SELECTION.md` for the complete
@@ -29,6 +29,7 @@ source-workspace classification.
 | `local_pkg1` | GPS/IMU/ERP localization |
 | `lidar` | VLP-16 small static-obstacle clustering |
 | `kroad_planning_utm_pkg` | LiDAR-relative XY to UTM conversion |
+| `traffic_sign_perception` | Camera/YOLO `speed_30`, `speed_40`, `speed_50` classification |
 | `planning_pkg_2025` | Context → Behavior → Local Planner |
 | `control` | Existing path-following controller |
 | `erp_ros2_bridge` | ERP42 serial input/output |
@@ -46,6 +47,7 @@ ROS dependencies are declared in each `package.xml`. Hardware runtime additional
 - Python `pyserial`, `utm`, NumPy, and SciPy
 - PCL and `pcl_conversions`
 - `nlohmann-json3-dev`
+- `cv_bridge` and, when camera recognition is enabled, Python `ultralytics`
 
 Use `rosdep install --from-paths src --ignore-src -r -y` and install the Python `utm` module on the
 vehicle PC. The current validation host does not have the Velodyne ROS packages, `python3-serial`, or
@@ -88,13 +90,25 @@ ros2 launch behavior_stack_bringup behavior_stack.launch.py \
   velodyne_ip:=192.168.1.201 enable_vehicle_interface:=true
 ```
 
+Enable speed-sign recognition after installing Ultralytics and supplying trained weights:
+
+```bash
+ros2 launch behavior_stack_bringup behavior_stack.launch.py \
+  enable_camera_sign:=true camera_image_topic:=/camera/image_raw \
+  speed_sign_weights:=speed_sign.pt
+```
+
+Relative weight paths are resolved from `traffic_sign_perception/weights`; an empty or missing file
+produces a warning and a zero (no-detection) result without terminating the node.
+
 `enable_vehicle_interface` defaults to `false` so launching the stack cannot actuate the vehicle by
 default.
 
 ## Topic Graph
 
 The principal chain is `/fix`, `/imu`, `/ERP/serial_data` → `/Local/utm`, `/Local/heading` and
-`/velodyne_points` → `/LiDAR/object_cen` → `/Convert/small_object_UTM` → `/Planning/*` →
+`/velodyne_points` → `/LiDAR/object_cen` → `/Convert/small_object_UTM`, and camera images →
+`/Perception/speed_limit` → `/Planning/*` →
 `/Control/serial_data` → ERP42.
 
 ## Planning Architecture
@@ -104,7 +118,8 @@ ContextManager -> BehaviorPlanner -> LocalPlanner -> Existing Controller
 ```
 
 Behaviors are `CRUISE`, `AVOID`, `STOP`, `WAIT`, and `EMERGENCY_STOP`. Planning remains spatial;
-velocity-profile generation and controller redesign are outside this repository.
+The active 30/40/50 km/h sign state selects a configurable ERP target value; velocity-profile
+generation and controller redesign remain outside this repository.
 
 ## Configuration
 
@@ -112,9 +127,10 @@ velocity-profile generation and controller redesign are outside this repository.
 - Controller calibration JSON: `src/control/include/control`
 - LiDAR-to-vehicle longitudinal offset: `sensor_offset_x` on `relative_2_UTM`
 - Hardware ports/IP: integrated launch arguments
+- Speed-sign model/runtime: `src/traffic_sign_perception/config/speed_sign.yaml`
 
-The production Planning road bounds remain ±1.5 m. Stop points and surveyed road boundaries still need
-vehicle-site configuration.
+The production Planning road bounds remain ±1.5 m. Surveyed road boundaries still need vehicle-site
+configuration. The target values for 30/40/50 signs are provisional vehicle commands, not km/h values.
 
 ## Test
 
@@ -127,12 +143,13 @@ The Planning ROS graph probe is `src/planning/test/ros2_local_planner_integratio
 
 ## Current Scope
 
-Fixed route, low speed, static-obstacle avoidance, map stop points, and the existing ERP controller.
+Fixed route, low speed, static-obstacle avoidance, speed-limit sign state, and the existing ERP controller.
 
 ## Known Limitations
 
 - Hardware-in-the-loop validation was not possible on this host.
 - Velodyne and Python serial/UTM dependencies must be installed on the vehicle PC.
-- VLP-16 ROI, sensor extrinsic, controller calibration, stop points, and road bounds require vehicle-site
+- VLP-16 ROI, sensor extrinsic, controller calibration, speed targets, and road bounds require vehicle-site
   validation.
+- Camera model, image topic, trained YOLO weights, and sign-class confidence require deployment setup.
 - `/Planning/mission` remains only for controller compatibility; perception no longer depends on it.

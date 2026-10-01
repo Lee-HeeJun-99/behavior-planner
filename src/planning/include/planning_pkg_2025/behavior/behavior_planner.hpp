@@ -13,7 +13,6 @@ struct BehaviorConfig
   double obstacle_corridor_half_width{0.8};
   double obstacle_lookahead{15.0};
   std::chrono::milliseconds minimum_behavior_duration{500};
-  std::chrono::milliseconds stop_hold_duration{2000};
 };
 
 class BehaviorPlanner
@@ -31,7 +30,5 @@ private:
   int detection_count_{0};
   int clear_count_{0};
   std::chrono::steady_clock::time_point last_transition_{};
-  std::chrono::steady_clock::time_point stop_started_{};
-  bool stop_served_{false};
 };
 }  // namespace planning
