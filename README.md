@@ -100,6 +100,9 @@ ros2 launch behavior_stack_bringup behavior_stack.launch.py \
 
 Relative weight paths are resolved from `traffic_sign_perception/weights`; an empty or missing file
 produces a warning and a zero (no-detection) result without terminating the node.
+Normalized ROI coordinates, minimum bbox area, and debug-image publication are configured in
+`src/traffic_sign_perception/config/speed_sign.yaml`. The raw per-frame result is confirmed only by
+Planning's `ContextManager`.
 
 `enable_vehicle_interface` defaults to `false` so launching the stack cannot actuate the vehicle by
 default.

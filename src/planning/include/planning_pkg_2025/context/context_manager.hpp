@@ -17,6 +17,7 @@ struct ContextConfig
   double speed_limit_30_target{2.5};
   double speed_limit_40_target{3.5};
   double speed_limit_50_target{4.5};
+  double avoid_max_velocity{2.5};
 };
 
 class ContextManager

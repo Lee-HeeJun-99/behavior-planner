@@ -1,5 +1,6 @@
 #pragma once
 
+#include <algorithm>
 #include <cstddef>
 #include <limits>
 #include <string>
@@ -42,6 +43,7 @@ struct SpeedContext
   int detected_limit_kph{0};
   int active_limit_kph{30};
   double target_velocity{2.5};
+  double avoid_max_velocity{2.5};
   bool detection_valid{false};
 };
 
@@ -87,6 +89,9 @@ inline double calculateTargetVelocity(Behavior behavior, const BehaviorContext &
     behavior == Behavior::EMERGENCY_STOP)
   {
     return 0.0;
+  }
+  if (behavior == Behavior::AVOID) {
+    return std::min(context.speed.target_velocity, context.speed.avoid_max_velocity);
   }
   return context.speed.target_velocity;
 }

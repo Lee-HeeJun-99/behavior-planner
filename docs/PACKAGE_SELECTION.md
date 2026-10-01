@@ -53,4 +53,5 @@ No workspace custom-message package is required. The retained graph uses standar
 - `control`: removed IDE and PlotJuggler artifacts; retained A/B/B_wynz vehicle calibration files.
 - `planning_pkg_2025`: retained the verified V1 code/tests/config/docs and only the active 1,389-point map.
 - `traffic_sign_perception`: new narrow package containing only image subscription, YOLO class mapping,
-  temporal filtering, and `/Perception/speed_limit` publication.
+  normalized ROI/bbox processing, and raw `/Perception/speed_limit` publication. Temporal confirmation
+  remains exclusively in Planning.

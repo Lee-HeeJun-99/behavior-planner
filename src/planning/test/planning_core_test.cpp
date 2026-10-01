@@ -40,6 +40,12 @@ TEST(SpeedContext, IgnoresSingleFalseFiftyDetection) {
   manager.updateSpeedLimitDetection(50);
   EXPECT_EQ(manager.build(path,0).speed.active_limit_kph,30);
 }
+TEST(SpeedContext, InterruptedDetectionsDoNotConfirm) {
+  auto path=straightPath(); ContextManager manager(speedConfig()); manager.updateVehicle({0,0},0);
+  manager.updateSpeedLimitDetection(50); manager.updateSpeedLimitDetection(0);
+  manager.updateSpeedLimitDetection(50);
+  EXPECT_EQ(manager.build(path,0).speed.active_limit_kph,30);
+}
 TEST(SpeedContext, ActivatesConfirmedFiftyLimit) {
   auto path=straightPath(); ContextManager manager(speedConfig()); manager.updateVehicle({0,0},0);
   manager.updateSpeedLimitDetection(50); manager.updateSpeedLimitDetection(50); manager.updateSpeedLimitDetection(50);
@@ -53,6 +59,20 @@ TEST(SpeedContext, KeepsActiveLimitWhenDetectionDisappears) {
   EXPECT_FALSE(context.speed.detection_valid); EXPECT_EQ(context.speed.active_limit_kph,50);
   EXPECT_DOUBLE_EQ(context.speed.target_velocity,4.5);
 }
+TEST(SpeedContext, RejectsUnsupportedDetection) {
+  auto path=straightPath(); ContextManager manager(speedConfig()); manager.updateVehicle({0,0},0);
+  manager.updateSpeedLimitDetection(70); manager.updateSpeedLimitDetection(70);
+  manager.updateSpeedLimitDetection(70);
+  const auto context=manager.build(path,0);
+  EXPECT_FALSE(context.speed.detection_valid); EXPECT_EQ(context.speed.active_limit_kph,30);
+}
+TEST(SpeedContext, InvalidDefaultFallsBackConsistently) {
+  auto path=straightPath(); auto config=speedConfig(); config.default_speed_limit_kph=70;
+  ContextManager manager(config); manager.updateVehicle({0,0},0);
+  const auto context=manager.build(path,0);
+  EXPECT_EQ(context.speed.active_limit_kph,30);
+  EXPECT_DOUBLE_EQ(context.speed.target_velocity,2.5);
+}
 TEST(SpeedContext, AvoidancePreservesActiveLimit) {
   auto path=straightPath(); ContextManager manager(speedConfig()); manager.updateVehicle({0,0},0);
   manager.updateSpeedLimitDetection(50); manager.updateSpeedLimitDetection(50); manager.updateSpeedLimitDetection(50);
@@ -64,7 +84,7 @@ TEST(SpeedContext, AvoidancePreservesActiveLimit) {
   PathGeneratorConfig generator; generator.lateral_offsets={-1.5,0,1.5};
   auto plan=LocalPlanner(PathGenerator(generator),CollisionChecker{},CostEvaluator{}).plan(Behavior::AVOID,context);
   EXPECT_TRUE(plan.feasible); EXPECT_EQ(context.speed.active_limit_kph,50);
-  EXPECT_DOUBLE_EQ(calculateTargetVelocity(Behavior::AVOID,context),4.5);
+  EXPECT_DOUBLE_EQ(calculateTargetVelocity(Behavior::AVOID,context),2.5);
 }
 TEST(SpeedContext, EmergencyStopPreservesLimitAndResumesIt) {
   auto path=straightPath(); ContextManager manager(speedConfig()); manager.updateVehicle({0,0},0);

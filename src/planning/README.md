@@ -81,6 +81,7 @@ The ROS graph integration probe is kept in `test/ros2_local_planner_integration.
 
 - Fixed route
 - Configurable 30/40/50 speed-sign state and ERP target mapping
+- Configurable AVOID velocity cap
 - Static obstacles
 - Spatial local-path planning
 

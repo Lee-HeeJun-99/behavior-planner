@@ -3,6 +3,7 @@ from launch.actions import DeclareLaunchArgument
 from launch.conditions import IfCondition
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
+from launch_ros.parameter_descriptions import ParameterValue
 from launch_ros.substitutions import FindPackageShare
 
 
@@ -20,12 +21,17 @@ def generate_launch_description():
     velodyne_ip = LaunchConfiguration('velodyne_ip')
     camera_image_topic = LaunchConfiguration('camera_image_topic')
     speed_sign_weights = LaunchConfiguration('speed_sign_weights')
+    speed_sign_roi_enabled = LaunchConfiguration('speed_sign_roi_enabled')
+    speed_sign_publish_debug = LaunchConfiguration('speed_sign_publish_debug')
 
     calibration = PathJoinSubstitution(
         [FindPackageShare('velodyne_pointcloud'), 'params', 'VLP16db.yaml']
     )
     planning_config = PathJoinSubstitution(
         [FindPackageShare('planning_pkg_2025'), 'config', 'planning.yaml']
+    )
+    speed_sign_config = PathJoinSubstitution(
+        [FindPackageShare('traffic_sign_perception'), 'config', 'speed_sign.yaml']
     )
 
     return LaunchDescription([
@@ -42,6 +48,8 @@ def generate_launch_description():
         DeclareLaunchArgument('velodyne_ip', default_value='192.168.1.201'),
         DeclareLaunchArgument('camera_image_topic', default_value='/camera/image_raw'),
         DeclareLaunchArgument('speed_sign_weights', default_value=''),
+        DeclareLaunchArgument('speed_sign_roi_enabled', default_value='true'),
+        DeclareLaunchArgument('speed_sign_publish_debug', default_value='true'),
 
         Node(
             package='nmea_navsat_driver',
@@ -94,9 +102,12 @@ def generate_launch_description():
             package='traffic_sign_perception',
             executable='speed_sign_node',
             name='speed_sign_node',
-            parameters=[{
+            parameters=[speed_sign_config, {
                 'image_topic': camera_image_topic,
                 'weights_path': speed_sign_weights,
+                'roi_enabled': ParameterValue(speed_sign_roi_enabled, value_type=bool),
+                'publish_debug_image': ParameterValue(
+                    speed_sign_publish_debug, value_type=bool),
             }],
             condition=IfCondition(enable_camera_sign),
         ),

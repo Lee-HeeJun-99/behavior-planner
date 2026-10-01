@@ -82,6 +82,7 @@ private:
     declare_parameter<double>("speed_limit_30_target", 2.5);
     declare_parameter<double>("speed_limit_40_target", 3.5);
     declare_parameter<double>("speed_limit_50_target", 4.5);
+    declare_parameter<double>("avoid_max_velocity", 2.5);
   }
 
   void configureModules()
@@ -94,6 +95,15 @@ private:
     context_config.speed_limit_30_target = get_parameter("speed_limit_30_target").as_double();
     context_config.speed_limit_40_target = get_parameter("speed_limit_40_target").as_double();
     context_config.speed_limit_50_target = get_parameter("speed_limit_50_target").as_double();
+    context_config.avoid_max_velocity = get_parameter("avoid_max_velocity").as_double();
+    if (context_config.default_speed_limit_kph != 30 &&
+      context_config.default_speed_limit_kph != 40 &&
+      context_config.default_speed_limit_kph != 50)
+    {
+      RCLCPP_WARN(
+        get_logger(), "Unsupported default_speed_limit_kph=%d; falling back to 30",
+        context_config.default_speed_limit_kph);
+    }
     context_manager_ = ContextManager(context_config);
 
     BehaviorConfig behavior_config;

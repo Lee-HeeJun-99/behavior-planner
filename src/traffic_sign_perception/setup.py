@@ -17,6 +17,7 @@ setup(
         (os.path.join('share', package_name, 'weights'), glob('weights/*')),
     ],
     install_requires=['setuptools'],
+    test_suite='test',
     zip_safe=True,
     maintainer='K-ROAD Team',
     maintainer_email='kroad@todo.todo',
