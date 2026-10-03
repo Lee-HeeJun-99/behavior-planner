@@ -1,6 +1,4 @@
-from pathlib import Path
-
-content = r'''# Ubuntu 20.04 / ROS 2 Foxy 검증 절차
+# Ubuntu 20.04 / ROS 2 Foxy 검증 절차
 
 이 문서는 `lhj_behavior_stage`를 Ubuntu 20.04 + ROS 2 Foxy 차량 PC에서 검증하는 순서다.  
 모든 차량 구동 시험 전까지 `enable_vehicle_interface:=false`를 유지한다.
