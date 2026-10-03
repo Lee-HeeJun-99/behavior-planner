@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Minimal ROS 2 Humble source workspace for the K-ROAD low-speed fixed-route vehicle. The repository
+Minimal ROS 2 Foxy source workspace for the K-ROAD low-speed fixed-route vehicle. The repository
 contains the sensor interfaces, localization, static-obstacle perception, Behavior Planning, existing
 controller, and ERP42 serial bridge that participate in the current runtime graph.
 
@@ -19,6 +19,7 @@ Camera -> YOLO speed-sign classification ---------------------+      -> ERP seri
 
 See `docs/ARCHITECTURE.md` for the topic-level graph and `docs/PACKAGE_SELECTION.md` for the complete
 source-workspace classification.
+The complete Ubuntu 20.04/Foxy validation sequence is in `Test.md`.
 
 ## Package Structure
 
@@ -37,7 +38,8 @@ source-workspace classification.
 
 ## ROS 2 Distribution
 
-Ubuntu 22.04 with ROS 2 Humble.
+Ubuntu 20.04 with ROS 2 Foxy. Foxy is end-of-life, so vehicle deployment dependencies should be
+version-frozen after validation.
 
 ## Dependencies
 
@@ -50,8 +52,8 @@ ROS dependencies are declared in each `package.xml`. Hardware runtime additional
 - `cv_bridge` and, when camera recognition is enabled, Python `ultralytics`
 
 Use `rosdep install --from-paths src --ignore-src -r -y` and install the Python `utm` module on the
-vehicle PC. The current validation host does not have the Velodyne ROS packages, `python3-serial`, or
-the Python `utm` module installed.
+vehicle PC. Ubuntu 20.04 uses Python 3.8; install a Python 3.8-compatible PyTorch/Ultralytics combination
+and validate it with the actual YOLO weight before vehicle use.
 
 ## Hardware
 
@@ -66,7 +68,7 @@ in the repository.
 ## Build
 
 ```bash
-source /opt/ros/humble/setup.bash
+source /opt/ros/foxy/setup.bash
 rosdep install --from-paths src --ignore-src -r -y
 colcon build --symlink-install
 source install/setup.bash

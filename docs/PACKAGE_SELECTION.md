@@ -33,7 +33,7 @@ No workspace custom-message package is required. The retained graph uses standar
 
 | Dependency | Kind | Status on validation host |
 |---|---|---|
-| ROS 2 Humble | System | Installed |
+| ROS 2 Foxy | System | Required on Ubuntu 20.04; final target-host validation required |
 | PCL / `pcl_conversions` | System | Installed |
 | `velodyne_driver` | Hardware driver | Missing |
 | `velodyne_pointcloud` | Hardware driver | Missing |

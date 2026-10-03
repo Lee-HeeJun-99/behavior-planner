@@ -1,4 +1,5 @@
 from pathlib import Path
+import time
 
 from ament_index_python.packages import get_package_share_directory
 from cv_bridge import CvBridge
@@ -47,6 +48,7 @@ class SpeedSignNode(Node):
         self.min_bbox_area_ratio = max(
             0.0, float(self.get_parameter('min_bbox_area_ratio').value))
         self.publish_debug_image = bool(self.get_parameter('publish_debug_image').value)
+        self.last_inference_warning_time = 0.0
         if self.roi_enabled and not is_valid_normalized_roi(*self.roi):
             self.get_logger().warning(
                 f'Invalid normalized ROI {self.roi}; falling back to the full image')
@@ -103,8 +105,10 @@ class SpeedSignNode(Node):
             self.publisher.publish(Int16(data=detected_limit))
             self._publish_debug(message, image, detections, selected, (x1, y1, x2, y2))
         except Exception as error:  # Keep the node alive on conversion/backend errors.
-            self.get_logger().warning(
-                f'YOLO inference failed: {error}', throttle_duration_sec=2.0)
+            now = time.monotonic()
+            if now - self.last_inference_warning_time >= 2.0:
+                self.get_logger().warning(f'YOLO inference failed: {error}')
+                self.last_inference_warning_time = now
             self.publisher.publish(Int16(data=0))
 
     def _infer(self, image):
