@@ -68,7 +68,7 @@ modules, and nlohmann-json are system dependencies and are intentionally not cop
 ## Speed-sign integration
 
 `traffic_sign_perception` subscribes to a camera `sensor_msgs/Image`, crops a configurable normalized
-ROI, and classifies the direct YOLO classes `speed_30`, `speed_40`, and `speed_50`. It publishes the raw
+ROI, and accepts only the direct YOLO classes `speed_20` and `speed_50`. It publishes the raw
 semantic result for each frame (`0` means no supported detection); it owns no temporal state. Planning's
 `ContextManager` is the single owner of consecutive-detection confirmation and treats a confirmed sign
 as an event: subsequent zero detections do not erase the active limit. `ContextManager` maps the active

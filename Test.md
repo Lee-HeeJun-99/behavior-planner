@@ -25,9 +25,10 @@
 실차에서 별도로 확정해야 하는 값:
 
 - 카메라 topic, 해상도, FPS, 장착 위치
-- YOLO weight와 class 이름 (`speed_30`, `speed_40`, `speed_50`)
+- YOLO weight와 class 이름 (`speed_20`, `speed_50`)
 - ROI와 `min_bbox_area_ratio`
 - confidence threshold와 검출 거리
+<<<<<<< HEAD
 - 30/40/50 ERP target 및 `avoid_max_velocity`
 - LiDAR ROI/extrinsic 및 sensor offset
 - 실제 도로 좌/우 경계
@@ -37,6 +38,10 @@
 - Controller calibration 및 steering 부호/단위
 
 ---
+=======
+- 20/50 ERP target 및 `avoid_max_velocity`
+- LiDAR ROI/extrinsic, 도로 경계, Controller calibration
+>>>>>>> 38bdb89 (Update speed sign detection and planning)
 
 ## 2. 환경 확인
 
@@ -327,6 +332,7 @@ python3 /home/ubuntu/lhj_behavior_stage/src/planning/test/ros2_local_planner_int
 예상 핵심 결과:
 
 ```text
+<<<<<<< HEAD
 CRUISE
   behavior CRUISE
   target_velocity 2.5
@@ -360,6 +366,18 @@ BLOCKED
   valid_candidates 0
   behavior EMERGENCY_STOP
   target_velocity 0.0
+=======
+CRUISE                    target_velocity 2.5
+SINGLE_FALSE_50           target_velocity 2.5
+CONFIRMED_50              target_velocity 4.5
+NO_DETECTION_AFTER_50     target_velocity 4.5
+CONFIRMED_20              target_velocity 2.5
+SINGLE_OBSTACLE / AVOID   target_velocity 2.5
+RECOVERY / CRUISE         target_velocity 2.5
+EMERGENCY_STOP            target_velocity 0.0
+EMERGENCY_RELEASE         target_velocity 2.5
+BLOCKED                    valid 0, target_velocity 0.0
+>>>>>>> 38bdb89 (Update speed sign detection and planning)
 ```
 
 필수 확인:
@@ -813,7 +831,7 @@ ros2 topic echo /ERP/serial_data
 | Missing weight 안전 처리 |  |  |
 | Invalid ROI fallback |  |  |
 | Debug image ROI/bbox |  |  |
-| 30/40/50 raw detection |  |  |
+| 20/50 raw detection |  |  |
 | Planning 3-frame confirmation |  |  |
 | CRUISE target mapping |  |  |
 | AVOID velocity cap |  |  |

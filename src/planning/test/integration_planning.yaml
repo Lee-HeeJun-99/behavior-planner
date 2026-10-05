@@ -2,10 +2,9 @@ planning_node:
   ros__parameters:
     global_path_file: map/map_final_0921/0-0.txt
     planning_period_ms: 50
-    default_speed_limit_kph: 30
+    default_speed_limit_kph: 20
     speed_sign_confirmation_count: 3
-    speed_limit_30_target: 2.5
-    speed_limit_40_target: 3.5
+    speed_limit_20_target: 2.5
     speed_limit_50_target: 4.5
     avoid_max_velocity: 2.5
     lateral_offsets: [-1.5, -1.2, -0.9, -0.6, -0.3, 0.0, 0.3, 0.6, 0.9, 1.2, 1.5]

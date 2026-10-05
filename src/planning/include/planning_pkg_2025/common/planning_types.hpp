@@ -41,7 +41,7 @@ struct PathContext
 struct SpeedContext
 {
   int detected_limit_kph{0};
-  int active_limit_kph{30};
+  int active_limit_kph{20};
   double target_velocity{2.5};
   double avoid_max_velocity{2.5};
   bool detection_valid{false};

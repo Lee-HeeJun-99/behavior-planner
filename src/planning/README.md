@@ -39,7 +39,7 @@ Localization + Map + Static Obstacles + Speed Limit
 | `/Convert/small_object_UTM` | `std_msgs/msg/Float64MultiArray` |
 | `/Convert/big_object_UTM` | `std_msgs/msg/Float64MultiArray` |
 | `/LiDAR/dynamic_stop` | `std_msgs/msg/Bool` |
-| `/Perception/speed_limit` | `std_msgs/msg/Int16` (`0`, `30`, `40`, `50`) |
+| `/Perception/speed_limit` | `std_msgs/msg/Int16` (`0`, `20`, `50`) |
 
 ## Output
 
@@ -80,7 +80,7 @@ The ROS graph integration probe is kept in `test/ros2_local_planner_integration.
 ## Current Scope
 
 - Fixed route
-- Configurable 30/40/50 speed-sign state and ERP target mapping
+- Configurable 20/50 speed-sign state and provisional ERP target mapping
 - Configurable AVOID velocity cap
 - Static obstacles
 - Spatial local-path planning
@@ -98,6 +98,6 @@ The ROS graph integration probe is kept in `test/ros2_local_planner_integration.
 - Vehicle footprint, safety margin, road bounds, and candidate offsets require vehicle-site validation.
 - V1 consumes obstacle centers rather than an occupancy-grid boundary.
 - Camera/YOLO runs in the separate `traffic_sign_perception` package; trained weights are not included.
-- `speed_limit_*_target` values are provisional and require safe vehicle-site tuning.
+- `speed_limit_20_target` and `speed_limit_50_target` are provisional and require later ERP42 tuning.
 
 See `docs/ARCHITECTURE.md` for migration decisions, module responsibilities, and interface details.

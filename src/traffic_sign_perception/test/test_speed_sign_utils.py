@@ -28,7 +28,9 @@ class SpeedSignUtilsTest(unittest.TestCase):
 
     def test_class_mapping_accepts_only_supported_classes(self):
         self.assertEqual(class_name_to_speed('speed_50'), 50)
-        self.assertEqual(class_name_to_speed('SPEED_30'), 30)
+        self.assertEqual(class_name_to_speed('SPEED_20'), 20)
+        self.assertEqual(class_name_to_speed('speed_30'), 0)
+        self.assertEqual(class_name_to_speed('speed_40'), 0)
         self.assertEqual(class_name_to_speed('traffic_light'), 0)
 
     def test_bbox_area_ratio(self):
@@ -37,7 +39,7 @@ class SpeedSignUtilsTest(unittest.TestCase):
     def test_best_detection_filters_class_and_small_bbox(self):
         detections = [
             Detection('traffic_light', 0.99, (0, 0, 90, 90)),
-            Detection('speed_30', 0.95, (0, 0, 2, 2)),
+            Detection('speed_20', 0.95, (0, 0, 2, 2)),
             Detection('speed_50', 0.80, (10, 10, 40, 40)),
             Detection('speed_40', 0.70, (10, 10, 50, 50)),
         ]

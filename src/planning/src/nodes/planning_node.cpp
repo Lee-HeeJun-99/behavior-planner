@@ -77,10 +77,9 @@ private:
     declare_parameter<int>("detection_confirmation_count", 3);
     declare_parameter<int>("clear_confirmation_count", 5);
     declare_parameter<int>("minimum_behavior_duration_ms", 500);
-    declare_parameter<int>("default_speed_limit_kph", 30);
+    declare_parameter<int>("default_speed_limit_kph", 20);
     declare_parameter<int>("speed_sign_confirmation_count", 3);
-    declare_parameter<double>("speed_limit_30_target", 2.5);
-    declare_parameter<double>("speed_limit_40_target", 3.5);
+    declare_parameter<double>("speed_limit_20_target", 2.5);
     declare_parameter<double>("speed_limit_50_target", 4.5);
     declare_parameter<double>("avoid_max_velocity", 2.5);
   }
@@ -92,16 +91,14 @@ private:
     context_config.road_right_bound = get_parameter("road_right_bound").as_double();
     context_config.default_speed_limit_kph = get_parameter("default_speed_limit_kph").as_int();
     context_config.speed_sign_confirmation_count = get_parameter("speed_sign_confirmation_count").as_int();
-    context_config.speed_limit_30_target = get_parameter("speed_limit_30_target").as_double();
-    context_config.speed_limit_40_target = get_parameter("speed_limit_40_target").as_double();
+    context_config.speed_limit_20_target = get_parameter("speed_limit_20_target").as_double();
     context_config.speed_limit_50_target = get_parameter("speed_limit_50_target").as_double();
     context_config.avoid_max_velocity = get_parameter("avoid_max_velocity").as_double();
-    if (context_config.default_speed_limit_kph != 30 &&
-      context_config.default_speed_limit_kph != 40 &&
+    if (context_config.default_speed_limit_kph != 20 &&
       context_config.default_speed_limit_kph != 50)
     {
       RCLCPP_WARN(
-        get_logger(), "Unsupported default_speed_limit_kph=%d; falling back to 30",
+        get_logger(), "Unsupported default_speed_limit_kph=%d; falling back to 20",
         context_config.default_speed_limit_kph);
     }
     context_manager_ = ContextManager(context_config);

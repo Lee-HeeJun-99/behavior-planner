@@ -19,32 +19,39 @@ TEST(BehaviorPlanner, ConfirmsAndClearsAvoidance) {
 }
 ContextConfig speedConfig() {
   ContextConfig config; config.speed_sign_confirmation_count=3;
-  config.speed_limit_30_target=2.5; config.speed_limit_40_target=3.5; config.speed_limit_50_target=4.5;
+  config.speed_limit_20_target=2.5; config.speed_limit_50_target=4.5;
   return config;
 }
 TEST(SpeedContext, StartsAtDefaultSpeed) {
   auto path=straightPath(); ContextManager manager(speedConfig()); manager.updateVehicle({0,0},0);
   const auto context=manager.build(path,0);
-  EXPECT_EQ(context.speed.active_limit_kph,30); EXPECT_DOUBLE_EQ(context.speed.target_velocity,2.5);
+  EXPECT_EQ(context.speed.active_limit_kph,20); EXPECT_DOUBLE_EQ(context.speed.target_velocity,2.5);
   EXPECT_DOUBLE_EQ(calculateTargetVelocity(Behavior::CRUISE,context),2.5);
 }
-TEST(SpeedContext, ConfirmsThirtySign) {
+TEST(SpeedContext, ConfirmsTwentySign) {
   auto path=straightPath(); ContextManager manager(speedConfig()); manager.updateVehicle({0,0},0);
-  manager.updateSpeedLimitDetection(30); manager.updateSpeedLimitDetection(30); manager.updateSpeedLimitDetection(30);
+  manager.updateSpeedLimitDetection(50); manager.updateSpeedLimitDetection(50); manager.updateSpeedLimitDetection(50);
+  manager.updateSpeedLimitDetection(20); manager.updateSpeedLimitDetection(20); manager.updateSpeedLimitDetection(20);
   const auto context=manager.build(path,0);
-  EXPECT_TRUE(context.speed.detection_valid); EXPECT_EQ(context.speed.detected_limit_kph,30);
-  EXPECT_EQ(context.speed.active_limit_kph,30);
+  EXPECT_TRUE(context.speed.detection_valid); EXPECT_EQ(context.speed.detected_limit_kph,20);
+  EXPECT_EQ(context.speed.active_limit_kph,20); EXPECT_DOUBLE_EQ(context.speed.target_velocity,2.5);
 }
 TEST(SpeedContext, IgnoresSingleFalseFiftyDetection) {
   auto path=straightPath(); ContextManager manager(speedConfig()); manager.updateVehicle({0,0},0);
   manager.updateSpeedLimitDetection(50);
-  EXPECT_EQ(manager.build(path,0).speed.active_limit_kph,30);
+  EXPECT_EQ(manager.build(path,0).speed.active_limit_kph,20);
 }
 TEST(SpeedContext, InterruptedDetectionsDoNotConfirm) {
   auto path=straightPath(); ContextManager manager(speedConfig()); manager.updateVehicle({0,0},0);
   manager.updateSpeedLimitDetection(50); manager.updateSpeedLimitDetection(0);
   manager.updateSpeedLimitDetection(50);
-  EXPECT_EQ(manager.build(path,0).speed.active_limit_kph,30);
+  EXPECT_EQ(manager.build(path,0).speed.active_limit_kph,20);
+}
+TEST(SpeedContext, DifferentSupportedSignResetsCandidate) {
+  auto path=straightPath(); ContextManager manager(speedConfig()); manager.updateVehicle({0,0},0);
+  manager.updateSpeedLimitDetection(50); manager.updateSpeedLimitDetection(50);
+  manager.updateSpeedLimitDetection(20); manager.updateSpeedLimitDetection(50);
+  EXPECT_EQ(manager.build(path,0).speed.active_limit_kph,20);
 }
 TEST(SpeedContext, ActivatesConfirmedFiftyLimit) {
   auto path=straightPath(); ContextManager manager(speedConfig()); manager.updateVehicle({0,0},0);
@@ -55,22 +62,23 @@ TEST(SpeedContext, ActivatesConfirmedFiftyLimit) {
 TEST(SpeedContext, KeepsActiveLimitWhenDetectionDisappears) {
   auto path=straightPath(); ContextManager manager(speedConfig()); manager.updateVehicle({0,0},0);
   manager.updateSpeedLimitDetection(50); manager.updateSpeedLimitDetection(50); manager.updateSpeedLimitDetection(50);
+  manager.updateSpeedLimitDetection(0); manager.updateSpeedLimitDetection(0);
   manager.updateSpeedLimitDetection(0); const auto context=manager.build(path,0);
   EXPECT_FALSE(context.speed.detection_valid); EXPECT_EQ(context.speed.active_limit_kph,50);
   EXPECT_DOUBLE_EQ(context.speed.target_velocity,4.5);
 }
 TEST(SpeedContext, RejectsUnsupportedDetection) {
   auto path=straightPath(); ContextManager manager(speedConfig()); manager.updateVehicle({0,0},0);
-  manager.updateSpeedLimitDetection(70); manager.updateSpeedLimitDetection(70);
+  manager.updateSpeedLimitDetection(30); manager.updateSpeedLimitDetection(40);
   manager.updateSpeedLimitDetection(70);
   const auto context=manager.build(path,0);
-  EXPECT_FALSE(context.speed.detection_valid); EXPECT_EQ(context.speed.active_limit_kph,30);
+  EXPECT_FALSE(context.speed.detection_valid); EXPECT_EQ(context.speed.active_limit_kph,20);
 }
 TEST(SpeedContext, InvalidDefaultFallsBackConsistently) {
   auto path=straightPath(); auto config=speedConfig(); config.default_speed_limit_kph=70;
   ContextManager manager(config); manager.updateVehicle({0,0},0);
   const auto context=manager.build(path,0);
-  EXPECT_EQ(context.speed.active_limit_kph,30);
+  EXPECT_EQ(context.speed.active_limit_kph,20);
   EXPECT_DOUBLE_EQ(context.speed.target_velocity,2.5);
 }
 TEST(SpeedContext, AvoidancePreservesActiveLimit) {

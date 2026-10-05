@@ -10,7 +10,7 @@ namespace {double distance(const Point2d & a, const Point2d & b) {return std::hy
 ContextManager::ContextManager(ContextConfig config) : config_(config)
 {
   speed_.active_limit_kph = isSupportedSpeedLimit(config_.default_speed_limit_kph) ?
-    config_.default_speed_limit_kph : 30;
+    config_.default_speed_limit_kph : 20;
   speed_.target_velocity = targetVelocityForLimit(speed_.active_limit_kph);
   speed_.avoid_max_velocity = std::max(0.0, config_.avoid_max_velocity);
 }
@@ -26,14 +26,13 @@ void ContextManager::updateObstacles(const std::vector<Point2d> & points) {raw_o
 
 bool ContextManager::isSupportedSpeedLimit(int limit_kph) const
 {
-  return limit_kph == 30 || limit_kph == 40 || limit_kph == 50;
+  return limit_kph == 20 || limit_kph == 50;
 }
 
 double ContextManager::targetVelocityForLimit(int limit_kph) const
 {
-  if (limit_kph == 40) {return config_.speed_limit_40_target;}
   if (limit_kph == 50) {return config_.speed_limit_50_target;}
-  return config_.speed_limit_30_target;
+  return config_.speed_limit_20_target;
 }
 
 void ContextManager::updateSpeedLimitDetection(int detected_limit_kph)

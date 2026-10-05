@@ -7,10 +7,10 @@ planning_node:
     planning_period_ms: 50
 
     # speed-limit signs and vehicle target mapping
-    default_speed_limit_kph: 30
+    default_speed_limit_kph: 20
     speed_sign_confirmation_count: 3
-    speed_limit_30_target: 2.5
-    speed_limit_40_target: 3.5
+    # Provisional values: calibrate on ERP42 in a later vehicle-test phase.
+    speed_limit_20_target: 2.5
     speed_limit_50_target: 4.5
     avoid_max_velocity: 2.5
 

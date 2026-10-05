@@ -30,7 +30,7 @@ The complete Ubuntu 20.04/Foxy validation sequence is in `Test.md`.
 | `local_pkg1` | GPS/IMU/ERP localization |
 | `lidar` | VLP-16 small static-obstacle clustering |
 | `kroad_planning_utm_pkg` | LiDAR-relative XY to UTM conversion |
-| `traffic_sign_perception` | Camera/YOLO `speed_30`, `speed_40`, `speed_50` classification |
+| `traffic_sign_perception` | Camera/YOLO `speed_20`, `speed_50` classification |
 | `planning_pkg_2025` | Context → Behavior → Local Planner |
 | `control` | Existing path-following controller |
 | `erp_ros2_bridge` | ERP42 serial input/output |
@@ -123,7 +123,7 @@ ContextManager -> BehaviorPlanner -> LocalPlanner -> Existing Controller
 ```
 
 Behaviors are `CRUISE`, `AVOID`, `STOP`, `WAIT`, and `EMERGENCY_STOP`. Planning remains spatial;
-The active 30/40/50 km/h sign state selects a configurable ERP target value; velocity-profile
+The active 20/50 km/h sign state selects a configurable provisional ERP target value; velocity-profile
 generation and controller redesign remain outside this repository.
 
 ## Configuration
@@ -135,7 +135,8 @@ generation and controller redesign remain outside this repository.
 - Speed-sign model/runtime: `src/traffic_sign_perception/config/speed_sign.yaml`
 
 The production Planning road bounds remain ±1.5 m. Surveyed road boundaries still need vehicle-site
-configuration. The target values for 30/40/50 signs are provisional vehicle commands, not km/h values.
+configuration. The target values for 20/50 signs are provisional vehicle commands, not km/h values;
+ERP42 calibration is intentionally deferred.
 
 ## Test
 

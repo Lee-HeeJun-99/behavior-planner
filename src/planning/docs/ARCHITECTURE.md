@@ -49,7 +49,7 @@ legacy integer `/Planning/mission`.
 | planning_node | Subscribe | `/Local/heading` | `std_msgs/Float64` | vehicle yaw |
 | planning_node | Subscribe | `/Convert/small_object_UTM`, `/Convert/big_object_UTM` | `std_msgs/Float64MultiArray` | static obstacle XY pairs |
 | planning_node | Subscribe | `/LiDAR/dynamic_stop` | `std_msgs/Bool` | existing emergency-stop signal |
-| planning_node | Subscribe | `/Perception/speed_limit` | `std_msgs/Int16` | current-frame speed-sign value (`0`, `30`, `40`, `50`) |
+| planning_node | Subscribe | `/Perception/speed_limit` | `std_msgs/Int16` | current-frame speed-sign value (`0`, `20`, `50`) |
 | planning_node | Publish | `/Planning/local_path` | `std_msgs/Float64MultiArray` | controller-compatible interleaved XY path |
 | planning_node | Publish | `/Planning/path_yaw` | `std_msgs/Float64MultiArray` | controller-compatible yaw array |
 | planning_node | Publish | `/Planning/curvature` | `std_msgs/Float64MultiArray` | path debug/compatibility |
