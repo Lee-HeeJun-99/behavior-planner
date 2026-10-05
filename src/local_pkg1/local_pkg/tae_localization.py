@@ -185,21 +185,9 @@ class GpsImuHeading(Node):
         az = imu_data.linear_acceleration.z
         left_velocity = self.left_velocity
 
-        if left_velocity is not None and yaw_rate == 0:
+        # ERP42 Pro CAN feedback already reports vehicle centre speed.
+        if left_velocity is not None:
             self.center_velocity = left_velocity
-
-        elif left_velocity is not None and yaw_rate != 0:
-            r_left = left_velocity/abs(yaw_rate)
-
-            if yaw_rate > 0:
-                r_right = r_left + self.car_w
-            else:
-                r_right = r_left - self.car_w
-
-            right_velocity = abs(yaw_rate)*r_right
-
-            self.center_velocity = (left_velocity + right_velocity)/2.0
-
 
         if self.center_velocity is not None and self.current_x is not None and self.beta is not None:
             if self.center_velocity < 0.1:

@@ -8,6 +8,7 @@
 
 #include "control/PIDController.hpp"
 #include "control/callback_data_manage.hpp"
+#include "control/vehicle_param.hpp"
 
 
 /*
@@ -147,7 +148,7 @@ public:
         return this->speed_;
     }
 
-    double set_stanley_integral_val(double inte_init)
+    void set_stanley_integral_val(double inte_init)
     {
         this->integral = inte_init;
     }
@@ -185,7 +186,7 @@ public:
         current_odom_.y = 0.0;
         speed_ = 0.0;
         yaw_ = 0.0;
-        wheel_base_ = 1.04;
+        wheel_base_ = vehicle::WHEEL_BASE;
 
         ld_min_val = 7.5;
         ld_max_val = 11;
@@ -310,15 +311,16 @@ private:
 public:
     CombinedSteer(CallbackClass *cb_data)
         : PurePursuit(), Stanley(), pp_weight_(0.45),
-          stanly_weight_(0.55), deltaMax(0.491642)
+          stanly_weight_(0.55), deltaMax(vehicle::MAX_STEER)
     {
 
         this->cb_data_ = cb_data;
 
         pre_com_steer = 0;
+        com_steer_alpha = 0.9;
 
-        com_steer_alpha = 0.8;
-
+        PP_steer = 0.0;
+        stanly_steer = 0.0;
     }
 
     void set_combine_PP_ratio(float pp_weight)
@@ -432,7 +434,7 @@ class ReversePurePursuit : public PurePursuit
 private:
     double RPP_gain_ = 0.0;
     Point R_target_point_;
-    double deltaMax = 0.491642;
+    double deltaMax = vehicle::MAX_STEER;
     double reverse_yaw = 0.0;
 
     float R_ld_min_val = 3.0;
@@ -466,31 +468,15 @@ public:
         this->R_target_point_ = this->calc_LA_point(R_ld_min_val, R_ld_max_val, true);
 
         float wheel_base = this->get_wheel_base();
-        double tmp_x = R_target_point_.x;
         double tmp_y = R_target_point_.y;
 
         double la_dist = LA_distance(R_target_point_, true);
-
-        double tmp_val = ((tmp_x / 2) - wheel_base) / tmp_y;
-        double radius = la_dist * sqrt(tmp_val * tmp_val + 1 / 4);
 
         double numerator = 2 * wheel_base * tmp_y;
         double denominator = la_dist * la_dist * RPP_gain_;
         double angleToTarget = std::atan2(numerator, denominator);
 
-        // cout << endl
-        //      << endl
-        //      << endl
-        //      << endl;
-        // cout << "radius : " << radius << endl;
-
-        double delta = angleToTarget;
-
-        // cout << "delta : " << delta << endl;
-
-        double steer = clip(delta, -deltaMax, deltaMax);
-
-        return steer;
+        return clip(angleToTarget, -deltaMax, deltaMax);
     }
 
     double get_reverse_yaw()

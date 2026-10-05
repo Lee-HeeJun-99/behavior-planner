@@ -1,0 +1,23 @@
+erp42pro_can_bridge:
+  ros__parameters:
+    can_channel: can0
+    can_bringup: false         # 시작할 때 can0 이 꺼져 있으면 브릿지가 직접 켠다 (500 kbps).
+                              # PC 마다 한 번 필요: bash ~/wego_ws/tools/setup_can_sudo.sh
+    receive_only: true
+    max_speed_kph: 10.0
+    send_rate_hz: 50.0        # datasheet 송신 주기 20 ms
+
+    cmd_topic: /Control/vehicle_cmd
+    feedback_topic: /ERP/serial_data
+    debug_topic: /erp42pro/cmd_debug
+
+    steer_sign: 1.0           # 차량에서 좌/우 확인 후 반대면 -1.0
+    max_steer_deg: 28.0       # ERP42 Pro 명령 한계 +-30 deg
+    speed_scale: 1.146        # 실제 속도 / 차량이 재는 속도. 10/3 주행 기록에서 GPS 로 측정 (1.14~1.15)
+    estop_brake_pct: 100.0
+
+    cmd_timeout_sec: 0.3      # control 명령이 끊기면 정지
+    timeout_brake_pct: 30.0
+
+    rolling_counter: true     # heartbeat 0~15 증가 (false: withus 드라이버처럼 15 고정)
+    acc_raw: 0                # 0x504 byte4 raw (withus 드라이버 기본값과 동일)

@@ -35,7 +35,7 @@ Camera -> traffic_sign_perception -> /Perception/speed_limit ------------+
                                                      v
                                                 erp_control
                                                      |
-                                          /Control/serial_data
+                                          /Control/vehicle_cmd
                                                      |
                                                      v
                                             erp_ros2_bridge

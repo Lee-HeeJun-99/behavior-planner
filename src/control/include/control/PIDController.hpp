@@ -7,7 +7,7 @@
 제작 : 예원태
 문의 : solnox99@koreatech.ac.kr
 
-설명 : 
+설명 :
 2023년 창작차 대회에서 사용한 Control 코드의 main 코드이다.
 여러가지 구조와 함수, PID 클래스를 정의한 코드이다.
 최초에 PID 클래스를 위해 파일을 만들어 파일 이름이 "PIDController.hpp" 이지만,
@@ -65,7 +65,14 @@ class PIDController
 public:
     PIDController(double min_output, double max_output)
         : min_output_(min_output), max_output_(max_output),
-          integral_(0), prev_error_(0) {} 
+          integral_(0), prev_error_(0), has_prev_(false)  {}
+
+    void reset() {
+        integral_ = 0.0;
+        prev_error_ = 0.0;
+        pre_derivative_ = 0.0;
+        has_prev_ = false;
+    }
 
     void set_PID_gain(double kp, double kd)
     {
@@ -97,16 +104,26 @@ public:
         return output;
     }
 
+    float get_p_gain(){  // 디버깅용
+        return kp_;
+    }
+
+    float get_d_gain(){  // 디버깅용
+        return kd_;
+    }
+
 private:
-    double kp_;
-    double ki_;
-    double kd_;
+    double kp_ = 0.0;
+    double ki_ = 0.0;
+    double kd_ = 0.0;
     double min_output_;
     double max_output_;
     double integral_;
     double prev_error_;
 
     double pre_derivative_ = 0.0;
+    bool   has_prev_;
+
 };
 
 #endif  // PID_CONTROLLER_HPP

@@ -4,7 +4,7 @@
 
 Minimal ROS 2 Foxy source workspace for the K-ROAD low-speed fixed-route vehicle. The repository
 contains the sensor interfaces, localization, static-obstacle perception, Behavior Planning, existing
-controller, and ERP42 serial bridge that participate in the current runtime graph.
+controller, and ERP42 Pro CAN bridge that participate in the current runtime graph.
 
 ## System Architecture
 
@@ -13,7 +13,7 @@ GPS + IMU + ERP feedback -> Localization --------------------+
                                                               |
 Velodyne -> small-static clustering -> relative-to-UTM -------+-> Planning
                                                               |      -> Controller
-Camera -> YOLO speed-sign classification ---------------------+      -> ERP serial bridge
+Camera -> YOLO speed-sign classification ---------------------+      -> ERP42 Pro CAN bridge
                                                                      -> ERP42
 ```
 
@@ -33,7 +33,7 @@ The complete Ubuntu 20.04/Foxy validation sequence is in `Test.md`.
 | `traffic_sign_perception` | Camera/YOLO `speed_20`, `speed_50` classification |
 | `planning_pkg_2025` | Context → Behavior → Local Planner |
 | `control` | Existing path-following controller |
-| `erp_ros2_bridge` | ERP42 serial input/output |
+| `erp42pro_interface` | ERP42 Pro CAN input/output |
 | `behavior_stack_bringup` | Integrated launch |
 
 ## ROS 2 Distribution
@@ -62,7 +62,7 @@ and validate it with the actual YOLO weight before vehicle use.
 - WIT serial IMU
 - ERP42-compatible serial vehicle interface
 
-Serial device paths and the Velodyne IP are launch arguments; no PC-specific hardware path is embedded
+GPS/IMU serial device paths, CAN channel, and the Velodyne IP are launch arguments; no PC-specific hardware path is embedded
 in the repository.
 
 ## Build
@@ -84,12 +84,12 @@ ros2 launch behavior_stack_bringup behavior_stack.launch.py \
   enable_lidar:=false enable_vehicle_interface:=false
 ```
 
-Vehicle run after hardware verification:
+Vehicle feedback inspection (CAN receive only):
 
 ```bash
 ros2 launch behavior_stack_bringup behavior_stack.launch.py \
-  gps_port:=/dev/ttyUSB0 imu_port:=/dev/ttyUSB1 erp_port:=/dev/ttyUSB2 \
-  velodyne_ip:=192.168.1.201 enable_vehicle_interface:=true
+  enable_vehicle_interface:=true can_channel:=can0 can_receive_only:=true \
+  velodyne_ip:=192.168.1.201
 ```
 
 Enable speed-sign recognition after installing Ultralytics and supplying trained weights:
@@ -114,7 +114,7 @@ default.
 The principal chain is `/fix`, `/imu`, `/ERP/serial_data` → `/Local/utm`, `/Local/heading` and
 `/velodyne_points` → `/LiDAR/object_cen` → `/Convert/small_object_UTM`, and camera images →
 `/Perception/speed_limit` → `/Planning/*` →
-`/Control/serial_data` → ERP42.
+`/Control/vehicle_cmd` → ERP42.
 
 ## Planning Architecture
 
@@ -159,3 +159,10 @@ Fixed route, low speed, static-obstacle avoidance, speed-limit sign state, and t
   validation.
 - Camera model, image topic, trained YOLO weights, and sign-class confidence require deployment setup.
 - `/Planning/mission` remains only for controller compatibility; perception no longer depends on it.
+
+## ERP42 Pro CAN migration
+
+The integrated launch uses `erp42pro_interface`, based on the 2026-10-03 vehicle backup.
+`erp_ros2_bridge` is retained only as legacy source and is not launched.
+The `/ERP/serial_data` and `/Control/vehicle_cmd` names remain for controller/localization compatibility; vehicle transport is SocketCAN.
+See `docs/CAN_PLATFORM.md` for CAN setup, receive-only inspection, transmission options, and heading initialization.

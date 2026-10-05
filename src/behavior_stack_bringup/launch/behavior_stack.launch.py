@@ -1,10 +1,24 @@
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, OpaqueFunction
 from launch.conditions import IfCondition
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
 from launch_ros.substitutions import FindPackageShare
+
+
+def camera_actions(context):
+    if LaunchConfiguration("enable_camera").perform(context).lower() != "true":
+        return []
+    return [IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(PathJoinSubstitution([
+            FindPackageShare("realsense2_camera"), "launch", "rs_launch.py"])),
+        launch_arguments={
+            "camera_name": "camera", "enable_color": "true",
+            "enable_depth": "false", "rgb_camera.profile": "640,480,30",
+        }.items(),
+    )]
 
 
 def generate_launch_description():
@@ -39,6 +53,7 @@ def generate_launch_description():
         DeclareLaunchArgument('enable_imu', default_value='true'),
         DeclareLaunchArgument('enable_localization', default_value='true'),
         DeclareLaunchArgument('enable_lidar', default_value='true'),
+        DeclareLaunchArgument('enable_camera', default_value='false'),
         DeclareLaunchArgument('enable_camera_sign', default_value='false'),
         # Safety default: a dry run never opens the ERP actuator serial port.
         DeclareLaunchArgument('enable_vehicle_interface', default_value='false'),
@@ -46,7 +61,8 @@ def generate_launch_description():
         DeclareLaunchArgument('imu_port', default_value='/dev/ttyUSB1'),
         DeclareLaunchArgument('erp_port', default_value='/dev/ttyUSB2'),
         DeclareLaunchArgument('velodyne_ip', default_value='192.168.1.201'),
-        DeclareLaunchArgument('camera_image_topic', default_value='/camera/image_raw'),
+        DeclareLaunchArgument('camera_image_topic', default_value='/camera/color/image_raw'),
+        OpaqueFunction(function=camera_actions),
         DeclareLaunchArgument('speed_sign_weights', default_value=''),
         DeclareLaunchArgument('speed_sign_roi_enabled', default_value='true'),
         DeclareLaunchArgument('speed_sign_publish_debug', default_value='true'),
