@@ -1,1 +1,0 @@
-/home/ubuntu/lhj_behavior_stage/src/planning/include/planning_pkg_2025/local/path_generator.hpp

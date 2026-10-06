@@ -1,3 +1,0 @@
-[console_scripts]
-speed_sign_node = traffic_sign_perception.speed_sign_node:main
-

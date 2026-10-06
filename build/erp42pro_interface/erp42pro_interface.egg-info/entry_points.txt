@@ -1,3 +1,0 @@
-[console_scripts]
-can_bridge_node = erp42pro_interface.can_bridge_node:main
-

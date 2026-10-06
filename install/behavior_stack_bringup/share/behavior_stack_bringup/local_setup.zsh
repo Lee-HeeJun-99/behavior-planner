@@ -1,1 +1,0 @@
-/home/ubuntu/lhj_behavior_stage/build/behavior_stack_bringup/ament_cmake_environment_hooks/local_setup.zsh

@@ -1,1 +1,0 @@
-/home/ubuntu/lhj_behavior_stage/src/local_pkg1/setup.py

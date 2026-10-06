@@ -1,9 +1,0 @@
-source;share/erp42pro_interface/hook/pythonpath.ps1
-source;share/erp42pro_interface/hook/pythonpath.dsv
-source;share/erp42pro_interface/hook/pythonpath.sh
-source;share/erp42pro_interface/hook/ament_prefix_path.ps1
-source;share/erp42pro_interface/hook/ament_prefix_path.dsv
-source;share/erp42pro_interface/hook/ament_prefix_path.sh
-source;../../build/erp42pro_interface/share/erp42pro_interface/hook/pythonpath_develop.ps1
-source;../../build/erp42pro_interface/share/erp42pro_interface/hook/pythonpath_develop.dsv
-source;../../build/erp42pro_interface/share/erp42pro_interface/hook/pythonpath_develop.sh

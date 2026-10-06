@@ -1,9 +1,0 @@
-/home/ubuntu/lhj_behavior_stage/build/behavior_stack_bringup/CMakeFiles/uninstall.dir
-/home/ubuntu/lhj_behavior_stage/build/behavior_stack_bringup/CMakeFiles/behavior_stack_bringup_uninstall.dir
-/home/ubuntu/lhj_behavior_stage/build/behavior_stack_bringup/CMakeFiles/test.dir
-/home/ubuntu/lhj_behavior_stage/build/behavior_stack_bringup/CMakeFiles/edit_cache.dir
-/home/ubuntu/lhj_behavior_stage/build/behavior_stack_bringup/CMakeFiles/rebuild_cache.dir
-/home/ubuntu/lhj_behavior_stage/build/behavior_stack_bringup/CMakeFiles/list_install_components.dir
-/home/ubuntu/lhj_behavior_stage/build/behavior_stack_bringup/CMakeFiles/install.dir
-/home/ubuntu/lhj_behavior_stage/build/behavior_stack_bringup/CMakeFiles/install/local.dir
-/home/ubuntu/lhj_behavior_stage/build/behavior_stack_bringup/CMakeFiles/install/strip.dir

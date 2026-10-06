@@ -1,1 +1,0 @@
-ament_cmake_symlink_install_targets("TARGET_FILES" "/home/ubuntu/lhj_behavior_stage/build/planning_pkg_2025/libplanning_core.a" "/home/ubuntu/lhj_behavior_stage/build/planning_pkg_2025/planning_node" "TARGETS" "planning_core" "planning_node" "ARCHIVE_DESTINATION" "lib" "LIBRARY_DESTINATION" "lib" "RUNTIME_DESTINATION" "lib/planning_pkg_2025")

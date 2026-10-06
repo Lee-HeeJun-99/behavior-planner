@@ -1,2 +1,0 @@
-/usr/bin/ar qc libplanning_core.a CMakeFiles/planning_core.dir/src/map/global_path.cpp.o CMakeFiles/planning_core.dir/src/context/context_manager.cpp.o CMakeFiles/planning_core.dir/src/behavior/behavior_planner.cpp.o CMakeFiles/planning_core.dir/src/local/path_generator.cpp.o CMakeFiles/planning_core.dir/src/local/collision_checker.cpp.o CMakeFiles/planning_core.dir/src/local/cost_evaluator.cpp.o CMakeFiles/planning_core.dir/src/local/local_planner.cpp.o
-/usr/bin/ranlib libplanning_core.a
