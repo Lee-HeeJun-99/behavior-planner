@@ -10,18 +10,19 @@ control 패키지 <-> ERP42 Pro 차량 사이의 데이터 변환만 담당한�
         [valid, speed_kph(실제 기준), steer_deg, brake_pct, pro_gear, speed_kph_can(차량에 보낸 값)]
 
   속도는 speed_scale (= 실제 속도 / 차량이 재는 속도) 로 양방향 보정한다.
-  속도 상한은 두지 않는다. 얼마로 달릴지는 플래닝의 목표 속도가 정한다.
+  max_speed_kph는 CAN 송신 직전의 별도 안전 상한이다.
 
   CAN  송신 0x501/0x502/0x503/0x504 (send_rate_hz 주기), 수신 0x303/0x304
        시작할 때 can0 이 꺼져 있으면 직접 켠다 (can_setup.py, PC 마다 한 번 tools/setup_can_sudo.sh 필요).
 """
 
 import threading
+import time
 
 import rclpy
 import rclpy.logging
 from rclpy.node import Node
-from rclpy.qos import QoSProfile, HistoryPolicy, ReliabilityPolicy
+from rclpy.qos import QoSHistoryPolicy, QoSProfile, QoSReliabilityPolicy
 from std_msgs.msg import Float32MultiArray
 
 from erp42pro_interface import protocol as P
@@ -82,6 +83,8 @@ class Erp42ProCanBridge(Node):
         self.counter = 0
         self.status1 = None
         self.timeout_warned = False
+        self.last_bad_command_log = 0.0
+        self.last_can_error_log = 0.0
 
         # ------------------------------------------------------------ CAN
         self.bus = None
@@ -102,10 +105,10 @@ class Erp42ProCanBridge(Node):
         # ------------------------------------------------------------ ROS
         # 구독: BEST_EFFORT -> control 쪽 publisher가 best_effort(2025) / reliable(2024) 어느 쪽이든 연결됨
         # 발행: RELIABLE     -> control 쪽 subscriber가 best_effort / reliable 어느 쪽이든 연결됨
-        sub_qos = QoSProfile(history=HistoryPolicy.KEEP_LAST, depth=1,
-                             reliability=ReliabilityPolicy.BEST_EFFORT)
-        pub_qos = QoSProfile(history=HistoryPolicy.KEEP_LAST, depth=1,
-                             reliability=ReliabilityPolicy.RELIABLE)
+        sub_qos = QoSProfile(history=QoSHistoryPolicy.KEEP_LAST, depth=1,
+                             reliability=QoSReliabilityPolicy.BEST_EFFORT)
+        pub_qos = QoSProfile(history=QoSHistoryPolicy.KEEP_LAST, depth=1,
+                             reliability=QoSReliabilityPolicy.RELIABLE)
         self.create_subscription(Float32MultiArray, gp('cmd_topic'), self.cmd_cb, sub_qos)
         self.fb_pub = self.create_publisher(Float32MultiArray, gp('feedback_topic'), pub_qos)
         self.dbg_pub = self.create_publisher(Float32MultiArray, gp('debug_topic'), pub_qos)
@@ -125,9 +128,11 @@ class Erp42ProCanBridge(Node):
         cmd = list(msg.data)
         if not P.cmd_is_wellformed(cmd):
             # 형식이 다른 명령(칸 수 부족, NaN)은 버린다 -> 계속되면 아래 timeout 으로 정지
-            self.get_logger().error(
-                f'잘못된 형식의 명령을 무시합니다 (칸 {len(cmd)}개, {P.CMD_LEN}개 필요)',
-                throttle_duration_sec=1.0)
+            now = time.monotonic()
+            if now - self.last_bad_command_log >= 1.0:
+                self.get_logger().error(
+                    f'잘못된 형식의 명령을 무시합니다 (칸 {len(cmd)}개, {P.CMD_LEN}개 필요)')
+                self.last_bad_command_log = now
             return
         with self.lock:
             self.last_cmd = cmd
@@ -178,8 +183,10 @@ class Erp42ProCanBridge(Node):
                     self.bus.send(can.Message(arbitration_id=can_id, data=data,
                                               is_extended_id=False))
                 except can.CanError as e:
-                    self.get_logger().error(f'CAN send fail 0x{can_id:03X}: {e}',
-                                            throttle_duration_sec=1.0)
+                    now = time.monotonic()
+                    if now - self.last_can_error_log >= 1.0:
+                        self.get_logger().error(f'CAN send fail 0x{can_id:03X}: {e}')
+                        self.last_can_error_log = now
 
         dbg = Float32MultiArray()
         dbg.data = [float(out['valid']), float(out['speed_kph']), float(out['steer_deg']),
@@ -234,12 +241,18 @@ def main(args=None):
         node.rx_stop.set()
         if hasattr(node, "rx_thread"):
             node.rx_thread.join(timeout=1.0)
-        node.stop_vehicle()
-        if node.bus is not None:
-            node.bus.shutdown()
-        node.destroy_node()
+        try:
+            node.stop_vehicle()
+            if node.bus is not None:
+                node.bus.shutdown()
+            node.destroy_node()
+        except KeyboardInterrupt:
+            pass
         if rclpy.ok():
-            rclpy.shutdown()
+            try:
+                rclpy.shutdown()
+            except KeyboardInterrupt:
+                pass
 
 
 if __name__ == '__main__':

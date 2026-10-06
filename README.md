@@ -60,7 +60,7 @@ and validate it with the actual YOLO weight before vehicle use.
 - Velodyne VLP-16
 - NMEA GPS receiver
 - WIT serial IMU
-- ERP42-compatible serial vehicle interface
+- ERP42 Pro SocketCAN vehicle interface
 
 GPS/IMU serial device paths, CAN channel, and the Velodyne IP are launch arguments; no PC-specific hardware path is embedded
 in the repository.
@@ -81,7 +81,8 @@ Safe dry run (no hardware drivers and no ERP actuation):
 ```bash
 ros2 launch behavior_stack_bringup behavior_stack.launch.py \
   enable_gps:=false enable_imu:=false enable_localization:=false \
-  enable_lidar:=false enable_vehicle_interface:=false
+  enable_lidar_sensor:=false enable_lidar_perception:=false \
+  enable_vehicle_interface:=false
 ```
 
 Vehicle feedback inspection (CAN receive only):
@@ -106,8 +107,9 @@ Normalized ROI coordinates, minimum bbox area, and debug-image publication are c
 `src/traffic_sign_perception/config/speed_sign.yaml`. The raw per-frame result is confirmed only by
 Planning's `ContextManager`.
 
-`enable_vehicle_interface` defaults to `false` so launching the stack cannot actuate the vehicle by
-default.
+`enable_vehicle_interface` defaults to `false`; when enabled, `can_receive_only` still defaults to
+`true`. The Logitech camera driver is external to the core stack and only supplies
+`/camera/image_raw` (or a topic selected with `camera_image_topic`).
 
 ## Topic Graph
 

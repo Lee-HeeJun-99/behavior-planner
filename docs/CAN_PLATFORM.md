@@ -79,7 +79,8 @@ bash /home/wgr/behavior_ws/validation/1005_reference/start_camera.sh
 ```
 
 통합 실행에는 `enable_camera:=true`를 추가한다. 카메라를 따로 실행한 상태에서는 중복으로 켜지 않는다.
-RGB 토픽은 `/camera/color/image_raw`이며 속도표지판 구독 기본값도 이 토픽으로 바꿨다.
+카메라는 core stack 밖에서 실행하며 기본 영상 계약은 `/camera/image_raw`이다. 실제 Logitech
+driver topic이 다르면 `camera_image_topic` launch argument로 변경한다.
 속도표지판 인식을 켜려면 `enable_camera_sign:=true speed_sign_weights:=traffic_sign_detector.pt`를 추가한다. 모델 클래스 매핑과 실영상 인식은 이번 검사에서 검증하지 않았다.
 
 카메라 시작 시도는 sandbox의 `getifaddrs: Operation not permitted`로 실패했다. 실제 카메라 영상 수신 완료로 판정하지 않는다. 일반 터미널에서 시작 후 `validation/live/check_topics.py`로 확인한다.

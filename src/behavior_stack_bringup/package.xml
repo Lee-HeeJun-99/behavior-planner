@@ -8,7 +8,7 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
   <exec_depend>control</exec_depend>
-  <exec_depend>erp_ros2_bridge</exec_depend>
+  <exec_depend>erp42pro_interface</exec_depend>
   <exec_depend>kroad_planning_utm_pkg</exec_depend>
   <exec_depend>lidar</exec_depend>
   <exec_depend>local_pkg1</exec_depend>
@@ -20,6 +20,14 @@
   <exec_depend>velodyne_pointcloud</exec_depend>
   <exec_depend>launch</exec_depend>
   <exec_depend>launch_ros</exec_depend>
+  <exec_depend>ament_index_python</exec_depend>
+  <exec_depend>python3-yaml</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>visualization_msgs</exec_depend>
+  <exec_depend>rviz2</exec_depend>
 
   <export>
     <build_type>ament_cmake</build_type>

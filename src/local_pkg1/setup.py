@@ -17,10 +17,13 @@ setup(
     maintainer_email='root@todo.todo',
     description='TODO: Package description',
     license='TODO: License declaration',
+    test_suite='test',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
                   'tae_localization = local_pkg.tae_localization:main',
+                  'heading_estimator = local_pkg.heading_estimator:main',
+                  'position_estimator = local_pkg.position_estimator:main',
         ],
     },
 )

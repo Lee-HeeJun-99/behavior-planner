@@ -17,8 +17,11 @@ from rclpy.qos import QoSProfile, QoSHistoryPolicy, QoSReliabilityPolicy
 
 class GpsImuHeading(Node):
 
-    def __init__(self):
-        super().__init__('tae_localization')
+    def __init__(self, node_name='tae_localization', publish_heading=True,
+                 publish_position=True):
+        super().__init__(node_name)
+        self.publish_heading_enabled = publish_heading
+        self.publish_position_enabled = publish_position
         UDP = QoSProfile(history=QoSHistoryPolicy.KEEP_LAST,
                                  depth=1,
                                  reliability=QoSReliabilityPolicy.BEST_EFFORT)
@@ -40,9 +43,9 @@ class GpsImuHeading(Node):
         self.imu_subscriber = self.create_subscription(Imu,'/imu',self.imu_callback, UDP)
 
         self.publish_timer = self.create_timer(1/self.publish_hz, self.timer_callback)
-        self.beta_publisher = self.create_publisher(Float64,'/beta', UDP)
-        self.utm_publisher = self.create_publisher(PointStamped, '/Local/utm', UDP)
-        self.heading_publisher = self.create_publisher(Float64, 'Local/heading', UDP)        
+        self.beta_publisher = self.create_publisher(Float64,'/beta', UDP) if publish_position else None
+        self.utm_publisher = self.create_publisher(PointStamped, '/Local/utm', UDP) if publish_position else None
+        self.heading_publisher = self.create_publisher(Float64, '/Local/heading', UDP) if publish_heading else None
         
         #--------------------------------- [ Check input Data  ] ---------------------------------------
         self.timer = self.create_timer(1.0, self.check_input_data)
@@ -240,7 +243,7 @@ class GpsImuHeading(Node):
 
 
     def timer_callback(self):
-        if self.current_x is not None:
+        if self.publish_position_enabled and self.current_x is not None:
             utm_point = PointStamped()
             utm_point.header.stamp = self.get_clock().now().to_msg()
             utm_point.header.frame_id = 'map'
@@ -249,12 +252,12 @@ class GpsImuHeading(Node):
 
             self.utm_publisher.publish(utm_point)
 
-        if self.beta is not None:
+        if self.publish_position_enabled and self.beta is not None:
             beta_msg = Float64()
             beta_msg.data = float(self.beta)
             self.beta_publisher.publish(beta_msg)
 
-        if(self.low_pass_filter_heading != None):
+        if self.publish_heading_enabled and self.low_pass_filter_heading is not None:
 
             heading_resize = self.low_pass_filter_heading[0]
 

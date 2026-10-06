@@ -1,149 +1,74 @@
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, OpaqueFunction
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch.conditions import IfCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
-from launch_ros.actions import Node
-from launch_ros.parameter_descriptions import ParameterValue
 from launch_ros.substitutions import FindPackageShare
 
 
-def camera_actions(context):
-    if LaunchConfiguration("enable_camera").perform(context).lower() != "true":
-        return []
-    return [IncludeLaunchDescription(
+def subsystem(name, arguments=None, condition=None):
+    return IncludeLaunchDescription(
         PythonLaunchDescriptionSource(PathJoinSubstitution([
-            FindPackageShare("realsense2_camera"), "launch", "rs_launch.py"])),
-        launch_arguments={
-            "camera_name": "camera", "enable_color": "true",
-            "enable_depth": "false", "rgb_camera.profile": "640,480,30",
-        }.items(),
-    )]
+            FindPackageShare('behavior_stack_bringup'), 'launch', name])),
+        launch_arguments=(arguments or {}).items(), condition=condition)
 
 
 def generate_launch_description():
-    enable_gps = LaunchConfiguration('enable_gps')
-    enable_imu = LaunchConfiguration('enable_imu')
-    enable_localization = LaunchConfiguration('enable_localization')
-    enable_lidar = LaunchConfiguration('enable_lidar')
-    enable_camera_sign = LaunchConfiguration('enable_camera_sign')
-    enable_vehicle_interface = LaunchConfiguration('enable_vehicle_interface')
-
-    gps_port = LaunchConfiguration('gps_port')
-    imu_port = LaunchConfiguration('imu_port')
-    erp_port = LaunchConfiguration('erp_port')
-    velodyne_ip = LaunchConfiguration('velodyne_ip')
-    camera_image_topic = LaunchConfiguration('camera_image_topic')
-    speed_sign_weights = LaunchConfiguration('speed_sign_weights')
-    speed_sign_roi_enabled = LaunchConfiguration('speed_sign_roi_enabled')
-    speed_sign_publish_debug = LaunchConfiguration('speed_sign_publish_debug')
-
-    calibration = PathJoinSubstitution(
-        [FindPackageShare('velodyne_pointcloud'), 'params', 'VLP16db.yaml']
-    )
-    planning_config = PathJoinSubstitution(
-        [FindPackageShare('planning_pkg_2025'), 'config', 'planning.yaml']
-    )
-    speed_sign_config = PathJoinSubstitution(
-        [FindPackageShare('traffic_sign_perception'), 'config', 'speed_sign.yaml']
-    )
-
-    return LaunchDescription([
+    arguments = [
         DeclareLaunchArgument('enable_gps', default_value='true'),
         DeclareLaunchArgument('enable_imu', default_value='true'),
+        DeclareLaunchArgument('enable_lidar_sensor', default_value='true'),
         DeclareLaunchArgument('enable_localization', default_value='true'),
-        DeclareLaunchArgument('enable_lidar', default_value='true'),
-        DeclareLaunchArgument('enable_camera', default_value='false'),
+        DeclareLaunchArgument('enable_lidar_perception', default_value='true'),
         DeclareLaunchArgument('enable_camera_sign', default_value='false'),
-        # Safety default: a dry run never opens the ERP actuator serial port.
+        DeclareLaunchArgument('enable_planning', default_value='true'),
+        DeclareLaunchArgument('enable_control', default_value='true'),
         DeclareLaunchArgument('enable_vehicle_interface', default_value='false'),
+        DeclareLaunchArgument('enable_visualization', default_value='false'),
+        DeclareLaunchArgument('enable_rviz', default_value='true'),
         DeclareLaunchArgument('gps_port', default_value='/dev/ttyUSB0'),
         DeclareLaunchArgument('imu_port', default_value='/dev/ttyUSB1'),
-        DeclareLaunchArgument('erp_port', default_value='/dev/ttyUSB2'),
         DeclareLaunchArgument('velodyne_ip', default_value='192.168.1.201'),
-        DeclareLaunchArgument('camera_image_topic', default_value='/camera/color/image_raw'),
-        OpaqueFunction(function=camera_actions),
+        DeclareLaunchArgument('camera_image_topic', default_value='/camera/image_raw'),
         DeclareLaunchArgument('speed_sign_weights', default_value=''),
         DeclareLaunchArgument('speed_sign_roi_enabled', default_value='true'),
         DeclareLaunchArgument('speed_sign_publish_debug', default_value='true'),
-
-        Node(
-            package='nmea_navsat_driver',
-            executable='nmea_serial_driver',
-            name='nmea_serial_driver',
-            parameters=[{'port': gps_port}],
-            condition=IfCondition(enable_gps),
-        ),
-        Node(
-            package='wit_ros2_imu',
-            executable='wit_ros2_imu',
-            name='wit_ros2_imu',
-            parameters=[{'port': imu_port}],
-            condition=IfCondition(enable_imu),
-        ),
-        Node(
-            package='local_pkg1',
-            executable='tae_localization',
-            name='tae_localization',
-            condition=IfCondition(enable_localization),
-        ),
-
-        Node(
-            package='velodyne_driver',
-            executable='velodyne_driver_node',
-            name='velodyne_driver_node',
-            parameters=[{'device_ip': velodyne_ip, 'model': 'VLP16', 'port': 2368}],
-            condition=IfCondition(enable_lidar),
-        ),
-        Node(
-            package='velodyne_pointcloud',
-            executable='velodyne_transform_node',
-            name='velodyne_transform_node',
-            parameters=[{'calibration': calibration, 'model': 'VLP16'}],
-            condition=IfCondition(enable_lidar),
-        ),
-        Node(
-            package='lidar',
-            executable='start',
-            name='lidar_small_static',
-            condition=IfCondition(enable_lidar),
-        ),
-        Node(
-            package='kroad_planning_utm_pkg',
-            executable='relative_2_UTM',
-            name='relative_2_utm',
-            condition=IfCondition(enable_lidar),
-        ),
-        Node(
-            package='traffic_sign_perception',
-            executable='speed_sign_node',
-            name='speed_sign_node',
-            parameters=[speed_sign_config, {
-                'image_topic': camera_image_topic,
-                'weights_path': speed_sign_weights,
-                'roi_enabled': ParameterValue(speed_sign_roi_enabled, value_type=bool),
-                'publish_debug_image': ParameterValue(
-                    speed_sign_publish_debug, value_type=bool),
-            }],
-            condition=IfCondition(enable_camera_sign),
-        ),
-
-        Node(
-            package='planning_pkg_2025',
-            executable='planning_node',
-            name='planning_node',
-            parameters=[planning_config],
-        ),
-        Node(
-            package='control',
-            executable='car_control',
-            name='erp_control',
-        ),
-        Node(
-            package='erp_ros2_bridge',
-            executable='erp_ros2_bridge',
-            name='erp_ros2_bridge',
-            parameters=[{'port': erp_port}],
-            condition=IfCondition(enable_vehicle_interface),
-        ),
-    ])
+        DeclareLaunchArgument('can_channel', default_value='can0'),
+        DeclareLaunchArgument('can_receive_only', default_value='true'),
+        DeclareLaunchArgument('can_max_speed_kph', default_value='10.0'),
+        DeclareLaunchArgument('can_bringup', default_value='false'),
+        DeclareLaunchArgument('can_dry_run', default_value='false'),
+    ]
+    includes = [
+        subsystem('sensors.launch.py', {
+            'enable_gps': LaunchConfiguration('enable_gps'),
+            'enable_imu': LaunchConfiguration('enable_imu'),
+            'enable_lidar_sensor': LaunchConfiguration('enable_lidar_sensor'),
+            'gps_port': LaunchConfiguration('gps_port'),
+            'imu_port': LaunchConfiguration('imu_port'),
+            'velodyne_ip': LaunchConfiguration('velodyne_ip')}),
+        subsystem('localization.launch.py', {
+            'enable_localization': LaunchConfiguration('enable_localization')}),
+        subsystem('perception.launch.py', {
+            'enable_lidar_perception': LaunchConfiguration('enable_lidar_perception'),
+            'enable_speed_sign': LaunchConfiguration('enable_camera_sign'),
+            'camera_image_topic': LaunchConfiguration('camera_image_topic'),
+            'speed_sign_weights': LaunchConfiguration('speed_sign_weights'),
+            'speed_sign_roi_enabled': LaunchConfiguration('speed_sign_roi_enabled'),
+            'speed_sign_publish_debug': LaunchConfiguration('speed_sign_publish_debug')}),
+        subsystem('planning.launch.py', {
+            'enable_planning': LaunchConfiguration('enable_planning')}),
+        subsystem('control.launch.py', {
+            'enable_control': LaunchConfiguration('enable_control')}),
+        subsystem('vehicle_interface.launch.py', {
+            'enable_vehicle_interface': LaunchConfiguration('enable_vehicle_interface'),
+            'can_channel': LaunchConfiguration('can_channel'),
+            'can_receive_only': LaunchConfiguration('can_receive_only'),
+            'can_max_speed_kph': LaunchConfiguration('can_max_speed_kph'),
+            'can_bringup': LaunchConfiguration('can_bringup'),
+            'can_dry_run': LaunchConfiguration('can_dry_run')}),
+        subsystem('visualization.launch.py', {
+            'enable_rviz': LaunchConfiguration('enable_rviz')},
+            IfCondition(LaunchConfiguration('enable_visualization'))),
+    ]
+    return LaunchDescription(arguments + includes)

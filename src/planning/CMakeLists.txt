@@ -13,6 +13,7 @@ find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(visualization_msgs REQUIRED)
 add_library(planning_core
   src/map/global_path.cpp
   src/context/context_manager.cpp
@@ -29,7 +30,7 @@ target_include_directories(planning_core PUBLIC
 
 add_executable(planning_node src/nodes/planning_node.cpp)
 target_link_libraries(planning_node planning_core)
-ament_target_dependencies(planning_node ament_index_cpp geometry_msgs nav_msgs rclcpp std_msgs)
+ament_target_dependencies(planning_node ament_index_cpp geometry_msgs nav_msgs rclcpp std_msgs visualization_msgs)
 
 install(TARGETS planning_core planning_node
   ARCHIVE DESTINATION lib

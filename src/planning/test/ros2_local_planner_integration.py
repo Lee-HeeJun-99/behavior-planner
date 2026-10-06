@@ -7,9 +7,16 @@ import time
 
 import rclpy
 from geometry_msgs.msg import PointStamped
+from nav_msgs.msg import Path
 from rclpy.node import Node
-from rclpy.qos import QoSHistoryPolicy, QoSProfile, QoSReliabilityPolicy
+from rclpy.qos import (
+    QoSDurabilityPolicy,
+    QoSHistoryPolicy,
+    QoSProfile,
+    QoSReliabilityPolicy,
+)
 from std_msgs.msg import Bool, Float64, Float64MultiArray, Int16, String
+from visualization_msgs.msg import MarkerArray
 
 
 def load_path(filename):
@@ -42,6 +49,19 @@ class Probe(Node):
         self.create_subscription(Float64MultiArray, "/Planning/path_yaw", self.yaw_callback, qos)
         self.create_subscription(Float64MultiArray, "/Planning/curvature", self.curvature_callback, qos)
         self.create_subscription(Float64MultiArray, "/Planning/debug/candidates", self.candidate_callback, qos)
+        transient_qos = QoSProfile(
+            reliability=QoSReliabilityPolicy.RELIABLE,
+            history=QoSHistoryPolicy.KEEP_LAST,
+            depth=1,
+            durability=QoSDurabilityPolicy.TRANSIENT_LOCAL,
+        )
+        self.create_subscription(
+            Path, "/Planning/debug/global_path", self.global_path_callback, transient_qos)
+        self.create_subscription(
+            Path, "/Planning/debug/local_path", self.debug_path_callback, qos)
+        self.create_subscription(
+            MarkerArray, "/Planning/debug/candidate_paths",
+            self.candidate_paths_callback, qos)
         self.behavior = None
         self.transitions = []
         self.velocity = None
@@ -49,6 +69,9 @@ class Probe(Node):
         self.yaws = []
         self.curvatures = []
         self.candidates = []
+        self.debug_global_points = 0
+        self.debug_local_points = 0
+        self.debug_candidate_geometry = 0
         self.obstacles = []
         self.speed_events = []
         self.emergency_stop = False
@@ -74,6 +97,16 @@ class Probe(Node):
 
     def candidate_callback(self, message):
         self.candidates = [tuple(message.data[i:i + 3]) for i in range(0, len(message.data), 3)]
+
+    def global_path_callback(self, message):
+        self.debug_global_points = len(message.poses)
+
+    def debug_path_callback(self, message):
+        self.debug_local_points = len(message.poses)
+
+    def candidate_paths_callback(self, message):
+        self.debug_candidate_geometry = sum(
+            1 for marker in message.markers if marker.points)
 
     def publish_inputs(self):
         x, y, yaw = self.vehicle
@@ -140,6 +173,9 @@ class Probe(Node):
             "maximum_segment": maximum_segment,
             "maximum_yaw_step": maximum_yaw_step,
             "candidate_table": self.candidates,
+            "debug_global_points": self.debug_global_points,
+            "debug_local_points": self.debug_local_points,
+            "debug_candidate_geometry": self.debug_candidate_geometry,
         }
 
 

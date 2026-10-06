@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "ament_index_cpp/get_package_share_directory.hpp"
+#include "geometry_msgs/msg/point.hpp"
 #include "geometry_msgs/msg/point_stamped.hpp"
 #include "geometry_msgs/msg/pose_stamped.hpp"
 #include "nav_msgs/msg/path.hpp"
@@ -13,6 +14,8 @@
 #include "std_msgs/msg/float64_multi_array.hpp"
 #include "std_msgs/msg/int16.hpp"
 #include "std_msgs/msg/string.hpp"
+#include "visualization_msgs/msg/marker.hpp"
+#include "visualization_msgs/msg/marker_array.hpp"
 
 #include "planning_pkg_2025/behavior/behavior_planner.hpp"
 #include "planning_pkg_2025/context/context_manager.hpp"
@@ -56,6 +59,11 @@ public:
     behavior_pub_ = create_publisher<std_msgs::msg::String>("/Planning/behavior", qos);
     debug_path_pub_ = create_publisher<nav_msgs::msg::Path>("/Planning/debug/local_path", qos);
     candidates_pub_ = create_publisher<std_msgs::msg::Float64MultiArray>("/Planning/debug/candidates", qos);
+    global_path_pub_ = create_publisher<nav_msgs::msg::Path>(
+      "/Planning/debug/global_path", rclcpp::QoS(1).reliable().transient_local());
+    candidate_paths_pub_ = create_publisher<visualization_msgs::msg::MarkerArray>(
+      "/Planning/debug/candidate_paths", qos);
+    publishGlobalPath();
     timer_ = create_wall_timer(std::chrono::milliseconds(get_parameter("planning_period_ms").as_int()),
       std::bind(&PlanningNode::onTimer, this));
   }
@@ -140,6 +148,87 @@ private:
     return result;
   }
 
+  void publishGlobalPath()
+  {
+    nav_msgs::msg::Path message;
+    message.header.stamp = now();
+    message.header.frame_id = "map";
+    for (const auto & point : global_path_.path()) {
+      geometry_msgs::msg::PoseStamped pose;
+      pose.header = message.header;
+      pose.pose.position.x = point.x;
+      pose.pose.position.y = point.y;
+      pose.pose.orientation.z = std::sin(point.yaw * 0.5);
+      pose.pose.orientation.w = std::cos(point.yaw * 0.5);
+      message.poses.push_back(pose);
+    }
+    global_path_pub_->publish(message);
+  }
+
+  void publishCandidatePaths(const LocalPlan & plan)
+  {
+    visualization_msgs::msg::MarkerArray markers;
+    visualization_msgs::msg::Marker clear;
+    clear.action = visualization_msgs::msg::Marker::DELETEALL;
+    markers.markers.push_back(clear);
+    int marker_id = 0;
+    for (const auto & candidate : plan.candidates) {
+      visualization_msgs::msg::Marker line;
+      line.header.stamp = now();
+      line.header.frame_id = "map";
+      line.ns = "candidate_paths";
+      line.id = marker_id++;
+      line.type = visualization_msgs::msg::Marker::LINE_STRIP;
+      line.action = visualization_msgs::msg::Marker::ADD;
+      line.pose.orientation.w = 1.0;
+      line.scale.x = 0.06;
+      line.color.a = candidate.valid ? 0.9 : 0.35;
+      const bool selected = plan.feasible && candidate.valid &&
+        candidate.lateral_offset == plan.selected_offset;
+      if (selected) {
+        line.color.g = 1.0;
+      } else if (candidate.valid) {
+        line.color.b = 1.0;
+        line.color.g = 0.6;
+      } else {
+        line.color.r = 1.0;
+      }
+      for (const auto & point : candidate.path) {
+        geometry_msgs::msg::Point geometry_point;
+        geometry_point.x = point.x;
+        geometry_point.y = point.y;
+        geometry_point.z = 0.05;
+        line.points.push_back(geometry_point);
+      }
+      markers.markers.push_back(line);
+
+      if (!candidate.path.empty()) {
+        visualization_msgs::msg::Marker label;
+        label.header = line.header;
+        label.ns = "candidate_labels";
+        label.id = marker_id++;
+        label.type = visualization_msgs::msg::Marker::TEXT_VIEW_FACING;
+        label.action = visualization_msgs::msg::Marker::ADD;
+        label.pose.position.x = candidate.path.front().x;
+        label.pose.position.y = candidate.path.front().y;
+        label.pose.position.z = 0.6;
+        label.pose.orientation.w = 1.0;
+        label.scale.z = 0.28;
+        label.color.a = 1.0;
+        label.color.r = selected ? 0.0 : 1.0;
+        label.color.g = selected ? 1.0 : 1.0;
+        label.color.b = selected ? 0.0 : 1.0;
+        label.text = (selected ? "selected " : "") +
+          std::string("offset=") + std::to_string(candidate.lateral_offset) +
+          (candidate.valid ? " valid cost=" + std::to_string(candidate.cost) +
+          " clearance=" + std::to_string(candidate.minimum_clearance) :
+          " invalid " + candidate.invalid_reason);
+        markers.markers.push_back(label);
+      }
+    }
+    candidate_paths_pub_->publish(markers);
+  }
+
   void onTimer()
   {
     if (!position_received_ || !heading_received_) {
@@ -193,6 +282,7 @@ private:
     path_pub_->publish(positions); yaw_pub_->publish(yaws); curvature_pub_->publish(curvatures);
     target_velocity_pub_->publish(velocity); mission_pub_->publish(mission);
     behavior_pub_->publish(behavior_message); debug_path_pub_->publish(debug); candidates_pub_->publish(candidates);
+    publishCandidatePaths(plan);
   }
 
   GlobalPath global_path_;
@@ -218,6 +308,8 @@ private:
   rclcpp::Publisher<std_msgs::msg::Int16>::SharedPtr mission_pub_;
   rclcpp::Publisher<std_msgs::msg::String>::SharedPtr behavior_pub_;
   rclcpp::Publisher<nav_msgs::msg::Path>::SharedPtr debug_path_pub_;
+  rclcpp::Publisher<nav_msgs::msg::Path>::SharedPtr global_path_pub_;
+  rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr candidate_paths_pub_;
   rclcpp::TimerBase::SharedPtr timer_;
 };
 }  // namespace planning

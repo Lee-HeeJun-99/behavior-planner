@@ -3,7 +3,21 @@ import threading
 from types import SimpleNamespace
 from unittest.mock import Mock
 from rclpy.time import Time
+from erp42pro_interface import can_bridge_node
 from erp42pro_interface.can_bridge_node import Erp42ProCanBridge
+
+
+class FakeCan:
+    class CanError(Exception):
+        pass
+
+    @staticmethod
+    def Message(**kwargs):
+        return SimpleNamespace(**kwargs)
+
+
+def install_fake_can(monkeypatch):
+    monkeypatch.setattr(can_bridge_node, 'can', FakeCan)
 
 
 def bridge(receive_only=False, age=0.0):
@@ -29,7 +43,8 @@ def test_receive_only_never_transmits_even_on_shutdown():
     obj.dbg_pub.publish.assert_not_called()
 
 
-def test_control_conversion_caps_speed_and_maps_brake_zero():
+def test_control_conversion_caps_speed_and_maps_brake_zero(monkeypatch):
+    install_fake_can(monkeypatch)
     obj = bridge()
     Erp42ProCanBridge.send_timer_cb(obj)
     assert obj.bus.send.call_count == 4
@@ -39,7 +54,8 @@ def test_control_conversion_caps_speed_and_maps_brake_zero():
     assert abs(debug[5] - 10.0 / 1.146) < 1e-5
 
 
-def test_command_timeout_stops_with_brake():
+def test_command_timeout_stops_with_brake(monkeypatch):
+    install_fake_can(monkeypatch)
     obj = bridge(age=0.5)
     Erp42ProCanBridge.send_timer_cb(obj)
     debug = obj.dbg_pub.publish.call_args.args[0].data

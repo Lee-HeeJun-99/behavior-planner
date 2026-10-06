@@ -54,7 +54,7 @@ LocalPlanner
   ↓
 Controller
   ↓
-/Control/serial_data
+/Control/vehicle_cmd
   ↓
 ERP Bridge
   ↓
@@ -270,7 +270,7 @@ ros2 topic hz /camera/image_raw
 Perception 실행:
 
 ```bash
-ros2 launch behavior_stack_bringup behavior_stack.launch.py   enable_gps:=false   enable_imu:=false   enable_localization:=false   enable_lidar:=false   enable_camera_sign:=true   enable_vehicle_interface:=false   camera_image_topic:=/camera/image_raw   speed_sign_weights:=<model>.pt   speed_sign_roi_enabled:=true   speed_sign_publish_debug:=true
+ros2 launch behavior_stack_bringup behavior_stack.launch.py   enable_gps:=false   enable_imu:=false   enable_localization:=false   enable_lidar_sensor:=false   enable_lidar_perception:=false   enable_camera_sign:=true   enable_vehicle_interface:=false   camera_image_topic:=/camera/image_raw   speed_sign_weights:=<model>.pt   speed_sign_roi_enabled:=true   speed_sign_publish_debug:=true
 ```
 
 확인:
@@ -406,7 +406,7 @@ Scenario:
 # 11. STEP 8 — Full Stack Dry Run
 
 ```bash
-ros2 launch behavior_stack_bringup behavior_stack.launch.py   enable_gps:=false   enable_imu:=false   enable_localization:=false   enable_lidar:=false   enable_camera_sign:=false   enable_vehicle_interface:=false
+ros2 launch behavior_stack_bringup behavior_stack.launch.py   enable_gps:=false   enable_imu:=false   enable_localization:=false   enable_lidar_sensor:=false   enable_lidar_perception:=false   enable_camera_sign:=false   enable_vehicle_interface:=false
 ```
 
 확인:
@@ -417,7 +417,7 @@ ros2 topic list
 
 ros2 topic echo /Planning/target_velocity
 ros2 topic echo /Planning/behavior
-ros2 topic echo /Control/serial_data
+ros2 topic echo /Control/vehicle_cmd
 ```
 
 PASS 기준:
@@ -515,7 +515,7 @@ enable_vehicle_interface = false
 ros2 topic echo /Planning/behavior
 ros2 topic echo /Planning/target_velocity
 ros2 topic echo /Planning/local_path
-ros2 topic echo /Control/serial_data
+ros2 topic echo /Control/vehicle_cmd
 ```
 
 검증:
@@ -616,7 +616,7 @@ enable_vehicle_interface = true
 확인:
 
 ```bash
-ros2 topic echo /Control/serial_data
+ros2 topic echo /Control/vehicle_cmd
 ros2 topic echo /ERP/serial_data
 ```
 
@@ -762,7 +762,7 @@ control speed = 0
 /Planning/curvature
 /Planning/debug/candidates
 
-/Control/serial_data
+/Control/vehicle_cmd
 /ERP/serial_data
 ```
 

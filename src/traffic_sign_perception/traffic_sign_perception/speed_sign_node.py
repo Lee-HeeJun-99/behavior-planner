@@ -139,6 +139,9 @@ class SpeedSignNode(Node):
         debug = image.copy()
         x1, y1, x2, y2 = roi_bounds
         if self.roi_enabled:
+            darkened = cv2.convertScaleAbs(debug, alpha=0.35, beta=0)
+            darkened[y1:y2, x1:x2] = image[y1:y2, x1:x2]
+            debug = darkened
             cv2.rectangle(debug, (x1, y1), (x2 - 1, y2 - 1), (0, 255, 255), 2)
             cv2.putText(debug, 'ROI', (x1 + 5, max(20, y1 + 20)),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 255), 2)
@@ -155,6 +158,20 @@ class SpeedSignNode(Node):
             label = f'{detection.class_name} {detection.confidence:.2f}'
             cv2.putText(debug, label, (int(gx1), max(20, int(gy1) - 5)),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+        mapped_limit = class_name_to_speed(selected.class_name) if selected else 0
+        detected_class = selected.class_name if selected else 'none'
+        confidence = selected.confidence if selected else 0.0
+        overlay = [
+            f'Detected class: {detected_class}',
+            f'Mapped limit: {mapped_limit}',
+            f'Confidence: {confidence:.2f}',
+        ]
+        for index, line in enumerate(overlay):
+            position = (12, 28 + index * 25)
+            cv2.putText(debug, line, position, cv2.FONT_HERSHEY_SIMPLEX,
+                        0.65, (255, 255, 255), 3)
+            cv2.putText(debug, line, position, cv2.FONT_HERSHEY_SIMPLEX,
+                        0.65, (0, 0, 0), 1)
         debug_message = self.bridge.cv2_to_imgmsg(debug, encoding='bgr8')
         debug_message.header = source_message.header
         self.debug_publisher.publish(debug_message)
