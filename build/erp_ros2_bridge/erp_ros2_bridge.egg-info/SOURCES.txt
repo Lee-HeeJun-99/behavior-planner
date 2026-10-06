@@ -1,0 +1,13 @@
+package.xml
+setup.cfg
+setup.py
+erp_ros2_bridge/__init__.py
+erp_ros2_bridge/erp_ros2_bridge.py
+erp_ros2_bridge.egg-info/PKG-INFO
+erp_ros2_bridge.egg-info/SOURCES.txt
+erp_ros2_bridge.egg-info/dependency_links.txt
+erp_ros2_bridge.egg-info/entry_points.txt
+erp_ros2_bridge.egg-info/requires.txt
+erp_ros2_bridge.egg-info/top_level.txt
+erp_ros2_bridge.egg-info/zip-safe
+resource/erp_ros2_bridge

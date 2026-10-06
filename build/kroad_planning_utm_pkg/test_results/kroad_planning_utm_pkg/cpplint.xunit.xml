@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite
+  name="kroad_planning_utm_pkg.cpplint"
+  tests="2"
+  failures="2"
+  errors="0"
+  time="0.042"
+>
+  <testcase
+    name="legal/copyright [5] (/home/ubuntu/lhj_behavior_stage/src/convertcs/include/relative_2_utm/relative_2_UTM.hpp:0)"
+    classname="kroad_planning_utm_pkg.cpplint"
+  >
+      <failure message='No copyright message found.  You should have a line: "Copyright [year] &lt;Copyright Owner&gt;"'/>
+  </testcase>
+  <testcase
+    name="legal/copyright [5] (/home/ubuntu/lhj_behavior_stage/src/convertcs/src/relative_2_UTM.cpp:0)"
+    classname="kroad_planning_utm_pkg.cpplint"
+  >
+      <failure message='No copyright message found.  You should have a line: "Copyright [year] &lt;Copyright Owner&gt;"'/>
+  </testcase>
+  <system-out>Checked files:
+* /home/ubuntu/lhj_behavior_stage/src/convertcs/include/relative_2_utm/relative_2_UTM.hpp
+* /home/ubuntu/lhj_behavior_stage/src/convertcs/src/relative_2_UTM.cpp</system-out>
+</testsuite>

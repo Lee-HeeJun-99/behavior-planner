@@ -1,0 +1,17 @@
+[2.505s] Invoking command in '/home/ubuntu/lhj_behavior_stage/build/traffic_sign_perception': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/ubuntu/lhj_behavior_stage/build/traffic_sign_perception/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ubuntu/lhj_behavior_stage/install/traffic_sign_perception/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/ubuntu/lhj_behavior_stage/build/traffic_sign_perception/build --no-deps symlink_data
+[2.858s] running develop
+[3.090s] running egg_info
+[3.090s] writing traffic_sign_perception.egg-info/PKG-INFO
+[3.090s] writing dependency_links to traffic_sign_perception.egg-info/dependency_links.txt
+[3.090s] writing entry points to traffic_sign_perception.egg-info/entry_points.txt
+[3.090s] writing requirements to traffic_sign_perception.egg-info/requires.txt
+[3.091s] writing top-level names to traffic_sign_perception.egg-info/top_level.txt
+[3.093s] reading manifest file 'traffic_sign_perception.egg-info/SOURCES.txt'
+[3.094s] writing manifest file 'traffic_sign_perception.egg-info/SOURCES.txt'
+[3.148s] running build_ext
+[3.148s] Creating /home/ubuntu/lhj_behavior_stage/install/traffic_sign_perception/lib/python3.10/site-packages/traffic-sign-perception.egg-link (link to .)
+[3.149s] Installing speed_sign_node script to /home/ubuntu/lhj_behavior_stage/install/traffic_sign_perception/lib/traffic_sign_perception
+[3.149s] 
+[3.149s] Installed /home/ubuntu/lhj_behavior_stage/build/traffic_sign_perception
+[3.149s] running symlink_data
+[3.196s] Invoked command in '/home/ubuntu/lhj_behavior_stage/build/traffic_sign_perception' returned '0': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/ubuntu/lhj_behavior_stage/build/traffic_sign_perception/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ubuntu/lhj_behavior_stage/install/traffic_sign_perception/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/ubuntu/lhj_behavior_stage/build/traffic_sign_perception/build --no-deps symlink_data

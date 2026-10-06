@@ -1,0 +1,9 @@
+-- run_test.py: invoking following command in '/home/ubuntu/lhj_behavior_stage/src/control':
+ - /opt/ros/humble/bin/ament_lint_cmake --xunit-file /home/ubuntu/lhj_behavior_stage/build/control/test_results/control/lint_cmake.xunit.xml
+
+
+No problems found
+
+
+-- run_test.py: return code 0
+-- run_test.py: verify result file '/home/ubuntu/lhj_behavior_stage/build/control/test_results/control/lint_cmake.xunit.xml'

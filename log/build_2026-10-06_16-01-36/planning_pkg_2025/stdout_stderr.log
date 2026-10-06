@@ -1,0 +1,44 @@
+Consolidate compiler generated dependencies of target gtest_main
+Consolidate compiler generated dependencies of target gtest
+Consolidate compiler generated dependencies of target planning_core
+[ 25%] Built target gtest
+[ 25%] Built target gtest_main
+[ 75%] Built target planning_core
+Consolidate compiler generated dependencies of target planning_node
+Consolidate compiler generated dependencies of target planning_core_test
+[100%] Built target planning_node
+[100%] Built target planning_core_test
+-- Install configuration: ""
+-- Execute custom install script
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/lib/libplanning_core.a
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/lib/planning_pkg_2025/planning_node
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/include/planning_pkg_2025/behavior/behavior_planner.hpp
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/include/planning_pkg_2025/common/planning_types.hpp
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/include/planning_pkg_2025/context/context_manager.hpp
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/include/planning_pkg_2025/local/collision_checker.hpp
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/include/planning_pkg_2025/local/cost_evaluator.hpp
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/include/planning_pkg_2025/local/local_planner.hpp
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/include/planning_pkg_2025/local/path_generator.hpp
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/include/planning_pkg_2025/map/global_path.hpp
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/share/planning_pkg_2025/config/planning.yaml
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/share/planning_pkg_2025/launch/planning.launch.py
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/share/planning_pkg_2025/map/map_final_0921/0-0.txt
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/share/planning_pkg_2025/environment/library_path.sh
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/share/planning_pkg_2025/environment/library_path.dsv
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/share/ament_index/resource_index/package_run_dependencies/planning_pkg_2025
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/share/ament_index/resource_index/parent_prefix_path/planning_pkg_2025
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/share/planning_pkg_2025/environment/ament_prefix_path.sh
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/share/planning_pkg_2025/environment/ament_prefix_path.dsv
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/share/planning_pkg_2025/environment/path.sh
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/share/planning_pkg_2025/environment/path.dsv
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/share/planning_pkg_2025/local_setup.bash
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/share/planning_pkg_2025/local_setup.sh
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/share/planning_pkg_2025/local_setup.zsh
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/share/planning_pkg_2025/local_setup.dsv
+-- Symlinking: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/share/planning_pkg_2025/package.dsv
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/share/ament_index/resource_index/packages/planning_pkg_2025
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/share/planning_pkg_2025/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/share/planning_pkg_2025/cmake/ament_cmake_export_libraries-extras.cmake
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/share/planning_pkg_2025/cmake/planning_pkg_2025Config.cmake
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/share/planning_pkg_2025/cmake/planning_pkg_2025Config-version.cmake
+-- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025/share/planning_pkg_2025/package.xml

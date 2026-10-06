@@ -1,0 +1,19 @@
+[2.581s] Invoking command in '/home/ubuntu/lhj_behavior_stage/build/local_pkg1': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/ubuntu/lhj_behavior_stage/build/local_pkg1/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ubuntu/lhj_behavior_stage/install/local_pkg1/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/ubuntu/lhj_behavior_stage/build/local_pkg1/build --no-deps symlink_data
+[2.916s] running develop
+[3.150s] running egg_info
+[3.150s] writing local_pkg1.egg-info/PKG-INFO
+[3.150s] writing dependency_links to local_pkg1.egg-info/dependency_links.txt
+[3.150s] writing entry points to local_pkg1.egg-info/entry_points.txt
+[3.150s] writing requirements to local_pkg1.egg-info/requires.txt
+[3.151s] writing top-level names to local_pkg1.egg-info/top_level.txt
+[3.152s] reading manifest file 'local_pkg1.egg-info/SOURCES.txt'
+[3.153s] writing manifest file 'local_pkg1.egg-info/SOURCES.txt'
+[3.202s] running build_ext
+[3.202s] Creating /home/ubuntu/lhj_behavior_stage/install/local_pkg1/lib/python3.10/site-packages/local-pkg1.egg-link (link to .)
+[3.203s] Installing heading_estimator script to /home/ubuntu/lhj_behavior_stage/install/local_pkg1/lib/local_pkg1
+[3.203s] Installing position_estimator script to /home/ubuntu/lhj_behavior_stage/install/local_pkg1/lib/local_pkg1
+[3.204s] Installing tae_localization script to /home/ubuntu/lhj_behavior_stage/install/local_pkg1/lib/local_pkg1
+[3.204s] 
+[3.204s] Installed /home/ubuntu/lhj_behavior_stage/build/local_pkg1
+[3.204s] running symlink_data
+[3.261s] Invoked command in '/home/ubuntu/lhj_behavior_stage/build/local_pkg1' returned '0': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/ubuntu/lhj_behavior_stage/build/local_pkg1/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ubuntu/lhj_behavior_stage/install/local_pkg1/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/ubuntu/lhj_behavior_stage/build/local_pkg1/build --no-deps symlink_data

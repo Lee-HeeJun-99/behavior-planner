@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite
+  name="kroad_planning_utm_pkg.uncrustify"
+  tests="2"
+  failures="0"
+  errors="0"
+  time="0.007"
+>
+  <testcase
+    name="include/relative_2_utm/relative_2_UTM.hpp"
+    classname="kroad_planning_utm_pkg.uncrustify"/>
+  <testcase
+    name="src/relative_2_UTM.cpp"
+    classname="kroad_planning_utm_pkg.uncrustify"/>
+  <system-out>Checked files:
+* include/relative_2_utm/relative_2_UTM.hpp
+* src/relative_2_UTM.cpp</system-out>
+</testsuite>

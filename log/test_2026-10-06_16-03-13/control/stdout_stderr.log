@@ -1,0 +1,3415 @@
+UpdateCTestConfiguration  from :/home/ubuntu/lhj_behavior_stage/build/control/CTestConfiguration.ini
+Parse Config file:/home/ubuntu/lhj_behavior_stage/build/control/CTestConfiguration.ini
+   Site: scps1
+   Build name: (empty)
+ Add coverage exclude regular expressions.
+Create new tag: 20261006-0703 - Experimental
+UpdateCTestConfiguration  from :/home/ubuntu/lhj_behavior_stage/build/control/CTestConfiguration.ini
+Parse Config file:/home/ubuntu/lhj_behavior_stage/build/control/CTestConfiguration.ini
+Test project /home/ubuntu/lhj_behavior_stage/build/control
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 1
+    Start 1: copyright
+
+1: Test command: /usr/bin/python3 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/home/ubuntu/lhj_behavior_stage/build/control/test_results/control/copyright.xunit.xml" "--package-name" "control" "--output-file" "/home/ubuntu/lhj_behavior_stage/build/control/ament_copyright/copyright.txt" "--command" "/opt/ros/humble/bin/ament_copyright" "--xunit-file" "/home/ubuntu/lhj_behavior_stage/build/control/test_results/control/copyright.xunit.xml"
+1: Test timeout computed to be: 200
+1: -- run_test.py: invoking following command in '/home/ubuntu/lhj_behavior_stage/src/control':
+1:  - /opt/ros/humble/bin/ament_copyright --xunit-file /home/ubuntu/lhj_behavior_stage/build/control/test_results/control/copyright.xunit.xml
+1: include/control/PIDController.hpp: could not find copyright notice
+1: include/control/callback_data_manage.hpp: could not find copyright notice
+1: include/control/lat_control.hpp: could not find copyright notice
+1: include/control/lon_control.hpp: could not find copyright notice
+1: include/control/mission_param.hpp: could not find copyright notice
+1: include/control/vehicle_param.hpp: could not find copyright notice
+1: src/car_control.cpp: could not find copyright notice
+1: 7 errors, checked 7 files
+1: -- run_test.py: return code 1
+1: -- run_test.py: verify result file '/home/ubuntu/lhj_behavior_stage/build/control/test_results/control/copyright.xunit.xml'
+1/6 Test #1: copyright ........................***Failed    0.25 sec
+test 2
+    Start 2: cppcheck
+
+2: Test command: /usr/bin/python3 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/home/ubuntu/lhj_behavior_stage/build/control/test_results/control/cppcheck.xunit.xml" "--package-name" "control" "--output-file" "/home/ubuntu/lhj_behavior_stage/build/control/ament_cppcheck/cppcheck.txt" "--command" "/opt/ros/humble/bin/ament_cppcheck" "--xunit-file" "/home/ubuntu/lhj_behavior_stage/build/control/test_results/control/cppcheck.xunit.xml" "--include_dirs" "/home/ubuntu/lhj_behavior_stage/src/control/include"
+2: Test timeout computed to be: 300
+2: -- run_test.py: invoking following command in '/home/ubuntu/lhj_behavior_stage/src/control':
+2:  - /opt/ros/humble/bin/ament_cppcheck --xunit-file /home/ubuntu/lhj_behavior_stage/build/control/test_results/control/cppcheck.xunit.xml --include_dirs /home/ubuntu/lhj_behavior_stage/src/control/include
+2: cppcheck 2.7 has known performance issues and therefore will not be used, set the AMENT_CPPCHECK_ALLOW_SLOW_VERSIONS environment variable to override this.
+2: -- run_test.py: return code 0
+2: -- run_test.py: verify result file '/home/ubuntu/lhj_behavior_stage/build/control/test_results/control/cppcheck.xunit.xml'
+2/6 Test #2: cppcheck .........................   Passed    0.22 sec
+test 3
+    Start 3: cpplint
+
+3: Test command: /usr/bin/python3 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/home/ubuntu/lhj_behavior_stage/build/control/test_results/control/cpplint.xunit.xml" "--package-name" "control" "--output-file" "/home/ubuntu/lhj_behavior_stage/build/control/ament_cpplint/cpplint.txt" "--command" "/opt/ros/humble/bin/ament_cpplint" "--xunit-file" "/home/ubuntu/lhj_behavior_stage/build/control/test_results/control/cpplint.xunit.xml"
+3: Test timeout computed to be: 120
+3: -- run_test.py: invoking following command in '/home/ubuntu/lhj_behavior_stage/src/control':
+3:  - /opt/ros/humble/bin/ament_cpplint --xunit-file /home/ubuntu/lhj_behavior_stage/build/control/test_results/control/cpplint.xunit.xml
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/PIDController.hpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/PIDController.hpp:1:  #ifndef header guard has wrong style, please use: CONTROL__PIDCONTROLLER_HPP_  [build/header_guard] [5]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/PIDController.hpp:129:  #endif line should be "#endif  // CONTROL__PIDCONTROLLER_HPP_"  [build/header_guard] [5]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/PIDController.hpp:81:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/PIDController.hpp:126:  Redundant blank line at the end of a code block should be deleted.  [whitespace/blank_line] [3]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/PIDController.hpp:44:  Add #include <algorithm> for min  [build/include_what_you_use] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:1:  #ifndef header guard has wrong style, please use: CONTROL__CALLBACK_DATA_MANAGE_HPP_  [build/header_guard] [5]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:474:  #endif line should be "#endif  // CONTROL__CALLBACK_DATA_MANAGE_HPP_"  [build/header_guard] [5]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:21:  Do not use namespace using-directives.  Use using-declarations instead.  [build/namespaces] [5]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:44:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:69:  Missing username in TODO; it should look like "// TODO(my_username): Stuff."  [readability/todo] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:93:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:147:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:147:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:155:  An else should appear on the same line as the preceding }  [whitespace/newline] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:244:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:245:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:249:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:260:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:264:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:274:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:275:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:276:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:278:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:279:  Line ends in whitespace.  Consider deleting these extra spaces.  [whitespace/end_of_line] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:281:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:287:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:294:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:319:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:356:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:357:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:358:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:419:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:474:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:419:  Add #include <algorithm> for min  [build/include_what_you_use] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp:474:  Could not find a newline character at the end of the file.  [whitespace/ending_newline] [5]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/lat_control.hpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/lat_control.hpp:1:  #ifndef header guard has wrong style, please use: CONTROL__LAT_CONTROL_HPP_  [build/header_guard] [5]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/lat_control.hpp:488:  #endif line should be "#endif  // CONTROL__LAT_CONTROL_HPP_"  [build/header_guard] [5]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/lat_control.hpp:34:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/lat_control.hpp:91:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/lat_control.hpp:225:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/lat_control.hpp:238:  Missing username in TODO; it should look like "// TODO(my_username): Stuff."  [readability/todo] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/lat_control.hpp:268:  An else should appear on the same line as the preceding }  [whitespace/newline] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/lat_control.hpp:312:  Single-parameter constructors should be marked explicit.  [runtime/explicit] [5]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/lat_control.hpp:316:  Redundant blank line at the start of a code block should be deleted.  [whitespace/blank_line] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/lat_control.hpp:429:  Redundant blank line at the end of a code block should be deleted.  [whitespace/blank_line] [3]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/lat_control.hpp:488:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/lon_control.hpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/lon_control.hpp:1:  #ifndef header guard has wrong style, please use: CONTROL__LON_CONTROL_HPP_  [build/header_guard] [5]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/lon_control.hpp:99:  #endif line should be "#endif  // CONTROL__LON_CONTROL_HPP_"  [build/header_guard] [5]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/lon_control.hpp:87:  An else should appear on the same line as the preceding }  [whitespace/newline] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/lon_control.hpp:90:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/lon_control.hpp:99:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:1:  #ifndef header guard has wrong style, please use: CONTROL__MISSION_PARAM_HPP_  [build/header_guard] [5]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:303:  #endif line should be "#endif  // CONTROL__MISSION_PARAM_HPP_"  [build/header_guard] [5]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:6:  Found C++ system header after other header. Should be: mission_param.h, c system, c++ system, other.  [build/include_order] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:7:  Found C++ system header after other header. Should be: mission_param.h, c system, c++ system, other.  [build/include_order] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:8:  Found C++ system header after other header. Should be: mission_param.h, c system, c++ system, other.  [build/include_order] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:9:  Found C++ system header after other header. Should be: mission_param.h, c system, c++ system, other.  [build/include_order] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:10:  Found C++ system header after other header. Should be: mission_param.h, c system, c++ system, other.  [build/include_order] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:11:  Found C++ system header after other header. Should be: mission_param.h, c system, c++ system, other.  [build/include_order] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:12:  Found C++ system header after other header. Should be: mission_param.h, c system, c++ system, other.  [build/include_order] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:24:  For a static/global string constant, use a C style string instead: "const char GAIN_FILE_NAME[]".  [runtime/string] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:80:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:111:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:123:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:129:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:144:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:170:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:186:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:211:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:225:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:232:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:236:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:241:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:285:  An else should appear on the same line as the preceding }  [whitespace/newline] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:289:  An else should appear on the same line as the preceding }  [whitespace/newline] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:293:  An else should appear on the same line as the preceding }  [whitespace/newline] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:303:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp:276:  Add #include <algorithm> for max  [build/include_what_you_use] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/vehicle_param.hpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/vehicle_param.hpp:1:  #ifndef header guard has wrong style, please use: CONTROL__VEHICLE_PARAM_HPP_  [build/header_guard] [5]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/vehicle_param.hpp:46:  #endif line should be "#endif  // CONTROL__VEHICLE_PARAM_HPP_"  [build/header_guard] [5]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/vehicle_param.hpp:44:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/include/control/vehicle_param.hpp:46:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:16:  Found C++ system header after other header. Should be: car_control.h, c system, c++ system, other.  [build/include_order] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:18:  Do not use namespace using-directives.  Use using-declarations instead.  [build/namespaces] [5]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:53:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:56:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:60:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:61:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:100:  Use int16/int64/etc, rather than the C type long  [runtime/int] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:101:  Use int16/int64/etc, rather than the C type long  [runtime/int] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:119:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:124:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:128:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:129:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:130:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:131:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:134:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:135:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:136:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:137:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:140:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:145:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:146:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:172:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:195:  An else should appear on the same line as the preceding }  [whitespace/newline] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:211:  An else should appear on the same line as the preceding }  [whitespace/newline] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:216:  An else should appear on the same line as the preceding }  [whitespace/newline] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:221:  An else should appear on the same line as the preceding }  [whitespace/newline] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:225:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:236:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:236:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:237:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:237:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:238:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:238:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:258:  An else should appear on the same line as the preceding }  [whitespace/newline] [4]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:267:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:281:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:294:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:295:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:302:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:304:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:310:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:311:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:313:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:313:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:324:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:333:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:335:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:337:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp:338:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+3: Category 'build/header_guard' errors found: 12
+3: Category 'build/include_order' errors found: 8
+3: Category 'build/include_what_you_use' errors found: 3
+3: Category 'build/namespaces' errors found: 2
+3: Category 'legal/copyright' errors found: 7
+3: Category 'readability/todo' errors found: 2
+3: Category 'runtime/explicit' errors found: 1
+3: Category 'runtime/int' errors found: 2
+3: Category 'runtime/string' errors found: 1
+3: Category 'whitespace/blank_line' errors found: 3
+3: Category 'whitespace/comments' errors found: 29
+3: Category 'whitespace/end_of_line' errors found: 1
+3: Category 'whitespace/ending_newline' errors found: 1
+3: Category 'whitespace/line_length' errors found: 55
+3: Category 'whitespace/newline' errors found: 11
+3: Total errors found: 138
+3: Using '--root=/home/ubuntu/lhj_behavior_stage/src/control/include' argument
+3: 
+3: Done processing /home/ubuntu/lhj_behavior_stage/src/control/include/control/PIDController.hpp
+3: 
+3: Done processing /home/ubuntu/lhj_behavior_stage/src/control/include/control/callback_data_manage.hpp
+3: 
+3: Done processing /home/ubuntu/lhj_behavior_stage/src/control/include/control/lat_control.hpp
+3: 
+3: Done processing /home/ubuntu/lhj_behavior_stage/src/control/include/control/lon_control.hpp
+3: 
+3: Done processing /home/ubuntu/lhj_behavior_stage/src/control/include/control/mission_param.hpp
+3: 
+3: Done processing /home/ubuntu/lhj_behavior_stage/src/control/include/control/vehicle_param.hpp
+3: 
+3: Using '--root=/home/ubuntu/lhj_behavior_stage/src/control/src' argument
+3: 
+3: Done processing /home/ubuntu/lhj_behavior_stage/src/control/src/car_control.cpp
+3: 
+3: -- run_test.py: return code 1
+3: -- run_test.py: verify result file '/home/ubuntu/lhj_behavior_stage/build/control/test_results/control/cpplint.xunit.xml'
+3/6 Test #3: cpplint ..........................***Failed    0.79 sec
+test 4
+    Start 4: lint_cmake
+
+4: Test command: /usr/bin/python3 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/home/ubuntu/lhj_behavior_stage/build/control/test_results/control/lint_cmake.xunit.xml" "--package-name" "control" "--output-file" "/home/ubuntu/lhj_behavior_stage/build/control/ament_lint_cmake/lint_cmake.txt" "--command" "/opt/ros/humble/bin/ament_lint_cmake" "--xunit-file" "/home/ubuntu/lhj_behavior_stage/build/control/test_results/control/lint_cmake.xunit.xml"
+4: Test timeout computed to be: 60
+4: -- run_test.py: invoking following command in '/home/ubuntu/lhj_behavior_stage/src/control':
+4:  - /opt/ros/humble/bin/ament_lint_cmake --xunit-file /home/ubuntu/lhj_behavior_stage/build/control/test_results/control/lint_cmake.xunit.xml
+4: 
+4: No problems found
+4: -- run_test.py: return code 0
+4: -- run_test.py: verify result file '/home/ubuntu/lhj_behavior_stage/build/control/test_results/control/lint_cmake.xunit.xml'
+4/6 Test #4: lint_cmake .......................   Passed    0.22 sec
+test 5
+    Start 5: uncrustify
+
+5: Test command: /usr/bin/python3 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/home/ubuntu/lhj_behavior_stage/build/control/test_results/control/uncrustify.xunit.xml" "--package-name" "control" "--output-file" "/home/ubuntu/lhj_behavior_stage/build/control/ament_uncrustify/uncrustify.txt" "--command" "/opt/ros/humble/bin/ament_uncrustify" "--xunit-file" "/home/ubuntu/lhj_behavior_stage/build/control/test_results/control/uncrustify.xunit.xml"
+5: Test timeout computed to be: 60
+5: -- run_test.py: invoking following command in '/home/ubuntu/lhj_behavior_stage/src/control':
+5:  - /opt/ros/humble/bin/ament_uncrustify --xunit-file /home/ubuntu/lhj_behavior_stage/build/control/test_results/control/uncrustify.xunit.xml
+5: Code style divergence in file 'include/control/PIDController.hpp':
+5: 
+5: --- include/control/PIDController.hpp
+5: +++ include/control/PIDController.hpp.uncrustify
+5: @@ -17,3 +17,4 @@
+5: -struct Point {
+5: -    double x;
+5: -    double y;
+5: +struct Point
+5: +{
+5: +  double x;
+5: +  double y;
+5: @@ -22,3 +23,4 @@
+5: -struct GasAndBrake {
+5: -    double gas;
+5: -    double brake;
+5: +struct GasAndBrake
+5: +{
+5: +  double gas;
+5: +  double brake;
+5: @@ -28,2 +30,3 @@
+5: -double cross_product(Point p1, Point p2) {
+5: -    return p1.x * p2.y - p1.y * p2.x;
+5: +double cross_product(Point p1, Point p2)
+5: +{
+5: +  return p1.x * p2.y - p1.y * p2.x;
+5: @@ -32,4 +35,5 @@
+5: -double determine_side(Point reference, Point target, Point origin) {
+5: -    double cross = 0.0;
+5: -    Point refVector = {reference.x - origin.x, reference.y - origin.y};
+5: -    Point targetVector = {target.x - origin.x, target.y - origin.y};
+5: +double determine_side(Point reference, Point target, Point origin)
+5: +{
+5: +  double cross = 0.0;
+5: +  Point refVector = {reference.x - origin.x, reference.y - origin.y};
+5: +  Point targetVector = {target.x - origin.x, target.y - origin.y};
+5: @@ -37 +41 @@
+5: -    return cross = cross_product(refVector, targetVector);
+5: +  return cross = cross_product(refVector, targetVector);
+5: @@ -41,2 +45,2 @@
+5: -template <typename T>
+5: -T clip(const T &value, const T &min_val, const T &max_val)
+5: +template<typename T>
+5: +T clip(const T & value, const T & min_val, const T & max_val)
+5: @@ -44 +48 @@
+5: -    return std::max(min_val, std::min(value, max_val));
+5: +  return std::max(min_val, std::min(value, max_val));
+5: @@ -49 +53 @@
+5: -    return val * alpha + pre_val * (1-alpha);
+5: +  return val * alpha + pre_val * (1 - alpha);
+5: @@ -54,6 +58,8 @@
+5: -    double rad_ang = rad_angle;
+5: -    while (rad_ang > M_PI)
+5: -        rad_ang -= 2 * M_PI;
+5: -    while (rad_ang < -M_PI)
+5: -        rad_ang += 2 * M_PI;
+5: -    return rad_ang;
+5: +  double rad_ang = rad_angle;
+5: +  while (rad_ang > M_PI) {
+5: +    rad_ang -= 2 * M_PI;
+5: +  }
+5: +  while (rad_ang < -M_PI) {
+5: +    rad_ang += 2 * M_PI;
+5: +  }
+5: +  return rad_ang;
+5: @@ -66,3 +72,3 @@
+5: -    PIDController(double min_output, double max_output)
+5: -        : min_output_(min_output), max_output_(max_output),
+5: -          integral_(0), prev_error_(0), has_prev_(false)  {}
+5: +  PIDController(double min_output, double max_output)
+5: +  : min_output_(min_output), max_output_(max_output),
+5: +    integral_(0), prev_error_(0), has_prev_(false) {}
+5: @@ -70,5 +76,32 @@
+5: -    void reset() {
+5: -        integral_ = 0.0;
+5: -        prev_error_ = 0.0;
+5: -        pre_derivative_ = 0.0;
+5: -        has_prev_ = false;
+5: +  void reset()
+5: +  {
+5: +    integral_ = 0.0;
+5: +    prev_error_ = 0.0;
+5: +    pre_derivative_ = 0.0;
+5: +    has_prev_ = false;
+5: +  }
+5: +
+5: +  void set_PID_gain(double kp, double kd)
+5: +  {
+5: +    // i gain은 편의상 0.0으로 고정.
+5: +    kp_ = kp;
+5: +    ki_ = 0.0;     // ki;
+5: +    kd_ = kd;
+5: +  }
+5: +
+5: +  double compute(double target_value, double measured_value, float alpha, double dt = 0.05)
+5: +  {
+5: +    double error = target_value - measured_value;
+5: +    integral_ += error * dt;
+5: +
+5: +    double derivative = (error - prev_error_) / dt;
+5: +    prev_error_ = error;
+5: +
+5: +    derivative = low_pass_filter(derivative, pre_derivative_, alpha);
+5: +    pre_derivative_ = derivative;
+5: +
+5: +    double output = kp_ * error + ki_ * integral_ + kd_ * derivative;
+5: +    if (output < min_output_) {
+5: +      output = min_output_;
+5: +    } else if (output > max_output_) {
+5: +      output = max_output_;
+5: @@ -77,7 +110,2 @@
+5: -    void set_PID_gain(double kp, double kd)
+5: -    {
+5: -        // i gain은 편의상 0.0으로 고정.
+5: -        kp_ = kp;
+5: -        ki_ = 0.0; // ki;
+5: -        kd_ = kd;
+5: -    }
+5: +    return output;
+5: +  }
+5: @@ -85,4 +113,4 @@
+5: -    double compute(double target_value, double measured_value, float alpha, double dt = 0.05)
+5: -    {
+5: -        double error = target_value - measured_value;
+5: -        integral_ += error * dt;
+5: +  float get_p_gain()     // 디버깅용
+5: +  {
+5: +    return kp_;
+5: +  }
+5: @@ -90,24 +118,4 @@
+5: -        double derivative = (error - prev_error_) / dt;
+5: -        prev_error_ = error;
+5: -
+5: -        derivative = low_pass_filter(derivative, pre_derivative_, alpha);
+5: -        pre_derivative_ = derivative;
+5: -
+5: -        double output = kp_ * error + ki_ * integral_ + kd_ * derivative;
+5: -        if (output < min_output_)
+5: -        {
+5: -            output = min_output_;
+5: -        } else if (output > max_output_){
+5: -            output = max_output_;
+5: -        }
+5: -
+5: -        return output;
+5: -    }
+5: -
+5: -    float get_p_gain(){  // 디버깅용
+5: -        return kp_;
+5: -    }
+5: -
+5: -    float get_d_gain(){  // 디버깅용
+5: -        return kd_;
+5: -    }
+5: +  float get_d_gain()     // 디버깅용
+5: +  {
+5: +    return kd_;
+5: +  }
+5: @@ -116,7 +124,7 @@
+5: -    double kp_ = 0.0;
+5: -    double ki_ = 0.0;
+5: -    double kd_ = 0.0;
+5: -    double min_output_;
+5: -    double max_output_;
+5: -    double integral_;
+5: -    double prev_error_;
+5: +  double kp_ = 0.0;
+5: +  double ki_ = 0.0;
+5: +  double kd_ = 0.0;
+5: +  double min_output_;
+5: +  double max_output_;
+5: +  double integral_;
+5: +  double prev_error_;
+5: @@ -124,2 +132,2 @@
+5: -    double pre_derivative_ = 0.0;
+5: -    bool   has_prev_;
+5: +  double pre_derivative_ = 0.0;
+5: +  bool has_prev_;
+5: 
+5: Code style divergence in file 'include/control/callback_data_manage.hpp':
+5: 
+5: --- include/control/callback_data_manage.hpp
+5: +++ include/control/callback_data_manage.hpp.uncrustify
+5: @@ -26,39 +26,39 @@
+5: -    // Local
+5: -    Point lo_odom;
+5: -    bool odom_sub_flag;
+5: -    double lo_yaw;
+5: -    double lo_yaw_rate;
+5: -    double lo_beta;
+5: -
+5: -    // ERP Data (/ERP/serial_data)
+5: -    float control_mode;
+5: -    float e_stop;
+5: -    float gear;
+5: -    float speed;
+5: -    float steer;
+5: -    float brake;
+5: -    float enc;
+5: -    bool serial_sub_flag;
+5: -
+5: -    vector<Point> pl_local_path;     // relative coordinate
+5: -    vector<Point> pl_local_path_abs; // abs coordinate
+5: -    vector<double> pl_local_path_yaw;
+5: -    int pl_mission_num;
+5: -    double pl_control_switch;
+5: -
+5: -    int closest_index;
+5: -    bool path_too_far = false;
+5: -    double pridict_dist;
+5: -    double path_curvature = 0.0;
+5: -    double pre_path_curvature = 0.0;
+5: -    vector<Point> stanley_predict_pos;
+5: -    vector<float> stanley_predict_yaw;
+5: -    Point zero_point;
+5: -
+5: -    Point AxisTrans_abs2rel(const Point &p)
+5: -    {
+5: -        Point rel;
+5: -        rel.x = (p.x - lo_odom.x) * cos(lo_yaw) + (p.y - lo_odom.y) * sin(lo_yaw);
+5: -        rel.y = -(p.x - lo_odom.x) * sin(lo_yaw) + (p.y - lo_odom.y) * cos(lo_yaw);
+5: -        return rel;
+5: -    }
+5: +  // Local
+5: +  Point lo_odom;
+5: +  bool odom_sub_flag;
+5: +  double lo_yaw;
+5: +  double lo_yaw_rate;
+5: +  double lo_beta;
+5: +
+5: +  // ERP Data (/ERP/serial_data)
+5: +  float control_mode;
+5: +  float e_stop;
+5: +  float gear;
+5: +  float speed;
+5: +  float steer;
+5: +  float brake;
+5: +  float enc;
+5: +  bool serial_sub_flag;
+5: +
+5: +  vector<Point> pl_local_path;       // relative coordinate
+5: +  vector<Point> pl_local_path_abs;   // abs coordinate
+5: +  vector<double> pl_local_path_yaw;
+5: +  int pl_mission_num;
+5: +  double pl_control_switch;
+5: +
+5: +  int closest_index;
+5: +  bool path_too_far = false;
+5: +  double pridict_dist;
+5: +  double path_curvature = 0.0;
+5: +  double pre_path_curvature = 0.0;
+5: +  vector<Point> stanley_predict_pos;
+5: +  vector<float> stanley_predict_yaw;
+5: +  Point zero_point;
+5: +
+5: +  Point AxisTrans_abs2rel(const Point & p)
+5: +  {
+5: +    Point rel;
+5: +    rel.x = (p.x - lo_odom.x) * cos(lo_yaw) + (p.y - lo_odom.y) * sin(lo_yaw);
+5: +    rel.y = -(p.x - lo_odom.x) * sin(lo_yaw) + (p.y - lo_odom.y) * cos(lo_yaw);
+5: +    return rel;
+5: +  }
+5: @@ -67,405 +67,391 @@
+5: -    CallbackClass()
+5: -    {
+5: -        // TODO: 생성자 작성 필요
+5: -        lo_odom.x = 0.0;
+5: -        lo_odom.y = 0.0;
+5: -        odom_sub_flag = false;
+5: -        lo_yaw = 0.0;
+5: -        lo_yaw_rate = 0.0;
+5: -        lo_beta = 0.0;
+5: -
+5: -        control_mode = 0.0;
+5: -        e_stop = 0.0;
+5: -        gear = 0.0;
+5: -        speed = 0.0;
+5: -        steer = 0.0;
+5: -
+5: -        brake = 0.0;
+5: -        enc = 0.0;
+5: -        serial_sub_flag = false;
+5: -
+5: -        closest_index = 0;
+5: -        pridict_dist = 0.0;
+5: -        zero_point.x = 0.0;
+5: -        zero_point.y = 0.0;
+5: -
+5: -        pl_control_switch = 0;
+5: -        pl_mission_num = -404; // 있을 수 없는 아무 숫자로 초기화해 줘야함.
+5: -    }
+5: -
+5: -    ////////////////////////////////////////   local   ////////////////////////////////////////
+5: -    ////////////////////////////////////////   local   ////////////////////////////////////////
+5: -    ////////////////////////////////////////   local   ////////////////////////////////////////
+5: -
+5: -    Point AxisTrans_rel2abs(const Point &p)
+5: -    {
+5: -        Point rel;
+5: -        rel.x = p.x * cos(lo_yaw) - p.y * sin(lo_yaw) + lo_odom.x;
+5: -        rel.y = p.x * sin(lo_yaw) + p.y * cos(lo_yaw) + lo_odom.y;
+5: -        return rel;
+5: -    }
+5: -
+5: -    void lo_odom_cb(const geometry_msgs::msg::PointStamped::SharedPtr msg)
+5: -    {
+5: -        // info : [x, y], UTM coordinate
+5: -        this->lo_odom.x = msg->point.x;
+5: -        this->lo_odom.y = msg->point.y;
+5: -        this->odom_sub_flag = true;
+5: -    }
+5: -
+5: -    void lo_yaw_cb(const std_msgs::msg::Float64::SharedPtr msg)
+5: -    {
+5: -        // info : radian, -pi ~ +pi
+5: -        this->lo_yaw = msg->data;
+5: -    }
+5: -
+5: -    void lo_imu_cb(const sensor_msgs::msg::Imu::SharedPtr msg)
+5: -    {
+5: -        // Extract yaw rate (z-axis angular velocity)
+5: -        this->lo_yaw_rate = msg->angular_velocity.z;
+5: -    }
+5: -
+5: -    void lo_beta_cb(const std_msgs::msg::Float64::SharedPtr msg)
+5: -    {
+5: -        this->lo_beta = msg->data;
+5: -    }
+5: -
+5: -    ////////////////////////////////////////   planning   ////////////////////////////////////////
+5: -    ////////////////////////////////////////   planning   ////////////////////////////////////////
+5: -    ////////////////////////////////////////   planning   ////////////////////////////////////////
+5: -
+5: -    void pl_local_path_cb(const std_msgs::msg::Float64MultiArray::SharedPtr msg)
+5: -    {
+5: -        // [x0, y0, x1, y1, ...] 이므로 값이 없거나 홀수 개면 쓰지 않는다 (직전 경로 유지).
+5: -        if (msg->data.empty() || msg->data.size() % 2 != 0)
+5: -        {
+5: -            cerr << "local_path 길이가 잘못되었습니다 : " << msg->data.size() << endl;
+5: -            return;
+5: -        }
+5: -        vector<Point> points;
+5: -        vector<Point> points_abs;
+5: -        if (msg->data[0] == -82.82 || msg->data[1] == -82.82) // [-82.82, -82.82] -> 상대경로를 보내겠다는 시그널
+5: -        {
+5: -            for (size_t i = 2; i < msg->data.size(); i += 2)
+5: -            {
+5: -                Point point{msg->data[i], msg->data[i + 1]};
+5: -                points.push_back(point);
+5: -            }
+5: -        }
+5: -        else
+5: -        {
+5: -            // Convert the received message to a 2D vector
+5: -            for (size_t i = 0; i < msg->data.size(); i += 2)
+5: -            {
+5: -                Point point{msg->data[i], msg->data[i + 1]};
+5: -
+5: -                points_abs.push_back(point);
+5: -
+5: -                Point pl_rel = AxisTrans_abs2rel(point);
+5: -                points.push_back(pl_rel);
+5: -            }
+5: -            this->pl_local_path_abs = points_abs;
+5: -        }
+5: -
+5: -        this->pl_local_path = points;
+5: -    }
+5: -
+5: -    void pl_local_path_yaws_cb(const std_msgs::msg::Float64MultiArray::SharedPtr msg)
+5: -    {
+5: -        if (msg->data.empty())
+5: -        {
+5: -            cerr << "path_yaw 길이가 0 입니다." << endl;
+5: -            return;
+5: -        }
+5: -
+5: -        // 주의: 2번 칸부터 두 칸씩 건너뛰며 읽는다 (예전 코드 그대로).
+5: -        //       그래서 yaws[k] 는 경로의 (2 + 2k) 번째 점의 방향이다.
+5: -        //       지금 게인은 이 읽기 방식에 맞춰져 있으므로, 바꿀 때는 게인을 다시 맞춰야 한다.
+5: -        vector<double> yaws;
+5: -
+5: -        for (size_t i = 2; i < msg->data.size(); i += 2)
+5: -        {
+5: -            yaws.push_back(msg->data[i]);
+5: -        }
+5: -
+5: -        this->pl_local_path_yaw = yaws;
+5: -    }
+5: -
+5: -    void pl_mission_num_cb(const std_msgs::msg::Int16::SharedPtr msg)
+5: -    {
+5: -        // info : TODO!!!
+5: -        this->pl_mission_num = msg->data;
+5: -    }
+5: -
+5: -    void pl_control_switch_cb(const std_msgs::msg::Float64::SharedPtr msg)
+5: -    {
+5: -        // info : -1 : REVERSE | 0 : STOP | 0.1 ~ 6.9 : DRIVE
+5: -        this->pl_control_switch = msg->data;
+5: -    }
+5: -
+5: -    ////////////////////////////////////////   ERP   ////////////////////////////////////////
+5: -    ////////////////////////////////////////   ERP   ////////////////////////////////////////
+5: -    ////////////////////////////////////////   ERP   ////////////////////////////////////////
+5: -
+5: -    void co_ERP_data_cb(const std_msgs::msg::Float32MultiArray::SharedPtr msg)
+5: -    {
+5: -        // [control_mode, e_stop, gear, speed(m/s), steer(rad), brake(MPa), 0]
+5: -        if (msg->data.size() < 7)
+5: -        {
+5: -            return;
+5: -        }
+5: -        this->control_mode = msg->data[0];
+5: -        this->e_stop = msg->data[1];
+5: -        this->gear = msg->data[2];
+5: -        // ERP42 Pro 는 차량 속도를 준다 (브릿지가 실제 속도로 보정함).
+5: -        // 예전 ERP42 처럼 왼쪽 바퀴 속도를 차량 중심 속도로 환산하지 않는다.
+5: -        this->speed = std::isfinite(msg->data[3]) ? msg->data[3] : 0.0F;
+5: -        this->steer = msg->data[4];
+5: -        this->brake = msg->data[5];
+5: -        this->enc = msg->data[6];
+5: -        this->serial_sub_flag = true;
+5: -    }
+5: -
+5: -    double calc_n_get_lat_error()
+5: -    {
+5: -        // 인자를 주지 않으면 이 함수가 호출
+5: -        // 인자를 주면 아래의 함수를 호출
+5: -        return calc_n_get_lat_error(this->zero_point);
+5: -    }
+5: -
+5: -    double calc_n_get_lat_error(Point pridict_pose)
+5: -    {
+5: -        // 준비가 안 됐으면 404 를 돌려준다. 이유는 not_ready_reason() 으로 알 수 있다.
+5: -        if (pl_local_path.size() < 2 || lo_odom.x == 0.0 || lo_odom.y == 0.0)
+5: -        {
+5: -            return 404;
+5: -        }
+5: -
+5: -        closest_index = 0; // 계산 결과로 나오는 값인데 이 값도 사용된다.
+5: -        double min_distance = std::sqrt(std::pow(pl_local_path[0].x - pridict_pose.x, 2) + std::pow(pl_local_path[0].y - pridict_pose.y, 2));
+5: -
+5: -        for (size_t i = 1; i < pl_local_path.size(); i++)
+5: -        {
+5: -            double distance = std::sqrt(std::pow(pl_local_path[i].x - pridict_pose.x, 2) + std::pow(pl_local_path[i].y - pridict_pose.y, 2));
+5: -            if (distance < min_distance)
+5: -            {
+5: -                closest_index = static_cast<int>(i);
+5: -                min_distance = distance;
+5: -            }
+5: -        }
+5: -
+5: -        if (min_distance > 50)
+5: -        {
+5: -            this->path_too_far = true;
+5: -            return 404; // 경로에서 50 m 넘게 떨어짐
+5: -        }
+5: -        this->path_too_far = false;
+5: -
+5: -        // lat_error의 좌 우를 구분함. (가장 가까운 점이 경로의 마지막 점이면 그 앞 구간의 방향을 쓴다)
+5: -        int seg = std::min(closest_index, static_cast<int>(pl_local_path.size()) - 2);
+5: -        double l_or_r = determine_side(pl_local_path[seg + 1], pridict_pose, pl_local_path[seg]);
+5: -        if (l_or_r > 0)
+5: -        {
+5: -            min_distance = min_distance * -1;
+5: -        }
+5: -        return min_distance;
+5: -    }
+5: -
+5: -    ////////////////////////////////////////   control_LQR   ////////////////////////////////////////
+5: -    ////////////////////////////////////////   control_LQR   ////////////////////////////////////////
+5: -    ////////////////////////////////////////   control_LQR   ////////////////////////////////////////
+5: -
+5: -    double calc_path_curvature(float time_delay = 0.0, float diff_s = 1.5) // 1.5
+5: -    { 
+5: -        float td = clip(time_delay, 0.1F, 2.0F);
+5: -        pridict_dist = td * clip(this->speed, 2.5F, 9.0F); // (s)*(m/s)
+5: -        double second_pridict_dist = pridict_dist + diff_s;
+5: -        int f_pri_yaw_index = 0;
+5: -        int s_pri_yaw_index = 0;
+5: -
+5: -        double s = 0.0;        // 경로의 길이 (Frenet s)
+5: -        double min_dist = 1e9; // 아주 큰 값으로 초기화
+5: -        double second_min_dist = 1e9;
+5: -
+5: -        for (size_t i = 1; i < pl_local_path.size(); i++)
+5: -        {
+5: -            double dx = pl_local_path[i].x - pl_local_path[i - 1].x;
+5: -            double dy = pl_local_path[i].y - pl_local_path[i - 1].y;
+5: -            s += std::sqrt(dx * dx + dy * dy); // 경로의 길이 누적
+5: -
+5: -            double f_dist = abs(s - pridict_dist);
+5: -            double s_dist = abs(s - second_pridict_dist);
+5: -
+5: -            if (f_dist < min_dist)
+5: -            {
+5: -                f_pri_yaw_index = static_cast<int>(i);
+5: -                min_dist = f_dist;
+5: -            }
+5: -            if (s_dist < second_min_dist)
+5: -            {
+5: -                s_pri_yaw_index = static_cast<int>(i);
+5: -                second_min_dist = s_dist;
+5: -            }
+5: -        }
+5: -        if (pl_local_path_yaw.empty())
+5: -        {
+5: -            return path_curvature;
+5: -        }
+5: -        // path_yaw 를 읽는 방식 때문에 yaw 개수가 경로 점 개수보다 적다. 범위를 넘지 않게 한다.
+5: -        int last_yaw_index = static_cast<int>(pl_local_path_yaw.size()) - 1;
+5: -        f_pri_yaw_index = std::min(f_pri_yaw_index, last_yaw_index);
+5: -        s_pri_yaw_index = std::min(s_pri_yaw_index, last_yaw_index);
+5: -
+5: -        double yaw_diff = - nomalize_angle(pl_local_path_yaw[f_pri_yaw_index] - pl_local_path_yaw[s_pri_yaw_index]);
+5: -
+5: -        double tmp_curv = yaw_diff / diff_s;
+5: -        this->path_curvature = low_pass_filter(tmp_curv, pre_path_curvature, 0.9);
+5: -        this->pre_path_curvature = this->path_curvature;
+5: -
+5: -        return path_curvature;
+5: -    }
+5: -
+5: -    void calc_predict_odometry_for_stanley(float dt, int n)
+5: -    {
+5: -        vector<Point> predict_pos;
+5: -
+5: -        double dx = cos(lo_beta - lo_yaw) * this->speed * dt;
+5: -        double dy = sin(lo_beta - lo_yaw) * this->speed * dt;
+5: -
+5: -        for (int i = 1; i <= n; i++)
+5: -        {
+5: -            Point tmp_odom;
+5: -
+5: -            tmp_odom.x = dx * i;
+5: -            tmp_odom.y = dy * i;
+5: -            predict_pos.push_back(tmp_odom);
+5: -        }
+5: -
+5: -        vector<float> predict_yaw;
+5: -
+5: -        for (int i = 1; i <= n; i++)
+5: -        {
+5: -            float tmp_yaw = this->lo_yaw + this->lo_yaw_rate * dt;
+5: -            predict_yaw.push_back(tmp_yaw);
+5: -        }
+5: -
+5: -        this->stanley_predict_pos = predict_pos;
+5: -        this->stanley_predict_yaw = predict_yaw;
+5: -    }
+5: -
+5: -    ////////////////////////////////////////   control_get   ////////////////////////////////////////
+5: -    ////////////////////////////////////////   control_get   ////////////////////////////////////////
+5: -    ////////////////////////////////////////   control_get   ////////////////////////////////////////
+5: -
+5: -    // 제어를 시작할 수 없는 이유. 준비가 됐으면 nullptr.
+5: -    const char *not_ready_reason()
+5: -    {
+5: -        if (lo_odom.x == 0.0 || lo_odom.y == 0.0)
+5: -        {
+5: -            return "/Local/utm 을 아직 받지 못했습니다 (로컬라이제이션 확인)";
+5: -        }
+5: -        if (pl_local_path.size() < 2)
+5: -        {
+5: -            return "/Planning/local_path 를 아직 받지 못했습니다 (플래닝 확인)";
+5: -        }
+5: -        if (pl_local_path_yaw.empty())
+5: -        {
+5: -            return "/Planning/path_yaw 를 아직 받지 못했습니다 (플래닝 확인)";
+5: -        }
+5: -        if (path_too_far)
+5: -        {
+5: -            return "경로에서 50 m 넘게 떨어져 있습니다 (맵 확인)";
+5: -        }
+5: -        return nullptr;
+5: -    }
+5: -
+5: -    Point get_odom()
+5: -    {
+5: -        return this->lo_odom;
+5: -    }
+5: -
+5: -    bool get_odom_sub_flag()
+5: -    {
+5: -        return this->odom_sub_flag;
+5: -    }
+5: -
+5: -    void set_down_odom_sub_flag()
+5: -    {
+5: -        this->odom_sub_flag = false;
+5: -    }
+5: -
+5: -    double get_yaw()
+5: -    {
+5: -        return this->lo_yaw;
+5: -    }
+5: -
+5: -    float get_speed()
+5: -    {
+5: -        return this->speed;
+5: -    }
+5: -
+5: -    float get_steer()
+5: -    {
+5: -        return this->steer;
+5: -    }
+5: -
+5: -    double get_pd_path_yaw()
+5: -    {
+5: -        if (this->pl_local_path_yaw.empty())
+5: -        {
+5: -            return 404;
+5: -        }
+5: -        // path_yaw 를 읽는 방식 때문에 yaw 개수가 경로 점 개수보다 적다. 범위를 넘지 않게 한다.
+5: -        size_t index = std::min(static_cast<size_t>(this->closest_index), this->pl_local_path_yaw.size() - 1);
+5: -        return this->pl_local_path_yaw[index];
+5: -    }
+5: -
+5: -    int get_mission_num()
+5: -    {
+5: -        return this->pl_mission_num;
+5: -    }
+5: -
+5: -    double get_control_switch()
+5: -    {
+5: -        return this->pl_control_switch;
+5: -    }
+5: -
+5: -    vector<double> get_local_path_yaw()
+5: -    {
+5: -        return this->pl_local_path_yaw;
+5: -    }
+5: -
+5: -    float get_yawrate()
+5: -    {
+5: -        return this->lo_yaw_rate;
+5: -    }
+5: -
+5: -    double get_path_curvature()
+5: -    {
+5: -        return this->path_curvature;
+5: -    }
+5: -
+5: -    bool get_serial_sub_flag()
+5: -    {
+5: -        return this->serial_sub_flag;
+5: -    }
+5: -
+5: -    void set_down_serial_sub_flag()
+5: -    {
+5: -        this->serial_sub_flag = false;
+5: -    }
+5: -
+5: -    vector<Point> get_relative_path()
+5: -    {
+5: -        return this->pl_local_path;
+5: -    }
+5: -
+5: -    vector<Point> get_stanley_predict_pos()
+5: -    {
+5: -        return this->stanley_predict_pos;
+5: -    }
+5: -
+5: -    vector<float> get_stanley_predict_yaw()
+5: -    {
+5: -        return this->stanley_predict_yaw;
+5: -    }
+5: +  CallbackClass()
+5: +  {
+5: +    // TODO: 생성자 작성 필요
+5: +    lo_odom.x = 0.0;
+5: +    lo_odom.y = 0.0;
+5: +    odom_sub_flag = false;
+5: +    lo_yaw = 0.0;
+5: +    lo_yaw_rate = 0.0;
+5: +    lo_beta = 0.0;
+5: +
+5: +    control_mode = 0.0;
+5: +    e_stop = 0.0;
+5: +    gear = 0.0;
+5: +    speed = 0.0;
+5: +    steer = 0.0;
+5: +
+5: +    brake = 0.0;
+5: +    enc = 0.0;
+5: +    serial_sub_flag = false;
+5: +
+5: +    closest_index = 0;
+5: +    pridict_dist = 0.0;
+5: +    zero_point.x = 0.0;
+5: +    zero_point.y = 0.0;
+5: +
+5: +    pl_control_switch = 0;
+5: +    pl_mission_num = -404;     // 있을 수 없는 아무 숫자로 초기화해 줘야함.
+5: +  }
+5: +
+5: +  ////////////////////////////////////////   local   ////////////////////////////////////////
+5: +  ////////////////////////////////////////   local   ////////////////////////////////////////
+5: +  ////////////////////////////////////////   local   ////////////////////////////////////////
+5: +
+5: +  Point AxisTrans_rel2abs(const Point & p)
+5: +  {
+5: +    Point rel;
+5: +    rel.x = p.x * cos(lo_yaw) - p.y * sin(lo_yaw) + lo_odom.x;
+5: +    rel.y = p.x * sin(lo_yaw) + p.y * cos(lo_yaw) + lo_odom.y;
+5: +    return rel;
+5: +  }
+5: +
+5: +  void lo_odom_cb(const geometry_msgs::msg::PointStamped::SharedPtr msg)
+5: +  {
+5: +    // info : [x, y], UTM coordinate
+5: +    this->lo_odom.x = msg->point.x;
+5: +    this->lo_odom.y = msg->point.y;
+5: +    this->odom_sub_flag = true;
+5: +  }
+5: +
+5: +  void lo_yaw_cb(const std_msgs::msg::Float64::SharedPtr msg)
+5: +  {
+5: +    // info : radian, -pi ~ +pi
+5: +    this->lo_yaw = msg->data;
+5: +  }
+5: +
+5: +  void lo_imu_cb(const sensor_msgs::msg::Imu::SharedPtr msg)
+5: +  {
+5: +    // Extract yaw rate (z-axis angular velocity)
+5: +    this->lo_yaw_rate = msg->angular_velocity.z;
+5: +  }
+5: +
+5: +  void lo_beta_cb(const std_msgs::msg::Float64::SharedPtr msg)
+5: +  {
+5: +    this->lo_beta = msg->data;
+5: +  }
+5: +
+5: +  ////////////////////////////////////////   planning   ////////////////////////////////////////
+5: +  ////////////////////////////////////////   planning   ////////////////////////////////////////
+5: +  ////////////////////////////////////////   planning   ////////////////////////////////////////
+5: +
+5: +  void pl_local_path_cb(const std_msgs::msg::Float64MultiArray::SharedPtr msg)
+5: +  {
+5: +    // [x0, y0, x1, y1, ...] 이므로 값이 없거나 홀수 개면 쓰지 않는다 (직전 경로 유지).
+5: +    if (msg->data.empty() || msg->data.size() % 2 != 0) {
+5: +      cerr << "local_path 길이가 잘못되었습니다 : " << msg->data.size() << endl;
+5: +      return;
+5: +    }
+5: +    vector<Point> points;
+5: +    vector<Point> points_abs;
+5: +    if (msg->data[0] == -82.82 || msg->data[1] == -82.82) {   // [-82.82, -82.82] -> 상대경로를 보내겠다는 시그널
+5: +      for (size_t i = 2; i < msg->data.size(); i += 2) {
+5: +        Point point{msg->data[i], msg->data[i + 1]};
+5: +        points.push_back(point);
+5: +      }
+5: +    } else {
+5: +      // Convert the received message to a 2D vector
+5: +      for (size_t i = 0; i < msg->data.size(); i += 2) {
+5: +        Point point{msg->data[i], msg->data[i + 1]};
+5: +
+5: +        points_abs.push_back(point);
+5: +
+5: +        Point pl_rel = AxisTrans_abs2rel(point);
+5: +        points.push_back(pl_rel);
+5: +      }
+5: +      this->pl_local_path_abs = points_abs;
+5: +    }
+5: +
+5: +    this->pl_local_path = points;
+5: +  }
+5: +
+5: +  void pl_local_path_yaws_cb(const std_msgs::msg::Float64MultiArray::SharedPtr msg)
+5: +  {
+5: +    if (msg->data.empty()) {
+5: +      cerr << "path_yaw 길이가 0 입니다." << endl;
+5: +      return;
+5: +    }
+5: +
+5: +    // 주의: 2번 칸부터 두 칸씩 건너뛰며 읽는다 (예전 코드 그대로).
+5: +    //       그래서 yaws[k] 는 경로의 (2 + 2k) 번째 점의 방향이다.
+5: +    //       지금 게인은 이 읽기 방식에 맞춰져 있으므로, 바꿀 때는 게인을 다시 맞춰야 한다.
+5: +    vector<double> yaws;
+5: +
+5: +    for (size_t i = 2; i < msg->data.size(); i += 2) {
+5: +      yaws.push_back(msg->data[i]);
+5: +    }
+5: +
+5: +    this->pl_local_path_yaw = yaws;
+5: +  }
+5: +
+5: +  void pl_mission_num_cb(const std_msgs::msg::Int16::SharedPtr msg)
+5: +  {
+5: +    // info : TODO!!!
+5: +    this->pl_mission_num = msg->data;
+5: +  }
+5: +
+5: +  void pl_control_switch_cb(const std_msgs::msg::Float64::SharedPtr msg)
+5: +  {
+5: +    // info : -1 : REVERSE | 0 : STOP | 0.1 ~ 6.9 : DRIVE
+5: +    this->pl_control_switch = msg->data;
+5: +  }
+5: +
+5: +  ////////////////////////////////////////   ERP   ////////////////////////////////////////
+5: +  ////////////////////////////////////////   ERP   ////////////////////////////////////////
+5: +  ////////////////////////////////////////   ERP   ////////////////////////////////////////
+5: +
+5: +  void co_ERP_data_cb(const std_msgs::msg::Float32MultiArray::SharedPtr msg)
+5: +  {
+5: +    // [control_mode, e_stop, gear, speed(m/s), steer(rad), brake(MPa), 0]
+5: +    if (msg->data.size() < 7) {
+5: +      return;
+5: +    }
+5: +    this->control_mode = msg->data[0];
+5: +    this->e_stop = msg->data[1];
+5: +    this->gear = msg->data[2];
+5: +    // ERP42 Pro 는 차량 속도를 준다 (브릿지가 실제 속도로 보정함).
+5: +    // 예전 ERP42 처럼 왼쪽 바퀴 속도를 차량 중심 속도로 환산하지 않는다.
+5: +    this->speed = std::isfinite(msg->data[3]) ? msg->data[3] : 0.0F;
+5: +    this->steer = msg->data[4];
+5: +    this->brake = msg->data[5];
+5: +    this->enc = msg->data[6];
+5: +    this->serial_sub_flag = true;
+5: +  }
+5: +
+5: +  double calc_n_get_lat_error()
+5: +  {
+5: +    // 인자를 주지 않으면 이 함수가 호출
+5: +    // 인자를 주면 아래의 함수를 호출
+5: +    return calc_n_get_lat_error(this->zero_point);
+5: +  }
+5: +
+5: +  double calc_n_get_lat_error(Point pridict_pose)
+5: +  {
+5: +    // 준비가 안 됐으면 404 를 돌려준다. 이유는 not_ready_reason() 으로 알 수 있다.
+5: +    if (pl_local_path.size() < 2 || lo_odom.x == 0.0 || lo_odom.y == 0.0) {
+5: +      return 404;
+5: +    }
+5: +
+5: +    closest_index = 0;     // 계산 결과로 나오는 값인데 이 값도 사용된다.
+5: +    double min_distance =
+5: +      std::sqrt(
+5: +      std::pow(
+5: +        pl_local_path[0].x - pridict_pose.x,
+5: +        2) + std::pow(pl_local_path[0].y - pridict_pose.y, 2));
+5: +
+5: +    for (size_t i = 1; i < pl_local_path.size(); i++) {
+5: +      double distance =
+5: +        std::sqrt(
+5: +        std::pow(
+5: +          pl_local_path[i].x - pridict_pose.x,
+5: +          2) + std::pow(pl_local_path[i].y - pridict_pose.y, 2));
+5: +      if (distance < min_distance) {
+5: +        closest_index = static_cast<int>(i);
+5: +        min_distance = distance;
+5: +      }
+5: +    }
+5: +
+5: +    if (min_distance > 50) {
+5: +      this->path_too_far = true;
+5: +      return 404;       // 경로에서 50 m 넘게 떨어짐
+5: +    }
+5: +    this->path_too_far = false;
+5: +
+5: +    // lat_error의 좌 우를 구분함. (가장 가까운 점이 경로의 마지막 점이면 그 앞 구간의 방향을 쓴다)
+5: +    int seg = std::min(closest_index, static_cast<int>(pl_local_path.size()) - 2);
+5: +    double l_or_r = determine_side(pl_local_path[seg + 1], pridict_pose, pl_local_path[seg]);
+5: +    if (l_or_r > 0) {
+5: +      min_distance = min_distance * -1;
+5: +    }
+5: +    return min_distance;
+5: +  }
+5: +
+5: +  ////////////////////////////////////////   control_LQR   ////////////////////////////////////////
+5: +  ////////////////////////////////////////   control_LQR   ////////////////////////////////////////
+5: +  ////////////////////////////////////////   control_LQR   ////////////////////////////////////////
+5: +
+5: +  double calc_path_curvature(float time_delay = 0.0, float diff_s = 1.5)   // 1.5
+5: +  {
+5: +    float td = clip(time_delay, 0.1F, 2.0F);
+5: +    pridict_dist = td * clip(this->speed, 2.5F, 9.0F);     // (s)*(m/s)
+5: +    double second_pridict_dist = pridict_dist + diff_s;
+5: +    int f_pri_yaw_index = 0;
+5: +    int s_pri_yaw_index = 0;
+5: +
+5: +    double s = 0.0;            // 경로의 길이 (Frenet s)
+5: +    double min_dist = 1e9;     // 아주 큰 값으로 초기화
+5: +    double second_min_dist = 1e9;
+5: +
+5: +    for (size_t i = 1; i < pl_local_path.size(); i++) {
+5: +      double dx = pl_local_path[i].x - pl_local_path[i - 1].x;
+5: +      double dy = pl_local_path[i].y - pl_local_path[i - 1].y;
+5: +      s += std::sqrt(dx * dx + dy * dy);       // 경로의 길이 누적
+5: +
+5: +      double f_dist = abs(s - pridict_dist);
+5: +      double s_dist = abs(s - second_pridict_dist);
+5: +
+5: +      if (f_dist < min_dist) {
+5: +        f_pri_yaw_index = static_cast<int>(i);
+5: +        min_dist = f_dist;
+5: +      }
+5: +      if (s_dist < second_min_dist) {
+5: +        s_pri_yaw_index = static_cast<int>(i);
+5: +        second_min_dist = s_dist;
+5: +      }
+5: +    }
+5: +    if (pl_local_path_yaw.empty()) {
+5: +      return path_curvature;
+5: +    }
+5: +    // path_yaw 를 읽는 방식 때문에 yaw 개수가 경로 점 개수보다 적다. 범위를 넘지 않게 한다.
+5: +    int last_yaw_index = static_cast<int>(pl_local_path_yaw.size()) - 1;
+5: +    f_pri_yaw_index = std::min(f_pri_yaw_index, last_yaw_index);
+5: +    s_pri_yaw_index = std::min(s_pri_yaw_index, last_yaw_index);
+5: +
+5: +    double yaw_diff =
+5: +      -nomalize_angle(pl_local_path_yaw[f_pri_yaw_index] - pl_local_path_yaw[s_pri_yaw_index]);
+5: +
+5: +    double tmp_curv = yaw_diff / diff_s;
+5: +    this->path_curvature = low_pass_filter(tmp_curv, pre_path_curvature, 0.9);
+5: +    this->pre_path_curvature = this->path_curvature;
+5: +
+5: +    return path_curvature;
+5: +  }
+5: +
+5: +  void calc_predict_odometry_for_stanley(float dt, int n)
+5: +  {
+5: +    vector<Point> predict_pos;
+5: +
+5: +    double dx = cos(lo_beta - lo_yaw) * this->speed * dt;
+5: +    double dy = sin(lo_beta - lo_yaw) * this->speed * dt;
+5: +
+5: +    for (int i = 1; i <= n; i++) {
+5: +      Point tmp_odom;
+5: +
+5: +      tmp_odom.x = dx * i;
+5: +      tmp_odom.y = dy * i;
+5: +      predict_pos.push_back(tmp_odom);
+5: +    }
+5: +
+5: +    vector<float> predict_yaw;
+5: +
+5: +    for (int i = 1; i <= n; i++) {
+5: +      float tmp_yaw = this->lo_yaw + this->lo_yaw_rate * dt;
+5: +      predict_yaw.push_back(tmp_yaw);
+5: +    }
+5: +
+5: +    this->stanley_predict_pos = predict_pos;
+5: +    this->stanley_predict_yaw = predict_yaw;
+5: +  }
+5: +
+5: +  ////////////////////////////////////////   control_get   ////////////////////////////////////////
+5: +  ////////////////////////////////////////   control_get   ////////////////////////////////////////
+5: +  ////////////////////////////////////////   control_get   ////////////////////////////////////////
+5: +
+5: +  // 제어를 시작할 수 없는 이유. 준비가 됐으면 nullptr.
+5: +  const char * not_ready_reason()
+5: +  {
+5: +    if (lo_odom.x == 0.0 || lo_odom.y == 0.0) {
+5: +      return "/Local/utm 을 아직 받지 못했습니다 (로컬라이제이션 확인)";
+5: +    }
+5: +    if (pl_local_path.size() < 2) {
+5: +      return "/Planning/local_path 를 아직 받지 못했습니다 (플래닝 확인)";
+5: +    }
+5: +    if (pl_local_path_yaw.empty()) {
+5: +      return "/Planning/path_yaw 를 아직 받지 못했습니다 (플래닝 확인)";
+5: +    }
+5: +    if (path_too_far) {
+5: +      return "경로에서 50 m 넘게 떨어져 있습니다 (맵 확인)";
+5: +    }
+5: +    return nullptr;
+5: +  }
+5: +
+5: +  Point get_odom()
+5: +  {
+5: +    return this->lo_odom;
+5: +  }
+5: +
+5: +  bool get_odom_sub_flag()
+5: +  {
+5: +    return this->odom_sub_flag;
+5: +  }
+5: +
+5: +  void set_down_odom_sub_flag()
+5: +  {
+5: +    this->odom_sub_flag = false;
+5: +  }
+5: +
+5: +  double get_yaw()
+5: +  {
+5: +    return this->lo_yaw;
+5: +  }
+5: +
+5: +  float get_speed()
+5: +  {
+5: +    return this->speed;
+5: +  }
+5: +
+5: +  float get_steer()
+5: +  {
+5: +    return this->steer;
+5: +  }
+5: +
+5: +  double get_pd_path_yaw()
+5: +  {
+5: +    if (this->pl_local_path_yaw.empty()) {
+5: +      return 404;
+5: +    }
+5: +    // path_yaw 를 읽는 방식 때문에 yaw 개수가 경로 점 개수보다 적다. 범위를 넘지 않게 한다.
+5: +    size_t index = std::min(
+5: +      static_cast<size_t>(this->closest_index),
+5: +      this->pl_local_path_yaw.size() - 1);
+5: +    return this->pl_local_path_yaw[index];
+5: +  }
+5: +
+5: +  int get_mission_num()
+5: +  {
+5: +    return this->pl_mission_num;
+5: +  }
+5: +
+5: +  double get_control_switch()
+5: +  {
+5: +    return this->pl_control_switch;
+5: +  }
+5: +
+5: +  vector<double> get_local_path_yaw()
+5: +  {
+5: +    return this->pl_local_path_yaw;
+5: +  }
+5: +
+5: +  float get_yawrate()
+5: +  {
+5: +    return this->lo_yaw_rate;
+5: +  }
+5: +
+5: +  double get_path_curvature()
+5: +  {
+5: +    return this->path_curvature;
+5: +  }
+5: +
+5: +  bool get_serial_sub_flag()
+5: +  {
+5: +    return this->serial_sub_flag;
+5: +  }
+5: +
+5: +  void set_down_serial_sub_flag()
+5: +  {
+5: +    this->serial_sub_flag = false;
+5: +  }
+5: +
+5: +  vector<Point> get_relative_path()
+5: +  {
+5: +    return this->pl_local_path;
+5: +  }
+5: +
+5: +  vector<Point> get_stanley_predict_pos()
+5: +  {
+5: +    return this->stanley_predict_pos;
+5: +  }
+5: +
+5: +  vector<float> get_stanley_predict_yaw()
+5: +  {
+5: +    return this->stanley_predict_yaw;
+5: +  }
+5: @@ -474 +460 @@
+5: -#endif // DATA_MANAGE_HPP
+5: +#endif // DATA_MANAGE_HPP
+5: 
+5: Code style divergence in file 'include/control/lat_control.hpp':
+5: 
+5: --- include/control/lat_control.hpp
+5: +++ include/control/lat_control.hpp.uncrustify
+5: @@ -18,2 +18,2 @@
+5: -설명 : 
+5: -2023년 창작차 대회에서 사용한 Control 코드이다. 
+5: +설명 :
+5: +2023년 창작차 대회에서 사용한 Control 코드이다.
+5: @@ -31,15 +31,15 @@
+5: -    double kp_;             // Proportional gain
+5: -    double ki_;             // Integral gain
+5: -    double kd_;             // Derivative gain
+5: -    double target_heading_; // Target heading
+5: -    double prevCrossTrackError;
+5: -    double integral;
+5: -    double default_i_val = 90;
+5: -
+5: -    double anti_windup_max_;
+5: -
+5: -    double crossTrackError_;
+5: -    float speed_;
+5: -    float ego_heading_;
+5: -    double curvature_;
+5: -    double heading_gain_;
+5: +  double kp_;               // Proportional gain
+5: +  double ki_;               // Integral gain
+5: +  double kd_;               // Derivative gain
+5: +  double target_heading_;   // Target heading
+5: +  double prevCrossTrackError;
+5: +  double integral;
+5: +  double default_i_val = 90;
+5: +
+5: +  double anti_windup_max_;
+5: +
+5: +  double crossTrackError_;
+5: +  float speed_;
+5: +  float ego_heading_;
+5: +  double curvature_;
+5: +  double heading_gain_;
+5: @@ -48,16 +48,75 @@
+5: -    Stanley()
+5: -        : prevCrossTrackError(0.0), integral(0.0)
+5: -    {
+5: -        kp_ = 1.6;
+5: -        ki_ = 0.0;
+5: -        kd_ = 1.5;
+5: -        target_heading_ = 0.0;
+5: -        ego_heading_ = 0.0;
+5: -
+5: -        crossTrackError_ = 0.0;
+5: -        speed_ = 0.0;
+5: -        ego_heading_ = 0.0;
+5: -        curvature_ = 0.0;
+5: -
+5: -        anti_windup_max_ = 0.0;
+5: -        heading_gain_ = 0.0;
+5: +  Stanley()
+5: +  : prevCrossTrackError(0.0), integral(0.0)
+5: +  {
+5: +    kp_ = 1.6;
+5: +    ki_ = 0.0;
+5: +    kd_ = 1.5;
+5: +    target_heading_ = 0.0;
+5: +    ego_heading_ = 0.0;
+5: +
+5: +    crossTrackError_ = 0.0;
+5: +    speed_ = 0.0;
+5: +    ego_heading_ = 0.0;
+5: +    curvature_ = 0.0;
+5: +
+5: +    anti_windup_max_ = 0.0;
+5: +    heading_gain_ = 0.0;
+5: +  }
+5: +
+5: +  void set_stanly_gain(double kp, double ki, double kd)
+5: +  {
+5: +    kp_ = kp;
+5: +    ki_ = ki;
+5: +    kd_ = kd;
+5: +  }
+5: +
+5: +  void set_heading_gain(double h_gain)
+5: +  {
+5: +    this->heading_gain_ = h_gain;
+5: +  }
+5: +
+5: +  void set_anti_windup_max(double anti_windup_max)
+5: +  {
+5: +    this->anti_windup_max_ = anti_windup_max;
+5: +  }
+5: +
+5: +  void set_stanly_data(
+5: +    float speed, double target_heading, float ego_heading,
+5: +    double crossTrackError, double curvature = 0.0)
+5: +  {
+5: +    this->speed_ = clip(speed, 0.9F, 10.0F);
+5: +    // this->speed_ = speed;
+5: +    this->target_heading_ = target_heading;
+5: +    this->ego_heading_ = ego_heading;
+5: +    this->crossTrackError_ = crossTrackError;
+5: +    this->curvature_ = curvature;     // 튜닝에 사용하는 param 일단은 0.0
+5: +  }
+5: +
+5: +  double calc_stanly_steer(double dt = 1)
+5: +  {
+5: +    // Calculate the heading error
+5: +    double tmp_headin_error = nomalize_angle(target_heading_ - ego_heading_);
+5: +
+5: +    double headingError = this->heading_gain_ * (tmp_headin_error);
+5: +
+5: +    // Normalize the heading error to the range [-pi, pi]
+5: +    headingError = nomalize_angle(headingError);
+5: +
+5: +    // Calculate the proportional term
+5: +    double proportionalTerm = kp_ * crossTrackError_;
+5: +
+5: +    // Calculate the cross track error derivative
+5: +    double crossTrackErrorDerivative = (crossTrackError_ - prevCrossTrackError) / dt;
+5: +
+5: +    // Calculate the derivative term
+5: +    double derivativeTerm = kd_ * crossTrackErrorDerivative;
+5: +
+5: +    // Update the previous cross track error for the next iteration
+5: +    prevCrossTrackError = crossTrackError_;
+5: +
+5: +    // Calculate the integral term
+5: +    integral += crossTrackError_ * dt;
+5: +    integral = clip(integral, -anti_windup_max_, anti_windup_max_);
+5: +
+5: +    if (this->speed_ < 1) {
+5: +      integral = 0;
+5: @@ -66,89 +125,30 @@
+5: -    void set_stanly_gain(double kp, double ki, double kd)
+5: -    {
+5: -        kp_ = kp;
+5: -        ki_ = ki;
+5: -        kd_ = kd;
+5: -    }
+5: -
+5: -    void set_heading_gain(double h_gain)
+5: -    {
+5: -        this->heading_gain_ = h_gain;
+5: -    }
+5: -
+5: -    void set_anti_windup_max(double anti_windup_max)
+5: -    {
+5: -        this->anti_windup_max_ = anti_windup_max;
+5: -    }
+5: -
+5: -    void set_stanly_data(float speed, double target_heading, float ego_heading,
+5: -                         double crossTrackError, double curvature = 0.0)
+5: -    {
+5: -        this->speed_ = clip(speed, 0.9F, 10.0F);
+5: -        // this->speed_ = speed;
+5: -        this->target_heading_ = target_heading;
+5: -        this->ego_heading_ = ego_heading;
+5: -        this->crossTrackError_ = crossTrackError;
+5: -        this->curvature_ = curvature; // 튜닝에 사용하는 param 일단은 0.0
+5: -    }
+5: -
+5: -    double calc_stanly_steer(double dt = 1)
+5: -    {
+5: -        // Calculate the heading error
+5: -        double tmp_headin_error = nomalize_angle(target_heading_ - ego_heading_);
+5: -
+5: -        double headingError = this->heading_gain_ * (tmp_headin_error);
+5: -
+5: -        // Normalize the heading error to the range [-pi, pi]
+5: -        headingError = nomalize_angle(headingError);
+5: -
+5: -        // Calculate the proportional term
+5: -        double proportionalTerm = kp_ * crossTrackError_;
+5: -
+5: -        // Calculate the cross track error derivative
+5: -        double crossTrackErrorDerivative = (crossTrackError_ - prevCrossTrackError) / dt;
+5: -
+5: -        // Calculate the derivative term
+5: -        double derivativeTerm = kd_ * crossTrackErrorDerivative;
+5: -
+5: -        // Update the previous cross track error for the next iteration
+5: -        prevCrossTrackError = crossTrackError_;
+5: -
+5: -        // Calculate the integral term
+5: -        integral += crossTrackError_ * dt;
+5: -        integral = clip(integral, -anti_windup_max_, anti_windup_max_);
+5: -
+5: -        if (this->speed_ < 1)
+5: -        {
+5: -            integral = 0;
+5: -        }
+5: -
+5: -        double integralTerm = ki_ * integral;
+5: -
+5: -        // Calculate the steering angle using Stanley Method
+5: -        double PID_steer = proportionalTerm + derivativeTerm + integralTerm;
+5: -
+5: -        double steeringAngle = headingError + atan2(PID_steer, (0.1 + this->speed_));
+5: -        steeringAngle = nomalize_angle(steeringAngle);
+5: -
+5: -        return steeringAngle;
+5: -    }
+5: -
+5: -    double get_stanley_P_gain()
+5: -    {
+5: -        return kp_;
+5: -    }
+5: -
+5: -    double get_stanley_integral_val()
+5: -    {
+5: -        return this->integral;
+5: -    }
+5: -
+5: -    float get_speed_in_stanley()
+5: -    {
+5: -        return this->speed_;
+5: -    }
+5: -
+5: -    void set_stanley_integral_val(double inte_init)
+5: -    {
+5: -        this->integral = inte_init;
+5: -    }
+5: +    double integralTerm = ki_ * integral;
+5: +
+5: +    // Calculate the steering angle using Stanley Method
+5: +    double PID_steer = proportionalTerm + derivativeTerm + integralTerm;
+5: +
+5: +    double steeringAngle = headingError + atan2(PID_steer, (0.1 + this->speed_));
+5: +    steeringAngle = nomalize_angle(steeringAngle);
+5: +
+5: +    return steeringAngle;
+5: +  }
+5: +
+5: +  double get_stanley_P_gain()
+5: +  {
+5: +    return kp_;
+5: +  }
+5: +
+5: +  double get_stanley_integral_val()
+5: +  {
+5: +    return this->integral;
+5: +  }
+5: +
+5: +  float get_speed_in_stanley()
+5: +  {
+5: +    return this->speed_;
+5: +  }
+5: +
+5: +  void set_stanley_integral_val(double inte_init)
+5: +  {
+5: +    this->integral = inte_init;
+5: +  }
+5: @@ -160,15 +160,15 @@
+5: -    float lookaheadDistance;
+5: -    float lookahead_gain_;
+5: -    Point targetPoint_;
+5: -
+5: -    Point current_odom_;
+5: -    float speed_;
+5: -    double yaw_;
+5: -    vector<Point> path_;
+5: -    float wheel_base_;
+5: -
+5: -    float ld_min_val;
+5: -    float ld_max_val;
+5: -
+5: -    // tuning param
+5: -    float PP_gain_;
+5: +  float lookaheadDistance;
+5: +  float lookahead_gain_;
+5: +  Point targetPoint_;
+5: +
+5: +  Point current_odom_;
+5: +  float speed_;
+5: +  double yaw_;
+5: +  vector<Point> path_;
+5: +  float wheel_base_;
+5: +
+5: +  float ld_min_val;
+5: +  float ld_max_val;
+5: +
+5: +  // tuning param
+5: +  float PP_gain_;
+5: @@ -177,16 +177,62 @@
+5: -    PurePursuit()
+5: -        : PP_gain_(0.18)
+5: -    {
+5: -        lookaheadDistance = 0.0;
+5: -        lookahead_gain_ = 0.0;
+5: -        targetPoint_.x = 0.0;
+5: -        targetPoint_.y = 0.0;
+5: -
+5: -        current_odom_.x = 0.0;
+5: -        current_odom_.y = 0.0;
+5: -        speed_ = 0.0;
+5: -        yaw_ = 0.0;
+5: -        wheel_base_ = vehicle::WHEEL_BASE;
+5: -
+5: -        ld_min_val = 7.5;
+5: -        ld_max_val = 11;
+5: +  PurePursuit()
+5: +  : PP_gain_(0.18)
+5: +  {
+5: +    lookaheadDistance = 0.0;
+5: +    lookahead_gain_ = 0.0;
+5: +    targetPoint_.x = 0.0;
+5: +    targetPoint_.y = 0.0;
+5: +
+5: +    current_odom_.x = 0.0;
+5: +    current_odom_.y = 0.0;
+5: +    speed_ = 0.0;
+5: +    yaw_ = 0.0;
+5: +    wheel_base_ = vehicle::WHEEL_BASE;
+5: +
+5: +    ld_min_val = 7.5;
+5: +    ld_max_val = 11;
+5: +  }
+5: +
+5: +  void set_pp_gain(double pp_gain, float lookahead)
+5: +  {
+5: +    this->PP_gain_ = pp_gain;
+5: +    this->lookahead_gain_ = lookahead;
+5: +  }
+5: +
+5: +  void set_pp_LD_threshold(float min, float max)
+5: +  {
+5: +    this->ld_min_val = min;
+5: +    this->ld_max_val = max;
+5: +  }
+5: +
+5: +  void set_pp_data(float speed, double yaw, const Point & current_odom, vector<Point> path)
+5: +  {
+5: +    this->speed_ = speed;
+5: +    this->yaw_ = yaw;
+5: +    this->current_odom_ = current_odom;
+5: +    this->path_ = path;
+5: +  }
+5: +
+5: +  void calc_lookahead_distance(float min_dist, float max_dist)
+5: +  {
+5: +    lookaheadDistance = lookahead_gain_ * speed_;
+5: +    lookaheadDistance = std::min(std::max(lookaheadDistance, min_dist), max_dist);
+5: +  }
+5: +
+5: +  Point calc_LA_point(float min_dist, float max_dist, bool is_reverse = false)
+5: +  {
+5: +    calc_lookahead_distance(min_dist, max_dist);
+5: +
+5: +    double minDistance = 1e9;     // 아주 큰 값으로 초기화
+5: +    Point closestPoint;
+5: +
+5: +    // 경로 상의 점들과 나와의 거리 계산
+5: +    for (const Point & p : path_) {
+5: +      double dist_diff = abs(LA_distance(p, is_reverse) - lookaheadDistance);
+5: +      if (dist_diff < minDistance) {
+5: +        minDistance = dist_diff;
+5: +        closestPoint = p;
+5: +      }
+5: +
+5: +      // TODO: minDistance가 일정 값 이상으로 증가하고 있으면
+5: +      // break;
+5: +      // 유턴이나 이런 부분에서의 에러를 잡을 수 있을 것 같다.
+5: @@ -195,4 +241,25 @@
+5: -    void set_pp_gain(double pp_gain, float lookahead)
+5: -    {
+5: -        this->PP_gain_ = pp_gain;
+5: -        this->lookahead_gain_ = lookahead;
+5: +    return closestPoint;
+5: +  }
+5: +
+5: +  double calc_PP_Steer()
+5: +  {
+5: +    // Calculate the relative target point position
+5: +    this->targetPoint_ = calc_LA_point(ld_min_val, ld_max_val);
+5: +
+5: +    // Calculate the distance to the target point
+5: +    double distanceToTarget = LA_distance(targetPoint_);
+5: +
+5: +    // Calculate the angle between the current pose and the target point
+5: +    double numerator = 2 * wheel_base_ * targetPoint_.y;
+5: +    double denominator = distanceToTarget * distanceToTarget * PP_gain_;
+5: +    double angleToTarget = std::atan2(numerator, denominator);
+5: +
+5: +    return angleToTarget;
+5: +  }
+5: +
+5: +  double LA_distance(const Point & p, bool is_reverse = false)
+5: +  {
+5: +    if (is_reverse == false) {
+5: +      return std::sqrt(((p.x + wheel_base_) * (p.x + wheel_base_)) + (p.y * p.y));
+5: +    } else {
+5: +      return std::sqrt(((p.x - wheel_base_) * (p.x - wheel_base_)) + (p.y * p.y));
+5: @@ -200,88 +267,16 @@
+5: -
+5: -    void set_pp_LD_threshold(float min, float max)
+5: -    {
+5: -        this->ld_min_val = min;
+5: -        this->ld_max_val = max;
+5: -    }
+5: -
+5: -    void set_pp_data(float speed, double yaw, const Point &current_odom, vector<Point> path)
+5: -    {
+5: -        this->speed_ = speed;
+5: -        this->yaw_ = yaw;
+5: -        this->current_odom_ = current_odom;
+5: -        this->path_ = path;
+5: -    }
+5: -
+5: -    void calc_lookahead_distance(float min_dist, float max_dist)
+5: -    {
+5: -        lookaheadDistance = lookahead_gain_ * speed_;
+5: -        lookaheadDistance = std::min(std::max(lookaheadDistance, min_dist), max_dist);
+5: -    }
+5: -
+5: -    Point calc_LA_point(float min_dist, float max_dist, bool is_reverse = false)
+5: -    {
+5: -        calc_lookahead_distance(min_dist, max_dist);
+5: -
+5: -        double minDistance = 1e9; // 아주 큰 값으로 초기화
+5: -        Point closestPoint;
+5: -
+5: -        // 경로 상의 점들과 나와의 거리 계산
+5: -        for (const Point &p : path_)
+5: -        {
+5: -            double dist_diff = abs(LA_distance(p, is_reverse) - lookaheadDistance);
+5: -            if (dist_diff < minDistance)
+5: -            {
+5: -                minDistance = dist_diff;
+5: -                closestPoint = p;
+5: -            }
+5: -
+5: -            // TODO: minDistance가 일정 값 이상으로 증가하고 있으면
+5: -            // break;
+5: -            // 유턴이나 이런 부분에서의 에러를 잡을 수 있을 것 같다.
+5: -        }
+5: -
+5: -        return closestPoint;
+5: -    }
+5: -
+5: -    double calc_PP_Steer()
+5: -    {
+5: -        // Calculate the relative target point position
+5: -        this->targetPoint_ = calc_LA_point(ld_min_val, ld_max_val);
+5: -
+5: -        // Calculate the distance to the target point
+5: -        double distanceToTarget = LA_distance(targetPoint_);
+5: -
+5: -        // Calculate the angle between the current pose and the target point
+5: -        double numerator = 2 * wheel_base_ * targetPoint_.y;
+5: -        double denominator = distanceToTarget * distanceToTarget * PP_gain_;
+5: -        double angleToTarget = std::atan2(numerator, denominator);
+5: -
+5: -        return angleToTarget;
+5: -    }
+5: -
+5: -    double LA_distance(const Point &p, bool is_reverse = false)
+5: -    {
+5: -        if (is_reverse == false)
+5: -        {
+5: -            return std::sqrt(((p.x + wheel_base_) * (p.x + wheel_base_)) + (p.y * p.y));
+5: -        }
+5: -        else
+5: -        {
+5: -            return std::sqrt(((p.x - wheel_base_) * (p.x - wheel_base_)) + (p.y * p.y));
+5: -        }
+5: -    }
+5: -
+5: -    double get_LA_distance()
+5: -    {
+5: -        return this->lookaheadDistance;
+5: -    }
+5: -
+5: -    float get_wheel_base()
+5: -    {
+5: -        return this->wheel_base_;
+5: -    }
+5: -
+5: -    Point get_target_point()
+5: -    {
+5: -        return this->targetPoint_;
+5: -    }
+5: +  }
+5: +
+5: +  double get_LA_distance()
+5: +  {
+5: +    return this->lookaheadDistance;
+5: +  }
+5: +
+5: +  float get_wheel_base()
+5: +  {
+5: +    return this->wheel_base_;
+5: +  }
+5: +
+5: +  Point get_target_point()
+5: +  {
+5: +    return this->targetPoint_;
+5: +  }
+5: @@ -293,17 +288,17 @@
+5: -    CallbackClass *cb_data_;
+5: -
+5: -    float pp_weight_, stanly_weight_;
+5: -    double deltaMax;
+5: -
+5: -    double pre_com_steer;
+5: -    float com_steer_alpha;
+5: -
+5: -    double PP_steer;
+5: -    double stanly_steer;
+5: -
+5: -    Stanley preview_instance;
+5: -    float preview_dt = 0.0;
+5: -    int preview_num = 0;
+5: -    float preview_h_e_gain = 1.0;
+5: -    vector<float> preview_gain;
+5: -    vector<double> steers;
+5: +  CallbackClass * cb_data_;
+5: +
+5: +  float pp_weight_, stanly_weight_;
+5: +  double deltaMax;
+5: +
+5: +  double pre_com_steer;
+5: +  float com_steer_alpha;
+5: +
+5: +  double PP_steer;
+5: +  double stanly_steer;
+5: +
+5: +  Stanley preview_instance;
+5: +  float preview_dt = 0.0;
+5: +  int preview_num = 0;
+5: +  float preview_h_e_gain = 1.0;
+5: +  vector<float> preview_gain;
+5: +  vector<double> steers;
+5: @@ -312,12 +307,55 @@
+5: -    CombinedSteer(CallbackClass *cb_data)
+5: -        : PurePursuit(), Stanley(), pp_weight_(0.45),
+5: -          stanly_weight_(0.55), deltaMax(vehicle::MAX_STEER)
+5: -    {
+5: -
+5: -        this->cb_data_ = cb_data;
+5: -
+5: -        pre_com_steer = 0;
+5: -        com_steer_alpha = 0.9;
+5: -
+5: -        PP_steer = 0.0;
+5: -        stanly_steer = 0.0;
+5: +  CombinedSteer(CallbackClass * cb_data)
+5: +  : PurePursuit(), Stanley(), pp_weight_(0.45),
+5: +    stanly_weight_(0.55), deltaMax(vehicle::MAX_STEER)
+5: +  {
+5: +
+5: +    this->cb_data_ = cb_data;
+5: +
+5: +    pre_com_steer = 0;
+5: +    com_steer_alpha = 0.9;
+5: +
+5: +    PP_steer = 0.0;
+5: +    stanly_steer = 0.0;
+5: +  }
+5: +
+5: +  void set_combine_PP_ratio(float pp_weight)
+5: +  {
+5: +    pp_weight_ = pp_weight;
+5: +    stanly_weight_ = 1 - pp_weight;
+5: +  }
+5: +
+5: +  void set_preview_param(float dt, vector<float> gain)
+5: +  {
+5: +    this->preview_dt = dt;
+5: +    this->preview_num = gain.size();
+5: +    this->preview_gain = gain;
+5: +  }
+5: +
+5: +  void set_preview_heading_error_gain(float h_e_g)
+5: +  {
+5: +    this->preview_h_e_gain = h_e_g;
+5: +  }
+5: +
+5: +  double calc_combined_steer()
+5: +  {
+5: +    double purePursuitSteering = calc_PP_Steer();
+5: +    PP_steer = clip(purePursuitSteering, -deltaMax, deltaMax);
+5: +
+5: +    if (cb_data_->get_odom_sub_flag()) {
+5: +      // stanley preview
+5: +      double preview_steer = this->calc_stanly_preview();
+5: +      preview_steer = clip(preview_steer, -deltaMax, deltaMax);
+5: +      // stanley
+5: +      double now_stanley_steer = calc_stanly_steer();
+5: +      now_stanley_steer = clip(now_stanley_steer, -deltaMax, deltaMax);
+5: +
+5: +      float sum_preview_gain = 0.0;
+5: +      for (size_t i = 0; i < preview_gain.size(); i++) {
+5: +        sum_preview_gain += preview_gain[i];
+5: +      }
+5: +
+5: +      // sum both steer
+5: +      double both_steer = (1 - sum_preview_gain) * now_stanley_steer + preview_steer;
+5: +      this->stanly_steer = clip(both_steer, -deltaMax, deltaMax);
+5: +
+5: +      cb_data_->set_down_odom_sub_flag();
+5: @@ -326,4 +364,39 @@
+5: -    void set_combine_PP_ratio(float pp_weight)
+5: -    {
+5: -        pp_weight_ = pp_weight;
+5: -        stanly_weight_ = 1 - pp_weight;
+5: +    // Combine the steering angles
+5: +    double combinedSteering = pp_weight_ * PP_steer + stanly_weight_ * stanly_steer;
+5: +    double combined_steer = clip(combinedSteering, -deltaMax, deltaMax);
+5: +
+5: +    double com_lpf_steer = low_pass_filter(combined_steer, pre_com_steer, com_steer_alpha);
+5: +    pre_com_steer = com_lpf_steer;
+5: +
+5: +    return com_lpf_steer;
+5: +  }
+5: +
+5: +  double calc_stanly_preview()
+5: +  {
+5: +    this->steers.clear();
+5: +
+5: +    double sum_preview_steer = 0.0;
+5: +    // sync stanly n preview p gain
+5: +    preview_instance.set_stanly_gain(get_stanley_P_gain(), 0.0, 0.0);
+5: +    preview_instance.set_heading_gain(this->preview_h_e_gain);
+5: +    // preview_instance.set_heading_gain(1.0);
+5: +
+5: +    cb_data_->calc_predict_odometry_for_stanley(preview_dt, preview_num);
+5: +
+5: +    vector<Point> predict_pos = cb_data_->get_stanley_predict_pos();
+5: +    vector<float> predict_yaw = cb_data_->get_stanley_predict_yaw();
+5: +
+5: +    for (int i = 0; i < preview_num; i++) {
+5: +      // calc_n_get_lat_error를 호출하면 closest point를 찾고 그 인덱스는
+5: +      // closest_index에 저장된다.
+5: +      double lat_error = cb_data_->calc_n_get_lat_error(predict_pos[i]);
+5: +      float tmp_speed = get_speed_in_stanley();
+5: +      double target_yaw = cb_data_->get_pd_path_yaw();
+5: +
+5: +      preview_instance.set_stanly_data(tmp_speed, target_yaw, predict_yaw[i], lat_error);
+5: +      double steer = preview_instance.calc_stanly_steer();
+5: +      steer = clip(steer, -deltaMax, deltaMax);
+5: +
+5: +      sum_preview_steer += steer * this->preview_gain[i];
+5: +
+5: +      steers.push_back(steer);
+5: @@ -332,97 +405,17 @@
+5: -    void set_preview_param(float dt, vector<float> gain)
+5: -    {
+5: -        this->preview_dt = dt;
+5: -        this->preview_num = gain.size();
+5: -        this->preview_gain = gain;
+5: -    }
+5: -
+5: -    void set_preview_heading_error_gain(float h_e_g)
+5: -    {
+5: -        this->preview_h_e_gain = h_e_g;
+5: -    }
+5: -
+5: -    double calc_combined_steer()
+5: -    {
+5: -        double purePursuitSteering = calc_PP_Steer();
+5: -        PP_steer = clip(purePursuitSteering, -deltaMax, deltaMax);
+5: -
+5: -        if (cb_data_->get_odom_sub_flag())
+5: -        {
+5: -            // stanley preview
+5: -            double preview_steer = this->calc_stanly_preview();
+5: -            preview_steer = clip(preview_steer, -deltaMax, deltaMax);
+5: -            // stanley
+5: -            double now_stanley_steer = calc_stanly_steer();
+5: -            now_stanley_steer = clip(now_stanley_steer, -deltaMax, deltaMax);
+5: -
+5: -            float sum_preview_gain = 0.0;
+5: -            for (size_t i = 0; i < preview_gain.size(); i++)
+5: -            {
+5: -                sum_preview_gain += preview_gain[i];
+5: -            }
+5: -
+5: -            // sum both steer
+5: -            double both_steer = (1-sum_preview_gain) * now_stanley_steer + preview_steer;
+5: -            this->stanly_steer = clip(both_steer, -deltaMax, deltaMax);
+5: -
+5: -            cb_data_->set_down_odom_sub_flag();
+5: -        }
+5: -
+5: -        // Combine the steering angles
+5: -        double combinedSteering = pp_weight_ * PP_steer + stanly_weight_ * stanly_steer;
+5: -        double combined_steer = clip(combinedSteering, -deltaMax, deltaMax);
+5: -
+5: -        double com_lpf_steer = low_pass_filter(combined_steer, pre_com_steer, com_steer_alpha);
+5: -        pre_com_steer = com_lpf_steer;
+5: -
+5: -        return com_lpf_steer;
+5: -    }
+5: -
+5: -    double calc_stanly_preview()
+5: -    {
+5: -        this->steers.clear();
+5: -
+5: -        double sum_preview_steer = 0.0;
+5: -        // sync stanly n preview p gain
+5: -        preview_instance.set_stanly_gain(get_stanley_P_gain(), 0.0, 0.0);
+5: -        preview_instance.set_heading_gain(this->preview_h_e_gain);
+5: -        // preview_instance.set_heading_gain(1.0);
+5: -
+5: -        cb_data_->calc_predict_odometry_for_stanley(preview_dt, preview_num);
+5: -
+5: -        vector<Point> predict_pos = cb_data_->get_stanley_predict_pos();
+5: -        vector<float> predict_yaw = cb_data_->get_stanley_predict_yaw();
+5: -
+5: -        for (int i = 0; i < preview_num; i++){
+5: -            // calc_n_get_lat_error를 호출하면 closest point를 찾고 그 인덱스는
+5: -            // closest_index에 저장된다.
+5: -            double lat_error = cb_data_->calc_n_get_lat_error(predict_pos[i]);
+5: -            float tmp_speed = get_speed_in_stanley();
+5: -            double target_yaw = cb_data_->get_pd_path_yaw();
+5: -
+5: -            preview_instance.set_stanly_data(tmp_speed, target_yaw, predict_yaw[i], lat_error);
+5: -            double steer = preview_instance.calc_stanly_steer();
+5: -            steer = clip(steer, -deltaMax, deltaMax);
+5: -
+5: -            sum_preview_steer += steer * this->preview_gain[i];
+5: -
+5: -            steers.push_back(steer);
+5: -        }
+5: -
+5: -        return sum_preview_steer;
+5: -    }
+5: -
+5: -    double get_PP_steer()
+5: -    {
+5: -        return PP_steer;
+5: -    }
+5: -
+5: -    double get_stanly_steer()
+5: -    {
+5: -        return stanly_steer;
+5: -    }
+5: -
+5: -    vector<double> get_preview_steers()
+5: -    {
+5: -        return this->steers;
+5: -    }
+5: +    return sum_preview_steer;
+5: +  }
+5: +
+5: +  double get_PP_steer()
+5: +  {
+5: +    return PP_steer;
+5: +  }
+5: +
+5: +  double get_stanly_steer()
+5: +  {
+5: +    return stanly_steer;
+5: +  }
+5: +
+5: +  vector<double> get_preview_steers()
+5: +  {
+5: +    return this->steers;
+5: +  }
+5: @@ -435,7 +428,7 @@
+5: -    double RPP_gain_ = 0.0;
+5: -    Point R_target_point_;
+5: -    double deltaMax = vehicle::MAX_STEER;
+5: -    double reverse_yaw = 0.0;
+5: -
+5: -    float R_ld_min_val = 3.0;
+5: -    float R_ld_max_val = 5.0;
+5: +  double RPP_gain_ = 0.0;
+5: +  Point R_target_point_;
+5: +  double deltaMax = vehicle::MAX_STEER;
+5: +  double reverse_yaw = 0.0;
+5: +
+5: +  float R_ld_min_val = 3.0;
+5: +  float R_ld_max_val = 5.0;
+5: @@ -444,42 +437,42 @@
+5: -    ReversePurePursuit()
+5: -    {
+5: -    }
+5: -
+5: -    void set_R_PP_data(float speed, double yaw, const Point &current_odom, vector<Point> path)
+5: -    {
+5: -        reverse_yaw = nomalize_angle(yaw - M_PI);
+5: -        this->set_pp_data(speed, reverse_yaw, current_odom, path);
+5: -    }
+5: -
+5: -    void set_R_pp_LD_threshold(float min, float max)
+5: -    {
+5: -        this->R_ld_min_val = min;
+5: -        this->R_ld_max_val = max;
+5: -    }
+5: -
+5: -    void set_R_PP_gain(double rpp_gain, float lookahead)
+5: -    {
+5: -        this->RPP_gain_ = rpp_gain;
+5: -        this->set_pp_gain(rpp_gain, lookahead);
+5: -    }
+5: -
+5: -    double calc_R_PP_steer()
+5: -    {
+5: -        this->R_target_point_ = this->calc_LA_point(R_ld_min_val, R_ld_max_val, true);
+5: -
+5: -        float wheel_base = this->get_wheel_base();
+5: -        double tmp_y = R_target_point_.y;
+5: -
+5: -        double la_dist = LA_distance(R_target_point_, true);
+5: -
+5: -        double numerator = 2 * wheel_base * tmp_y;
+5: -        double denominator = la_dist * la_dist * RPP_gain_;
+5: -        double angleToTarget = std::atan2(numerator, denominator);
+5: -
+5: -        return clip(angleToTarget, -deltaMax, deltaMax);
+5: -    }
+5: -
+5: -    double get_reverse_yaw()
+5: -    {
+5: -        return this->reverse_yaw;
+5: -    }
+5: +  ReversePurePursuit()
+5: +  {
+5: +  }
+5: +
+5: +  void set_R_PP_data(float speed, double yaw, const Point & current_odom, vector<Point> path)
+5: +  {
+5: +    reverse_yaw = nomalize_angle(yaw - M_PI);
+5: +    this->set_pp_data(speed, reverse_yaw, current_odom, path);
+5: +  }
+5: +
+5: +  void set_R_pp_LD_threshold(float min, float max)
+5: +  {
+5: +    this->R_ld_min_val = min;
+5: +    this->R_ld_max_val = max;
+5: +  }
+5: +
+5: +  void set_R_PP_gain(double rpp_gain, float lookahead)
+5: +  {
+5: +    this->RPP_gain_ = rpp_gain;
+5: +    this->set_pp_gain(rpp_gain, lookahead);
+5: +  }
+5: +
+5: +  double calc_R_PP_steer()
+5: +  {
+5: +    this->R_target_point_ = this->calc_LA_point(R_ld_min_val, R_ld_max_val, true);
+5: +
+5: +    float wheel_base = this->get_wheel_base();
+5: +    double tmp_y = R_target_point_.y;
+5: +
+5: +    double la_dist = LA_distance(R_target_point_, true);
+5: +
+5: +    double numerator = 2 * wheel_base * tmp_y;
+5: +    double denominator = la_dist * la_dist * RPP_gain_;
+5: +    double angleToTarget = std::atan2(numerator, denominator);
+5: +
+5: +    return clip(angleToTarget, -deltaMax, deltaMax);
+5: +  }
+5: +
+5: +  double get_reverse_yaw()
+5: +  {
+5: +    return this->reverse_yaw;
+5: +  }
+5: 
+5: Code style divergence in file 'include/control/lon_control.hpp':
+5: 
+5: --- include/control/lon_control.hpp
+5: +++ include/control/lon_control.hpp.uncrustify
+5: @@ -27 +27 @@
+5: -    std::shared_ptr<PIDController> brake_pid;
+5: +  std::shared_ptr<PIDController> brake_pid;
+5: @@ -29,3 +29,3 @@
+5: -    float current_speed_ = 0.0;
+5: -    float target_speed_ = 0.0;
+5: -    float enable_brake_error = 0.6;
+5: +  float current_speed_ = 0.0;
+5: +  float target_speed_ = 0.0;
+5: +  float enable_brake_error = 0.6;
+5: @@ -33,4 +33,4 @@
+5: -    // 브레이크 PD 의 미분 필터 계수.
+5: -    // 게인은 예전 ERP42 (상태 주기 0.05 s, 계수 0.3) 에서 맞춘 것이다. 주기가 0.02 s 로 바뀌어도
+5: -    // 미분값과 필터가 시간으로 볼 때 예전과 같게 움직이도록 계수를 주기에 맞춰 환산한다 (약 0.13).
+5: -    const float d_filter_alpha = 1.0 - std::pow(1.0 - 0.3, vehicle::FEEDBACK_PERIOD / 0.05);
+5: +  // 브레이크 PD 의 미분 필터 계수.
+5: +  // 게인은 예전 ERP42 (상태 주기 0.05 s, 계수 0.3) 에서 맞춘 것이다. 주기가 0.02 s 로 바뀌어도
+5: +  // 미분값과 필터가 시간으로 볼 때 예전과 같게 움직이도록 계수를 주기에 맞춰 환산한다 (약 0.13).
+5: +  const float d_filter_alpha = 1.0 - std::pow(1.0 - 0.3, vehicle::FEEDBACK_PERIOD / 0.05);
+5: @@ -39,3 +39,30 @@
+5: -    LonController()
+5: -    {
+5: -        brake_pid = std::make_shared<PIDController>(-1.0, 1.0);
+5: +  LonController()
+5: +  {
+5: +    brake_pid = std::make_shared<PIDController>(-1.0, 1.0);
+5: +  }
+5: +
+5: +  void set_lon_data(float current_speed)
+5: +  {
+5: +    this->current_speed_ = current_speed;
+5: +  }
+5: +
+5: +  void set_lon_target_speed(float target_speed)
+5: +  {
+5: +    this->target_speed_ = target_speed;
+5: +  }
+5: +
+5: +  float get_target_speed()
+5: +  {
+5: +    return this->target_speed_;
+5: +  }
+5: +
+5: +  void set_enable_brake_error(float enable_error)
+5: +  {
+5: +    this->enable_brake_error = enable_error;
+5: +  }
+5: +
+5: +  void set_brake_PD_gain(double br_kp, double br_kd)
+5: +  {
+5: +    // 목표 속도가 1.7 ~ 2.5 m/s 일 때 P 게인을 조금 키운다 (예전 코드의 실제 동작과 같음).
+5: +    if (this->target_speed_ < 2.5 && this->target_speed_ > 1.7) {
+5: +      br_kp += this->target_speed_ * 0.004;
+5: @@ -42,0 +70,2 @@
+5: +    brake_pid->set_PID_gain(br_kp, br_kd);
+5: +  }
+5: @@ -44,3 +73,17 @@
+5: -    void set_lon_data(float current_speed)
+5: -    {
+5: -        this->current_speed_ = current_speed;
+5: +  // 반환: gas = 속도 명령 [m/s], brake = 브레이크 명령 [%]
+5: +  GasAndBrake calc_gas_n_brake()
+5: +  {
+5: +    float error = target_speed_ - current_speed_;
+5: +
+5: +    GasAndBrake return_val;
+5: +    return_val.gas = clip(static_cast<double>(target_speed_), 0.0, vehicle::MAX_SPEED);
+5: +
+5: +    if (-2 * this->enable_brake_error < error) {
+5: +      // 목표보다 느리거나 조금 빠름 -> 브레이크 없음
+5: +      return_val.brake = 0.0;
+5: +    } else {
+5: +      // 목표보다 많이 빠름 -> 브레이크로 감속을 돕는다
+5: +      double brake_val = brake_pid->compute(
+5: +        target_speed_, current_speed_, d_filter_alpha,
+5: +        vehicle::FEEDBACK_PERIOD);
+5: +      return_val.brake = vehicle::BRAKE_BASE - brake_val * vehicle::BRAKE_SCALE;
+5: @@ -47,0 +91 @@
+5: +    return_val.brake = clip(return_val.brake, 0.0, vehicle::BRAKE_MAX);
+5: @@ -49,48 +93,2 @@
+5: -    void set_lon_target_speed(float target_speed)
+5: -    {
+5: -        this->target_speed_ = target_speed;
+5: -    }
+5: -
+5: -    float get_target_speed()
+5: -    {
+5: -        return this->target_speed_;
+5: -    }
+5: -
+5: -    void set_enable_brake_error(float enable_error)
+5: -    {
+5: -        this->enable_brake_error = enable_error;
+5: -    }
+5: -
+5: -    void set_brake_PD_gain(double br_kp, double br_kd)
+5: -    {
+5: -        // 목표 속도가 1.7 ~ 2.5 m/s 일 때 P 게인을 조금 키운다 (예전 코드의 실제 동작과 같음).
+5: -        if (this->target_speed_ < 2.5 && this->target_speed_ > 1.7)
+5: -        {
+5: -            br_kp += this->target_speed_ * 0.004;
+5: -        }
+5: -        brake_pid->set_PID_gain(br_kp, br_kd);
+5: -    }
+5: -
+5: -    // 반환: gas = 속도 명령 [m/s], brake = 브레이크 명령 [%]
+5: -    GasAndBrake calc_gas_n_brake()
+5: -    {
+5: -        float error = target_speed_ - current_speed_;
+5: -
+5: -        GasAndBrake return_val;
+5: -        return_val.gas = clip(static_cast<double>(target_speed_), 0.0, vehicle::MAX_SPEED);
+5: -
+5: -        if (-2 * this->enable_brake_error < error)
+5: -        {
+5: -            // 목표보다 느리거나 조금 빠름 -> 브레이크 없음
+5: -            return_val.brake = 0.0;
+5: -        }
+5: -        else
+5: -        {
+5: -            // 목표보다 많이 빠름 -> 브레이크로 감속을 돕는다
+5: -            double brake_val = brake_pid->compute(target_speed_, current_speed_, d_filter_alpha, vehicle::FEEDBACK_PERIOD);
+5: -            return_val.brake = vehicle::BRAKE_BASE - brake_val * vehicle::BRAKE_SCALE;
+5: -        }
+5: -        return_val.brake = clip(return_val.brake, 0.0, vehicle::BRAKE_MAX);
+5: -
+5: -        return return_val;
+5: -    }
+5: +    return return_val;
+5: +  }
+5: 
+5: Code style divergence in file 'include/control/mission_param.hpp':
+5: 
+5: --- include/control/mission_param.hpp
+5: +++ include/control/mission_param.hpp.uncrustify
+5: @@ -59,19 +59,19 @@
+5: -    CallbackClass *cb_data_;
+5: -    CombinedSteer *lat_con_;
+5: -    ReversePurePursuit *R_lat_con_;
+5: -    LonController *long_con_;
+5: -
+5: -    json file_data;
+5: -    json missions_data;
+5: -
+5: -    const std::string LON_KEY = "______lllllllllllllll______";
+5: -    const std::string LAT_KEY = "______---------------______";
+5: -
+5: -    float curvature_gain = 0.0;
+5: -    float pre_curv_speed_clip = 0.0;
+5: -
+5: -    static std::string gain_file_path()
+5: -    {
+5: -        return ament_index_cpp::get_package_share_directory("control") +
+5: -            "/config/" + GAIN_FILE_NAME + ".json";
+5: -    }
+5: +  CallbackClass * cb_data_;
+5: +  CombinedSteer * lat_con_;
+5: +  ReversePurePursuit * R_lat_con_;
+5: +  LonController * long_con_;
+5: +
+5: +  json file_data;
+5: +  json missions_data;
+5: +
+5: +  const std::string LON_KEY = "______lllllllllllllll______";
+5: +  const std::string LAT_KEY = "______---------------______";
+5: +
+5: +  float curvature_gain = 0.0;
+5: +  float pre_curv_speed_clip = 0.0;
+5: +
+5: +  static std::string gain_file_path()
+5: +  {
+5: +    return ament_index_cpp::get_package_share_directory("control") +
+5: +           "/config/" + GAIN_FILE_NAME + ".json";
+5: +  }
+5: @@ -80,19 +80,131 @@
+5: -    ControlGainTuning(CallbackClass *cb_data, CombinedSteer *lat_con, ReversePurePursuit *R_lat_con, LonController *long_con)
+5: -    {
+5: -        this->cb_data_ = cb_data;
+5: -        this->lat_con_ = lat_con;
+5: -        this->R_lat_con_ = R_lat_con;
+5: -        this->long_con_ = long_con;
+5: -
+5: -        read_json();
+5: -    }
+5: -
+5: -    // 게인 파일을 읽는다. 읽지 못하면 이유를 알리고 컨트롤을 시작하지 않는다.
+5: -    void read_json()
+5: -    {
+5: -        std::string file_path = gain_file_path();
+5: -
+5: -        std::ifstream input_file(file_path);
+5: -        if (!input_file.is_open())
+5: -        {
+5: -            throw std::runtime_error("게인 파일을 열 수 없습니다: " + file_path);
+5: +  ControlGainTuning(
+5: +    CallbackClass * cb_data, CombinedSteer * lat_con,
+5: +    ReversePurePursuit * R_lat_con, LonController * long_con)
+5: +  {
+5: +    this->cb_data_ = cb_data;
+5: +    this->lat_con_ = lat_con;
+5: +    this->R_lat_con_ = R_lat_con;
+5: +    this->long_con_ = long_con;
+5: +
+5: +    read_json();
+5: +  }
+5: +
+5: +  // 게인 파일을 읽는다. 읽지 못하면 이유를 알리고 컨트롤을 시작하지 않는다.
+5: +  void read_json()
+5: +  {
+5: +    std::string file_path = gain_file_path();
+5: +
+5: +    std::ifstream input_file(file_path);
+5: +    if (!input_file.is_open()) {
+5: +      throw std::runtime_error("게인 파일을 열 수 없습니다: " + file_path);
+5: +    }
+5: +
+5: +    try {
+5: +      input_file >> this->file_data;
+5: +      this->missions_data = file_data.at("missions");
+5: +      this->curvature_gain = file_data.at("safety_factor").at("curvature_gain");
+5: +      // normal 에 필요한 값이 모두 있는지 시작할 때 한 번 확인한다.
+5: +      set_normal_param();
+5: +    } catch (const json::exception & e) {
+5: +      throw std::runtime_error("게인 파일 내용이 잘못되었습니다: " + file_path + " (" + e.what() + ")");
+5: +    }
+5: +
+5: +    std::cout << "gain file : " << file_path << std::endl;
+5: +  }
+5: +
+5: +  void set_normal_param()
+5: +  {
+5: +    const json & normal_data = file_data.at("normal");
+5: +
+5: +    // longitudinal param
+5: +    const json & lon_param = normal_data.at(LON_KEY);
+5: +    long_con_->set_brake_PD_gain(
+5: +      lon_param.at("PD_brake_gain").at(0), lon_param.at(
+5: +        "PD_brake_gain").at(1));
+5: +    long_con_->set_enable_brake_error(lon_param.at("enable_brake_error"));
+5: +
+5: +    // lateral param
+5: +    const json & lat_param = normal_data.at(LAT_KEY);
+5: +    // stanly------------------------------------------------------------------------
+5: +    lat_con_->set_stanly_gain(
+5: +      lat_param.at("stanly_gain").at(0), lat_param.at("stanly_gain").at(
+5: +        1), lat_param.at("stanly_gain").at(2));
+5: +    lat_con_->set_heading_gain(lat_param.at("stanly_heading_gain"));
+5: +    lat_con_->set_anti_windup_max(lat_param.at("anti_windup_val"));
+5: +
+5: +    // preview
+5: +    std::vector<float> preview_gain = lat_param.at("stanley_preview_gain");
+5: +    lat_con_->set_preview_param(lat_param.at("stanley_preview_dt"), preview_gain);
+5: +    lat_con_->set_preview_heading_error_gain(lat_param.at("stanley_preview_h_e_gain"));
+5: +
+5: +    // pp------------------------------------------------------------------------------
+5: +    lat_con_->set_pp_LD_threshold(lat_param.at("PP_LD").at(0), lat_param.at("PP_LD").at(1));
+5: +    lat_con_->set_pp_gain(lat_param.at("PP_gain").at(0), lat_param.at("PP_gain").at(1));
+5: +
+5: +    // reverse pp------------------------------------------------------------------------------
+5: +    R_lat_con_->set_R_PP_gain(lat_param.at("R_PP_gain").at(0), lat_param.at("R_PP_gain").at(1));
+5: +    R_lat_con_->set_R_pp_LD_threshold(
+5: +      lat_param.at("reverse_PP_LD").at(0),
+5: +      lat_param.at("reverse_PP_LD").at(1));
+5: +
+5: +    // combine------------------------------------------------------------------------------
+5: +    lat_con_->set_combine_PP_ratio(lat_param.at("combine_PP_ratio"));
+5: +  }
+5: +
+5: +  // normal 값을 적용한 뒤 지금 미션의 값으로 덮어쓴다. 반환: 미션 때문에 바뀐 항목 수
+5: +  int set_mission_param()
+5: +  {
+5: +    this->set_normal_param();
+5: +
+5: +    int param_change_count = 0;
+5: +    std::string mission_key = std::to_string(cb_data_->get_mission_num());
+5: +
+5: +    if (missions_data.find(mission_key) == missions_data.end()) {
+5: +      return param_change_count;
+5: +    }
+5: +    const json & mission_data = missions_data.at(mission_key);
+5: +
+5: +    if (mission_data.find(LON_KEY) != mission_data.end()) {
+5: +      const json & lon_param = mission_data.at(LON_KEY);
+5: +      if (lon_param.find("PD_brake_gain") != lon_param.end()) {
+5: +        param_change_count++;
+5: +        long_con_->set_brake_PD_gain(
+5: +          lon_param.at("PD_brake_gain").at(0),
+5: +          lon_param.at("PD_brake_gain").at(1));
+5: +      }
+5: +      if (lon_param.find("enable_brake_error") != lon_param.end()) {
+5: +        param_change_count++;
+5: +        long_con_->set_enable_brake_error(lon_param.at("enable_brake_error"));
+5: +      }
+5: +    }
+5: +
+5: +    if (mission_data.find(LAT_KEY) != mission_data.end()) {
+5: +      const json & lat_param = mission_data.at(LAT_KEY);
+5: +      // stanly------------------------------------------------------------------------
+5: +      if (lat_param.find("stanly_gain") != lat_param.end()) {
+5: +        param_change_count++;
+5: +        lat_con_->set_stanly_gain(
+5: +          lat_param.at("stanly_gain").at(0),
+5: +          lat_param.at("stanly_gain").at(1), lat_param.at("stanly_gain").at(2));
+5: +      }
+5: +      if (lat_param.find("anti_windup_val") != lat_param.end()) {
+5: +        param_change_count++;
+5: +        lat_con_->set_anti_windup_max(lat_param.at("anti_windup_val"));
+5: +      }
+5: +      if (lat_param.find("stanly_heading_gain") != lat_param.end()) {
+5: +        param_change_count++;
+5: +        lat_con_->set_heading_gain(lat_param.at("stanly_heading_gain"));
+5: +      }
+5: +
+5: +      // preview (dt 와 gain 은 같이 적어야 한다)
+5: +      if (lat_param.find("stanley_preview_dt") != lat_param.end() ||
+5: +        lat_param.find("stanley_preview_gain") != lat_param.end())
+5: +      {
+5: +        try {
+5: +          std::vector<float> preview_gain = lat_param.at("stanley_preview_gain");
+5: +          lat_con_->set_preview_param(lat_param.at("stanley_preview_dt"), preview_gain);
+5: +          param_change_count++;
+5: +        } catch (const json::exception &) {
+5: +          std::cerr << "미션 " << mission_key <<
+5: +            ": stanley_preview_dt 와 stanley_preview_gain 은 같이 적어야 합니다." << std::endl;
+5: +          std::exit(EXIT_FAILURE);
+5: @@ -100,36 +212,3 @@
+5: -
+5: -        try
+5: -        {
+5: -            input_file >> this->file_data;
+5: -            this->missions_data = file_data.at("missions");
+5: -            this->curvature_gain = file_data.at("safety_factor").at("curvature_gain");
+5: -            // normal 에 필요한 값이 모두 있는지 시작할 때 한 번 확인한다.
+5: -            set_normal_param();
+5: -        }
+5: -        catch (const json::exception &e)
+5: -        {
+5: -            throw std::runtime_error("게인 파일 내용이 잘못되었습니다: " + file_path + " (" + e.what() + ")");
+5: -        }
+5: -
+5: -        std::cout << "gain file : " << file_path << std::endl;
+5: -    }
+5: -
+5: -    void set_normal_param()
+5: -    {
+5: -        const json &normal_data = file_data.at("normal");
+5: -
+5: -        // longitudinal param
+5: -        const json &lon_param = normal_data.at(LON_KEY);
+5: -        long_con_->set_brake_PD_gain(lon_param.at("PD_brake_gain").at(0), lon_param.at("PD_brake_gain").at(1));
+5: -        long_con_->set_enable_brake_error(lon_param.at("enable_brake_error"));
+5: -
+5: -        // lateral param
+5: -        const json &lat_param = normal_data.at(LAT_KEY);
+5: -        // stanly------------------------------------------------------------------------
+5: -        lat_con_->set_stanly_gain(lat_param.at("stanly_gain").at(0), lat_param.at("stanly_gain").at(1), lat_param.at("stanly_gain").at(2));
+5: -        lat_con_->set_heading_gain(lat_param.at("stanly_heading_gain"));
+5: -        lat_con_->set_anti_windup_max(lat_param.at("anti_windup_val"));
+5: -
+5: -        // preview
+5: -        std::vector<float> preview_gain = lat_param.at("stanley_preview_gain");
+5: -        lat_con_->set_preview_param(lat_param.at("stanley_preview_dt"), preview_gain);
+5: +      }
+5: +      if (lat_param.find("stanley_preview_h_e_gain") != lat_param.end()) {
+5: +        param_change_count++;
+5: @@ -137,2 +216,5 @@
+5: -
+5: -        // pp------------------------------------------------------------------------------
+5: +      }
+5: +
+5: +      // pp------------------------------------------------------------------------------
+5: +      if (lat_param.find("PP_LD") != lat_param.end()) {
+5: +        param_change_count++;
+5: @@ -139,0 +222,3 @@
+5: +      }
+5: +      if (lat_param.find("PP_gain") != lat_param.end()) {
+5: +        param_change_count++;
+5: @@ -141,2 +226,4 @@
+5: -
+5: -        // reverse pp------------------------------------------------------------------------------
+5: +      }
+5: +      // reverse pp------------------------------------------------------------------------------
+5: +      if (lat_param.find("R_PP_gain") != lat_param.end()) {
+5: +        param_change_count++;
+5: @@ -144,3 +231,10 @@
+5: -        R_lat_con_->set_R_pp_LD_threshold(lat_param.at("reverse_PP_LD").at(0), lat_param.at("reverse_PP_LD").at(1));
+5: -
+5: -        // combine------------------------------------------------------------------------------
+5: +      }
+5: +      if (lat_param.find("reverse_PP_LD") != lat_param.end()) {
+5: +        param_change_count++;
+5: +        R_lat_con_->set_R_pp_LD_threshold(
+5: +          lat_param.at("reverse_PP_LD").at(0),
+5: +          lat_param.at("reverse_PP_LD").at(1));
+5: +      }
+5: +      // combine------------------------------------------------------------------------------
+5: +      if (lat_param.find("combine_PP_ratio") != lat_param.end()) {
+5: +        param_change_count++;
+5: @@ -148,153 +242,46 @@
+5: -    }
+5: -
+5: -    // normal 값을 적용한 뒤 지금 미션의 값으로 덮어쓴다. 반환: 미션 때문에 바뀐 항목 수
+5: -    int set_mission_param()
+5: -    {
+5: -        this->set_normal_param();
+5: -
+5: -        int param_change_count = 0;
+5: -        std::string mission_key = std::to_string(cb_data_->get_mission_num());
+5: -
+5: -        if (missions_data.find(mission_key) == missions_data.end())
+5: -        {
+5: -            return param_change_count;
+5: -        }
+5: -        const json &mission_data = missions_data.at(mission_key);
+5: -
+5: -        if (mission_data.find(LON_KEY) != mission_data.end())
+5: -        {
+5: -            const json &lon_param = mission_data.at(LON_KEY);
+5: -            if (lon_param.find("PD_brake_gain") != lon_param.end())
+5: -            {
+5: -                param_change_count++;
+5: -                long_con_->set_brake_PD_gain(lon_param.at("PD_brake_gain").at(0), lon_param.at("PD_brake_gain").at(1));
+5: -            }
+5: -            if (lon_param.find("enable_brake_error") != lon_param.end())
+5: -            {
+5: -                param_change_count++;
+5: -                long_con_->set_enable_brake_error(lon_param.at("enable_brake_error"));
+5: -            }
+5: -        }
+5: -
+5: -        if (mission_data.find(LAT_KEY) != mission_data.end())
+5: -        {
+5: -            const json &lat_param = mission_data.at(LAT_KEY);
+5: -            // stanly------------------------------------------------------------------------
+5: -            if (lat_param.find("stanly_gain") != lat_param.end())
+5: -            {
+5: -                param_change_count++;
+5: -                lat_con_->set_stanly_gain(lat_param.at("stanly_gain").at(0), lat_param.at("stanly_gain").at(1), lat_param.at("stanly_gain").at(2));
+5: -            }
+5: -            if (lat_param.find("anti_windup_val") != lat_param.end())
+5: -            {
+5: -                param_change_count++;
+5: -                lat_con_->set_anti_windup_max(lat_param.at("anti_windup_val"));
+5: -            }
+5: -            if (lat_param.find("stanly_heading_gain") != lat_param.end())
+5: -            {
+5: -                param_change_count++;
+5: -                lat_con_->set_heading_gain(lat_param.at("stanly_heading_gain"));
+5: -            }
+5: -
+5: -            // preview (dt 와 gain 은 같이 적어야 한다)
+5: -            if (lat_param.find("stanley_preview_dt") != lat_param.end() ||
+5: -                lat_param.find("stanley_preview_gain") != lat_param.end())
+5: -            {
+5: -                try
+5: -                {
+5: -                    std::vector<float> preview_gain = lat_param.at("stanley_preview_gain");
+5: -                    lat_con_->set_preview_param(lat_param.at("stanley_preview_dt"), preview_gain);
+5: -                    param_change_count++;
+5: -                }
+5: -                catch (const json::exception &)
+5: -                {
+5: -                    std::cerr << "미션 " << mission_key << ": stanley_preview_dt 와 stanley_preview_gain 은 같이 적어야 합니다." << std::endl;
+5: -                    std::exit(EXIT_FAILURE);
+5: -                }
+5: -            }
+5: -            if (lat_param.find("stanley_preview_h_e_gain") != lat_param.end())
+5: -            {
+5: -                param_change_count++;
+5: -                lat_con_->set_preview_heading_error_gain(lat_param.at("stanley_preview_h_e_gain"));
+5: -            }
+5: -
+5: -            // pp------------------------------------------------------------------------------
+5: -            if (lat_param.find("PP_LD") != lat_param.end())
+5: -            {
+5: -                param_change_count++;
+5: -                lat_con_->set_pp_LD_threshold(lat_param.at("PP_LD").at(0), lat_param.at("PP_LD").at(1));
+5: -            }
+5: -            if (lat_param.find("PP_gain") != lat_param.end())
+5: -            {
+5: -                param_change_count++;
+5: -                lat_con_->set_pp_gain(lat_param.at("PP_gain").at(0), lat_param.at("PP_gain").at(1));
+5: -            }
+5: -            // reverse pp------------------------------------------------------------------------------
+5: -            if (lat_param.find("R_PP_gain") != lat_param.end())
+5: -            {
+5: -                param_change_count++;
+5: -                R_lat_con_->set_R_PP_gain(lat_param.at("R_PP_gain").at(0), lat_param.at("R_PP_gain").at(1));
+5: -            }
+5: -            if (lat_param.find("reverse_PP_LD") != lat_param.end())
+5: -            {
+5: -                param_change_count++;
+5: -                R_lat_con_->set_R_pp_LD_threshold(lat_param.at("reverse_PP_LD").at(0), lat_param.at("reverse_PP_LD").at(1));
+5: -            }
+5: -            // combine------------------------------------------------------------------------------
+5: -            if (lat_param.find("combine_PP_ratio") != lat_param.end())
+5: -            {
+5: -                param_change_count++;
+5: -                lat_con_->set_combine_PP_ratio(lat_param.at("combine_PP_ratio"));
+5: -            }
+5: -        }
+5: -
+5: -        return param_change_count;
+5: -    }
+5: -
+5: -    void target_speed_reducing_by_curature(double curvature)
+5: -    {
+5: -        // 곡률로 급한 커브에서의 속도를 정하고, 미션 속도보다 낮으면 그 속도로 줄인다.
+5: -        float mission_speed = long_con_->get_target_speed();
+5: -
+5: -        double curv = clip(curvature, 0.1, 1.5);
+5: -        float curvature_speed = sqrt(this->curvature_gain / curv);
+5: -
+5: -        // mission speed로 클립
+5: -        float curv_speed_clip = clip(curvature_speed, 1.9F, mission_speed);
+5: -
+5: -        double reducing_speed = low_pass_filter(curv_speed_clip, pre_curv_speed_clip, 0.9);
+5: -        pre_curv_speed_clip = reducing_speed;
+5: -
+5: -        // 종방향 제어기 인스턴스에 바로 값을 넣어준다.
+5: -        long_con_->set_lon_target_speed(reducing_speed);
+5: -    }
+5: -
+5: -    void target_speed_reducing_by_steer(float steer_cmd)
+5: -    {
+5: -        // 급한 조향을 하면서 가속을 하면 발산하기 쉽다.
+5: -        // 조향 명령과 실제 조향각 중 큰 쪽(크기 기준)으로 감속 비율을 정한다.
+5: -        float max_steer = std::max(std::abs(steer_cmd), std::abs(cb_data_->get_steer()));
+5: -
+5: -        float mission_speed = long_con_->get_target_speed();
+5: -        double speed_gain = 1;
+5: -
+5: -        if (max_steer > 26.0 * 3.141592 / 180.0)
+5: -        {
+5: -            speed_gain = 0.87;
+5: -        }
+5: -        else if (max_steer > 22.0 * 3.141592 / 180.0)
+5: -        {
+5: -            speed_gain = 0.91;
+5: -        }
+5: -        else if (max_steer > 17.0 * 3.141592 / 180.0)
+5: -        {
+5: -            speed_gain = 0.93;
+5: -        }
+5: -        else if (max_steer > 12.0 * 3.141592 / 180.0)
+5: -        {
+5: -            speed_gain = 0.95;
+5: -        }
+5: -
+5: -        // 종방향 제어기 인스턴스에 바로 값을 넣어준다.
+5: -        long_con_->set_lon_target_speed(mission_speed * speed_gain);
+5: -    }
+5: +      }
+5: +    }
+5: +
+5: +    return param_change_count;
+5: +  }
+5: +
+5: +  void target_speed_reducing_by_curature(double curvature)
+5: +  {
+5: +    // 곡률로 급한 커브에서의 속도를 정하고, 미션 속도보다 낮으면 그 속도로 줄인다.
+5: +    float mission_speed = long_con_->get_target_speed();
+5: +
+5: +    double curv = clip(curvature, 0.1, 1.5);
+5: +    float curvature_speed = sqrt(this->curvature_gain / curv);
+5: +
+5: +    // mission speed로 클립
+5: +    float curv_speed_clip = clip(curvature_speed, 1.9F, mission_speed);
+5: +
+5: +    double reducing_speed = low_pass_filter(curv_speed_clip, pre_curv_speed_clip, 0.9);
+5: +    pre_curv_speed_clip = reducing_speed;
+5: +
+5: +    // 종방향 제어기 인스턴스에 바로 값을 넣어준다.
+5: +    long_con_->set_lon_target_speed(reducing_speed);
+5: +  }
+5: +
+5: +  void target_speed_reducing_by_steer(float steer_cmd)
+5: +  {
+5: +    // 급한 조향을 하면서 가속을 하면 발산하기 쉽다.
+5: +    // 조향 명령과 실제 조향각 중 큰 쪽(크기 기준)으로 감속 비율을 정한다.
+5: +    float max_steer = std::max(std::abs(steer_cmd), std::abs(cb_data_->get_steer()));
+5: +
+5: +    float mission_speed = long_con_->get_target_speed();
+5: +    double speed_gain = 1;
+5: +
+5: +    if (max_steer > 26.0 * 3.141592 / 180.0) {
+5: +      speed_gain = 0.87;
+5: +    } else if (max_steer > 22.0 * 3.141592 / 180.0) {
+5: +      speed_gain = 0.91;
+5: +    } else if (max_steer > 17.0 * 3.141592 / 180.0) {
+5: +      speed_gain = 0.93;
+5: +    } else if (max_steer > 12.0 * 3.141592 / 180.0) {
+5: +      speed_gain = 0.95;
+5: +    }
+5: +
+5: +    // 종방향 제어기 인스턴스에 바로 값을 넣어준다.
+5: +    long_con_->set_lon_target_speed(mission_speed * speed_gain);
+5: +  }
+5: 
+5: Code style divergence in file 'src/car_control.cpp':
+5: 
+5: --- src/car_control.cpp
+5: +++ src/car_control.cpp.uncrustify
+5: @@ -66,36 +66,36 @@
+5: -    std::shared_ptr<CallbackClass> callback_data_ptr;
+5: -    CallbackClass *cb_data;
+5: -
+5: -    std::shared_ptr<CombinedSteer> lat_control_ptr;
+5: -    CombinedSteer *lat_control;
+5: -    std::shared_ptr<ReversePurePursuit> R_lat_control_ptr;
+5: -    ReversePurePursuit *R_lat_control;
+5: -
+5: -    std::shared_ptr<LonController> lon_control_ptr;
+5: -    LonController *lon_control;
+5: -
+5: -    std::shared_ptr<ControlGainTuning> param_manage_ptr;
+5: -    ControlGainTuning *param_manage;
+5: -
+5: -    rclcpp::Subscription<geometry_msgs::msg::PointStamped>::SharedPtr lo_odom_sub;
+5: -    rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr lo_curr_sub;
+5: -    rclcpp::Subscription<sensor_msgs::msg::Imu>::SharedPtr lo_imu__sub;
+5: -    rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr lo_beta_sub;
+5: -
+5: -    rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr pl_loca_sub;
+5: -    rclcpp::Subscription<std_msgs::msg::Int16>::SharedPtr pl_miss_sub;
+5: -    rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr pl_cont_sub;
+5: -    rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr pl_pyaws_sub;
+5: -
+5: -    rclcpp::Subscription<std_msgs::msg::Float32MultiArray>::SharedPtr er_data_sub;
+5: -
+5: -    rclcpp::Publisher<std_msgs::msg::Float32MultiArray>::SharedPtr vehicle_cmd_pub;
+5: -    rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr tmp_data_pub;
+5: -
+5: -    rclcpp::TimerBase::SharedPtr timer_;
+5: -
+5: -    // 첫 계산 전까지는 정지 명령
+5: -    GasAndBrake acc_val{0.0, vehicle::BRAKE_STOP};
+5: -
+5: -    long tick_count_ = 0;
+5: -    long not_ready_count_ = 0;
+5: +  std::shared_ptr<CallbackClass> callback_data_ptr;
+5: +  CallbackClass * cb_data;
+5: +
+5: +  std::shared_ptr<CombinedSteer> lat_control_ptr;
+5: +  CombinedSteer * lat_control;
+5: +  std::shared_ptr<ReversePurePursuit> R_lat_control_ptr;
+5: +  ReversePurePursuit * R_lat_control;
+5: +
+5: +  std::shared_ptr<LonController> lon_control_ptr;
+5: +  LonController * lon_control;
+5: +
+5: +  std::shared_ptr<ControlGainTuning> param_manage_ptr;
+5: +  ControlGainTuning * param_manage;
+5: +
+5: +  rclcpp::Subscription<geometry_msgs::msg::PointStamped>::SharedPtr lo_odom_sub;
+5: +  rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr lo_curr_sub;
+5: +  rclcpp::Subscription<sensor_msgs::msg::Imu>::SharedPtr lo_imu__sub;
+5: +  rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr lo_beta_sub;
+5: +
+5: +  rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr pl_loca_sub;
+5: +  rclcpp::Subscription<std_msgs::msg::Int16>::SharedPtr pl_miss_sub;
+5: +  rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr pl_cont_sub;
+5: +  rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr pl_pyaws_sub;
+5: +
+5: +  rclcpp::Subscription<std_msgs::msg::Float32MultiArray>::SharedPtr er_data_sub;
+5: +
+5: +  rclcpp::Publisher<std_msgs::msg::Float32MultiArray>::SharedPtr vehicle_cmd_pub;
+5: +  rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr tmp_data_pub;
+5: +
+5: +  rclcpp::TimerBase::SharedPtr timer_;
+5: +
+5: +  // 첫 계산 전까지는 정지 명령
+5: +  GasAndBrake acc_val{0.0, vehicle::BRAKE_STOP};
+5: +
+5: +  long tick_count_ = 0;
+5: +  long not_ready_count_ = 0;
+5: @@ -104,240 +104,251 @@
+5: -    ERPControl()
+5: -        : Node("erp_control")
+5: -    {
+5: -        // <클레스들 인스턴스화>------------------------------------------------------
+5: -        callback_data_ptr = std::make_shared<CallbackClass>();
+5: -        cb_data = callback_data_ptr.get();
+5: -
+5: -        lat_control_ptr = std::make_shared<CombinedSteer>(cb_data);
+5: -        lat_control = lat_control_ptr.get();
+5: -        R_lat_control_ptr = std::make_shared<ReversePurePursuit>();
+5: -        R_lat_control = R_lat_control_ptr.get();
+5: -
+5: -        lon_control_ptr = std::make_shared<LonController>();
+5: -        lon_control = lon_control_ptr.get();
+5: -
+5: -        param_manage_ptr = std::make_shared<ControlGainTuning>(cb_data, lat_control, R_lat_control, lon_control);
+5: -        param_manage = param_manage_ptr.get();
+5: -        // ------------------------------------------------------</클레스들 인스턴스화>
+5: -        // <SUBSCRIBER> -----------------------------------------------------------
+5: -
+5: -        rclcpp::QoS UDP(rclcpp::KeepLast(1)); // Queue 사이즈 설정
+5: -        UDP.best_effort();                    // Best effort 설정
+5: -
+5: -        // Local
+5: -        lo_odom_sub = this->create_subscription<geometry_msgs::msg::PointStamped>("/Local/utm", UDP, std::bind(&CallbackClass::lo_odom_cb, cb_data, std::placeholders::_1));
+5: -        lo_curr_sub = this->create_subscription<std_msgs::msg::Float64>("/Local/heading", UDP, std::bind(&CallbackClass::lo_yaw_cb, cb_data, std::placeholders::_1));
+5: -        lo_imu__sub = this->create_subscription<sensor_msgs::msg::Imu>("/imu", UDP, std::bind(&CallbackClass::lo_imu_cb, cb_data, std::placeholders::_1));
+5: -        lo_beta_sub = this->create_subscription<std_msgs::msg::Float64>("/beta", UDP, std::bind(&CallbackClass::lo_beta_cb, cb_data, std::placeholders::_1));
+5: -
+5: -        // Planning
+5: -        pl_loca_sub = this->create_subscription<std_msgs::msg::Float64MultiArray>("/Planning/local_path", UDP, std::bind(&CallbackClass::pl_local_path_cb, cb_data, std::placeholders::_1));
+5: -        pl_miss_sub = this->create_subscription<std_msgs::msg::Int16>("/Planning/mission", UDP, std::bind(&CallbackClass::pl_mission_num_cb, cb_data, std::placeholders::_1));
+5: -        pl_cont_sub = this->create_subscription<std_msgs::msg::Float64>("/Planning/target_velocity", UDP, std::bind(&CallbackClass::pl_control_switch_cb, cb_data, std::placeholders::_1));
+5: -        pl_pyaws_sub = this->create_subscription<std_msgs::msg::Float64MultiArray>("/Planning/path_yaw", UDP, std::bind(&CallbackClass::pl_local_path_yaws_cb, cb_data, std::placeholders::_1));
+5: -
+5: -        // 차량 상태 (브릿지)
+5: -        er_data_sub = this->create_subscription<std_msgs::msg::Float32MultiArray>("/ERP/serial_data", UDP, std::bind(&CallbackClass::co_ERP_data_cb, cb_data, std::placeholders::_1));
+5: -
+5: -        // -----------------------------------------------------------</SUBSCRIBER>
+5: -        // <PUBLISHER> ------------------------------------------------------------
+5: -
+5: -        vehicle_cmd_pub = this->create_publisher<std_msgs::msg::Float32MultiArray>("/Control/vehicle_cmd", UDP);
+5: -        tmp_data_pub = this->create_publisher<std_msgs::msg::Float64MultiArray>("/Control/tmp_plot_val", UDP);
+5: -
+5: -        // ------------------------------------------------------------</PUBLISHER>
+5: -
+5: -        timer_ = this->create_wall_timer(std::chrono::milliseconds(CONTROL_PERIOD_MS),
+5: -                                         std::bind(&ERPControl::timer_callback, this));
+5: -    }
+5: -
+5: -    void timer_callback()
+5: -    {
+5: -        // 가독성을 위해 새로운 변수로 저장
+5: -        float curr_speed = cb_data->get_speed();
+5: -        float yaw = cb_data->get_yaw();
+5: -        Point odom = cb_data->get_odom();
+5: -        double lat_error = cb_data->calc_n_get_lat_error();
+5: -        double yaw_rate = cb_data->get_yawrate();
+5: -        double pd_path_yaw = cb_data->get_pd_path_yaw();
+5: -        double path_curature = 0.0, curv_1 = 0.0, curv_2 = 0.0, curv_3 = 0.0;
+5: -
+5: -        // 위치나 경로가 준비되지 않았으면 명령을 내보내지 않는다.
+5: -        // (명령이 끊기면 브릿지가 차량을 세운다.)
+5: -        if (lat_error == 404 || pd_path_yaw == 404)
+5: -        {
+5: -            if (not_ready_count_++ % (1000 / CONTROL_PERIOD_MS) == 0)
+5: -            {
+5: -                const char *reason = cb_data->not_ready_reason();
+5: -                cout << "[대기] " << (reason != nullptr ? reason : "경로 또는 위치 값이 준비되지 않았습니다") << endl;
+5: -            }
+5: -            return;
+5: -        }
+5: -        not_ready_count_ = 0;
+5: -
+5: -        // <계산> -----------------------------------------------------------
+5: -        int changed_param_num = param_manage->set_mission_param();
+5: -        int mission = cb_data->get_mission_num();
+5: -
+5: -        // Control Switch (플래닝의 목표 속도. -1 : 후진 | 0 : 정지 | 0 초과 : 전진 속도 m/s)
+5: -        float cs = cb_data->get_control_switch();
+5: -
+5: -        float steer = 0.0;
+5: -        int gear = vehicle::GEAR_D;
+5: -
+5: -        // 횡방향 계산
+5: -        if (cs < 0.0)
+5: -        {
+5: -            gear = vehicle::GEAR_R;
+5: -            R_lat_control->set_R_PP_data(curr_speed, yaw, odom, cb_data->get_relative_path());
+5: -            steer = R_lat_control->calc_R_PP_steer();
+5: -        }
+5: -        else
+5: -        {
+5: -            if (mission == MISSION_NARROW && abs(lat_error) < 0.05)
+5: -            {
+5: -                lat_control->set_stanley_integral_val(0.0);
+5: -            }
+5: -            lat_control->set_stanly_data(curr_speed, pd_path_yaw, yaw, lat_error);
+5: -            lat_control->set_pp_data(curr_speed, yaw, odom, cb_data->get_relative_path());
+5: -            steer = lat_control->calc_combined_steer();
+5: -        }
+5: -
+5: -        // 목표 속도 정하기
+5: -        if (cs == 0)
+5: -        {
+5: -            lon_control->set_lon_target_speed(0);
+5: -        }
+5: -        else if (0.0 < cs && cs <= TARGET_SPEED_MAX)
+5: -        {
+5: -            lon_control->set_lon_data(curr_speed);
+5: -            lon_control->set_lon_target_speed(cs);
+5: -        }
+5: -        else if (cs == -1)
+5: -        {
+5: -            lon_control->set_lon_data(curr_speed);
+5: -            lon_control->set_lon_target_speed(REVERSE_SPEED);
+5: -        }
+5: -        else
+5: -        {
+5: -            if (tick_count_ % (1000 / CONTROL_PERIOD_MS) == 0)
+5: -            {
+5: -                cout << "[경고] /Planning/target_velocity 값이 범위를 벗어났습니다 : " << cs << endl;
+5: -            }
+5: -            lon_control->set_lon_data(curr_speed);
+5: -            lon_control->set_lon_target_speed(FALLBACK_SPEED);
+5: -        }
+5: -
+5: -        // 곡률에 따른 감속 (협로 2바퀴째 미션만)
+5: -        if (mission == MISSION_NARROW)
+5: -        {
+5: -            // 협로 첫 바퀴에는 곡률 데이터를 못믿는다.
+5: -            // 협로 두 번째 바퀴에서만 곡률에 따른 속도제어를 한다.
+5: -            curv_1 = abs(cb_data->calc_path_curvature(0.1, 1.5)); // 속도 제어시 제일 먼저 곡률을 계산해야함.
+5: -            curv_2 = abs(cb_data->calc_path_curvature(0.3, 1.5)); // S 커브와 같은 구간에서 불필요한 가속을 막기 위해
+5: -            curv_3 = abs(cb_data->calc_path_curvature(vehicle::STEER_DELAY, 1.5)); // 조향 지연 시간만큼 앞
+5: -            path_curature = max(curv_3, max(curv_1, curv_2));
+5: -            if (abs(path_curature) >= 0.1)
+5: -            {
+5: -                param_manage->target_speed_reducing_by_curature(path_curature);
+5: -            }
+5: -        }
+5: -
+5: -        // 조향이 클 때의 감속
+5: -        if (cs != -1 && abs(path_curature) < 0.1)
+5: -        {
+5: -            param_manage->target_speed_reducing_by_steer(steer);
+5: -        }
+5: -
+5: -        // 속도 명령과 브레이크 명령
+5: -        if (cs == 0)
+5: -        {
+5: -            acc_val.gas = 0.0;
+5: -            acc_val.brake = vehicle::BRAKE_STOP;
+5: -        }
+5: -        else if (cb_data->get_serial_sub_flag())
+5: -        {
+5: -            // 차량 상태를 새로 받았을 때만 다시 계산한다.
+5: -            acc_val = lon_control->calc_gas_n_brake();
+5: -            cb_data->set_down_serial_sub_flag();
+5: -        }
+5: -
+5: -        if (mission == MISSION_NARROW)
+5: -        {
+5: -            acc_val.brake = clip(acc_val.brake, vehicle::BRAKE_NARROW_MIN, vehicle::BRAKE_NARROW_MAX);
+5: -        }
+5: -
+5: -        // ---------------------------------------------------------- </계산>
+5: -        // <ros topic pub> -------------------------------------------------
+5: -
+5: -        // 차량 명령
+5: -        std_msgs::msg::Float32MultiArray vehicle_cmd_msg;
+5: -        vehicle_cmd_msg.data = {
+5: -            1.0F,                              // 0 valid  (1 = 이 명령을 따를 것)
+5: -            0.0F,                              // 1 e_stop (1 = 비상 정지)
+5: -            static_cast<float>(gear),          // 2 gear   (0 P / 1 D / 2 N / 3 R)
+5: -            static_cast<float>(acc_val.gas),   // 3 speed  [m/s]
+5: -            steer,                             // 4 steer  [rad] (+ = 좌회전)
+5: -            static_cast<float>(acc_val.brake), // 5 brake  [%]
+5: -        };
+5: -        vehicle_cmd_pub->publish(vehicle_cmd_msg);
+5: -
+5: -        // 분석용 토픽
+5: -        Point LDpoint = cb_data->AxisTrans_rel2abs(lat_control->get_target_point());
+5: -
+5: -        std_msgs::msg::Float64MultiArray tmp_plot_val_msg;
+5: -        tmp_plot_val_msg.data.push_back(lat_error);                        // 0  경로와의 거리 [m]
+5: -        tmp_plot_val_msg.data.push_back(lon_control->get_target_speed());  // 1  목표 속도 [m/s]
+5: -        tmp_plot_val_msg.data.push_back(curv_1);                           // 2  곡률 (0.1 s 앞)
+5: -        tmp_plot_val_msg.data.push_back(curv_2);                           // 3  곡률 (0.3 s 앞)
+5: -        tmp_plot_val_msg.data.push_back(path_curature);                    // 4  감속에 쓴 곡률
+5: -        tmp_plot_val_msg.data.push_back(LDpoint.x);                        // 5  Pure Pursuit 목표점 x
+5: -        tmp_plot_val_msg.data.push_back(LDpoint.y);                        // 6  Pure Pursuit 목표점 y
+5: -        tmp_plot_val_msg.data.push_back(acc_val.gas);                      // 7  속도 명령 [m/s]
+5: -        tmp_plot_val_msg.data.push_back(acc_val.brake);                    // 8  브레이크 명령 [%]
+5: -        tmp_plot_val_msg.data.push_back(lat_control->get_stanly_steer());  // 9  Stanley 조향 [rad]
+5: -        vector<double> preview_steers = lat_control->get_preview_steers();
+5: -        for (size_t i = 0; i < preview_steers.size(); i++)
+5: -        {
+5: -            tmp_plot_val_msg.data.push_back(preview_steers[i]);            // 10 11 12  미리보기 조향 [rad]
+5: -        }
+5: -        tmp_plot_val_msg.data.push_back(lat_control->get_PP_steer());      // 13 Pure Pursuit 조향 [rad]
+5: -
+5: -        vector<Point> predic_p = cb_data->get_stanley_predict_pos();
+5: -        for (size_t i = 0; i < predic_p.size(); i++)
+5: -        {
+5: -            Point tmp_p = cb_data->AxisTrans_rel2abs(predic_p[i]);
+5: -            tmp_plot_val_msg.data.push_back(tmp_p.x);                      // 14 16 18  미리보기 위치 x
+5: -            tmp_plot_val_msg.data.push_back(tmp_p.y);                      // 15 17 19  미리보기 위치 y
+5: -        }
+5: -        tmp_plot_val_msg.data.push_back(lat_control->get_stanley_integral_val()); // 20 Stanley 적분값
+5: -        tmp_plot_val_msg.data.push_back(curr_speed);                       // 21 차량 속도 [m/s]
+5: -        tmp_plot_val_msg.data.push_back(steer);                            // 22 조향 명령 [rad]
+5: -        tmp_data_pub->publish(tmp_plot_val_msg);
+5: -
+5: -        // ------------------------------------------------ </ros topic pub>
+5: -        // <print> ---------------------------------------------------------
+5: -
+5: -        if (IS_PRINT && tick_count_ % PRINT_EVERY_N_TICKS == 0)
+5: -        {
+5: -            cout << "==================" << endl;
+5: -            cout << "mission : " << mission << " (changed_param_num : " << changed_param_num << ")" << endl;
+5: -            cout << "yawrate : " << yaw_rate << endl;
+5: -            cout << "yaw : " << yaw << endl;
+5: -            cout << "lat_error : " << lat_error << endl;
+5: -            cout << "LD distance : " << lat_control->get_LA_distance() << endl;
+5: -            cout << "path_yaw_nearest(rad) : " << pd_path_yaw << endl;
+5: -            cout << "brake cmd : " << acc_val.brake << " %" << endl
+5: -                 << endl;
+5: -
+5: -            cout << "speed cmd : " << acc_val.gas * 3.6 << "km/h (" << acc_val.gas << "m/s)" << endl;
+5: -            cout << "curr_speed : " << curr_speed * 3.6 << "km/h (" << curr_speed << "m/s)" << endl;
+5: -            cout << "target speed : " << lon_control->get_target_speed() * 3.6 << "km/h (" << lon_control->get_target_speed() << "m/s)" << endl;
+5: -            cout << "steer : " << steer * 180 / M_PI << " deg (" << steer << " rad)" << endl;
+5: -            cout << "PP_steer : " << lat_control->get_PP_steer() * 180 / M_PI << " deg (" << lat_control->get_PP_steer() << " rad)" << endl;
+5: -            cout << "stanly_steer: " << lat_control->get_stanly_steer() * 180 / M_PI << " deg (" << lat_control->get_stanly_steer() << " rad)" << endl;
+5: -        }
+5: -        tick_count_++;
+5: -
+5: -        // ------------------------------------------------------- </print>
+5: -    }
+5: +  ERPControl()
+5: +  : Node("erp_control")
+5: +  {
+5: +    // <클레스들 인스턴스화>------------------------------------------------------
+5: +    callback_data_ptr = std::make_shared<CallbackClass>();
+5: +    cb_data = callback_data_ptr.get();
+5: +
+5: +    lat_control_ptr = std::make_shared<CombinedSteer>(cb_data);
+5: +    lat_control = lat_control_ptr.get();
+5: +    R_lat_control_ptr = std::make_shared<ReversePurePursuit>();
+5: +    R_lat_control = R_lat_control_ptr.get();
+5: +
+5: +    lon_control_ptr = std::make_shared<LonController>();
+5: +    lon_control = lon_control_ptr.get();
+5: +
+5: +    param_manage_ptr = std::make_shared<ControlGainTuning>(
+5: +      cb_data, lat_control, R_lat_control,
+5: +      lon_control);
+5: +    param_manage = param_manage_ptr.get();
+5: +    // ------------------------------------------------------</클레스들 인스턴스화>
+5: +    // <SUBSCRIBER> -----------------------------------------------------------
+5: +
+5: +    rclcpp::QoS UDP(rclcpp::KeepLast(1));     // Queue 사이즈 설정
+5: +    UDP.best_effort();                        // Best effort 설정
+5: +
+5: +    // Local
+5: +    lo_odom_sub = this->create_subscription<geometry_msgs::msg::PointStamped>(
+5: +      "/Local/utm", UDP, std::bind(
+5: +        &CallbackClass::lo_odom_cb, cb_data,
+5: +        std::placeholders::_1));
+5: +    lo_curr_sub = this->create_subscription<std_msgs::msg::Float64>(
+5: +      "/Local/heading", UDP, std::bind(
+5: +        &CallbackClass::lo_yaw_cb, cb_data, std::placeholders::_1));
+5: +    lo_imu__sub =
+5: +      this->create_subscription<sensor_msgs::msg::Imu>(
+5: +      "/imu", UDP,
+5: +      std::bind(&CallbackClass::lo_imu_cb, cb_data, std::placeholders::_1));
+5: +    lo_beta_sub =
+5: +      this->create_subscription<std_msgs::msg::Float64>(
+5: +      "/beta", UDP,
+5: +      std::bind(&CallbackClass::lo_beta_cb, cb_data, std::placeholders::_1));
+5: +
+5: +    // Planning
+5: +    pl_loca_sub = this->create_subscription<std_msgs::msg::Float64MultiArray>(
+5: +      "/Planning/local_path", UDP,
+5: +      std::bind(&CallbackClass::pl_local_path_cb, cb_data, std::placeholders::_1));
+5: +    pl_miss_sub = this->create_subscription<std_msgs::msg::Int16>(
+5: +      "/Planning/mission", UDP, std::bind(
+5: +        &CallbackClass::pl_mission_num_cb, cb_data,
+5: +        std::placeholders::_1));
+5: +    pl_cont_sub = this->create_subscription<std_msgs::msg::Float64>(
+5: +      "/Planning/target_velocity",
+5: +      UDP,
+5: +      std::bind(&CallbackClass::pl_control_switch_cb, cb_data, std::placeholders::_1));
+5: +    pl_pyaws_sub = this->create_subscription<std_msgs::msg::Float64MultiArray>(
+5: +      "/Planning/path_yaw",
+5: +      UDP,
+5: +      std::bind(&CallbackClass::pl_local_path_yaws_cb, cb_data, std::placeholders::_1));
+5: +
+5: +    // 차량 상태 (브릿지)
+5: +    er_data_sub = this->create_subscription<std_msgs::msg::Float32MultiArray>(
+5: +      "/ERP/serial_data",
+5: +      UDP,
+5: +      std::bind(&CallbackClass::co_ERP_data_cb, cb_data, std::placeholders::_1));
+5: +
+5: +    // -----------------------------------------------------------</SUBSCRIBER>
+5: +    // <PUBLISHER> ------------------------------------------------------------
+5: +
+5: +    vehicle_cmd_pub = this->create_publisher<std_msgs::msg::Float32MultiArray>(
+5: +      "/Control/vehicle_cmd", UDP);
+5: +    tmp_data_pub = this->create_publisher<std_msgs::msg::Float64MultiArray>(
+5: +      "/Control/tmp_plot_val",
+5: +      UDP);
+5: +
+5: +    // ------------------------------------------------------------</PUBLISHER>
+5: +
+5: +    timer_ = this->create_wall_timer(
+5: +      std::chrono::milliseconds(CONTROL_PERIOD_MS),
+5: +      std::bind(&ERPControl::timer_callback, this));
+5: +  }
+5: +
+5: +  void timer_callback()
+5: +  {
+5: +    // 가독성을 위해 새로운 변수로 저장
+5: +    float curr_speed = cb_data->get_speed();
+5: +    float yaw = cb_data->get_yaw();
+5: +    Point odom = cb_data->get_odom();
+5: +    double lat_error = cb_data->calc_n_get_lat_error();
+5: +    double yaw_rate = cb_data->get_yawrate();
+5: +    double pd_path_yaw = cb_data->get_pd_path_yaw();
+5: +    double path_curature = 0.0, curv_1 = 0.0, curv_2 = 0.0, curv_3 = 0.0;
+5: +
+5: +    // 위치나 경로가 준비되지 않았으면 명령을 내보내지 않는다.
+5: +    // (명령이 끊기면 브릿지가 차량을 세운다.)
+5: +    if (lat_error == 404 || pd_path_yaw == 404) {
+5: +      if (not_ready_count_++ % (1000 / CONTROL_PERIOD_MS) == 0) {
+5: +        const char * reason = cb_data->not_ready_reason();
+5: +        cout << "[대기] " << (reason != nullptr ? reason : "경로 또는 위치 값이 준비되지 않았습니다") << endl;
+5: +      }
+5: +      return;
+5: +    }
+5: +    not_ready_count_ = 0;
+5: +
+5: +    // <계산> -----------------------------------------------------------
+5: +    int changed_param_num = param_manage->set_mission_param();
+5: +    int mission = cb_data->get_mission_num();
+5: +
+5: +    // Control Switch (플래닝의 목표 속도. -1 : 후진 | 0 : 정지 | 0 초과 : 전진 속도 m/s)
+5: +    float cs = cb_data->get_control_switch();
+5: +
+5: +    float steer = 0.0;
+5: +    int gear = vehicle::GEAR_D;
+5: +
+5: +    // 횡방향 계산
+5: +    if (cs < 0.0) {
+5: +      gear = vehicle::GEAR_R;
+5: +      R_lat_control->set_R_PP_data(curr_speed, yaw, odom, cb_data->get_relative_path());
+5: +      steer = R_lat_control->calc_R_PP_steer();
+5: +    } else {
+5: +      if (mission == MISSION_NARROW && abs(lat_error) < 0.05) {
+5: +        lat_control->set_stanley_integral_val(0.0);
+5: +      }
+5: +      lat_control->set_stanly_data(curr_speed, pd_path_yaw, yaw, lat_error);
+5: +      lat_control->set_pp_data(curr_speed, yaw, odom, cb_data->get_relative_path());
+5: +      steer = lat_control->calc_combined_steer();
+5: +    }
+5: +
+5: +    // 목표 속도 정하기
+5: +    if (cs == 0) {
+5: +      lon_control->set_lon_target_speed(0);
+5: +    } else if (0.0 < cs && cs <= TARGET_SPEED_MAX) {
+5: +      lon_control->set_lon_data(curr_speed);
+5: +      lon_control->set_lon_target_speed(cs);
+5: +    } else if (cs == -1) {
+5: +      lon_control->set_lon_data(curr_speed);
+5: +      lon_control->set_lon_target_speed(REVERSE_SPEED);
+5: +    } else {
+5: +      if (tick_count_ % (1000 / CONTROL_PERIOD_MS) == 0) {
+5: +        cout << "[경고] /Planning/target_velocity 값이 범위를 벗어났습니다 : " << cs << endl;
+5: +      }
+5: +      lon_control->set_lon_data(curr_speed);
+5: +      lon_control->set_lon_target_speed(FALLBACK_SPEED);
+5: +    }
+5: +
+5: +    // 곡률에 따른 감속 (협로 2바퀴째 미션만)
+5: +    if (mission == MISSION_NARROW) {
+5: +      // 협로 첫 바퀴에는 곡률 데이터를 못믿는다.
+5: +      // 협로 두 번째 바퀴에서만 곡률에 따른 속도제어를 한다.
+5: +      curv_1 = abs(cb_data->calc_path_curvature(0.1, 1.5));       // 속도 제어시 제일 먼저 곡률을 계산해야함.
+5: +      curv_2 = abs(cb_data->calc_path_curvature(0.3, 1.5));       // S 커브와 같은 구간에서 불필요한 가속을 막기 위해
+5: +      curv_3 = abs(cb_data->calc_path_curvature(vehicle::STEER_DELAY, 1.5));       // 조향 지연 시간만큼 앞
+5: +      path_curature = max(curv_3, max(curv_1, curv_2));
+5: +      if (abs(path_curature) >= 0.1) {
+5: +        param_manage->target_speed_reducing_by_curature(path_curature);
+5: +      }
+5: +    }
+5: +
+5: +    // 조향이 클 때의 감속
+5: +    if (cs != -1 && abs(path_curature) < 0.1) {
+5: +      param_manage->target_speed_reducing_by_steer(steer);
+5: +    }
+5: +
+5: +    // 속도 명령과 브레이크 명령
+5: +    if (cs == 0) {
+5: +      acc_val.gas = 0.0;
+5: +      acc_val.brake = vehicle::BRAKE_STOP;
+5: +    } else if (cb_data->get_serial_sub_flag()) {
+5: +      // 차량 상태를 새로 받았을 때만 다시 계산한다.
+5: +      acc_val = lon_control->calc_gas_n_brake();
+5: +      cb_data->set_down_serial_sub_flag();
+5: +    }
+5: +
+5: +    if (mission == MISSION_NARROW) {
+5: +      acc_val.brake = clip(acc_val.brake, vehicle::BRAKE_NARROW_MIN, vehicle::BRAKE_NARROW_MAX);
+5: +    }
+5: +
+5: +    // ---------------------------------------------------------- </계산>
+5: +    // <ros topic pub> -------------------------------------------------
+5: +
+5: +    // 차량 명령
+5: +    std_msgs::msg::Float32MultiArray vehicle_cmd_msg;
+5: +    vehicle_cmd_msg.data = {
+5: +      1.0F,                                    // 0 valid  (1 = 이 명령을 따를 것)
+5: +      0.0F,                                    // 1 e_stop (1 = 비상 정지)
+5: +      static_cast<float>(gear),                // 2 gear   (0 P / 1 D / 2 N / 3 R)
+5: +      static_cast<float>(acc_val.gas),         // 3 speed  [m/s]
+5: +      steer,                                   // 4 steer  [rad] (+ = 좌회전)
+5: +      static_cast<float>(acc_val.brake),       // 5 brake  [%]
+5: +    };
+5: +    vehicle_cmd_pub->publish(vehicle_cmd_msg);
+5: +
+5: +    // 분석용 토픽
+5: +    Point LDpoint = cb_data->AxisTrans_rel2abs(lat_control->get_target_point());
+5: +
+5: +    std_msgs::msg::Float64MultiArray tmp_plot_val_msg;
+5: +    tmp_plot_val_msg.data.push_back(lat_error);                            // 0  경로와의 거리 [m]
+5: +    tmp_plot_val_msg.data.push_back(lon_control->get_target_speed());      // 1  목표 속도 [m/s]
+5: +    tmp_plot_val_msg.data.push_back(curv_1);                               // 2  곡률 (0.1 s 앞)
+5: +    tmp_plot_val_msg.data.push_back(curv_2);                               // 3  곡률 (0.3 s 앞)
+5: +    tmp_plot_val_msg.data.push_back(path_curature);                        // 4  감속에 쓴 곡률
+5: +    tmp_plot_val_msg.data.push_back(LDpoint.x);                            // 5  Pure Pursuit 목표점 x
+5: +    tmp_plot_val_msg.data.push_back(LDpoint.y);                            // 6  Pure Pursuit 목표점 y
+5: +    tmp_plot_val_msg.data.push_back(acc_val.gas);                          // 7  속도 명령 [m/s]
+5: +    tmp_plot_val_msg.data.push_back(acc_val.brake);                        // 8  브레이크 명령 [%]
+5: +    tmp_plot_val_msg.data.push_back(lat_control->get_stanly_steer());      // 9  Stanley 조향 [rad]
+5: +    vector<double> preview_steers = lat_control->get_preview_steers();
+5: +    for (size_t i = 0; i < preview_steers.size(); i++) {
+5: +      tmp_plot_val_msg.data.push_back(preview_steers[i]);                  // 10 11 12  미리보기 조향 [rad]
+5: +    }
+5: +    tmp_plot_val_msg.data.push_back(lat_control->get_PP_steer());          // 13 Pure Pursuit 조향 [rad]
+5: +
+5: +    vector<Point> predic_p = cb_data->get_stanley_predict_pos();
+5: +    for (size_t i = 0; i < predic_p.size(); i++) {
+5: +      Point tmp_p = cb_data->AxisTrans_rel2abs(predic_p[i]);
+5: +      tmp_plot_val_msg.data.push_back(tmp_p.x);                            // 14 16 18  미리보기 위치 x
+5: +      tmp_plot_val_msg.data.push_back(tmp_p.y);                            // 15 17 19  미리보기 위치 y
+5: +    }
+5: +    tmp_plot_val_msg.data.push_back(lat_control->get_stanley_integral_val());     // 20 Stanley 적분값
+5: +    tmp_plot_val_msg.data.push_back(curr_speed);                           // 21 차량 속도 [m/s]
+5: +    tmp_plot_val_msg.data.push_back(steer);                                // 22 조향 명령 [rad]
+5: +    tmp_data_pub->publish(tmp_plot_val_msg);
+5: +
+5: +    // ------------------------------------------------ </ros topic pub>
+5: +    // <print> ---------------------------------------------------------
+5: +
+5: +    if (IS_PRINT && tick_count_ % PRINT_EVERY_N_TICKS == 0) {
+5: +      cout << "==================" << endl;
+5: +      cout << "mission : " << mission << " (changed_param_num : " << changed_param_num << ")" <<
+5: +        endl;
+5: +      cout << "yawrate : " << yaw_rate << endl;
+5: +      cout << "yaw : " << yaw << endl;
+5: +      cout << "lat_error : " << lat_error << endl;
+5: +      cout << "LD distance : " << lat_control->get_LA_distance() << endl;
+5: +      cout << "path_yaw_nearest(rad) : " << pd_path_yaw << endl;
+5: +      cout << "brake cmd : " << acc_val.brake << " %" << endl
+5: +           << endl;
+5: +
+5: +      cout << "speed cmd : " << acc_val.gas * 3.6 << "km/h (" << acc_val.gas << "m/s)" << endl;
+5: +      cout << "curr_speed : " << curr_speed * 3.6 << "km/h (" << curr_speed << "m/s)" << endl;
+5: +      cout << "target speed : " << lon_control->get_target_speed() * 3.6 << "km/h (" <<
+5: +        lon_control->get_target_speed() << "m/s)" << endl;
+5: +      cout << "steer : " << steer * 180 / M_PI << " deg (" << steer << " rad)" << endl;
+5: +      cout << "PP_steer : " << lat_control->get_PP_steer() * 180 / M_PI << " deg (" <<
+5: +        lat_control->get_PP_steer() << " rad)" << endl;
+5: +      cout << "stanly_steer: " << lat_control->get_stanly_steer() * 180 / M_PI << " deg (" <<
+5: +        lat_control->get_stanly_steer() << " rad)" << endl;
+5: +    }
+5: +    tick_count_++;
+5: +
+5: +    // ------------------------------------------------------- </print>
+5: +  }
+5: @@ -346 +357 @@
+5: -int main(int argc, char **argv)
+5: +int main(int argc, char ** argv)
+5: @@ -348,12 +359,6 @@
+5: -    rclcpp::init(argc, argv);
+5: -    try
+5: -    {
+5: -        auto node = std::make_shared<ERPControl>();
+5: -        rclcpp::spin(node);
+5: -    }
+5: -    catch (const std::exception &e)
+5: -    {
+5: -        std::cerr << "[오류] " << e.what() << std::endl;
+5: -        rclcpp::shutdown();
+5: -        return 1;
+5: -    }
+5: +  rclcpp::init(argc, argv);
+5: +  try {
+5: +    auto node = std::make_shared<ERPControl>();
+5: +    rclcpp::spin(node);
+5: +  } catch (const std::exception & e) {
+5: +    std::cerr << "[오류] " << e.what() << std::endl;
+5: @@ -361,2 +366,5 @@
+5: -
+5: -    return 0;
+5: +    return 1;
+5: +  }
+5: +  rclcpp::shutdown();
+5: +
+5: +  return 0;
+5: 
+5: 6 files with code style divergence
+5: No code style divergence in file 'include/control/vehicle_param.hpp'
+5: 
+5: -- run_test.py: return code 1
+5: -- run_test.py: verify result file '/home/ubuntu/lhj_behavior_stage/build/control/test_results/control/uncrustify.xunit.xml'
+5/6 Test #5: uncrustify .......................***Failed    0.29 sec
+test 6
+    Start 6: xmllint
+
+6: Test command: /usr/bin/python3 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/home/ubuntu/lhj_behavior_stage/build/control/test_results/control/xmllint.xunit.xml" "--package-name" "control" "--output-file" "/home/ubuntu/lhj_behavior_stage/build/control/ament_xmllint/xmllint.txt" "--command" "/opt/ros/humble/bin/ament_xmllint" "--xunit-file" "/home/ubuntu/lhj_behavior_stage/build/control/test_results/control/xmllint.xunit.xml"
+6: Test timeout computed to be: 60
+6: -- run_test.py: invoking following command in '/home/ubuntu/lhj_behavior_stage/src/control':
+6:  - /opt/ros/humble/bin/ament_xmllint --xunit-file /home/ubuntu/lhj_behavior_stage/build/control/test_results/control/xmllint.xunit.xml
+6: File 'package.xml' is invalid:
+6: warning: failed to load external entity "http://download.ros.org/schema/package_format3.xsd"
+6: Schemas parser error : Failed to locate the main schema resource at 'http://download.ros.org/schema/package_format3.xsd'.
+6: WXS schema http://download.ros.org/schema/package_format3.xsd failed to compile
+6: 
+6: 1 files are invalid
+6: -- run_test.py: return code 1
+6: -- run_test.py: verify result file '/home/ubuntu/lhj_behavior_stage/build/control/test_results/control/xmllint.xunit.xml'
+6/6 Test #6: xmllint ..........................***Failed    0.18 sec
+
+33% tests passed, 4 tests failed out of 6
+
+Label Time Summary:
+copyright     =   0.25 sec*proc (1 test)
+cppcheck      =   0.22 sec*proc (1 test)
+cpplint       =   0.79 sec*proc (1 test)
+lint_cmake    =   0.22 sec*proc (1 test)
+linter        =   1.96 sec*proc (6 tests)
+uncrustify    =   0.29 sec*proc (1 test)
+xmllint       =   0.18 sec*proc (1 test)
+
+Total Test time (real) =   1.96 sec
+
+The following tests FAILED:
+	  1 - copyright (Failed)
+	  3 - cpplint (Failed)
+	  5 - uncrustify (Failed)
+	  6 - xmllint (Failed)
+Errors while running CTest
+Output from these tests are in: /home/ubuntu/lhj_behavior_stage/build/control/Testing/Temporary/LastTest.log
+Use "--rerun-failed --output-on-failure" to re-run the failed cases verbosely.

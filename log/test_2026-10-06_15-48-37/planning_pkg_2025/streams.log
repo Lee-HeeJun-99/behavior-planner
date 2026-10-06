@@ -1,0 +1,108 @@
+[0.988s] Invoking command in '/home/ubuntu/lhj_behavior_stage/build/planning_pkg_2025': CMAKE_PREFIX_PATH=/home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025:/home/ubuntu/lhj_behavior_stage/install/behavior_stack_bringup:/home/ubuntu/lhj_behavior_stage/install/lidar:/home/ubuntu/lhj_behavior_stage/install/kroad_planning_utm_pkg:/home/ubuntu/lhj_behavior_stage/install/control:/home/ubuntu/robot_ws/install/zed_ros2:/home/ubuntu/robot_ws/install/zed_wrapper:/home/ubuntu/robot_ws/install/zed_debug:/home/ubuntu/robot_ws/install/zed_components:/home/ubuntu/robot_ws/install/dsr_realtime_control:/home/ubuntu/robot_ws/install/dsr_mujoco:/home/ubuntu/robot_ws/install/dsr_controller2:/home/ubuntu/robot_ws/install/dsr_msgs2:/home/ubuntu/robot_ws/install/dsr_moveit_config_p3020:/home/ubuntu/robot_ws/install/dsr_moveit_config_m1509:/home/ubuntu/robot_ws/install/dsr_moveit_config_m1013:/home/ubuntu/robot_ws/install/dsr_moveit_config_m0617:/home/ubuntu/robot_ws/install/dsr_moveit_config_m0609:/home/ubuntu/robot_ws/install/dsr_moveit_config_h2515:/home/ubuntu/robot_ws/install/dsr_moveit_config_h2017:/home/ubuntu/robot_ws/install/dsr_moveit_config_e0509:/home/ubuntu/robot_ws/install/dsr_moveit_config_a0912:/home/ubuntu/robot_ws/install/dsr_moveit_config_a0509:/home/ubuntu/robot_ws/install/dsr_hardware2:/home/ubuntu/robot_ws/install/dsr_gazebo2:/home/ubuntu/robot_ws/install/dsr_description2:/home/ubuntu/robot_ws/install/dsr_common2 CONDA_PROMPT_MODIFIER=(base) /usr/bin/ctest -C Release -D ExperimentalTest --no-compress-output -V --force-new-ctest-process
+[0.993s] UpdateCTestConfiguration  from :/home/ubuntu/lhj_behavior_stage/build/planning_pkg_2025/CTestConfiguration.ini
+[0.993s] Parse Config file:/home/ubuntu/lhj_behavior_stage/build/planning_pkg_2025/CTestConfiguration.ini
+[0.993s]    Site: scps1
+[0.993s]    Build name: (empty)
+[0.993s]  Add coverage exclude regular expressions.
+[0.994s] Create new tag: 20261006-0648 - Experimental
+[0.994s] UpdateCTestConfiguration  from :/home/ubuntu/lhj_behavior_stage/build/planning_pkg_2025/CTestConfiguration.ini
+[0.994s] Parse Config file:/home/ubuntu/lhj_behavior_stage/build/planning_pkg_2025/CTestConfiguration.ini
+[0.994s] Test project /home/ubuntu/lhj_behavior_stage/build/planning_pkg_2025
+[0.994s] Constructing a list of tests
+[0.994s] Done constructing a list of tests
+[0.994s] Updating test list for fixtures
+[0.994s] Added 0 tests to meet fixture requirements
+[0.994s] Checking test dependency graph...
+[0.994s] Checking test dependency graph end
+[0.994s] test 1
+[0.994s]     Start 1: planning_core_test
+[0.994s] 
+[0.994s] 1: Test command: /usr/bin/python3 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/home/ubuntu/lhj_behavior_stage/build/planning_pkg_2025/test_results/planning_pkg_2025/planning_core_test.gtest.xml" "--package-name" "planning_pkg_2025" "--output-file" "/home/ubuntu/lhj_behavior_stage/build/planning_pkg_2025/ament_cmake_gtest/planning_core_test.txt" "--command" "/home/ubuntu/lhj_behavior_stage/build/planning_pkg_2025/planning_core_test" "--gtest_output=xml:/home/ubuntu/lhj_behavior_stage/build/planning_pkg_2025/test_results/planning_pkg_2025/planning_core_test.gtest.xml"
+[0.994s] 1: Environment variables: 
+[0.994s] 1:  PLANNING_TEST_MAP=/home/ubuntu/lhj_behavior_stage/src/planning/map/map_final_0921/0-0.txt
+[0.994s] 1: Test timeout computed to be: 60
+[1.065s] 1: -- run_test.py: invoking following command in '/home/ubuntu/lhj_behavior_stage/build/planning_pkg_2025':
+[1.065s] 1:  - /home/ubuntu/lhj_behavior_stage/build/planning_pkg_2025/planning_core_test --gtest_output=xml:/home/ubuntu/lhj_behavior_stage/build/planning_pkg_2025/test_results/planning_pkg_2025/planning_core_test.gtest.xml
+[1.067s] 1: Running main() from /opt/ros/humble/src/gtest_vendor/src/gtest_main.cc
+[1.067s] 1: [==========] Running 17 tests from 3 test suites.
+[1.067s] 1: [----------] Global test environment set-up.
+[1.067s] 1: [----------] 1 test from BehaviorPlanner
+[1.067s] 1: [ RUN      ] BehaviorPlanner.ConfirmsAndClearsAvoidance
+[1.067s] 1: [       OK ] BehaviorPlanner.ConfirmsAndClearsAvoidance (0 ms)
+[1.067s] 1: [----------] 1 test from BehaviorPlanner (0 ms total)
+[1.067s] 1: 
+[1.067s] 1: [----------] 11 tests from SpeedContext
+[1.068s] 1: [ RUN      ] SpeedContext.StartsAtDefaultSpeed
+[1.068s] 1: [       OK ] SpeedContext.StartsAtDefaultSpeed (0 ms)
+[1.068s] 1: [ RUN      ] SpeedContext.ConfirmsTwentySign
+[1.068s] 1: [       OK ] SpeedContext.ConfirmsTwentySign (0 ms)
+[1.068s] 1: [ RUN      ] SpeedContext.IgnoresSingleFalseFiftyDetection
+[1.068s] 1: [       OK ] SpeedContext.IgnoresSingleFalseFiftyDetection (0 ms)
+[1.068s] 1: [ RUN      ] SpeedContext.InterruptedDetectionsDoNotConfirm
+[1.068s] 1: [       OK ] SpeedContext.InterruptedDetectionsDoNotConfirm (0 ms)
+[1.068s] 1: [ RUN      ] SpeedContext.DifferentSupportedSignResetsCandidate
+[1.068s] 1: [       OK ] SpeedContext.DifferentSupportedSignResetsCandidate (0 ms)
+[1.068s] 1: [ RUN      ] SpeedContext.ActivatesConfirmedFiftyLimit
+[1.068s] 1: [       OK ] SpeedContext.ActivatesConfirmedFiftyLimit (0 ms)
+[1.068s] 1: [ RUN      ] SpeedContext.KeepsActiveLimitWhenDetectionDisappears
+[1.068s] 1: [       OK ] SpeedContext.KeepsActiveLimitWhenDetectionDisappears (0 ms)
+[1.068s] 1: [ RUN      ] SpeedContext.RejectsUnsupportedDetection
+[1.068s] 1: [       OK ] SpeedContext.RejectsUnsupportedDetection (0 ms)
+[1.069s] 1: [ RUN      ] SpeedContext.InvalidDefaultFallsBackConsistently
+[1.069s] 1: [       OK ] SpeedContext.InvalidDefaultFallsBackConsistently (0 ms)
+[1.069s] 1: [ RUN      ] SpeedContext.AvoidancePreservesActiveLimit
+[1.069s] 1: [       OK ] SpeedContext.AvoidancePreservesActiveLimit (1 ms)
+[1.069s] 1: [ RUN      ] SpeedContext.EmergencyStopPreservesLimitAndResumesIt
+[1.069s] 1: [       OK ] SpeedContext.EmergencyStopPreservesLimitAndResumesIt (0 ms)
+[1.069s] 1: [----------] 11 tests from SpeedContext (1 ms total)
+[1.069s] 1: 
+[1.069s] 1: [----------] 5 tests from LocalPlanner
+[1.069s] 1: [ RUN      ] LocalPlanner.SelectsCollisionFreeOffsetAndRecovers
+[1.069s] 1: [       OK ] LocalPlanner.SelectsCollisionFreeOffsetAndRecovers (0 ms)
+[1.069s] 1: [ RUN      ] LocalPlanner.RejectsCandidatesOutsideBoundary
+[1.069s] 1: [       OK ] LocalPlanner.RejectsCandidatesOutsideBoundary (0 ms)
+[1.069s] 1: [ RUN      ] LocalPlanner.RejectsAllCandidatesWhenCorridorIsBlocked
+[1.069s] 1: [       OK ] LocalPlanner.RejectsAllCandidatesWhenCorridorIsBlocked (1 ms)
+[1.070s] 1: [ RUN      ] LocalPlanner.ReportsProductionGeometryForCentralObstacle
+[1.070s] 1: offset=-1.5 valid=1 reason= clearance=0.3 cost=15.6712
+[1.070s] 1: offset=-1.2 valid=0 reason=obstacle_collision clearance=0 cost=inf
+[1.070s] 1: offset=-0.9 valid=0 reason=obstacle_collision clearance=0 cost=inf
+[1.070s] 1: offset=-0.6 valid=0 reason=obstacle_collision clearance=0 cost=inf
+[1.070s] 1: offset=-0.3 valid=0 reason=obstacle_collision clearance=0 cost=inf
+[1.070s] 1: offset=0 valid=0 reason=obstacle_collision clearance=0 cost=inf
+[1.070s] 1: offset=0.3 valid=0 reason=obstacle_collision clearance=0 cost=inf
+[1.070s] 1: offset=0.6 valid=0 reason=obstacle_collision clearance=0 cost=inf
+[1.070s] 1: offset=0.9 valid=0 reason=obstacle_collision clearance=0 cost=inf
+[1.070s] 1: offset=1.2 valid=0 reason=obstacle_collision clearance=0 cost=inf
+[1.070s] 1: offset=1.5 valid=1 reason= clearance=0.3 cost=15.6712
+[1.070s] 1: [       OK ] LocalPlanner.ReportsProductionGeometryForCentralObstacle (1 ms)
+[1.070s] 1: [ RUN      ] LocalPlanner.ReportsSurveyedMapGeometryWhenRequested
+[1.073s] 1: offset=-1.5 valid=1 reason= clearance=0.3 cost=15.6768
+[1.073s] 1: offset=-1.2 valid=0 reason=obstacle_collision clearance=0 cost=inf
+[1.073s] 1: offset=-0.9 valid=0 reason=obstacle_collision clearance=0 cost=inf
+[1.073s] 1: offset=-0.6 valid=0 reason=obstacle_collision clearance=0 cost=inf
+[1.073s] 1: offset=-0.3 valid=0 reason=obstacle_collision clearance=0 cost=inf
+[1.073s] 1: offset=0 valid=0 reason=obstacle_collision clearance=0 cost=inf
+[1.073s] 1: offset=0.3 valid=0 reason=obstacle_collision clearance=0 cost=inf
+[1.074s] 1: offset=0.6 valid=0 reason=obstacle_collision clearance=0 cost=inf
+[1.074s] 1: offset=0.9 valid=0 reason=obstacle_collision clearance=0 cost=inf
+[1.074s] 1: offset=1.2 valid=0 reason=obstacle_collision clearance=0 cost=inf
+[1.074s] 1: offset=1.5 valid=1 reason= clearance=0.3 cost=15.6768
+[1.074s] 1: [       OK ] LocalPlanner.ReportsSurveyedMapGeometryWhenRequested (4 ms)
+[1.074s] 1: [----------] 5 tests from LocalPlanner (6 ms total)
+[1.074s] 1: 
+[1.074s] 1: [----------] Global test environment tear-down
+[1.074s] 1: [==========] 17 tests from 3 test suites ran. (7 ms total)
+[1.074s] 1: [  PASSED  ] 17 tests.
+[1.074s] 1: -- run_test.py: return code 0
+[1.074s] 1: -- run_test.py: inject classname prefix into gtest result file '/home/ubuntu/lhj_behavior_stage/build/planning_pkg_2025/test_results/planning_pkg_2025/planning_core_test.gtest.xml'
+[1.076s] 1: -- run_test.py: verify result file '/home/ubuntu/lhj_behavior_stage/build/planning_pkg_2025/test_results/planning_pkg_2025/planning_core_test.gtest.xml'
+[1.084s] 1/1 Test #1: planning_core_test ...............   Passed    0.09 sec
+[1.084s] 
+[1.084s] 100% tests passed, 0 tests failed out of 1
+[1.084s] 
+[1.084s] Label Time Summary:
+[1.084s] gtest    =   0.09 sec*proc (1 test)
+[1.084s] 
+[1.084s] Total Test time (real) =   0.09 sec
+[1.088s] Invoked command in '/home/ubuntu/lhj_behavior_stage/build/planning_pkg_2025' returned '0': CMAKE_PREFIX_PATH=/home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025:/home/ubuntu/lhj_behavior_stage/install/behavior_stack_bringup:/home/ubuntu/lhj_behavior_stage/install/lidar:/home/ubuntu/lhj_behavior_stage/install/kroad_planning_utm_pkg:/home/ubuntu/lhj_behavior_stage/install/control:/home/ubuntu/robot_ws/install/zed_ros2:/home/ubuntu/robot_ws/install/zed_wrapper:/home/ubuntu/robot_ws/install/zed_debug:/home/ubuntu/robot_ws/install/zed_components:/home/ubuntu/robot_ws/install/dsr_realtime_control:/home/ubuntu/robot_ws/install/dsr_mujoco:/home/ubuntu/robot_ws/install/dsr_controller2:/home/ubuntu/robot_ws/install/dsr_msgs2:/home/ubuntu/robot_ws/install/dsr_moveit_config_p3020:/home/ubuntu/robot_ws/install/dsr_moveit_config_m1509:/home/ubuntu/robot_ws/install/dsr_moveit_config_m1013:/home/ubuntu/robot_ws/install/dsr_moveit_config_m0617:/home/ubuntu/robot_ws/install/dsr_moveit_config_m0609:/home/ubuntu/robot_ws/install/dsr_moveit_config_h2515:/home/ubuntu/robot_ws/install/dsr_moveit_config_h2017:/home/ubuntu/robot_ws/install/dsr_moveit_config_e0509:/home/ubuntu/robot_ws/install/dsr_moveit_config_a0912:/home/ubuntu/robot_ws/install/dsr_moveit_config_a0509:/home/ubuntu/robot_ws/install/dsr_hardware2:/home/ubuntu/robot_ws/install/dsr_gazebo2:/home/ubuntu/robot_ws/install/dsr_description2:/home/ubuntu/robot_ws/install/dsr_common2 CONDA_PROMPT_MODIFIER=(base) /usr/bin/ctest -C Release -D ExperimentalTest --no-compress-output -V --force-new-ctest-process

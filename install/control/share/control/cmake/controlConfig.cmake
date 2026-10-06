@@ -1,0 +1,1 @@
+/home/ubuntu/lhj_behavior_stage/build/control/ament_cmake_core/controlConfig.cmake

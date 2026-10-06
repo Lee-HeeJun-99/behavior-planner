@@ -1,0 +1,189 @@
+[1.669s] Invoking command in '/home/ubuntu/lhj_behavior_stage/src/wit_ros2_imu': AMENT_PREFIX_PATH=/home/ubuntu/lhj_behavior_stage/install/wit_ros2_imu:/home/ubuntu/lhj_behavior_stage/install/behavior_stack_bringup:/home/ubuntu/lhj_behavior_stage/install/traffic_sign_perception:/home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025:/home/ubuntu/lhj_behavior_stage/install/nmea_navsat_driver:/home/ubuntu/lhj_behavior_stage/install/local_pkg1:/home/ubuntu/lhj_behavior_stage/install/lidar:/home/ubuntu/lhj_behavior_stage/install/kroad_planning_utm_pkg:/home/ubuntu/lhj_behavior_stage/install/erp_ros2_bridge:/home/ubuntu/lhj_behavior_stage/install/erp42pro_interface:/home/ubuntu/lhj_behavior_stage/install/control:/home/ubuntu/robot_ws/install/zed_ros2:/home/ubuntu/robot_ws/install/zed_wrapper:/home/ubuntu/robot_ws/install/zed_debug:/home/ubuntu/robot_ws/install/zed_components:/home/ubuntu/robot_ws/install/vla_data_collector:/home/ubuntu/robot_ws/install/openvla_doosan_runtime_async:/home/ubuntu/robot_ws/install/openvla_doosan_runtime:/home/ubuntu/robot_ws/install/dsr_visualservoing:/home/ubuntu/robot_ws/install/dsr_tests:/home/ubuntu/robot_ws/install/dsr_realtime_control:/home/ubuntu/robot_ws/install/dsr_mujoco:/home/ubuntu/robot_ws/install/dsr_controller2:/home/ubuntu/robot_ws/install/dsr_bringup2:/home/ubuntu/robot_ws/install/dsr_msgs2:/home/ubuntu/robot_ws/install/dsr_moveit_config_p3020:/home/ubuntu/robot_ws/install/dsr_moveit_config_m1509:/home/ubuntu/robot_ws/install/dsr_moveit_config_m1013:/home/ubuntu/robot_ws/install/dsr_moveit_config_m0617:/home/ubuntu/robot_ws/install/dsr_moveit_config_m0609:/home/ubuntu/robot_ws/install/dsr_moveit_config_h2515:/home/ubuntu/robot_ws/install/dsr_moveit_config_h2017:/home/ubuntu/robot_ws/install/dsr_moveit_config_e0509:/home/ubuntu/robot_ws/install/dsr_moveit_config_a0912:/home/ubuntu/robot_ws/install/dsr_moveit_config_a0509:/home/ubuntu/robot_ws/install/dsr_hardware2:/home/ubuntu/robot_ws/install/dsr_gazebo2:/home/ubuntu/robot_ws/install/dsr_example:/home/ubuntu/robot_ws/install/dsr_description2:/home/ubuntu/robot_ws/install/dsr_common2:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) PYTEST_ADDOPTS=--tb=short --junit-xml=/home/ubuntu/lhj_behavior_stage/build/wit_ros2_imu/pytest.xml --junit-prefix=wit_ros2_imu -o cache_dir=/home/ubuntu/lhj_behavior_stage/build/wit_ros2_imu/.pytest_cache PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -m pytest
+[2.003s] ============================= test session starts ==============================
+[2.003s] platform linux -- Python 3.10.12, pytest-6.2.5, py-1.10.0, pluggy-0.13.0
+[2.003s] cachedir: /home/ubuntu/lhj_behavior_stage/build/wit_ros2_imu/.pytest_cache
+[2.003s] rootdir: /home/ubuntu/lhj_behavior_stage/src/wit_ros2_imu
+[2.003s] collected 3 items
+[2.003s] 
+[2.137s] test/test_copyright.py F                                                 [ 33%]
+[2.316s] test/test_flake8.py F                                                    [ 66%]
+[2.350s] test/test_pep257.py .                                                    [100%]
+[2.350s] 
+[2.350s] =================================== FAILURES ===================================
+[2.351s] ________________________________ test_copyright ________________________________
+[2.351s] test/test_copyright.py:23: in test_copyright
+[2.351s]     assert rc == 0, 'Found errors'
+[2.351s] E   AssertionError: Found errors
+[2.351s] E   assert 1 == 0
+[2.351s] ----------------------------- Captured stderr call -----------------------------
+[2.351s] wit_ros2_imu/wit_ros2_imu.py: could not find copyright notice
+[2.351s] 1 errors, checked 5 files
+[2.351s] _________________________________ test_flake8 __________________________________
+[2.351s] test/test_flake8.py:23: in test_flake8
+[2.351s]     assert rc == 0, \
+[2.352s] E   AssertionError: Found 20 code style errors / warnings:
+[2.352s] E     ./setup.py:23:9: E122 continuation line missing indentation or outdented
+[2.352s] E     ./wit_ros2_imu/wit_ros2_imu.py:1:1: F401 'time' imported but unused
+[2.352s] E     ./wit_ros2_imu/wit_ros2_imu.py:39:100: E501 line too long (101 > 99 characters)
+[2.352s] E     ./wit_ros2_imu/wit_ros2_imu.py:46:100: E501 line too long (107 > 99 characters)
+[2.352s] E     ./wit_ros2_imu/wit_ros2_imu.py:52:100: E501 line too long (109 > 99 characters)
+[2.352s] E     ./wit_ros2_imu/wit_ros2_imu.py:60:100: E501 line too long (102 > 99 characters)
+[2.352s] E     ./wit_ros2_imu/wit_ros2_imu.py:121:100: E501 line too long (112 > 99 characters)
+[2.352s] E     ./wit_ros2_imu/wit_ros2_imu.py:123:100: E501 line too long (112 > 99 characters)
+[2.352s] E     ./wit_ros2_imu/wit_ros2_imu.py:125:100: E501 line too long (112 > 99 characters)
+[2.352s] E     ./wit_ros2_imu/wit_ros2_imu.py:127:100: E501 line too long (112 > 99 characters)
+[2.353s] E     ./wit_ros2_imu/wit_ros2_imu.py:138:18: E221 multiple spaces before operator
+[2.353s] E     ./wit_ros2_imu/wit_ros2_imu.py:141:34: E127 continuation line over-indented for visual indent
+[2.353s] E     ./wit_ros2_imu/wit_ros2_imu.py:142:34: E127 continuation line over-indented for visual indent
+[2.353s] E     ./wit_ros2_imu/wit_ros2_imu.py:163:40: E251 unexpected spaces around keyword / parameter equals
+[2.353s] E     ./wit_ros2_imu/wit_ros2_imu.py:163:42: E251 unexpected spaces around keyword / parameter equals
+[2.353s] E     ./wit_ros2_imu/wit_ros2_imu.py:195:1: W293 blank line contains whitespace
+[2.353s] E     ./wit_ros2_imu/wit_ros2_imu.py:198:1: W293 blank line contains whitespace
+[2.353s] E     ./wit_ros2_imu/wit_ros2_imu.py:207:1: W293 blank line contains whitespace
+[2.353s] E     ./wit_ros2_imu/wit_ros2_imu.py:211:1: W293 blank line contains whitespace
+[2.353s] E     ./wit_ros2_imu/wit_ros2_imu.py:216:1: W293 blank line contains whitespace
+[2.353s] E   assert 1 == 0
+[2.353s] ----------------------------- Captured stdout call -----------------------------
+[2.354s] 
+[2.354s] ./setup.py:23:9: E122 continuation line missing indentation or outdented
+[2.354s]         'wit_ros2_imu = wit_ros2_imu.wit_ros2_imu:main'
+[2.354s]         ^
+[2.354s] 
+[2.354s] ./wit_ros2_imu/wit_ros2_imu.py:1:1: F401 'time' imported but unused
+[2.354s] import time
+[2.354s] ^
+[2.354s] 
+[2.354s] ./wit_ros2_imu/wit_ros2_imu.py:39:100: E501 line too long (101 > 99 characters)
+[2.354s]     # According to the judgment of the data length bit, the corresponding length data can be obtained
+[2.354s]                                                                                                    ^
+[2.355s] 
+[2.355s] ./wit_ros2_imu/wit_ros2_imu.py:46:100: E501 line too long (107 > 99 characters)
+[2.355s]                 acceleration = [hex_to_short(data_buff[2:10])[i] / 32768.0 * 16 * 9.8 for i in range(0, 3)]
+[2.355s]                                                                                                    ^
+[2.355s] 
+[2.355s] ./wit_ros2_imu/wit_ros2_imu.py:52:100: E501 line too long (109 > 99 characters)
+[2.355s]                 angularVelocity = [hex_to_short(data_buff[2:10])[i] / 32768.0 * 2000 * math.pi / 180 for i in
+[2.355s]                                                                                                    ^
+[2.355s] 
+[2.355s] ./wit_ros2_imu/wit_ros2_imu.py:60:100: E501 line too long (102 > 99 characters)
+[2.355s]                 angle_degree = [hex_to_short(data_buff[2:10])[i] / 32768.0 * 180 for i in range(0, 3)]
+[2.355s]                                                                                                    ^
+[2.356s] 
+[2.356s] ./wit_ros2_imu/wit_ros2_imu.py:121:100: E501 line too long (112 > 99 characters)
+[2.356s]     qx = np.sin(roll / 2) * np.cos(pitch / 2) * np.cos(yaw / 2) - np.cos(roll / 2) * np.sin(pitch / 2) * np.sin(
+[2.356s]                                                                                                    ^
+[2.356s] 
+[2.356s] ./wit_ros2_imu/wit_ros2_imu.py:123:100: E501 line too long (112 > 99 characters)
+[2.356s]     qy = np.cos(roll / 2) * np.sin(pitch / 2) * np.cos(yaw / 2) + np.sin(roll / 2) * np.cos(pitch / 2) * np.sin(
+[2.356s]                                                                                                    ^
+[2.356s] 
+[2.356s] ./wit_ros2_imu/wit_ros2_imu.py:125:100: E501 line too long (112 > 99 characters)
+[2.356s]     qz = np.cos(roll / 2) * np.cos(pitch / 2) * np.sin(yaw / 2) - np.sin(roll / 2) * np.sin(pitch / 2) * np.cos(
+[2.356s]                                                                                                    ^
+[2.357s] 
+[2.357s] ./wit_ros2_imu/wit_ros2_imu.py:127:100: E501 line too long (112 > 99 characters)
+[2.357s]     qw = np.cos(roll / 2) * np.cos(pitch / 2) * np.cos(yaw / 2) + np.sin(roll / 2) * np.sin(pitch / 2) * np.sin(
+[2.357s]                                                                                                    ^
+[2.357s] 
+[2.357s] ./wit_ros2_imu/wit_ros2_imu.py:138:18: E221 multiple spaces before operator
+[2.357s]         port_name  = port_param.get_parameter_value().string_value
+[2.357s]                  ^
+[2.357s] 
+[2.357s] ./wit_ros2_imu/wit_ros2_imu.py:141:34: E127 continuation line over-indented for visual indent
+[2.357s]                                  depth=1,
+[2.357s]                                  ^
+[2.357s] 
+[2.358s] ./wit_ros2_imu/wit_ros2_imu.py:142:34: E127 continuation line over-indented for visual indent
+[2.358s]                                  reliability=QoSReliabilityPolicy.BEST_EFFORT)
+[2.358s]                                  ^
+[2.358s] 
+[2.358s] ./wit_ros2_imu/wit_ros2_imu.py:163:40: E251 unexpected spaces around keyword / parameter equals
+[2.358s]             wt_imu = serial.Serial(port = port_name, baudrate=921600, timeout=0.5)
+[2.358s]                                        ^
+[2.358s] 
+[2.358s] ./wit_ros2_imu/wit_ros2_imu.py:163:42: E251 unexpected spaces around keyword / parameter equals
+[2.358s]             wt_imu = serial.Serial(port = port_name, baudrate=921600, timeout=0.5)
+[2.358s]                                          ^
+[2.358s] 
+[2.359s] ./wit_ros2_imu/wit_ros2_imu.py:195:1: W293 blank line contains whitespace
+[2.359s]         
+[2.359s] ^
+[2.359s] 
+[2.359s] ./wit_ros2_imu/wit_ros2_imu.py:198:1: W293 blank line contains whitespace
+[2.359s]         
+[2.359s] ^
+[2.359s] 
+[2.359s] ./wit_ros2_imu/wit_ros2_imu.py:207:1: W293 blank line contains whitespace
+[2.359s]         
+[2.359s] ^
+[2.359s] 
+[2.360s] ./wit_ros2_imu/wit_ros2_imu.py:211:1: W293 blank line contains whitespace
+[2.360s]         
+[2.360s] ^
+[2.360s] 
+[2.360s] ./wit_ros2_imu/wit_ros2_imu.py:216:1: W293 blank line contains whitespace
+[2.360s]         
+[2.360s] ^
+[2.360s] 
+[2.360s] 1     E122 continuation line missing indentation or outdented
+[2.360s] 2     E127 continuation line over-indented for visual indent
+[2.360s] 1     E221 multiple spaces before operator
+[2.360s] 2     E251 unexpected spaces around keyword / parameter equals
+[2.360s] 8     E501 line too long (101 > 99 characters)
+[2.361s] 1     F401 'time' imported but unused
+[2.361s] 5     W293 blank line contains whitespace
+[2.361s] 
+[2.361s] 6 files checked
+[2.361s] 20 errors
+[2.361s] 
+[2.361s] 'E'-type errors: 14
+[2.361s] 'F'-type errors: 1
+[2.361s] 'W'-type errors: 5
+[2.361s] 
+[2.361s] Checked files:
+[2.361s] 
+[2.362s] * ./setup.py
+[2.362s] * ./wit_ros2_imu/__init__.py
+[2.362s] * ./wit_ros2_imu/wit_ros2_imu.py
+[2.362s] * ./test/test_copyright.py
+[2.362s] * ./test/test_pep257.py
+[2.362s] * ./test/test_flake8.py
+[2.362s] ------------------------------ Captured log call -------------------------------
+[2.362s] WARNING  flake8.options.manager:manager.py:217 option --max-complexity: please update from optparse string `type=` to argparse callable `type=` -- this will be an error in the future
+[2.362s] =============================== warnings summary ===============================
+[2.362s] test/test_copyright.py:19
+[2.362s]   /home/ubuntu/lhj_behavior_stage/src/wit_ros2_imu/test/test_copyright.py:19: PytestUnknownMarkWarning: Unknown pytest.mark.copyright - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+[2.362s]     @pytest.mark.copyright
+[2.363s] 
+[2.363s] test/test_copyright.py:20
+[2.363s]   /home/ubuntu/lhj_behavior_stage/src/wit_ros2_imu/test/test_copyright.py:20: PytestUnknownMarkWarning: Unknown pytest.mark.linter - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+[2.363s]     @pytest.mark.linter
+[2.363s] 
+[2.363s] test/test_flake8.py:19
+[2.363s]   /home/ubuntu/lhj_behavior_stage/src/wit_ros2_imu/test/test_flake8.py:19: PytestUnknownMarkWarning: Unknown pytest.mark.flake8 - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+[2.363s]     @pytest.mark.flake8
+[2.363s] 
+[2.363s] test/test_flake8.py:20
+[2.363s]   /home/ubuntu/lhj_behavior_stage/src/wit_ros2_imu/test/test_flake8.py:20: PytestUnknownMarkWarning: Unknown pytest.mark.linter - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+[2.363s]     @pytest.mark.linter
+[2.364s] 
+[2.364s] test/test_pep257.py:19
+[2.364s]   /home/ubuntu/lhj_behavior_stage/src/wit_ros2_imu/test/test_pep257.py:19: PytestUnknownMarkWarning: Unknown pytest.mark.linter - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+[2.364s]     @pytest.mark.linter
+[2.364s] 
+[2.364s] test/test_pep257.py:20
+[2.364s]   /home/ubuntu/lhj_behavior_stage/src/wit_ros2_imu/test/test_pep257.py:20: PytestUnknownMarkWarning: Unknown pytest.mark.pep257 - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+[2.364s]     @pytest.mark.pep257
+[2.364s] 
+[2.364s] test/test_flake8.py::test_flake8
+[2.364s] test/test_flake8.py::test_flake8
+[2.364s]   /usr/lib/python3/dist-packages/flake8/plugins/manager.py:261: DeprecationWarning: SelectableGroups dict interface is deprecated. Use select.
+[2.365s]     eps = importlib_metadata.entry_points().get(self.namespace, ())
+[2.365s] 
+[2.365s] -- Docs: https://docs.pytest.org/en/stable/warnings.html
+[2.365s] - generated xml file: /home/ubuntu/lhj_behavior_stage/build/wit_ros2_imu/pytest.xml -
+[2.365s] =========================== short test summary info ============================
+[2.365s] FAILED test/test_copyright.py::test_copyright - AssertionError: Found errors
+[2.365s] FAILED test/test_flake8.py::test_flake8 - AssertionError: Found 20 code style...
+[2.365s] =================== 2 failed, 1 passed, 8 warnings in 0.51s ====================
+[2.398s] Invoked command in '/home/ubuntu/lhj_behavior_stage/src/wit_ros2_imu' returned '1': AMENT_PREFIX_PATH=/home/ubuntu/lhj_behavior_stage/install/wit_ros2_imu:/home/ubuntu/lhj_behavior_stage/install/behavior_stack_bringup:/home/ubuntu/lhj_behavior_stage/install/traffic_sign_perception:/home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025:/home/ubuntu/lhj_behavior_stage/install/nmea_navsat_driver:/home/ubuntu/lhj_behavior_stage/install/local_pkg1:/home/ubuntu/lhj_behavior_stage/install/lidar:/home/ubuntu/lhj_behavior_stage/install/kroad_planning_utm_pkg:/home/ubuntu/lhj_behavior_stage/install/erp_ros2_bridge:/home/ubuntu/lhj_behavior_stage/install/erp42pro_interface:/home/ubuntu/lhj_behavior_stage/install/control:/home/ubuntu/robot_ws/install/zed_ros2:/home/ubuntu/robot_ws/install/zed_wrapper:/home/ubuntu/robot_ws/install/zed_debug:/home/ubuntu/robot_ws/install/zed_components:/home/ubuntu/robot_ws/install/vla_data_collector:/home/ubuntu/robot_ws/install/openvla_doosan_runtime_async:/home/ubuntu/robot_ws/install/openvla_doosan_runtime:/home/ubuntu/robot_ws/install/dsr_visualservoing:/home/ubuntu/robot_ws/install/dsr_tests:/home/ubuntu/robot_ws/install/dsr_realtime_control:/home/ubuntu/robot_ws/install/dsr_mujoco:/home/ubuntu/robot_ws/install/dsr_controller2:/home/ubuntu/robot_ws/install/dsr_bringup2:/home/ubuntu/robot_ws/install/dsr_msgs2:/home/ubuntu/robot_ws/install/dsr_moveit_config_p3020:/home/ubuntu/robot_ws/install/dsr_moveit_config_m1509:/home/ubuntu/robot_ws/install/dsr_moveit_config_m1013:/home/ubuntu/robot_ws/install/dsr_moveit_config_m0617:/home/ubuntu/robot_ws/install/dsr_moveit_config_m0609:/home/ubuntu/robot_ws/install/dsr_moveit_config_h2515:/home/ubuntu/robot_ws/install/dsr_moveit_config_h2017:/home/ubuntu/robot_ws/install/dsr_moveit_config_e0509:/home/ubuntu/robot_ws/install/dsr_moveit_config_a0912:/home/ubuntu/robot_ws/install/dsr_moveit_config_a0509:/home/ubuntu/robot_ws/install/dsr_hardware2:/home/ubuntu/robot_ws/install/dsr_gazebo2:/home/ubuntu/robot_ws/install/dsr_example:/home/ubuntu/robot_ws/install/dsr_description2:/home/ubuntu/robot_ws/install/dsr_common2:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) PYTEST_ADDOPTS=--tb=short --junit-xml=/home/ubuntu/lhj_behavior_stage/build/wit_ros2_imu/pytest.xml --junit-prefix=wit_ros2_imu -o cache_dir=/home/ubuntu/lhj_behavior_stage/build/wit_ros2_imu/.pytest_cache PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -m pytest

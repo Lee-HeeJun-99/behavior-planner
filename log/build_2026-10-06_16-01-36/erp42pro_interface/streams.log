@@ -1,0 +1,17 @@
+[2.620s] Invoking command in '/home/ubuntu/lhj_behavior_stage/build/erp42pro_interface': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/ubuntu/lhj_behavior_stage/build/erp42pro_interface/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ubuntu/lhj_behavior_stage/install/erp42pro_interface/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/ubuntu/lhj_behavior_stage/build/erp42pro_interface/build --no-deps symlink_data
+[2.951s] running develop
+[3.200s] running egg_info
+[3.201s] writing erp42pro_interface.egg-info/PKG-INFO
+[3.201s] writing dependency_links to erp42pro_interface.egg-info/dependency_links.txt
+[3.201s] writing entry points to erp42pro_interface.egg-info/entry_points.txt
+[3.201s] writing requirements to erp42pro_interface.egg-info/requires.txt
+[3.201s] writing top-level names to erp42pro_interface.egg-info/top_level.txt
+[3.204s] reading manifest file 'erp42pro_interface.egg-info/SOURCES.txt'
+[3.205s] writing manifest file 'erp42pro_interface.egg-info/SOURCES.txt'
+[3.260s] running build_ext
+[3.261s] Creating /home/ubuntu/lhj_behavior_stage/install/erp42pro_interface/lib/python3.10/site-packages/erp42pro-interface.egg-link (link to .)
+[3.261s] Installing can_bridge_node script to /home/ubuntu/lhj_behavior_stage/install/erp42pro_interface/lib/erp42pro_interface
+[3.262s] 
+[3.262s] Installed /home/ubuntu/lhj_behavior_stage/build/erp42pro_interface
+[3.262s] running symlink_data
+[3.299s] Invoked command in '/home/ubuntu/lhj_behavior_stage/build/erp42pro_interface' returned '0': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/ubuntu/lhj_behavior_stage/build/erp42pro_interface/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ubuntu/lhj_behavior_stage/install/erp42pro_interface/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/ubuntu/lhj_behavior_stage/build/erp42pro_interface/build --no-deps symlink_data

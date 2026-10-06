@@ -1,0 +1,28 @@
+running develop
+running egg_info
+creating traffic_sign_perception.egg-info
+writing traffic_sign_perception.egg-info/PKG-INFO
+writing dependency_links to traffic_sign_perception.egg-info/dependency_links.txt
+writing entry points to traffic_sign_perception.egg-info/entry_points.txt
+writing requirements to traffic_sign_perception.egg-info/requires.txt
+writing top-level names to traffic_sign_perception.egg-info/top_level.txt
+writing manifest file 'traffic_sign_perception.egg-info/SOURCES.txt'
+reading manifest file 'traffic_sign_perception.egg-info/SOURCES.txt'
+writing manifest file 'traffic_sign_perception.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/ubuntu/lhj_behavior_stage/install/traffic_sign_perception/lib/python3.10/site-packages/traffic-sign-perception.egg-link (link to .)
+Installing speed_sign_node script to /home/ubuntu/lhj_behavior_stage/install/traffic_sign_perception/lib/traffic_sign_perception
+
+Installed /home/ubuntu/lhj_behavior_stage/build/traffic_sign_perception
+running symlink_data
+creating /home/ubuntu/lhj_behavior_stage/install/traffic_sign_perception/share/ament_index
+creating /home/ubuntu/lhj_behavior_stage/install/traffic_sign_perception/share/ament_index/resource_index
+creating /home/ubuntu/lhj_behavior_stage/install/traffic_sign_perception/share/ament_index/resource_index/packages
+symbolically linking /home/ubuntu/lhj_behavior_stage/build/traffic_sign_perception/resource/traffic_sign_perception -> /home/ubuntu/lhj_behavior_stage/install/traffic_sign_perception/share/ament_index/resource_index/packages
+symbolically linking /home/ubuntu/lhj_behavior_stage/build/traffic_sign_perception/package.xml -> /home/ubuntu/lhj_behavior_stage/install/traffic_sign_perception/share/traffic_sign_perception
+creating /home/ubuntu/lhj_behavior_stage/install/traffic_sign_perception/share/traffic_sign_perception/config
+symbolically linking /home/ubuntu/lhj_behavior_stage/build/traffic_sign_perception/config/speed_sign.yaml -> /home/ubuntu/lhj_behavior_stage/install/traffic_sign_perception/share/traffic_sign_perception/config
+creating /home/ubuntu/lhj_behavior_stage/install/traffic_sign_perception/share/traffic_sign_perception/launch
+symbolically linking /home/ubuntu/lhj_behavior_stage/build/traffic_sign_perception/launch/speed_sign.launch.py -> /home/ubuntu/lhj_behavior_stage/install/traffic_sign_perception/share/traffic_sign_perception/launch
+creating /home/ubuntu/lhj_behavior_stage/install/traffic_sign_perception/share/traffic_sign_perception/weights
+symbolically linking /home/ubuntu/lhj_behavior_stage/build/traffic_sign_perception/weights/README.md -> /home/ubuntu/lhj_behavior_stage/install/traffic_sign_perception/share/traffic_sign_perception/weights

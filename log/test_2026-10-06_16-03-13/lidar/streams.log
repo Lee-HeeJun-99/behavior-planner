@@ -1,0 +1,745 @@
+[2.028s] Invoking command in '/home/ubuntu/lhj_behavior_stage/build/lidar': CMAKE_PREFIX_PATH=/home/ubuntu/lhj_behavior_stage/install/lidar:/home/ubuntu/lhj_behavior_stage/install/behavior_stack_bringup:/home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025:/home/ubuntu/lhj_behavior_stage/install/kroad_planning_utm_pkg:/home/ubuntu/lhj_behavior_stage/install/control:/home/ubuntu/robot_ws/install/zed_ros2:/home/ubuntu/robot_ws/install/zed_wrapper:/home/ubuntu/robot_ws/install/zed_debug:/home/ubuntu/robot_ws/install/zed_components:/home/ubuntu/robot_ws/install/dsr_realtime_control:/home/ubuntu/robot_ws/install/dsr_mujoco:/home/ubuntu/robot_ws/install/dsr_controller2:/home/ubuntu/robot_ws/install/dsr_msgs2:/home/ubuntu/robot_ws/install/dsr_moveit_config_p3020:/home/ubuntu/robot_ws/install/dsr_moveit_config_m1509:/home/ubuntu/robot_ws/install/dsr_moveit_config_m1013:/home/ubuntu/robot_ws/install/dsr_moveit_config_m0617:/home/ubuntu/robot_ws/install/dsr_moveit_config_m0609:/home/ubuntu/robot_ws/install/dsr_moveit_config_h2515:/home/ubuntu/robot_ws/install/dsr_moveit_config_h2017:/home/ubuntu/robot_ws/install/dsr_moveit_config_e0509:/home/ubuntu/robot_ws/install/dsr_moveit_config_a0912:/home/ubuntu/robot_ws/install/dsr_moveit_config_a0509:/home/ubuntu/robot_ws/install/dsr_hardware2:/home/ubuntu/robot_ws/install/dsr_gazebo2:/home/ubuntu/robot_ws/install/dsr_description2:/home/ubuntu/robot_ws/install/dsr_common2 CONDA_PROMPT_MODIFIER=(base) /usr/bin/ctest -C Release -D ExperimentalTest --no-compress-output -V --force-new-ctest-process
+[2.033s] UpdateCTestConfiguration  from :/home/ubuntu/lhj_behavior_stage/build/lidar/CTestConfiguration.ini
+[2.033s] Parse Config file:/home/ubuntu/lhj_behavior_stage/build/lidar/CTestConfiguration.ini
+[2.033s]    Site: scps1
+[2.033s]    Build name: (empty)
+[2.033s]  Add coverage exclude regular expressions.
+[2.033s] Create new tag: 20261006-0703 - Experimental
+[2.033s] UpdateCTestConfiguration  from :/home/ubuntu/lhj_behavior_stage/build/lidar/CTestConfiguration.ini
+[2.033s] Parse Config file:/home/ubuntu/lhj_behavior_stage/build/lidar/CTestConfiguration.ini
+[2.034s] Test project /home/ubuntu/lhj_behavior_stage/build/lidar
+[2.034s] Constructing a list of tests
+[2.034s] Done constructing a list of tests
+[2.034s] Updating test list for fixtures
+[2.034s] Added 0 tests to meet fixture requirements
+[2.034s] Checking test dependency graph...
+[2.034s] Checking test dependency graph end
+[2.034s] test 1
+[2.034s]     Start 1: copyright
+[2.034s] 
+[2.034s] 1: Test command: /usr/bin/python3 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/copyright.xunit.xml" "--package-name" "lidar" "--output-file" "/home/ubuntu/lhj_behavior_stage/build/lidar/ament_copyright/copyright.txt" "--command" "/opt/ros/humble/bin/ament_copyright" "--xunit-file" "/home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/copyright.xunit.xml"
+[2.034s] 1: Test timeout computed to be: 200
+[2.110s] 1: -- run_test.py: invoking following command in '/home/ubuntu/lhj_behavior_stage/src/lidar':
+[2.110s] 1:  - /opt/ros/humble/bin/ament_copyright --xunit-file /home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/copyright.xunit.xml
+[2.238s] 1: include/data_header/mission.hpp: could not find copyright notice
+[2.239s] 1: include/data_header/qos_utils.hpp: could not find copyright notice
+[2.239s] 1: include/data_header/utility_function.hpp: could not find copyright notice
+[2.239s] 1: include/mission_header/LiDAR_small_static.hpp: could not find copyright notice
+[2.239s] 1: src/LiDAR_small_static.cpp: could not find copyright notice
+[2.239s] 1: src/main.cpp: could not find copyright notice
+[2.239s] 1: 6 errors, checked 6 files
+[2.256s] 1: -- run_test.py: return code 1
+[2.256s] 1: -- run_test.py: verify result file '/home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/copyright.xunit.xml'
+[2.277s] 1/6 Test #1: copyright ........................***Failed    0.25 sec
+[2.277s] test 2
+[2.277s]     Start 2: cppcheck
+[2.277s] 
+[2.277s] 2: Test command: /usr/bin/python3 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/cppcheck.xunit.xml" "--package-name" "lidar" "--output-file" "/home/ubuntu/lhj_behavior_stage/build/lidar/ament_cppcheck/cppcheck.txt" "--command" "/opt/ros/humble/bin/ament_cppcheck" "--xunit-file" "/home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/cppcheck.xunit.xml" "--include_dirs" "/home/ubuntu/lhj_behavior_stage/src/lidar/include"
+[2.277s] 2: Test timeout computed to be: 300
+[2.365s] 2: -- run_test.py: invoking following command in '/home/ubuntu/lhj_behavior_stage/src/lidar':
+[2.365s] 2:  - /opt/ros/humble/bin/ament_cppcheck --xunit-file /home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/cppcheck.xunit.xml --include_dirs /home/ubuntu/lhj_behavior_stage/src/lidar/include
+[2.470s] 2: cppcheck 2.7 has known performance issues and therefore will not be used, set the AMENT_CPPCHECK_ALLOW_SLOW_VERSIONS environment variable to override this.
+[2.491s] 2: -- run_test.py: return code 0
+[2.491s] 2: -- run_test.py: verify result file '/home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/cppcheck.xunit.xml'
+[2.505s] 2/6 Test #2: cppcheck .........................   Passed    0.23 sec
+[2.505s] test 3
+[2.505s]     Start 3: cpplint
+[2.505s] 
+[2.505s] 3: Test command: /usr/bin/python3 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/cpplint.xunit.xml" "--package-name" "lidar" "--output-file" "/home/ubuntu/lhj_behavior_stage/build/lidar/ament_cpplint/cpplint.txt" "--command" "/opt/ros/humble/bin/ament_cpplint" "--xunit-file" "/home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/cpplint.xunit.xml"
+[2.505s] 3: Test timeout computed to be: 120
+[2.584s] 3: -- run_test.py: invoking following command in '/home/ubuntu/lhj_behavior_stage/src/lidar':
+[2.584s] 3:  - /opt/ros/humble/bin/ament_cpplint --xunit-file /home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/cpplint.xunit.xml
+[2.685s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/mission.hpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+[2.686s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/mission.hpp:1:  #ifndef header guard has wrong style, please use: DATA_HEADER__MISSION_HPP_  [build/header_guard] [5]
+[2.686s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/mission.hpp:29:  #endif line should be "#endif  // DATA_HEADER__MISSION_HPP_"  [build/header_guard] [5]
+[2.712s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/qos_utils.hpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+[2.712s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/qos_utils.hpp:3:  #ifndef header guard has wrong style, please use: DATA_HEADER__QOS_UTILS_HPP_  [build/header_guard] [5]
+[2.712s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/qos_utils.hpp:37:  #endif line should be "#endif  // DATA_HEADER__QOS_UTILS_HPP_"  [build/header_guard] [5]
+[2.720s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/qos_utils.hpp:35:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+[2.720s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/qos_utils.hpp:37:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+[2.720s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/qos_utils.hpp:37:  Could not find a newline character at the end of the file.  [whitespace/ending_newline] [5]
+[2.720s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/utility_function.hpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+[2.724s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/utility_function.hpp:12:  #ifndef header guard has wrong style, please use: DATA_HEADER__UTILITY_FUNCTION_HPP_  [build/header_guard] [5]
+[2.724s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/utility_function.hpp:240:  #endif line should be "#endif  // DATA_HEADER__UTILITY_FUNCTION_HPP_"  [build/header_guard] [5]
+[2.739s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/utility_function.hpp:37:  Do not use namespace using-directives.  Use using-declarations instead.  [build/namespaces] [5]
+[2.740s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/utility_function.hpp:42:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+[2.743s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/utility_function.hpp:54:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+[2.746s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/utility_function.hpp:65:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+[2.748s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/utility_function.hpp:70:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+[2.750s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/utility_function.hpp:76:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+[2.752s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/utility_function.hpp:83:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+[2.758s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/utility_function.hpp:98:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+[2.763s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/utility_function.hpp:111:  Using C-style cast.  Use static_cast<float>(...) instead  [readability/casting] [4]
+[2.766s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/utility_function.hpp:122:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+[2.771s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/utility_function.hpp:140:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+[2.775s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/utility_function.hpp:153:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+[2.792s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/utility_function.hpp:215:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+[2.794s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/utility_function.hpp:223:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+[2.807s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/utility_function.hpp:217:  Add #include <vector> for vector<>  [build/include_what_you_use] [4]
+[2.807s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/utility_function.hpp:224:  Add #include <utility> for make_pair  [build/include_what_you_use] [4]
+[2.808s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/utility_function.hpp:228:  Add #include <algorithm> for sort  [build/include_what_you_use] [4]
+[2.808s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/mission_header/LiDAR_small_static.hpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+[2.808s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/include/mission_header/LiDAR_small_static.hpp:0:  No #ifndef header guard found, suggested CPP variable is: MISSION_HEADER__LIDAR_SMALL_STATIC_HPP_  [build/header_guard] [5]
+[2.816s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/src/LiDAR_small_static.cpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+[2.819s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/src/LiDAR_small_static.cpp:6:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+[2.819s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/src/LiDAR_small_static.cpp:7:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+[2.819s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/src/LiDAR_small_static.cpp:8:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+[2.820s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/src/LiDAR_small_static.cpp:9:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+[2.823s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/src/LiDAR_small_static.cpp:31:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+[2.826s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/src/LiDAR_small_static.cpp:60:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+[2.828s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/src/LiDAR_small_static.cpp:75:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+[2.835s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/src/LiDAR_small_static.cpp:129:  An else should appear on the same line as the preceding }  [whitespace/newline] [4]
+[2.841s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/src/main.cpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+[2.841s] 3: /home/ubuntu/lhj_behavior_stage/src/lidar/src/main.cpp:1:  Do not include .cpp files from other packages  [build/include] [4]
+[2.843s] 3: Category 'build/header_guard' errors found: 7
+[2.844s] 3: Category 'build/include' errors found: 1
+[2.844s] 3: Category 'build/include_what_you_use' errors found: 3
+[2.844s] 3: Category 'build/namespaces' errors found: 1
+[2.844s] 3: Category 'legal/copyright' errors found: 6
+[2.844s] 3: Category 'readability/casting' errors found: 1
+[2.844s] 3: Category 'whitespace/comments' errors found: 5
+[2.844s] 3: Category 'whitespace/ending_newline' errors found: 1
+[2.844s] 3: Category 'whitespace/line_length' errors found: 16
+[2.844s] 3: Category 'whitespace/newline' errors found: 1
+[2.844s] 3: Total errors found: 42
+[2.847s] 3: Using '--root=/home/ubuntu/lhj_behavior_stage/src/lidar/include' argument
+[2.847s] 3: 
+[2.847s] 3: Done processing /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/mission.hpp
+[2.847s] 3: 
+[2.847s] 3: Done processing /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/qos_utils.hpp
+[2.847s] 3: 
+[2.848s] 3: Done processing /home/ubuntu/lhj_behavior_stage/src/lidar/include/data_header/utility_function.hpp
+[2.848s] 3: 
+[2.848s] 3: Done processing /home/ubuntu/lhj_behavior_stage/src/lidar/include/mission_header/LiDAR_small_static.hpp
+[2.848s] 3: 
+[2.848s] 3: Using '--root=/home/ubuntu/lhj_behavior_stage/src/lidar/src' argument
+[2.848s] 3: 
+[2.848s] 3: Done processing /home/ubuntu/lhj_behavior_stage/src/lidar/src/LiDAR_small_static.cpp
+[2.848s] 3: 
+[2.848s] 3: Done processing /home/ubuntu/lhj_behavior_stage/src/lidar/src/main.cpp
+[2.848s] 3: 
+[2.861s] 3: -- run_test.py: return code 1
+[2.862s] 3: -- run_test.py: verify result file '/home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/cpplint.xunit.xml'
+[2.877s] 3/6 Test #3: cpplint ..........................***Failed    0.37 sec
+[2.877s] test 4
+[2.877s]     Start 4: lint_cmake
+[2.877s] 
+[2.877s] 4: Test command: /usr/bin/python3 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/lint_cmake.xunit.xml" "--package-name" "lidar" "--output-file" "/home/ubuntu/lhj_behavior_stage/build/lidar/ament_lint_cmake/lint_cmake.txt" "--command" "/opt/ros/humble/bin/ament_lint_cmake" "--xunit-file" "/home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/lint_cmake.xunit.xml"
+[2.877s] 4: Test timeout computed to be: 60
+[2.951s] 4: -- run_test.py: invoking following command in '/home/ubuntu/lhj_behavior_stage/src/lidar':
+[2.951s] 4:  - /opt/ros/humble/bin/ament_lint_cmake --xunit-file /home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/lint_cmake.xunit.xml
+[3.035s] 4: 
+[3.035s] 4: No problems found
+[3.045s] 4: -- run_test.py: return code 0
+[3.045s] 4: -- run_test.py: verify result file '/home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/lint_cmake.xunit.xml'
+[3.054s] 4/6 Test #4: lint_cmake .......................   Passed    0.18 sec
+[3.054s] test 5
+[3.054s]     Start 5: uncrustify
+[3.054s] 
+[3.054s] 5: Test command: /usr/bin/python3 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/uncrustify.xunit.xml" "--package-name" "lidar" "--output-file" "/home/ubuntu/lhj_behavior_stage/build/lidar/ament_uncrustify/uncrustify.txt" "--command" "/opt/ros/humble/bin/ament_uncrustify" "--xunit-file" "/home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/uncrustify.xunit.xml"
+[3.054s] 5: Test timeout computed to be: 60
+[3.132s] 5: -- run_test.py: invoking following command in '/home/ubuntu/lhj_behavior_stage/src/lidar':
+[3.132s] 5:  - /opt/ros/humble/bin/ament_uncrustify --xunit-file /home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/uncrustify.xunit.xml
+[3.266s] 5: Code style divergence in file 'include/data_header/qos_utils.hpp':
+[3.267s] 5: 
+[3.267s] 5: --- include/data_header/qos_utils.hpp
+[3.267s] 5: +++ include/data_header/qos_utils.hpp.uncrustify
+[3.267s] 5: @@ -11,11 +11,11 @@
+[3.267s] 5: -    // QoS settings for robust network
+[3.267s] 5: -    inline rclcpp::QoS reliable_qos()
+[3.267s] 5: -    {
+[3.267s] 5: -        return rclcpp::QoS(rclcpp::KeepLast(1))
+[3.267s] 5: -            .reliable()
+[3.267s] 5: -            .durability_volatile();
+[3.268s] 5: -            // .deadline(rclcpp::Duration(1, 0)) // 1 second
+[3.268s] 5: -            // .lifespan(rclcpp::Duration(5, 0)) // 5 seconds
+[3.268s] 5: -            // .liveliness(rclcpp::LivelinessPolicy::Automatic)
+[3.268s] 5: -            // .liveliness_lease_duration(rclcpp::Duration(2, 0)); // 2 seconds
+[3.268s] 5: -    }
+[3.268s] 5: +// QoS settings for robust network
+[3.268s] 5: +inline rclcpp::QoS reliable_qos()
+[3.268s] 5: +{
+[3.268s] 5: +  return rclcpp::QoS(rclcpp::KeepLast(1))
+[3.269s] 5: +         .reliable()
+[3.269s] 5: +         .durability_volatile();
+[3.270s] 5: +  // .deadline(rclcpp::Duration(1, 0)) // 1 second
+[3.270s] 5: +  // .lifespan(rclcpp::Duration(5, 0)) // 5 seconds
+[3.270s] 5: +  // .liveliness(rclcpp::LivelinessPolicy::Automatic)
+[3.270s] 5: +  // .liveliness_lease_duration(rclcpp::Duration(2, 0)); // 2 seconds
+[3.270s] 5: +}
+[3.270s] 5: @@ -23,11 +23,11 @@
+[3.270s] 5: -    // QoS settings for non-robust network
+[3.270s] 5: -    inline rclcpp::QoS best_effort_qos()
+[3.270s] 5: -    {
+[3.270s] 5: -        return rclcpp::QoS(rclcpp::KeepLast(1))
+[3.270s] 5: -            .best_effort()
+[3.271s] 5: -            .durability_volatile();
+[3.271s] 5: -        // .deadline(rclcpp::Duration(0.5, 0)) // 0.5 seconds
+[3.271s] 5: -        // .lifespan(rclcpp::Duration(2, 0)) // 2 seconds
+[3.271s] 5: -        // .liveliness(rclcpp::LivelinessPolicy::ManualByTopic)
+[3.271s] 5: -        // .liveliness_lease_duration(rclcpp::Duration(2, 0)); // 5 seconds
+[3.271s] 5: -    }
+[3.271s] 5: +// QoS settings for non-robust network
+[3.271s] 5: +inline rclcpp::QoS best_effort_qos()
+[3.271s] 5: +{
+[3.271s] 5: +  return rclcpp::QoS(rclcpp::KeepLast(1))
+[3.271s] 5: +         .best_effort()
+[3.272s] 5: +         .durability_volatile();
+[3.272s] 5: +  // .deadline(rclcpp::Duration(0.5, 0)) // 0.5 seconds
+[3.272s] 5: +  // .lifespan(rclcpp::Duration(2, 0)) // 2 seconds
+[3.272s] 5: +  // .liveliness(rclcpp::LivelinessPolicy::ManualByTopic)
+[3.272s] 5: +  // .liveliness_lease_duration(rclcpp::Duration(2, 0)); // 5 seconds
+[3.272s] 5: +}
+[3.272s] 5: @@ -37 +37 @@
+[3.272s] 5: -#endif // LIDAR_QOS_UTILS_HPP_
+[3.272s] 5: +#endif // LIDAR_QOS_UTILS_HPP_
+[3.272s] 5: 
+[3.272s] 5: Code style divergence in file 'include/data_header/utility_function.hpp':
+[3.273s] 5: 
+[3.273s] 5: --- include/data_header/utility_function.hpp
+[3.273s] 5: +++ include/data_header/utility_function.hpp.uncrustify
+[3.273s] 5: @@ -42 +42 @@
+[3.273s] 5: -    // std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr, Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr>> clusters;
+[3.273s] 5: +  // std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr, Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr>> clusters;
+[3.273s] 5: @@ -45,194 +45,200 @@
+[3.273s] 5: -    pcl::PointCloud<pcl::PointXYZI>::Ptr PointCloudROS(
+[3.273s] 5: -        const sensor_msgs::msg::PointCloud2::SharedPtr &input)
+[3.273s] 5: -    {
+[3.273s] 5: -        pcl::PointCloud<pcl::PointXYZI>::Ptr cloud_origin(new pcl::PointCloud<pcl::PointXYZI>);
+[3.274s] 5: -        pcl::fromROSMsg(*input, *cloud_origin);
+[3.274s] 5: -        return cloud_origin;
+[3.274s] 5: -    }
+[3.274s] 5: -
+[3.274s] 5: -    pcl::PointCloud<pcl::PointXYZI>::Ptr DownSamplingVoxel(
+[3.274s] 5: -        const pcl::PointCloud<pcl::PointXYZI>::Ptr &cloud_origin, float size_x, float size_y, float size_z)
+[3.274s] 5: -    {
+[3.274s] 5: -        pcl::PointCloud<pcl::PointXYZI>::Ptr cloud_down(new pcl::PointCloud<pcl::PointXYZI>);
+[3.274s] 5: -        pcl::VoxelGrid<pcl::PointXYZI> VG;
+[3.274s] 5: -        VG.setInputCloud(cloud_origin);
+[3.274s] 5: -        VG.setLeafSize(size_x, size_y, size_z);
+[3.275s] 5: -        VG.filter(*cloud_down);
+[3.275s] 5: -        return cloud_down;
+[3.275s] 5: -    }
+[3.275s] 5: -
+[3.275s] 5: -    pcl::PointCloud<pcl::PointXYZI>::Ptr CropFilter(
+[3.275s] 5: -        const pcl::PointCloud<pcl::PointXYZI>::Ptr &cloud_down, Eigen::Vector4f min_pt, Eigen::Vector4f max_pt)
+[3.275s] 5: -    {
+[3.275s] 5: -        pcl::PointCloud<pcl::PointXYZI>::Ptr cloud_crop(new pcl::PointCloud<pcl::PointXYZI>);
+[3.275s] 5: -        pcl::CropBox<pcl::PointXYZI> cropFilter;
+[3.275s] 5: -        cropFilter.setInputCloud(cloud_down);
+[3.275s] 5: -        cropFilter.setMin(min_pt); // x,y,z,1
+[3.276s] 5: -        cropFilter.setMax(max_pt);
+[3.276s] 5: -        cropFilter.filter(*cloud_crop);
+[3.276s] 5: -        return cloud_crop;
+[3.276s] 5: -    }
+[3.276s] 5: -    std::vector<pcl::PointIndices> ClusterEuclidean(
+[3.276s] 5: -        const pcl::PointCloud<pcl::PointXYZI>::Ptr &cloud_crop, bool max_ok, float tolerance, int min_size, int max_size)
+[3.276s] 5: -    {
+[3.276s] 5: -        pcl::search::KdTree<pcl::PointXYZI>::Ptr tree(new pcl::search::KdTree<pcl::PointXYZI>);
+[3.276s] 5: -        tree->setInputCloud(cloud_crop);
+[3.276s] 5: -        std::vector<pcl::PointIndices> cloud_clust;
+[3.277s] 5: -        pcl::EuclideanClusterExtraction<pcl::PointXYZI> ec;
+[3.277s] 5: -        ec.setInputCloud(cloud_crop);
+[3.277s] 5: -        ec.setClusterTolerance(tolerance); // 여기도 수정해야 함.
+[3.277s] 5: -        ec.setMinClusterSize(min_size);
+[3.277s] 5: -        if (max_ok)
+[3.277s] 5: -        {
+[3.277s] 5: -            ec.setMaxClusterSize(max_size);
+[3.277s] 5: -        }
+[3.277s] 5: -        ec.setSearchMethod(tree);
+[3.277s] 5: -        ec.extract(cloud_clust);
+[3.277s] 5: -
+[3.278s] 5: -        return cloud_clust;
+[3.278s] 5: -    }
+[3.278s] 5: -    void ExtractClusters(
+[3.278s] 5: -        pcl::PointCloud<pcl::PointXYZI> &TotalCloud,
+[3.278s] 5: -        const pcl::PointCloud<pcl::PointXYZI>::Ptr &cloud_crop,
+[3.278s] 5: -        const std::vector<pcl::PointIndices> &cloud_clust,
+[3.278s] 5: -        std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr, Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr>> &clusters)
+[3.278s] 5: -    {
+[3.278s] 5: -        int ii = 0;
+[3.278s] 5: -        clusters.clear();
+[3.279s] 5: -        for (auto it = cloud_clust.begin(); it != cloud_clust.end(); ++it, ++ii)
+[3.279s] 5: -        {
+[3.279s] 5: -            pcl::PointCloud<pcl::PointXYZI>::Ptr cluster(new pcl::PointCloud<pcl::PointXYZI>);
+[3.279s] 5: -            for (auto pit = it->indices.begin(); pit != it->indices.end(); ++pit)
+[3.279s] 5: -            {
+[3.279s] 5: -                cluster->points.push_back(cloud_crop->points[*pit]);
+[3.279s] 5: -                pcl::PointXYZI pt = cloud_crop->points[*pit];
+[3.279s] 5: -                pcl::PointXYZI pt2;
+[3.279s] 5: -                pt2.x = pt.x, pt2.y = pt.y, pt2.z = pt.z;
+[3.279s] 5: -                pt2.intensity = (float)(ii + 1);
+[3.280s] 5: -                TotalCloud.push_back(pt2);
+[3.280s] 5: -            }
+[3.280s] 5: -            cluster->width = cluster->size();
+[3.280s] 5: -            cluster->height = 1;
+[3.280s] 5: -            cluster->is_dense = true;
+[3.280s] 5: -            clusters.push_back(cluster);
+[3.280s] 5: -        }
+[3.280s] 5: -    }
+[3.280s] 5: -
+[3.280s] 5: -    void GetMinMaxCloudPoint(
+[3.280s] 5: -        std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr, Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr>> &clusters,
+[3.280s] 5: -        geometry_msgs::msg::Point &min_point,
+[3.281s] 5: -        geometry_msgs::msg::Point &max_point,
+[3.281s] 5: -        size_t i)
+[3.281s] 5: -    {
+[3.281s] 5: -        Eigen::Vector4f min_p, max_p;
+[3.281s] 5: -
+[3.281s] 5: -        pcl::getMinMax3D(*clusters[i], min_p, max_p);
+[3.281s] 5: -
+[3.281s] 5: -        min_point.x = min_p[0];
+[3.281s] 5: -        min_point.y = min_p[1];
+[3.281s] 5: -        min_point.z = min_p[2];
+[3.282s] 5: -
+[3.282s] 5: -        max_point.x = max_p[0];
+[3.282s] 5: -        max_point.y = max_p[1];
+[3.282s] 5: -        max_point.z = max_p[2];
+[3.282s] 5: -    }
+[3.282s] 5: -    void GetSenCloudPoint(
+[3.282s] 5: -        std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr, Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr>> &clusters,
+[3.282s] 5: -        geometry_msgs::msg::Point &center_point,
+[3.282s] 5: -        size_t i)
+[3.282s] 5: -    {
+[3.282s] 5: -        Eigen::Vector4f centroid;
+[3.283s] 5: -        pcl::compute3DCentroid(*clusters[i], centroid);
+[3.283s] 5: -        center_point.x = centroid[0];
+[3.283s] 5: -        center_point.y = centroid[1];
+[3.283s] 5: -        center_point.z = centroid[2];
+[3.283s] 5: -    }
+[3.283s] 5: -
+[3.283s] 5: -    visualization_msgs::msg::Marker showRoi_CUBE(
+[3.283s] 5: -        std::string ns_, int32_t id_, Eigen::Vector4f min_pt, Eigen::Vector4f max_pt,
+[3.283s] 5: -        std::string frameid = "velodyne", double color_r = 0.0, double color_g = 1.0, double color_b = 0.0, double color_a = 0.3)
+[3.284s] 5: -    {
+[3.284s] 5: -        visualization_msgs::msg::Marker marker;
+[3.284s] 5: -        marker.header.frame_id = frameid;
+[3.284s] 5: -        marker.ns = ns_;
+[3.284s] 5: -        marker.id = id_;
+[3.284s] 5: -        marker.header.stamp = rclcpp::Clock(RCL_ROS_TIME).now();
+[3.284s] 5: -        marker.action = visualization_msgs::msg::Marker::ADD;
+[3.284s] 5: -        marker.type = visualization_msgs::msg::Marker::CUBE;
+[3.284s] 5: -        marker.scale.x = max_pt[0] - min_pt[0];
+[3.284s] 5: -        marker.scale.y = max_pt[1] - min_pt[1];
+[3.285s] 5: -        marker.scale.z = max_pt[2] - min_pt[2];
+[3.285s] 5: -        marker.pose.position.x = (max_pt[0] + min_pt[0]) / 2;
+[3.285s] 5: -        marker.pose.position.y = (max_pt[1] + min_pt[1]) / 2;
+[3.285s] 5: -        marker.pose.position.z = (max_pt[2] + min_pt[2]) / 2;
+[3.285s] 5: -        marker.color.r = color_r;
+[3.285s] 5: -        marker.color.g = color_g;
+[3.285s] 5: -        marker.color.b = color_b;
+[3.285s] 5: -        marker.color.a = color_a;
+[3.286s] 5: -        return marker;
+[3.286s] 5: -    }
+[3.286s] 5: -
+[3.286s] 5: -    visualization_msgs::msg::Marker showRoi_POINT(
+[3.286s] 5: -        std::string ns_, int32_t id_,
+[3.286s] 5: -        double color_r = 0.5, double color_g = 0.5, double color_b = 0.5, double color_a = 1,
+[3.286s] 5: -        std::string frameid = "velodyne")
+[3.286s] 5: -    {
+[3.286s] 5: -        visualization_msgs::msg::Marker marker;
+[3.286s] 5: -        marker.header.frame_id = frameid;
+[3.286s] 5: -        marker.ns = ns_;
+[3.287s] 5: -        marker.id = id_;
+[3.287s] 5: -        marker.header.stamp = rclcpp::Clock(RCL_ROS_TIME).now();
+[3.287s] 5: -        marker.action = visualization_msgs::msg::Marker::ADD;
+[3.287s] 5: -        marker.type = visualization_msgs::msg::Marker::POINTS;
+[3.287s] 5: -        marker.scale.x = 0.5;
+[3.287s] 5: -        marker.scale.y = 0.5;
+[3.287s] 5: -        marker.color.r = color_r;
+[3.287s] 5: -        marker.color.g = color_g;
+[3.287s] 5: -        marker.color.b = color_b;
+[3.287s] 5: -        marker.color.a = color_a;
+[3.287s] 5: -        return marker;
+[3.288s] 5: -    }
+[3.288s] 5: -
+[3.288s] 5: -    visualization_msgs::msg::Marker showRoi_LINE(
+[3.288s] 5: -        std::string ns_, int32_t id_,
+[3.288s] 5: -        double color_r = 0.5, double color_g = 0.5, double color_b = 0.5, double color_a = 0.4,
+[3.288s] 5: -        std::string frameid = "velodyne")
+[3.288s] 5: -    {
+[3.288s] 5: -        visualization_msgs::msg::Marker marker;
+[3.288s] 5: -        marker.header.frame_id = frameid;
+[3.288s] 5: -        marker.ns = ns_;
+[3.288s] 5: -        marker.id = id_;
+[3.289s] 5: -        marker.header.stamp = rclcpp::Clock(RCL_ROS_TIME).now();
+[3.289s] 5: -        marker.action = visualization_msgs::msg::Marker::ADD;
+[3.289s] 5: -        marker.type = visualization_msgs::msg::Marker::LINE_STRIP;
+[3.289s] 5: -        marker.scale.x = 0.1;
+[3.289s] 5: -        marker.color.r = color_r;
+[3.289s] 5: -        marker.color.g = color_g;
+[3.289s] 5: -        marker.color.b = color_b;
+[3.289s] 5: -        marker.color.a = color_a;
+[3.289s] 5: -        return marker;
+[3.289s] 5: -    }
+[3.289s] 5: -    void sortClustersByDistance(std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr, Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr>> &clusters)
+[3.290s] 5: -    {
+[3.290s] 5: -        std::vector<std::pair<float, pcl::PointCloud<pcl::PointXYZI>::Ptr>> distance_cluster_pairs;
+[3.290s] 5: -
+[3.290s] 5: -        for (const auto &cluster : clusters)
+[3.290s] 5: -        {
+[3.290s] 5: -            Eigen::Vector4f centroid;
+[3.290s] 5: -            pcl::compute3DCentroid(*cluster, centroid);
+[3.290s] 5: -            float distance = std::sqrt(centroid[0] * centroid[0] + centroid[1] * centroid[1] + centroid[2] * centroid[2]);
+[3.290s] 5: -            distance_cluster_pairs.push_back(std::make_pair(distance, cluster));
+[3.290s] 5: -        }
+[3.290s] 5: -
+[3.291s] 5: -        // 거리 기준으로 정렬
+[3.291s] 5: -        std::sort(distance_cluster_pairs.begin(), distance_cluster_pairs.end(),
+[3.291s] 5: -                  [](const auto &a, const auto &b)
+[3.291s] 5: -                  { return a.first < b.first; });
+[3.291s] 5: -
+[3.291s] 5: -        // 정렬된 클러스터를 다시 clusters 벡터에 저장
+[3.291s] 5: -        clusters.clear();
+[3.291s] 5: -        for (const auto &pair : distance_cluster_pairs)
+[3.291s] 5: -        {
+[3.291s] 5: -            clusters.push_back(pair.second);
+[3.292s] 5: -        }
+[3.292s] 5: -    }
+[3.292s] 5: +  pcl::PointCloud<pcl::PointXYZI>::Ptr PointCloudROS(
+[3.292s] 5: +    const sensor_msgs::msg::PointCloud2::SharedPtr & input)
+[3.292s] 5: +  {
+[3.292s] 5: +    pcl::PointCloud<pcl::PointXYZI>::Ptr cloud_origin(new pcl::PointCloud<pcl::PointXYZI>);
+[3.292s] 5: +    pcl::fromROSMsg(*input, *cloud_origin);
+[3.292s] 5: +    return cloud_origin;
+[3.292s] 5: +  }
+[3.292s] 5: +
+[3.292s] 5: +  pcl::PointCloud<pcl::PointXYZI>::Ptr DownSamplingVoxel(
+[3.293s] 5: +    const pcl::PointCloud<pcl::PointXYZI>::Ptr & cloud_origin, float size_x, float size_y,
+[3.293s] 5: +    float size_z)
+[3.293s] 5: +  {
+[3.293s] 5: +    pcl::PointCloud<pcl::PointXYZI>::Ptr cloud_down(new pcl::PointCloud<pcl::PointXYZI>);
+[3.293s] 5: +    pcl::VoxelGrid<pcl::PointXYZI> VG;
+[3.293s] 5: +    VG.setInputCloud(cloud_origin);
+[3.293s] 5: +    VG.setLeafSize(size_x, size_y, size_z);
+[3.293s] 5: +    VG.filter(*cloud_down);
+[3.293s] 5: +    return cloud_down;
+[3.293s] 5: +  }
+[3.293s] 5: +
+[3.294s] 5: +  pcl::PointCloud<pcl::PointXYZI>::Ptr CropFilter(
+[3.294s] 5: +    const pcl::PointCloud<pcl::PointXYZI>::Ptr & cloud_down, Eigen::Vector4f min_pt,
+[3.294s] 5: +    Eigen::Vector4f max_pt)
+[3.294s] 5: +  {
+[3.294s] 5: +    pcl::PointCloud<pcl::PointXYZI>::Ptr cloud_crop(new pcl::PointCloud<pcl::PointXYZI>);
+[3.294s] 5: +    pcl::CropBox<pcl::PointXYZI> cropFilter;
+[3.294s] 5: +    cropFilter.setInputCloud(cloud_down);
+[3.294s] 5: +    cropFilter.setMin(min_pt);     // x,y,z,1
+[3.294s] 5: +    cropFilter.setMax(max_pt);
+[3.294s] 5: +    cropFilter.filter(*cloud_crop);
+[3.294s] 5: +    return cloud_crop;
+[3.295s] 5: +  }
+[3.295s] 5: +  std::vector<pcl::PointIndices> ClusterEuclidean(
+[3.295s] 5: +    const pcl::PointCloud<pcl::PointXYZI>::Ptr & cloud_crop, bool max_ok, float tolerance,
+[3.295s] 5: +    int min_size, int max_size)
+[3.295s] 5: +  {
+[3.295s] 5: +    pcl::search::KdTree<pcl::PointXYZI>::Ptr tree(new pcl::search::KdTree<pcl::PointXYZI>);
+[3.295s] 5: +    tree->setInputCloud(cloud_crop);
+[3.295s] 5: +    std::vector<pcl::PointIndices> cloud_clust;
+[3.295s] 5: +    pcl::EuclideanClusterExtraction<pcl::PointXYZI> ec;
+[3.295s] 5: +    ec.setInputCloud(cloud_crop);
+[3.296s] 5: +    ec.setClusterTolerance(tolerance);     // 여기도 수정해야 함.
+[3.296s] 5: +    ec.setMinClusterSize(min_size);
+[3.296s] 5: +    if (max_ok) {
+[3.296s] 5: +      ec.setMaxClusterSize(max_size);
+[3.296s] 5: +    }
+[3.296s] 5: +    ec.setSearchMethod(tree);
+[3.296s] 5: +    ec.extract(cloud_clust);
+[3.296s] 5: +
+[3.296s] 5: +    return cloud_clust;
+[3.296s] 5: +  }
+[3.296s] 5: +  void ExtractClusters(
+[3.297s] 5: +    pcl::PointCloud<pcl::PointXYZI> & TotalCloud,
+[3.297s] 5: +    const pcl::PointCloud<pcl::PointXYZI>::Ptr & cloud_crop,
+[3.297s] 5: +    const std::vector<pcl::PointIndices> & cloud_clust,
+[3.297s] 5: +    std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr,
+[3.297s] 5: +    Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr>> & clusters)
+[3.297s] 5: +  {
+[3.297s] 5: +    int ii = 0;
+[3.297s] 5: +    clusters.clear();
+[3.297s] 5: +    for (auto it = cloud_clust.begin(); it != cloud_clust.end(); ++it, ++ii) {
+[3.301s] 5: +      pcl::PointCloud<pcl::PointXYZI>::Ptr cluster(new pcl::PointCloud<pcl::PointXYZI>);
+[3.302s] 5: +      for (auto pit = it->indices.begin(); pit != it->indices.end(); ++pit) {
+[3.302s] 5: +        cluster->points.push_back(cloud_crop->points[*pit]);
+[3.302s] 5: +        pcl::PointXYZI pt = cloud_crop->points[*pit];
+[3.302s] 5: +        pcl::PointXYZI pt2;
+[3.302s] 5: +        pt2.x = pt.x, pt2.y = pt.y, pt2.z = pt.z;
+[3.302s] 5: +        pt2.intensity = (float)(ii + 1);
+[3.302s] 5: +        TotalCloud.push_back(pt2);
+[3.302s] 5: +      }
+[3.302s] 5: +      cluster->width = cluster->size();
+[3.302s] 5: +      cluster->height = 1;
+[3.303s] 5: +      cluster->is_dense = true;
+[3.303s] 5: +      clusters.push_back(cluster);
+[3.303s] 5: +    }
+[3.303s] 5: +  }
+[3.303s] 5: +
+[3.303s] 5: +  void GetMinMaxCloudPoint(
+[3.303s] 5: +    std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr,
+[3.303s] 5: +    Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr>> & clusters,
+[3.303s] 5: +    geometry_msgs::msg::Point & min_point,
+[3.303s] 5: +    geometry_msgs::msg::Point & max_point,
+[3.303s] 5: +    size_t i)
+[3.304s] 5: +  {
+[3.304s] 5: +    Eigen::Vector4f min_p, max_p;
+[3.304s] 5: +
+[3.304s] 5: +    pcl::getMinMax3D(*clusters[i], min_p, max_p);
+[3.304s] 5: +
+[3.304s] 5: +    min_point.x = min_p[0];
+[3.304s] 5: +    min_point.y = min_p[1];
+[3.304s] 5: +    min_point.z = min_p[2];
+[3.304s] 5: +
+[3.304s] 5: +    max_point.x = max_p[0];
+[3.304s] 5: +    max_point.y = max_p[1];
+[3.305s] 5: +    max_point.z = max_p[2];
+[3.305s] 5: +  }
+[3.305s] 5: +  void GetSenCloudPoint(
+[3.305s] 5: +    std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr,
+[3.305s] 5: +    Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr>> & clusters,
+[3.305s] 5: +    geometry_msgs::msg::Point & center_point,
+[3.305s] 5: +    size_t i)
+[3.305s] 5: +  {
+[3.305s] 5: +    Eigen::Vector4f centroid;
+[3.305s] 5: +    pcl::compute3DCentroid(*clusters[i], centroid);
+[3.305s] 5: +    center_point.x = centroid[0];
+[3.306s] 5: +    center_point.y = centroid[1];
+[3.306s] 5: +    center_point.z = centroid[2];
+[3.306s] 5: +  }
+[3.306s] 5: +
+[3.306s] 5: +  visualization_msgs::msg::Marker showRoi_CUBE(
+[3.306s] 5: +    std::string ns_, int32_t id_, Eigen::Vector4f min_pt, Eigen::Vector4f max_pt,
+[3.306s] 5: +    std::string frameid = "velodyne", double color_r = 0.0, double color_g = 1.0,
+[3.306s] 5: +    double color_b = 0.0, double color_a = 0.3)
+[3.306s] 5: +  {
+[3.306s] 5: +    visualization_msgs::msg::Marker marker;
+[3.306s] 5: +    marker.header.frame_id = frameid;
+[3.307s] 5: +    marker.ns = ns_;
+[3.307s] 5: +    marker.id = id_;
+[3.307s] 5: +    marker.header.stamp = rclcpp::Clock(RCL_ROS_TIME).now();
+[3.307s] 5: +    marker.action = visualization_msgs::msg::Marker::ADD;
+[3.307s] 5: +    marker.type = visualization_msgs::msg::Marker::CUBE;
+[3.307s] 5: +    marker.scale.x = max_pt[0] - min_pt[0];
+[3.307s] 5: +    marker.scale.y = max_pt[1] - min_pt[1];
+[3.310s] 5: +    marker.scale.z = max_pt[2] - min_pt[2];
+[3.310s] 5: +    marker.pose.position.x = (max_pt[0] + min_pt[0]) / 2;
+[3.311s] 5: +    marker.pose.position.y = (max_pt[1] + min_pt[1]) / 2;
+[3.311s] 5: +    marker.pose.position.z = (max_pt[2] + min_pt[2]) / 2;
+[3.311s] 5: +    marker.color.r = color_r;
+[3.311s] 5: +    marker.color.g = color_g;
+[3.311s] 5: +    marker.color.b = color_b;
+[3.311s] 5: +    marker.color.a = color_a;
+[3.311s] 5: +    return marker;
+[3.311s] 5: +  }
+[3.311s] 5: +
+[3.311s] 5: +  visualization_msgs::msg::Marker showRoi_POINT(
+[3.311s] 5: +    std::string ns_, int32_t id_,
+[3.312s] 5: +    double color_r = 0.5, double color_g = 0.5, double color_b = 0.5, double color_a = 1,
+[3.312s] 5: +    std::string frameid = "velodyne")
+[3.312s] 5: +  {
+[3.312s] 5: +    visualization_msgs::msg::Marker marker;
+[3.312s] 5: +    marker.header.frame_id = frameid;
+[3.312s] 5: +    marker.ns = ns_;
+[3.312s] 5: +    marker.id = id_;
+[3.312s] 5: +    marker.header.stamp = rclcpp::Clock(RCL_ROS_TIME).now();
+[3.312s] 5: +    marker.action = visualization_msgs::msg::Marker::ADD;
+[3.312s] 5: +    marker.type = visualization_msgs::msg::Marker::POINTS;
+[3.312s] 5: +    marker.scale.x = 0.5;
+[3.313s] 5: +    marker.scale.y = 0.5;
+[3.313s] 5: +    marker.color.r = color_r;
+[3.313s] 5: +    marker.color.g = color_g;
+[3.313s] 5: +    marker.color.b = color_b;
+[3.313s] 5: +    marker.color.a = color_a;
+[3.313s] 5: +    return marker;
+[3.313s] 5: +  }
+[3.313s] 5: +
+[3.314s] 5: +  visualization_msgs::msg::Marker showRoi_LINE(
+[3.314s] 5: +    std::string ns_, int32_t id_,
+[3.314s] 5: +    double color_r = 0.5, double color_g = 0.5, double color_b = 0.5, double color_a = 0.4,
+[3.314s] 5: +    std::string frameid = "velodyne")
+[3.314s] 5: +  {
+[3.314s] 5: +    visualization_msgs::msg::Marker marker;
+[3.314s] 5: +    marker.header.frame_id = frameid;
+[3.314s] 5: +    marker.ns = ns_;
+[3.315s] 5: +    marker.id = id_;
+[3.315s] 5: +    marker.header.stamp = rclcpp::Clock(RCL_ROS_TIME).now();
+[3.315s] 5: +    marker.action = visualization_msgs::msg::Marker::ADD;
+[3.315s] 5: +    marker.type = visualization_msgs::msg::Marker::LINE_STRIP;
+[3.315s] 5: +    marker.scale.x = 0.1;
+[3.315s] 5: +    marker.color.r = color_r;
+[3.315s] 5: +    marker.color.g = color_g;
+[3.315s] 5: +    marker.color.b = color_b;
+[3.315s] 5: +    marker.color.a = color_a;
+[3.315s] 5: +    return marker;
+[3.315s] 5: +  }
+[3.316s] 5: +  void sortClustersByDistance(
+[3.316s] 5: +    std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr,
+[3.316s] 5: +    Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr>> & clusters)
+[3.316s] 5: +  {
+[3.316s] 5: +    std::vector<std::pair<float, pcl::PointCloud<pcl::PointXYZI>::Ptr>> distance_cluster_pairs;
+[3.316s] 5: +
+[3.316s] 5: +    for (const auto & cluster : clusters) {
+[3.316s] 5: +      Eigen::Vector4f centroid;
+[3.316s] 5: +      pcl::compute3DCentroid(*cluster, centroid);
+[3.316s] 5: +      float distance = std::sqrt(
+[3.316s] 5: +        centroid[0] * centroid[0] + centroid[1] * centroid[1] + centroid[2] * centroid[2]);
+[3.317s] 5: +      distance_cluster_pairs.push_back(std::make_pair(distance, cluster));
+[3.317s] 5: +    }
+[3.317s] 5: +
+[3.317s] 5: +    // 거리 기준으로 정렬
+[3.317s] 5: +    std::sort(
+[3.317s] 5: +      distance_cluster_pairs.begin(), distance_cluster_pairs.end(),
+[3.317s] 5: +      [](const auto & a, const auto & b)
+[3.317s] 5: +      {return a.first < b.first;});
+[3.317s] 5: +
+[3.317s] 5: +    // 정렬된 클러스터를 다시 clusters 벡터에 저장
+[3.318s] 5: +    clusters.clear();
+[3.318s] 5: +    for (const auto & pair : distance_cluster_pairs) {
+[3.318s] 5: +      clusters.push_back(pair.second);
+[3.318s] 5: +    }
+[3.318s] 5: +  }
+[3.318s] 5: 
+[3.318s] 5: Code style divergence in file 'include/mission_header/LiDAR_small_static.hpp':
+[3.318s] 5: 
+[3.318s] 5: --- include/mission_header/LiDAR_small_static.hpp
+[3.318s] 5: +++ include/mission_header/LiDAR_small_static.hpp.uncrustify
+[3.318s] 5: @@ -7 +7 @@
+[3.319s] 5: -    LiDAR_small_static();
+[3.319s] 5: +  LiDAR_small_static();
+[3.319s] 5: @@ -10,2 +10,2 @@
+[3.319s] 5: -    // func
+[3.319s] 5: -    void callback(const sensor_msgs::msg::PointCloud2::SharedPtr input) override;
+[3.319s] 5: +  // func
+[3.319s] 5: +  void callback(const sensor_msgs::msg::PointCloud2::SharedPtr input) override;
+[3.319s] 5: @@ -13,5 +13,5 @@
+[3.319s] 5: -    // pub
+[3.319s] 5: -    rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr pub_;
+[3.319s] 5: -    rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr object_;
+[3.320s] 5: -    rclcpp::Publisher<visualization_msgs::msg::Marker>::SharedPtr marker_pub_;
+[3.320s] 5: -    rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr marker_array_;
+[3.320s] 5: +  // pub
+[3.320s] 5: +  rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr pub_;
+[3.320s] 5: +  rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr object_;
+[3.320s] 5: +  rclcpp::Publisher<visualization_msgs::msg::Marker>::SharedPtr marker_pub_;
+[3.320s] 5: +  rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr marker_array_;
+[3.320s] 5: @@ -19,2 +19,2 @@
+[3.320s] 5: -    // var
+[3.320s] 5: -    int check_pointcloud = 0;
+[3.321s] 5: +  // var
+[3.321s] 5: +  int check_pointcloud = 0;
+[3.321s] 5: @@ -22 +22 @@
+[3.321s] 5: -    Utility_Function util_func_;
+[3.321s] 5: +  Utility_Function util_func_;
+[3.321s] 5: 
+[3.321s] 5: Code style divergence in file 'src/LiDAR_small_static.cpp':
+[3.321s] 5: 
+[3.321s] 5: --- src/LiDAR_small_static.cpp
+[3.321s] 5: +++ src/LiDAR_small_static.cpp.uncrustify
+[3.321s] 5: @@ -4 +4 @@
+[3.322s] 5: -    : Mission("LiDAR_small_static")
+[3.322s] 5: +: Mission("LiDAR_small_static")
+[3.322s] 5: @@ -6,4 +6,11 @@
+[3.322s] 5: -  pub_ = this->create_publisher<sensor_msgs::msg::PointCloud2>("/Cluster/small_static", lidar::best_effort_qos());
+[3.322s] 5: -  object_ = this->create_publisher<std_msgs::msg::Float64MultiArray>("/LiDAR/object_cen", lidar::best_effort_qos());
+[3.322s] 5: -  marker_pub_ = this->create_publisher<visualization_msgs::msg::Marker>("/Marker/small_static_ROI", lidar::best_effort_qos());
+[3.322s] 5: -  marker_array_ = this->create_publisher<visualization_msgs::msg::MarkerArray>("/Marker/small_static_object", lidar::best_effort_qos());
+[3.322s] 5: +  pub_ = this->create_publisher<sensor_msgs::msg::PointCloud2>(
+[3.322s] 5: +    "/Cluster/small_static",
+[3.322s] 5: +    lidar::best_effort_qos());
+[3.322s] 5: +  object_ = this->create_publisher<std_msgs::msg::Float64MultiArray>(
+[3.323s] 5: +    "/LiDAR/object_cen",
+[3.323s] 5: +    lidar::best_effort_qos());
+[3.323s] 5: +  marker_pub_ = this->create_publisher<visualization_msgs::msg::Marker>(
+[3.323s] 5: +    "/Marker/small_static_ROI",
+[3.323s] 5: +    lidar::best_effort_qos());
+[3.323s] 5: +  marker_array_ = this->create_publisher<visualization_msgs::msg::MarkerArray>(
+[3.323s] 5: +    "/Marker/small_static_object", lidar::best_effort_qos());
+[3.323s] 5: @@ -16,2 +23 @@
+[3.323s] 5: -  if (check_pointcloud == 0)
+[3.323s] 5: -  {
+[3.323s] 5: +  if (check_pointcloud == 0) {
+[3.324s] 5: @@ -30,3 +36,3 @@
+[3.324s] 5: -      cloud_filtered,
+[3.324s] 5: -      Eigen::Vector4f(-0, -2.5, -0.35, 0), // ROI 영역(LiDAR 높이(z축)가 지면으로부터 0.65m일 때)
+[3.324s] 5: -      Eigen::Vector4f(15, 2, 1.0, 0));     // x, y, z, 1
+[3.324s] 5: +    cloud_filtered,
+[3.324s] 5: +    Eigen::Vector4f(-0, -2.5, -0.35, 0),   // ROI 영역(LiDAR 높이(z축)가 지면으로부터 0.65m일 때)
+[3.324s] 5: +    Eigen::Vector4f(15, 2, 1.0, 0));       // x, y, z, 1
+[3.324s] 5: @@ -60 +66,2 @@
+[3.324s] 5: -  std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr, Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr>> clusters;
+[3.324s] 5: +  std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr,
+[3.325s] 5: +    Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr>> clusters;
+[3.325s] 5: @@ -66,2 +73 @@
+[3.325s] 5: -  for (size_t i = 0; i < clusters.size(); i++)
+[3.325s] 5: -  {
+[3.325s] 5: +  for (size_t i = 0; i < clusters.size(); i++) {
+[3.325s] 5: @@ -76 +82,2 @@
+[3.325s] 5: -    if ((max_point.y - min_point.y) > 0.5 && (max_point.y - min_point.y) < 1.5 && max_point.z < 0.3)
+[3.325s] 5: +    if ((max_point.y - min_point.y) > 0.5 && (max_point.y - min_point.y) < 1.5 &&
+[3.325s] 5: +      max_point.z < 0.3)
+[3.325s] 5: @@ -92,2 +99 @@
+[3.325s] 5: -  if (p.data.size() >= 4)
+[3.326s] 5: -  {
+[3.326s] 5: +  if (p.data.size() >= 4) {
+[3.326s] 5: @@ -128,5 +134,4 @@
+[3.326s] 5: -  }
+[3.326s] 5: -  else
+[3.326s] 5: -  {
+[3.326s] 5: -    RCLCPP_WARN(this->get_logger(),
+[3.326s] 5: -                "Not enough points for marker visualization (p.data.size() = %zu)", p.data.size());
+[3.326s] 5: +  } else {
+[3.326s] 5: +    RCLCPP_WARN(
+[3.326s] 5: +      this->get_logger(),
+[3.327s] 5: +      "Not enough points for marker visualization (p.data.size() = %zu)", p.data.size());
+[3.327s] 5: 
+[3.327s] 5: Code style divergence in file 'src/main.cpp':
+[3.327s] 5: 
+[3.327s] 5: --- src/main.cpp
+[3.327s] 5: +++ src/main.cpp.uncrustify
+[3.327s] 5: @@ -3 +3 @@
+[3.327s] 5: -int main(int argc, char *argv[])
+[3.327s] 5: +int main(int argc, char * argv[])
+[3.327s] 5: 
+[3.327s] 5: 5 files with code style divergence
+[3.328s] 5: No code style divergence in file 'include/data_header/mission.hpp'
+[3.328s] 5: 
+[3.329s] 5: -- run_test.py: return code 1
+[3.329s] 5: -- run_test.py: verify result file '/home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/uncrustify.xunit.xml'
+[3.331s] 5/6 Test #5: uncrustify .......................***Failed    0.25 sec
+[3.331s] test 6
+[3.332s]     Start 6: xmllint
+[3.332s] 
+[3.332s] 6: Test command: /usr/bin/python3 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/xmllint.xunit.xml" "--package-name" "lidar" "--output-file" "/home/ubuntu/lhj_behavior_stage/build/lidar/ament_xmllint/xmllint.txt" "--command" "/opt/ros/humble/bin/ament_xmllint" "--xunit-file" "/home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/xmllint.xunit.xml"
+[3.332s] 6: Test timeout computed to be: 60
+[3.407s] 6: -- run_test.py: invoking following command in '/home/ubuntu/lhj_behavior_stage/src/lidar':
+[3.407s] 6:  - /opt/ros/humble/bin/ament_xmllint --xunit-file /home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/xmllint.xunit.xml
+[3.495s] 6: File 'package.xml' is invalid:
+[3.495s] 6: warning: failed to load external entity "http://download.ros.org/schema/package_format3.xsd"
+[3.495s] 6: Schemas parser error : Failed to locate the main schema resource at 'http://download.ros.org/schema/package_format3.xsd'.
+[3.495s] 6: WXS schema http://download.ros.org/schema/package_format3.xsd failed to compile
+[3.495s] 6: 
+[3.495s] 6: 1 files are invalid
+[3.519s] 6: -- run_test.py: return code 1
+[3.519s] 6: -- run_test.py: verify result file '/home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/xmllint.xunit.xml'
+[3.529s] 6/6 Test #6: xmllint ..........................***Failed    0.23 sec
+[3.529s] 
+[3.529s] 33% tests passed, 4 tests failed out of 6
+[3.529s] 
+[3.529s] Label Time Summary:
+[3.529s] copyright     =   0.25 sec*proc (1 test)
+[3.530s] cppcheck      =   0.23 sec*proc (1 test)
+[3.530s] cpplint       =   0.37 sec*proc (1 test)
+[3.530s] lint_cmake    =   0.18 sec*proc (1 test)
+[3.530s] linter        =   1.50 sec*proc (6 tests)
+[3.530s] uncrustify    =   0.25 sec*proc (1 test)
+[3.530s] xmllint       =   0.23 sec*proc (1 test)
+[3.530s] 
+[3.530s] Total Test time (real) =   1.50 sec
+[3.530s] 
+[3.530s] The following tests FAILED:
+[3.531s] 	  1 - copyright (Failed)
+[3.531s] 	  3 - cpplint (Failed)
+[3.531s] 	  5 - uncrustify (Failed)
+[3.531s] 	  6 - xmllint (Failed)
+[3.532s] Errors while running CTest
+[3.532s] Output from these tests are in: /home/ubuntu/lhj_behavior_stage/build/lidar/Testing/Temporary/LastTest.log
+[3.532s] Use "--rerun-failed --output-on-failure" to re-run the failed cases verbosely.
+[3.534s] Invoked command in '/home/ubuntu/lhj_behavior_stage/build/lidar' returned '8': CMAKE_PREFIX_PATH=/home/ubuntu/lhj_behavior_stage/install/lidar:/home/ubuntu/lhj_behavior_stage/install/behavior_stack_bringup:/home/ubuntu/lhj_behavior_stage/install/planning_pkg_2025:/home/ubuntu/lhj_behavior_stage/install/kroad_planning_utm_pkg:/home/ubuntu/lhj_behavior_stage/install/control:/home/ubuntu/robot_ws/install/zed_ros2:/home/ubuntu/robot_ws/install/zed_wrapper:/home/ubuntu/robot_ws/install/zed_debug:/home/ubuntu/robot_ws/install/zed_components:/home/ubuntu/robot_ws/install/dsr_realtime_control:/home/ubuntu/robot_ws/install/dsr_mujoco:/home/ubuntu/robot_ws/install/dsr_controller2:/home/ubuntu/robot_ws/install/dsr_msgs2:/home/ubuntu/robot_ws/install/dsr_moveit_config_p3020:/home/ubuntu/robot_ws/install/dsr_moveit_config_m1509:/home/ubuntu/robot_ws/install/dsr_moveit_config_m1013:/home/ubuntu/robot_ws/install/dsr_moveit_config_m0617:/home/ubuntu/robot_ws/install/dsr_moveit_config_m0609:/home/ubuntu/robot_ws/install/dsr_moveit_config_h2515:/home/ubuntu/robot_ws/install/dsr_moveit_config_h2017:/home/ubuntu/robot_ws/install/dsr_moveit_config_e0509:/home/ubuntu/robot_ws/install/dsr_moveit_config_a0912:/home/ubuntu/robot_ws/install/dsr_moveit_config_a0509:/home/ubuntu/robot_ws/install/dsr_hardware2:/home/ubuntu/robot_ws/install/dsr_gazebo2:/home/ubuntu/robot_ws/install/dsr_description2:/home/ubuntu/robot_ws/install/dsr_common2 CONDA_PROMPT_MODIFIER=(base) /usr/bin/ctest -C Release -D ExperimentalTest --no-compress-output -V --force-new-ctest-process

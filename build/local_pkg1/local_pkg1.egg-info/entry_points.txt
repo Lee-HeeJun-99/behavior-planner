@@ -1,0 +1,5 @@
+[console_scripts]
+heading_estimator = local_pkg.heading_estimator:main
+position_estimator = local_pkg.position_estimator:main
+tae_localization = local_pkg.tae_localization:main
+

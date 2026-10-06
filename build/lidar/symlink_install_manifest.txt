@@ -1,0 +1,16 @@
+/home/ubuntu/lhj_behavior_stage/install/lidar/lib/lidar/start
+/home/ubuntu/lhj_behavior_stage/install/lidar/share/ament_index/resource_index/package_run_dependencies/lidar
+/home/ubuntu/lhj_behavior_stage/install/lidar/share/ament_index/resource_index/parent_prefix_path/lidar
+/home/ubuntu/lhj_behavior_stage/install/lidar/share/lidar/environment/ament_prefix_path.sh
+/home/ubuntu/lhj_behavior_stage/install/lidar/share/lidar/environment/ament_prefix_path.dsv
+/home/ubuntu/lhj_behavior_stage/install/lidar/share/lidar/environment/path.sh
+/home/ubuntu/lhj_behavior_stage/install/lidar/share/lidar/environment/path.dsv
+/home/ubuntu/lhj_behavior_stage/install/lidar/share/lidar/local_setup.bash
+/home/ubuntu/lhj_behavior_stage/install/lidar/share/lidar/local_setup.sh
+/home/ubuntu/lhj_behavior_stage/install/lidar/share/lidar/local_setup.zsh
+/home/ubuntu/lhj_behavior_stage/install/lidar/share/lidar/local_setup.dsv
+/home/ubuntu/lhj_behavior_stage/install/lidar/share/lidar/package.dsv
+/home/ubuntu/lhj_behavior_stage/install/lidar/share/ament_index/resource_index/packages/lidar
+/home/ubuntu/lhj_behavior_stage/install/lidar/share/lidar/cmake/lidarConfig.cmake
+/home/ubuntu/lhj_behavior_stage/install/lidar/share/lidar/cmake/lidarConfig-version.cmake
+/home/ubuntu/lhj_behavior_stage/install/lidar/share/lidar/package.xml

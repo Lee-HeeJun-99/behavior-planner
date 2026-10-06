@@ -1,0 +1,15 @@
+-- run_test.py: invoking following command in '/home/ubuntu/lhj_behavior_stage/src/control':
+ - /opt/ros/humble/bin/ament_copyright --xunit-file /home/ubuntu/lhj_behavior_stage/build/control/test_results/control/copyright.xunit.xml
+
+include/control/PIDController.hpp: could not find copyright notice
+include/control/callback_data_manage.hpp: could not find copyright notice
+include/control/lat_control.hpp: could not find copyright notice
+include/control/lon_control.hpp: could not find copyright notice
+include/control/mission_param.hpp: could not find copyright notice
+include/control/vehicle_param.hpp: could not find copyright notice
+src/car_control.cpp: could not find copyright notice
+7 errors, checked 7 files
+
+
+-- run_test.py: return code 1
+-- run_test.py: verify result file '/home/ubuntu/lhj_behavior_stage/build/control/test_results/control/copyright.xunit.xml'

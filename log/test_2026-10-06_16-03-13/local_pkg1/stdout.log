@@ -1,0 +1,10 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-6.2.5, py-1.10.0, pluggy-0.13.0
+cachedir: /home/ubuntu/lhj_behavior_stage/build/local_pkg1/.pytest_cache
+rootdir: /home/ubuntu/lhj_behavior_stage/src/local_pkg1
+collected 1 item
+
+test/test_localization_split.py .                                        [100%]
+
+- generated xml file: /home/ubuntu/lhj_behavior_stage/build/local_pkg1/pytest.xml -
+============================== 1 passed in 0.70s ===============================

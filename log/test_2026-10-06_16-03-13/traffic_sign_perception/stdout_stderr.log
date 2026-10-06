@@ -1,0 +1,11 @@
+test_bbox_area_ratio (test.test_speed_sign_utils.SpeedSignUtilsTest) ... ok
+test_bbox_coordinates_are_restored_to_full_image (test.test_speed_sign_utils.SpeedSignUtilsTest) ... ok
+test_best_detection_filters_class_and_small_bbox (test.test_speed_sign_utils.SpeedSignUtilsTest) ... ok
+test_class_mapping_accepts_only_supported_classes (test.test_speed_sign_utils.SpeedSignUtilsTest) ... ok
+test_roi_pixel_coordinates (test.test_speed_sign_utils.SpeedSignUtilsTest) ... ok
+test_roi_validation (test.test_speed_sign_utils.SpeedSignUtilsTest) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.000s
+
+OK

@@ -1,0 +1,14 @@
+-- run_test.py: invoking following command in '/home/ubuntu/lhj_behavior_stage/src/lidar':
+ - /opt/ros/humble/bin/ament_copyright --xunit-file /home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/copyright.xunit.xml
+
+include/data_header/mission.hpp: could not find copyright notice
+include/data_header/qos_utils.hpp: could not find copyright notice
+include/data_header/utility_function.hpp: could not find copyright notice
+include/mission_header/LiDAR_small_static.hpp: could not find copyright notice
+src/LiDAR_small_static.cpp: could not find copyright notice
+src/main.cpp: could not find copyright notice
+6 errors, checked 6 files
+
+
+-- run_test.py: return code 1
+-- run_test.py: verify result file '/home/ubuntu/lhj_behavior_stage/build/lidar/test_results/lidar/copyright.xunit.xml'

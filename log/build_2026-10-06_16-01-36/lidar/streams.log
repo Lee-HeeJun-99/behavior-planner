@@ -1,0 +1,24 @@
+[0.359s] Invoking command in '/home/ubuntu/lhj_behavior_stage/build/lidar': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ubuntu/robot_ws/install/vla_data_collector:/home/ubuntu/robot_ws/install/openvla_doosan_runtime_async:/home/ubuntu/robot_ws/install/openvla_doosan_runtime:/home/ubuntu/robot_ws/install/dsr_visualservoing:/home/ubuntu/robot_ws/install/dsr_tests:/home/ubuntu/robot_ws/install/dsr_bringup2:/home/ubuntu/robot_ws/install/dsr_example:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/ubuntu/lhj_behavior_stage/build/lidar -- -j20 -l20
+[1.951s] Consolidate compiler generated dependencies of target start
+[1.951s] [100%] Built target start
+[1.964s] Invoked command in '/home/ubuntu/lhj_behavior_stage/build/lidar' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ubuntu/robot_ws/install/vla_data_collector:/home/ubuntu/robot_ws/install/openvla_doosan_runtime_async:/home/ubuntu/robot_ws/install/openvla_doosan_runtime:/home/ubuntu/robot_ws/install/dsr_visualservoing:/home/ubuntu/robot_ws/install/dsr_tests:/home/ubuntu/robot_ws/install/dsr_bringup2:/home/ubuntu/robot_ws/install/dsr_example:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/ubuntu/lhj_behavior_stage/build/lidar -- -j20 -l20
+[1.965s] Invoking command in '/home/ubuntu/lhj_behavior_stage/build/lidar': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ubuntu/robot_ws/install/vla_data_collector:/home/ubuntu/robot_ws/install/openvla_doosan_runtime_async:/home/ubuntu/robot_ws/install/openvla_doosan_runtime:/home/ubuntu/robot_ws/install/dsr_visualservoing:/home/ubuntu/robot_ws/install/dsr_tests:/home/ubuntu/robot_ws/install/dsr_bringup2:/home/ubuntu/robot_ws/install/dsr_example:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/ubuntu/lhj_behavior_stage/build/lidar
+[1.985s] -- Install configuration: ""
+[1.986s] -- Execute custom install script
+[1.986s] -- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/lidar/lib/lidar/start
+[1.986s] -- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/lidar/share/ament_index/resource_index/package_run_dependencies/lidar
+[1.986s] -- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/lidar/share/ament_index/resource_index/parent_prefix_path/lidar
+[1.986s] -- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/lidar/share/lidar/environment/ament_prefix_path.sh
+[1.986s] -- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/lidar/share/lidar/environment/ament_prefix_path.dsv
+[1.986s] -- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/lidar/share/lidar/environment/path.sh
+[1.986s] -- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/lidar/share/lidar/environment/path.dsv
+[1.986s] -- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/lidar/share/lidar/local_setup.bash
+[1.986s] -- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/lidar/share/lidar/local_setup.sh
+[1.986s] -- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/lidar/share/lidar/local_setup.zsh
+[1.986s] -- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/lidar/share/lidar/local_setup.dsv
+[1.986s] -- Symlinking: /home/ubuntu/lhj_behavior_stage/install/lidar/share/lidar/package.dsv
+[2.041s] -- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/lidar/share/ament_index/resource_index/packages/lidar
+[2.041s] -- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/lidar/share/lidar/cmake/lidarConfig.cmake
+[2.041s] -- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/lidar/share/lidar/cmake/lidarConfig-version.cmake
+[2.041s] -- Up-to-date symlink: /home/ubuntu/lhj_behavior_stage/install/lidar/share/lidar/package.xml
+[2.041s] Invoked command in '/home/ubuntu/lhj_behavior_stage/build/lidar' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ubuntu/robot_ws/install/vla_data_collector:/home/ubuntu/robot_ws/install/openvla_doosan_runtime_async:/home/ubuntu/robot_ws/install/openvla_doosan_runtime:/home/ubuntu/robot_ws/install/dsr_visualservoing:/home/ubuntu/robot_ws/install/dsr_tests:/home/ubuntu/robot_ws/install/dsr_bringup2:/home/ubuntu/robot_ws/install/dsr_example:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/ubuntu/lhj_behavior_stage/build/lidar

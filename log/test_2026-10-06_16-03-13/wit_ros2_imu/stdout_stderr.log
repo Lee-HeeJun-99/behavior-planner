@@ -1,0 +1,187 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-6.2.5, py-1.10.0, pluggy-0.13.0
+cachedir: /home/ubuntu/lhj_behavior_stage/build/wit_ros2_imu/.pytest_cache
+rootdir: /home/ubuntu/lhj_behavior_stage/src/wit_ros2_imu
+collected 3 items
+
+test/test_copyright.py F                                                 [ 33%]
+test/test_flake8.py F                                                    [ 66%]
+test/test_pep257.py .                                                    [100%]
+
+=================================== FAILURES ===================================
+________________________________ test_copyright ________________________________
+test/test_copyright.py:23: in test_copyright
+    assert rc == 0, 'Found errors'
+E   AssertionError: Found errors
+E   assert 1 == 0
+----------------------------- Captured stderr call -----------------------------
+wit_ros2_imu/wit_ros2_imu.py: could not find copyright notice
+1 errors, checked 5 files
+_________________________________ test_flake8 __________________________________
+test/test_flake8.py:23: in test_flake8
+    assert rc == 0, \
+E   AssertionError: Found 20 code style errors / warnings:
+E     ./setup.py:23:9: E122 continuation line missing indentation or outdented
+E     ./wit_ros2_imu/wit_ros2_imu.py:1:1: F401 'time' imported but unused
+E     ./wit_ros2_imu/wit_ros2_imu.py:39:100: E501 line too long (101 > 99 characters)
+E     ./wit_ros2_imu/wit_ros2_imu.py:46:100: E501 line too long (107 > 99 characters)
+E     ./wit_ros2_imu/wit_ros2_imu.py:52:100: E501 line too long (109 > 99 characters)
+E     ./wit_ros2_imu/wit_ros2_imu.py:60:100: E501 line too long (102 > 99 characters)
+E     ./wit_ros2_imu/wit_ros2_imu.py:121:100: E501 line too long (112 > 99 characters)
+E     ./wit_ros2_imu/wit_ros2_imu.py:123:100: E501 line too long (112 > 99 characters)
+E     ./wit_ros2_imu/wit_ros2_imu.py:125:100: E501 line too long (112 > 99 characters)
+E     ./wit_ros2_imu/wit_ros2_imu.py:127:100: E501 line too long (112 > 99 characters)
+E     ./wit_ros2_imu/wit_ros2_imu.py:138:18: E221 multiple spaces before operator
+E     ./wit_ros2_imu/wit_ros2_imu.py:141:34: E127 continuation line over-indented for visual indent
+E     ./wit_ros2_imu/wit_ros2_imu.py:142:34: E127 continuation line over-indented for visual indent
+E     ./wit_ros2_imu/wit_ros2_imu.py:163:40: E251 unexpected spaces around keyword / parameter equals
+E     ./wit_ros2_imu/wit_ros2_imu.py:163:42: E251 unexpected spaces around keyword / parameter equals
+E     ./wit_ros2_imu/wit_ros2_imu.py:195:1: W293 blank line contains whitespace
+E     ./wit_ros2_imu/wit_ros2_imu.py:198:1: W293 blank line contains whitespace
+E     ./wit_ros2_imu/wit_ros2_imu.py:207:1: W293 blank line contains whitespace
+E     ./wit_ros2_imu/wit_ros2_imu.py:211:1: W293 blank line contains whitespace
+E     ./wit_ros2_imu/wit_ros2_imu.py:216:1: W293 blank line contains whitespace
+E   assert 1 == 0
+----------------------------- Captured stdout call -----------------------------
+
+./setup.py:23:9: E122 continuation line missing indentation or outdented
+        'wit_ros2_imu = wit_ros2_imu.wit_ros2_imu:main'
+        ^
+
+./wit_ros2_imu/wit_ros2_imu.py:1:1: F401 'time' imported but unused
+import time
+^
+
+./wit_ros2_imu/wit_ros2_imu.py:39:100: E501 line too long (101 > 99 characters)
+    # According to the judgment of the data length bit, the corresponding length data can be obtained
+                                                                                                   ^
+
+./wit_ros2_imu/wit_ros2_imu.py:46:100: E501 line too long (107 > 99 characters)
+                acceleration = [hex_to_short(data_buff[2:10])[i] / 32768.0 * 16 * 9.8 for i in range(0, 3)]
+                                                                                                   ^
+
+./wit_ros2_imu/wit_ros2_imu.py:52:100: E501 line too long (109 > 99 characters)
+                angularVelocity = [hex_to_short(data_buff[2:10])[i] / 32768.0 * 2000 * math.pi / 180 for i in
+                                                                                                   ^
+
+./wit_ros2_imu/wit_ros2_imu.py:60:100: E501 line too long (102 > 99 characters)
+                angle_degree = [hex_to_short(data_buff[2:10])[i] / 32768.0 * 180 for i in range(0, 3)]
+                                                                                                   ^
+
+./wit_ros2_imu/wit_ros2_imu.py:121:100: E501 line too long (112 > 99 characters)
+    qx = np.sin(roll / 2) * np.cos(pitch / 2) * np.cos(yaw / 2) - np.cos(roll / 2) * np.sin(pitch / 2) * np.sin(
+                                                                                                   ^
+
+./wit_ros2_imu/wit_ros2_imu.py:123:100: E501 line too long (112 > 99 characters)
+    qy = np.cos(roll / 2) * np.sin(pitch / 2) * np.cos(yaw / 2) + np.sin(roll / 2) * np.cos(pitch / 2) * np.sin(
+                                                                                                   ^
+
+./wit_ros2_imu/wit_ros2_imu.py:125:100: E501 line too long (112 > 99 characters)
+    qz = np.cos(roll / 2) * np.cos(pitch / 2) * np.sin(yaw / 2) - np.sin(roll / 2) * np.sin(pitch / 2) * np.cos(
+                                                                                                   ^
+
+./wit_ros2_imu/wit_ros2_imu.py:127:100: E501 line too long (112 > 99 characters)
+    qw = np.cos(roll / 2) * np.cos(pitch / 2) * np.cos(yaw / 2) + np.sin(roll / 2) * np.sin(pitch / 2) * np.sin(
+                                                                                                   ^
+
+./wit_ros2_imu/wit_ros2_imu.py:138:18: E221 multiple spaces before operator
+        port_name  = port_param.get_parameter_value().string_value
+                 ^
+
+./wit_ros2_imu/wit_ros2_imu.py:141:34: E127 continuation line over-indented for visual indent
+                                 depth=1,
+                                 ^
+
+./wit_ros2_imu/wit_ros2_imu.py:142:34: E127 continuation line over-indented for visual indent
+                                 reliability=QoSReliabilityPolicy.BEST_EFFORT)
+                                 ^
+
+./wit_ros2_imu/wit_ros2_imu.py:163:40: E251 unexpected spaces around keyword / parameter equals
+            wt_imu = serial.Serial(port = port_name, baudrate=921600, timeout=0.5)
+                                       ^
+
+./wit_ros2_imu/wit_ros2_imu.py:163:42: E251 unexpected spaces around keyword / parameter equals
+            wt_imu = serial.Serial(port = port_name, baudrate=921600, timeout=0.5)
+                                         ^
+
+./wit_ros2_imu/wit_ros2_imu.py:195:1: W293 blank line contains whitespace
+        
+^
+
+./wit_ros2_imu/wit_ros2_imu.py:198:1: W293 blank line contains whitespace
+        
+^
+
+./wit_ros2_imu/wit_ros2_imu.py:207:1: W293 blank line contains whitespace
+        
+^
+
+./wit_ros2_imu/wit_ros2_imu.py:211:1: W293 blank line contains whitespace
+        
+^
+
+./wit_ros2_imu/wit_ros2_imu.py:216:1: W293 blank line contains whitespace
+        
+^
+
+1     E122 continuation line missing indentation or outdented
+2     E127 continuation line over-indented for visual indent
+1     E221 multiple spaces before operator
+2     E251 unexpected spaces around keyword / parameter equals
+8     E501 line too long (101 > 99 characters)
+1     F401 'time' imported but unused
+5     W293 blank line contains whitespace
+
+6 files checked
+20 errors
+
+'E'-type errors: 14
+'F'-type errors: 1
+'W'-type errors: 5
+
+Checked files:
+
+* ./setup.py
+* ./wit_ros2_imu/__init__.py
+* ./wit_ros2_imu/wit_ros2_imu.py
+* ./test/test_copyright.py
+* ./test/test_pep257.py
+* ./test/test_flake8.py
+------------------------------ Captured log call -------------------------------
+WARNING  flake8.options.manager:manager.py:217 option --max-complexity: please update from optparse string `type=` to argparse callable `type=` -- this will be an error in the future
+=============================== warnings summary ===============================
+test/test_copyright.py:19
+  /home/ubuntu/lhj_behavior_stage/src/wit_ros2_imu/test/test_copyright.py:19: PytestUnknownMarkWarning: Unknown pytest.mark.copyright - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.copyright
+
+test/test_copyright.py:20
+  /home/ubuntu/lhj_behavior_stage/src/wit_ros2_imu/test/test_copyright.py:20: PytestUnknownMarkWarning: Unknown pytest.mark.linter - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.linter
+
+test/test_flake8.py:19
+  /home/ubuntu/lhj_behavior_stage/src/wit_ros2_imu/test/test_flake8.py:19: PytestUnknownMarkWarning: Unknown pytest.mark.flake8 - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.flake8
+
+test/test_flake8.py:20
+  /home/ubuntu/lhj_behavior_stage/src/wit_ros2_imu/test/test_flake8.py:20: PytestUnknownMarkWarning: Unknown pytest.mark.linter - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.linter
+
+test/test_pep257.py:19
+  /home/ubuntu/lhj_behavior_stage/src/wit_ros2_imu/test/test_pep257.py:19: PytestUnknownMarkWarning: Unknown pytest.mark.linter - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.linter
+
+test/test_pep257.py:20
+  /home/ubuntu/lhj_behavior_stage/src/wit_ros2_imu/test/test_pep257.py:20: PytestUnknownMarkWarning: Unknown pytest.mark.pep257 - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.pep257
+
+test/test_flake8.py::test_flake8
+test/test_flake8.py::test_flake8
+  /usr/lib/python3/dist-packages/flake8/plugins/manager.py:261: DeprecationWarning: SelectableGroups dict interface is deprecated. Use select.
+    eps = importlib_metadata.entry_points().get(self.namespace, ())
+
+-- Docs: https://docs.pytest.org/en/stable/warnings.html
+- generated xml file: /home/ubuntu/lhj_behavior_stage/build/wit_ros2_imu/pytest.xml -
+=========================== short test summary info ============================
+FAILED test/test_copyright.py::test_copyright - AssertionError: Found errors
+FAILED test/test_flake8.py::test_flake8 - AssertionError: Found 20 code style...
+=================== 2 failed, 1 passed, 8 warnings in 0.51s ====================

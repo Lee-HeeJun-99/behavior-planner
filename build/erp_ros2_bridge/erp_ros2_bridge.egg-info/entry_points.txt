@@ -1,0 +1,3 @@
+[console_scripts]
+erp_ros2_bridge = erp_ros2_bridge.erp_ros2_bridge:main
+
