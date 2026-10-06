@@ -1,0 +1,104 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Enabled: true
+      Cell Size: 1
+      Plane: XY
+      Value: true
+    - Class: rviz_default_plugins/Path
+      Name: Global Path
+      Enabled: true
+      Color: 80; 160; 255
+      Pose Style: None
+      Topic:
+        Value: /Planning/debug/global_path
+        Reliability Policy: Reliable
+        Durability Policy: Transient Local
+        History Policy: Keep Last
+        Depth: 1
+      Value: true
+    - Class: rviz_default_plugins/Path
+      Name: Selected Local Path
+      Enabled: true
+      Color: 0; 255; 0
+      Pose Style: None
+      Topic:
+        Value: /Planning/debug/local_path
+        Reliability Policy: Best Effort
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Depth: 1
+      Value: true
+    - Class: rviz_default_plugins/MarkerArray
+      Name: Candidate Paths
+      Enabled: true
+      Topic:
+        Value: /Planning/debug/candidate_paths
+        Reliability Policy: Best Effort
+        Durability Policy: Volatile
+        Depth: 1
+      Value: true
+    - Class: rviz_default_plugins/MarkerArray
+      Name: Ego
+      Enabled: true
+      Topic:
+        Value: /Planning/debug/ego
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        Depth: 2
+      Value: true
+    - Class: rviz_default_plugins/MarkerArray
+      Name: UTM Obstacles
+      Enabled: true
+      Topic:
+        Value: /Visualization/obstacles_utm
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        Depth: 2
+      Value: true
+    - Class: rviz_default_plugins/MarkerArray
+      Name: Relative LiDAR Objects
+      Enabled: true
+      Topic:
+        Value: /Visualization/lidar_relative_objects
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        Depth: 2
+      Value: true
+    - Class: rviz_default_plugins/Marker
+      Name: Behavior
+      Enabled: true
+      Topic:
+        Value: /Visualization/behavior
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        Depth: 2
+      Value: true
+  Global Options:
+    Fixed Frame: map
+    Background Color: 48; 48; 48
+    Frame Rate: 30
+  Tools:
+    - Class: rviz_default_plugins/Interact
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/FocusCamera
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Target Frame: velodyne
+      Distance: 25
+      Focal Point:
+        X: 5
+        Y: 0
+        Z: 0
+      Pitch: 1.2
+      Yaw: 0.785
+  Enabled: true
+  Name: root
+  Value: true

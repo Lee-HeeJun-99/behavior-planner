@@ -204,3 +204,161 @@ python3 src/behavior_stack_bringup/test/visualization_smoke.py
 
 실차 후속 확인 항목은 camera 해상도/장착 위치/ROI, YOLO weight와 실제 `model.names`,
 LiDAR extrinsic, steering sign, 20/50 target calibration, speed scale, CAN feedback 단위이다.
+
+## 11. Offline / Mock Visualization Test
+
+이 launch는 `mock_debug_input_node`, `planning_node`, `debug_visualizer_node`, 선택적
+`rviz2`만 실행한다. GPS/IMU/LiDAR/camera driver, Controller와 CAN bridge는 실행하지 않는다.
+다른 stack과 입력이 섞이지 않도록 전용 ROS domain을 사용한다. 명령은 저장소 root에서 실행한다.
+
+```bash
+source /opt/ros/foxy/setup.bash
+source install/setup.bash
+export ROS_DOMAIN_ID=105
+export ROS_LOCALHOST_ONLY=1
+
+ros2 launch behavior_stack_bringup mock_visualization.launch.py scenario:=cruise
+# 이전 launch를 Ctrl-C로 종료한 뒤 하나씩 실행한다.
+ros2 launch behavior_stack_bringup mock_visualization.launch.py scenario:=avoid_center
+ros2 launch behavior_stack_bringup mock_visualization.launch.py scenario:=avoid_left
+ros2 launch behavior_stack_bringup mock_visualization.launch.py scenario:=avoid_right
+ros2 launch behavior_stack_bringup mock_visualization.launch.py scenario:=blocked
+ros2 launch behavior_stack_bringup mock_visualization.launch.py scenario:=emergency
+ros2 launch behavior_stack_bringup mock_visualization.launch.py scenario:=speed_20
+ros2 launch behavior_stack_bringup mock_visualization.launch.py scenario:=speed_50
+```
+
+화면 없이 topic만 확인하려면 `enable_rviz:=false`를 추가한다.
+
+| Scenario | 입력 | Expected Behavior | 현재 target |
+|---|---|---|---|
+| `cruise` | map 위 ego, 장애물 없음, sign 20 | CRUISE | 2.5 |
+| `avoid_center` | 전방 map arc length 약 8 m, lateral 0 | AVOID | 2.5 |
+| `avoid_left` | 같은 전방 위치, lateral +0.75 m(왼쪽) | AVOID | 2.5 |
+| `avoid_right` | 같은 전방 위치, lateral -0.75 m(오른쪽) | AVOID | 2.5 |
+| `blocked` | 같은 전방 위치, lateral -2.5~+2.5 m / 0.5 m 간격 | EMERGENCY_STOP, valid 0 | 0 |
+| `emergency` | dynamic_stop=true, 장애물 없음 | EMERGENCY_STOP | 0 |
+| `speed_20` | sign 20 반복 | CRUISE, active 20 | 2.5 |
+| `speed_50` | sign 50 반복 | CRUISE, active 50 | 4.5 |
+
+속도 값은 기존 config의 provisional target이며 이번 작업에서 조정하지 않았다.
+기본 차량은 Global Path의 `base_index=0` 위치/heading을 사용한다. `obstacle_distance=8.0`은
+단순 UTM X 이동이 아니라 Global Path arc length로 전방점을 찾는다. 장애물 lateral 방향은
+기존 integration probe의 `offset_obstacles()`를 재사용한다. 두 모듈의 좌표계에서 +lateral은
+heading 왼쪽이다. 해당 map의 첫 구간이 직선이므로 기본 테스트에서 heading 좌표 전방 8 m와
+동일하다. `base_index`, `obstacle_distance`, `publish_rate_hz`를 launch에서 변경할 수 있다.
+
+Mock launch의 `mock_planning.yaml`은 `planning/test/integration_planning.yaml`을 build 시
+설치한 파일이다. 테스트용 경계 ±2.5 m와 11개 lateral 후보를 사용한다. Production 경계
+±1.5 m와 Planning 알고리즘은 그대로 유지된다. Production config를 시험하려면:
+
+```bash
+ros2 launch behavior_stack_bringup mock_visualization.launch.py \
+  scenario:=avoid_center planning_config:=<PRODUCTION_PLANNING_YAML>
+```
+
+이 경우 회피 공간 부족으로 EMERGENCY_STOP이 나올 수 있으며 기본 mock 회피 PASS 조건을
+그대로 적용하면 안 된다.
+
+RViz의 Fixed Frame은 `map`이다. mock 전용 config는 `velodyne` target frame을 따라 ego 근처로
+view를 잡고, global path에는 transient-local QoS, local/candidate path에는 best-effort QoS를
+사용한다. 기존 selected=green, valid=blue, invalid=red 색상과 실제 candidate path geometry를
+표시한다. 차단에서는 selected local path가 비어도 invalid candidate 11개의 형상은 남는다.
+
+Mock node만 합성 `map → velodyne` static TF를 발행한다. 센서 원점은 ego 원점과 같다고
+가정한다. `/LiDAR/object_cen`은 local XY pairs + -1000 sentinel이고, `/Convert/small_object_UTM`은
+동일 장애물의 map XY pairs이다. Big obstacle은 빈 배열로 clear한다. Relative marker와 UTM
+marker가 겹치는지 확인할 수 있지만 **실제 converter/extrinsic 검증은 아니다**.
+
+RViz display/topic:
+
+| Display | Topic | 확인 |
+|---|---|---|
+| Global Path | `/Planning/debug/global_path` | 전체 preferred path |
+| Selected Local Path | `/Planning/debug/local_path` | 최종 경로 |
+| Candidate Paths | `/Planning/debug/candidate_paths` | 형상·valid/invalid·selected label |
+| Ego | `/Planning/debug/ego` | footprint·heading arrow |
+| Relative LiDAR Objects | `/Visualization/lidar_relative_objects` | 상대 장애물 |
+| UTM Obstacles | `/Visualization/obstacles_utm` | Planning이 받는 장애물 |
+| Behavior | `/Visualization/behavior` | 현재 Behavior text |
+
+별도 terminal에서도 같은 domain/source를 설정한 뒤 확인한다.
+
+```bash
+ros2 node list
+ros2 topic echo /Planning/behavior
+ros2 topic echo /Planning/target_velocity
+ros2 topic echo /Planning/debug/candidates
+ros2 topic info /Planning/debug/candidate_paths --verbose
+ros2 topic hz /Planning/debug/local_path
+ros2 param set /mock_debug_input_node scenario blocked
+ros2 param set /mock_debug_input_node scenario cruise
+```
+
+`scenario`는 runtime 변경 가능하다. Ego는 고정 위치이므로 AVOID 종료 후 실제 이동/경로 복귀
+연속성 검증은 기존 `ros2_local_planner_integration.py`의 차량 위치 갱신 테스트를 사용한다.
+
+자동 smoke test는 launch까지 실행/정리하며 8개 scenario별 독립 domain(110~117)을 사용한다.
+관련 node가 이미 같은 domain에서 실행 중이면 종료하고 실행한다.
+
+```bash
+python3 src/behavior_stack_bringup/test/mock_visualization_smoke.py
+python3 src/behavior_stack_bringup/test/mock_visualization_smoke.py \
+  --scenarios cruise avoid_center blocked
+```
+
+실제 publish 여부, map frame, candidate geometry, valid/invalid 개수, ego arrow/footprint,
+relative/UTM marker, behavior text, target, node graph와 vehicle command topic 부재를 assert한다.
+
+## 12. Static Image로 Perception 확인
+
+사용자가 제공한 실제 이미지 파일만 사용한다. 저장소에 이미지/YOLO weight는 포함되어 있지
+않으며 임의 샘플을 생성하지 않는다.
+
+```bash
+ros2 run behavior_stack_bringup mock_camera_node --ros-args \
+  -p image_path:=<IMAGE_PATH> -p publish_rate_hz:=5.0
+
+ros2 launch behavior_stack_bringup mock_perception.launch.py \
+  image_path:=<IMAGE_PATH> weights_path:=<MODEL.pt> \
+  camera_image_topic:=/camera/image_raw enable_debug_image:=true
+
+ros2 run rqt_image_view rqt_image_view
+```
+
+rqt에서 `/camera/image_raw`와 `/Perception/speed_sign/debug_image`를 비교한다.
+PT 없이 image subscription, ROI crop, debug rendering, 미검출 0만 확인 가능하다.
+PT가 있어야 실제 inference, class/confidence/bbox 및 20/50 mapping을 검증할 수 있다.
+실제 센서 성능·검출거리·extrinsic·차량 제어 성능은 이 mock test의 검증 범위에 포함되지 않는다.
+
+### 이번 검증 결과
+
+2026-10-06, ROS 2 Humble 호스트에서 clean build 11개 package가 성공했다. Foxy에서는 별도
+재검증이 필요하다. Mock smoke 8개 scenario 모두 PASS했고 global path 1,453점, 정상 local
+path 300점, avoidance candidate geometry 11개가 실제 발행됐다.
+
+| Scenario | Behavior | Valid / Invalid | 최저 cost offset | Clearance | Target |
+|---|---|---|---|---|---|
+| cruise | CRUISE | 1 / 0 | 0.0 | 장애물 없음 | 2.5 |
+| avoid_center | AVOID | 2 / 9 | +1.5 | 0.30 m | 2.5 |
+| avoid_left | AVOID | 3 / 8 | -0.9 | 0.45 m | 2.5 |
+| avoid_right | AVOID | 3 / 8 | +0.9 | 0.45 m | 2.5 |
+| blocked | EMERGENCY_STOP | 0 / 11 | 없음 | 없음 | 0 |
+| emergency | EMERGENCY_STOP | 1 / 0 | 0.0 | 장애물 없음 | 0 |
+| speed_20 | CRUISE | 1 / 0 | 0.0 | 장애물 없음 | 2.5 |
+| speed_50 | CRUISE | 1 / 0 | 0.0 | 장애물 없음 | 4.5 |
+
+좌우 대칭 후보의 미세 cost 차이로 중앙 회피 방향은 달라질 수 있다. 자동 test는 특정
+offset을 요구하지 않는다. RViz mock config는 실제 X display에서 열렸으며 Global Status OK,
+path/candidate/ego/obstacle/AVOID text 표시를 육안 확인했다. RViz 시작 때 parameter가 로드되기
+전 임시 reliable 구독에서 QoS 경고가 나올 수 있지만, 최종 candidate 구독은 BEST_EFFORT,
+global path 구독은 RELIABLE/TRANSIENT_LOCAL로 publisher와 일치했다.
+
+Planning GTest 17개, Perception helper 6개, Localization split test 1개는 PASS했다.
+전체 `colcon test-result --verbose`는 276 tests / 0 errors / 228 failures / 15 skipped로,
+기존 control/lidar/convertcs/legacy ERP/IMU의 lint·copyright·XML schema 문제 때문에 FAIL이다.
+이번 작업에서 해당 package들의 formatting이나 알고리즘을 변경하지 않았다.
+
+Mock camera는 syntax/launch 검사를 통과했으나 사용자 이미지와 PT가 없어 실제 정적 이미지
+발행 및 YOLO inference는 실행하지 않았다. CAN/Control/vehicle interface node는 mock launch와
+smoke에서 실행하지 않았고 `/Control/vehicle_cmd`와 `/erp42pro/cmd_debug` 부재도 확인했다.
