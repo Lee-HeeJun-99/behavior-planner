@@ -22,7 +22,11 @@ public:
   LocalPlan plan(Behavior behavior, const BehaviorContext & context) const;
 
 private:
+  mutable Path committed_avoidance_path_;
+  mutable double committed_offset_{0.0};
+  mutable bool committed_is_avoidance_{false};
   PathGenerator generator_;
+  PathGeneratorConfig generator_config_;
   CollisionChecker checker_;
   CostEvaluator evaluator_;
 };

@@ -11,7 +11,8 @@ struct BehaviorConfig
   int detection_confirmation_count{3};
   int clear_confirmation_count{5};
   double obstacle_corridor_half_width{0.8};
-  double obstacle_lookahead{15.0};
+  double obstacle_lookahead{10.0};
+  double obstacle_pass_margin{3.0};
   std::chrono::milliseconds minimum_behavior_duration{500};
 };
 

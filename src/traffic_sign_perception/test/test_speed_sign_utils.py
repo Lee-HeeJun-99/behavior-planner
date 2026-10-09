@@ -27,6 +27,9 @@ class SpeedSignUtilsTest(unittest.TestCase):
                          (586, 56, 686, 156))
 
     def test_class_mapping_accepts_only_supported_classes(self):
+        self.assertEqual(class_name_to_speed('Speed Limit 20'), 20)
+        self.assertEqual(class_name_to_speed('Speed Limit 50'), 50)
+        self.assertEqual(class_name_to_speed('Speed Limit 100'), 0)
         self.assertEqual(class_name_to_speed('speed_50'), 50)
         self.assertEqual(class_name_to_speed('SPEED_20'), 20)
         self.assertEqual(class_name_to_speed('speed_30'), 0)

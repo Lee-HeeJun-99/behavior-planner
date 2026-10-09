@@ -13,6 +13,16 @@ bool BehaviorPlanner::pathBlocked(const BehaviorContext & context) const
   const auto & path = *context.path.global_path;
   const std::size_t end = std::min(path.size(), context.path.nearest_index + 350);
   for (const auto & obstacle : context.obstacles) {
+    const auto & ref = path[context.path.nearest_index];
+    const double dx = obstacle.center.x - ref.x;
+    const double dy = obstacle.center.y - ref.y;
+    const double along = std::cos(ref.yaw) * dx + std::sin(ref.yaw) * dy;
+    const double lateral = -std::sin(ref.yaw) * dx + std::cos(ref.yaw) * dy;
+    if (current_ == Behavior::AVOID && along >= -config_.obstacle_pass_margin - obstacle.radius &&
+      along < 0.0 && std::abs(lateral) <= config_.obstacle_corridor_half_width + obstacle.radius) {
+      return true;
+    }
+    if (along < 0.0) {continue;}
     for (std::size_t i = context.path.nearest_index; i < end; ++i) {
       const double along = std::hypot(path[i].x - context.vehicle.position.x, path[i].y - context.vehicle.position.y);
       if (along > config_.obstacle_lookahead) {break;}

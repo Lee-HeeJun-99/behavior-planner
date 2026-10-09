@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <chrono>
+#include <cmath>
 #include <cstdlib>
 #include <iostream>
 #include <gtest/gtest.h>
@@ -128,8 +129,10 @@ TEST(LocalPlanner, RejectsAllCandidatesWhenCorridorIsBlocked) {
   auto result=LocalPlanner(PathGenerator(gen),CollisionChecker{},CostEvaluator{}).plan(Behavior::AVOID,c);
   EXPECT_FALSE(result.feasible);
   EXPECT_EQ(result.candidates.size(),11u);
-  EXPECT_EQ(std::count_if(result.candidates.begin(),result.candidates.end(),
-    [](const CandidatePath & candidate) {return candidate.valid;}),0);
+  const auto valid_count = std::count_if(
+    result.candidates.begin(), result.candidates.end(),
+    [](const CandidatePath & candidate) {return candidate.valid;});
+  EXPECT_EQ(valid_count, 0);
 }
 TEST(LocalPlanner, ReportsProductionGeometryForCentralObstacle) {
   auto path=straightPath(); BehaviorContext c; c.vehicle.localization_valid=true; c.path={&path,0};
@@ -159,4 +162,69 @@ TEST(LocalPlanner, ReportsSurveyedMapGeometryWhenRequested) {
   }
   EXPECT_TRUE(result.feasible);
 }
+TEST(DistanceAvoidance, ApproachesBeforeActivationAndHoldsUntilRearClearance) {
+  auto path=straightPath(); BehaviorContext c; c.path={&path,0};
+  c.vehicle.localization_valid=true; c.free_space={3,3}; c.obstacles={{{13,0},0.35}};
+  BehaviorConfig b; b.detection_confirmation_count=1; b.clear_confirmation_count=1;
+  b.minimum_behavior_duration=std::chrono::milliseconds(0);
+  BehaviorPlanner behavior(b); auto now=std::chrono::steady_clock::now();
+  EXPECT_EQ(behavior.update(c,now),Behavior::CRUISE);
+  PathGeneratorConfig g;g.lateral_offsets={-1.8,-1.5,0,1.5,1.8};g.transition_points=60;
+  LocalPlanner planner(PathGenerator(g),CollisionChecker{},CostEvaluator{});
+  auto approach=planner.plan(Behavior::CRUISE,c);
+  ASSERT_TRUE(approach.feasible);EXPECT_LT(approach.path.back().x,10.1);
+  c.path.nearest_index=40;c.vehicle.position={4,0};
+  EXPECT_EQ(behavior.update(c,now),Behavior::AVOID);
+  c.path.nearest_index=140;c.vehicle.position={14,1.5};
+  EXPECT_EQ(behavior.update(c,now),Behavior::AVOID);
+  c.path.nearest_index=170;c.vehicle.position={17,1.5};
+  EXPECT_EQ(behavior.update(c,now),Behavior::CRUISE);
+}
+TEST(DistanceAvoidance, DoesNotReturnBeforeFarObstacle) {
+  auto path=straightPath();BehaviorContext c;c.path={&path,0};c.vehicle.localization_valid=true;
+  c.free_space={3,3};c.obstacles={{{13,0},0.35}};
+  PathGeneratorConfig g;g.lateral_offsets={-1.8,-1.5,0,1.5,1.8};g.transition_points=60;
+  auto plan=LocalPlanner(PathGenerator(g),CollisionChecker{},CostEvaluator{}).plan(Behavior::AVOID,c);
+  ASSERT_TRUE(plan.feasible);EXPECT_GE(std::abs(plan.path[130].y),1.5);
+}
+TEST(DistanceAvoidance, CloseObstacleStillStopsWhenNoCollisionFreePathExists) {
+  auto path=straightPath();BehaviorContext c;c.path={&path,0};c.vehicle.localization_valid=true;
+  c.free_space={3,3};c.obstacles={{{1,0},0.35}};
+  PathGeneratorConfig g;g.lateral_offsets={-1.8,0,1.8};
+  EXPECT_FALSE(LocalPlanner(PathGenerator(g),CollisionChecker{},CostEvaluator{}).plan(Behavior::AVOID,c).feasible);
+}
+
+TEST(DistanceAvoidance, RechecksCommittedPathForNewCollision) {
+ auto path=straightPath();BehaviorContext c;c.path={&path,0};c.vehicle.localization_valid=true;
+ c.free_space={3,3};c.obstacles={{{8,0},0.35}};
+ PathGeneratorConfig g;g.lateral_offsets={-1.8,-1.5,0,1.5,1.8};g.transition_points=60;
+ LocalPlanner planner{PathGenerator(g),CollisionChecker{},CostEvaluator{}};
+ auto plan=planner.plan(Behavior::AVOID,c);ASSERT_TRUE(plan.feasible);
+ c.vehicle.position={plan.path[5].x,plan.path[5].y};
+ c.obstacles.push_back({c.vehicle.position,0.35});
+ EXPECT_FALSE(planner.plan(Behavior::AVOID,c).feasible);
+}
+TEST(DistanceAvoidance, ContinuousActualMapApproachPassAndReturn) {
+ const char * filename=std::getenv("PLANNING_TEST_MAP");ASSERT_NE(filename,nullptr);
+ GlobalPath global;std::string error;ASSERT_TRUE(global.load(filename,&error));const auto &path=global.path();
+ ContextConfig cc;cc.road_left_bound=3;cc.road_right_bound=3;ContextManager manager(cc);
+ manager.updateObstacles({{path[260].x,path[260].y}});
+ BehaviorPlanner behavior;PathGeneratorConfig g;g.transition_points=120;
+ g.lateral_offsets={-1.8,-1.5,-1.2,-.9,-.6,-.3,0,.3,.6,.9,1.2,1.5,1.8};
+ LocalPlanner planner{PathGenerator(g),CollisionChecker{},CostEvaluator{}};
+ Point2d position{path[0].x,path[0].y};double yaw=path[0].yaw;size_t index=0;bool returned=false;
+ auto time=std::chrono::steady_clock::now();
+ for(int step=0;step<120;++step){
+  index=global.nearestIndex(position,index);manager.updateVehicle(position,yaw);auto c=manager.build(path,index);
+  auto b=behavior.update(c,time+std::chrono::milliseconds(step*100));auto plan=planner.plan(b,c);
+  if(!plan.feasible&&b==Behavior::CRUISE&&!c.obstacles.empty())plan=planner.plan(Behavior::AVOID,c);
+  ASSERT_TRUE(plan.feasible)<<"step="<<step<<" index="<<index;
+  ASSERT_GE(plan.path.size(),3u);const size_t advance=std::min(size_t(5),plan.path.size()-1);
+  position={plan.path[advance].x,plan.path[advance].y};yaw=plan.path[advance].yaw;
+  const double lateral=-std::sin(path[index].yaw)*(position.x-path[index].x)+std::cos(path[index].yaw)*(position.y-path[index].y);
+  if(index>420&&std::abs(lateral)<.15&&b==Behavior::CRUISE){returned=true;break;}
+ }
+ EXPECT_TRUE(returned);
+}
+
 }

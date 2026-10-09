@@ -2,7 +2,7 @@ from pathlib import Path
 import time
 
 from ament_index_python.packages import get_package_share_directory
-from cv_bridge import CvBridge
+import numpy as np
 import rclpy
 from rclpy.node import Node
 from rclpy.qos import qos_profile_sensor_data
@@ -18,6 +18,31 @@ from traffic_sign_perception.speed_sign_utils import (
     is_valid_normalized_roi,
     roi_pixel_bounds,
 )
+
+
+def image_to_bgr(message):
+    """Decode padded uint8 ROS images without OpenCV/CvBridge ABI coupling."""
+    import cv2
+    encoding = message.encoding.lower()
+    channels = {'bgr8': 3, 'rgb8': 3, '8uc3': 3,
+                'bgra8': 4, 'rgba8': 4, 'mono8': 1, '8uc1': 1}.get(encoding)
+    if channels is None:
+        raise ValueError(f'Unsupported camera encoding: {message.encoding}')
+    row_bytes = message.width * channels
+    if message.step < row_bytes or len(message.data) < message.height * message.step:
+        raise ValueError('Invalid camera image dimensions or step')
+    rows = np.frombuffer(bytes(message.data), dtype=np.uint8,
+                         count=message.height * message.step).reshape(message.height, message.step)
+    image = rows[:, :row_bytes].reshape(message.height, message.width, channels).copy()
+    if encoding == 'rgb8':
+        return cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+    if encoding == 'rgba8':
+        return cv2.cvtColor(image, cv2.COLOR_RGBA2BGR)
+    if encoding == 'bgra8':
+        return cv2.cvtColor(image, cv2.COLOR_BGRA2BGR)
+    if channels == 1:
+        return cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)
+    return image
 
 
 class SpeedSignNode(Node):
@@ -54,7 +79,6 @@ class SpeedSignNode(Node):
                 f'Invalid normalized ROI {self.roi}; falling back to the full image')
             self.roi_enabled = False
 
-        self.bridge = CvBridge()
         self.model = self._load_model(str(self.get_parameter('weights_path').value))
         self.publisher = self.create_publisher(Int16, '/Perception/speed_limit', 10)
         self.debug_publisher = None
@@ -90,7 +114,7 @@ class SpeedSignNode(Node):
 
     def _image_callback(self, message):
         try:
-            image = self.bridge.imgmsg_to_cv2(message, desired_encoding='bgr8')
+            image = image_to_bgr(message)
             height, width = image.shape[:2]
             if self.roi_enabled:
                 x1, y1, x2, y2 = roi_pixel_bounds(width, height, *self.roi)
@@ -146,9 +170,8 @@ class SpeedSignNode(Node):
             cv2.putText(debug, 'ROI', (x1 + 5, max(20, y1 + 20)),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 255), 2)
         roi_width, roi_height = x2 - x1, y2 - y1
+        # Show every detected class; only supported speed signs affect planning.
         for detection in detections:
-            if not class_name_to_speed(detection.class_name):
-                continue
             if bbox_area_ratio(
                     detection.bbox, roi_width, roi_height) < self.min_bbox_area_ratio:
                 continue
@@ -172,7 +195,13 @@ class SpeedSignNode(Node):
                         0.65, (255, 255, 255), 3)
             cv2.putText(debug, line, position, cv2.FONT_HERSHEY_SIMPLEX,
                         0.65, (0, 0, 0), 1)
-        debug_message = self.bridge.cv2_to_imgmsg(debug, encoding='bgr8')
+        debug = np.ascontiguousarray(debug, dtype=np.uint8)
+        debug_message = Image()
+        debug_message.height, debug_message.width = debug.shape[:2]
+        debug_message.encoding = 'bgr8'
+        debug_message.is_bigendian = 0
+        debug_message.step = debug_message.width * 3
+        debug_message.data = debug.tobytes()
         debug_message.header = source_message.header
         self.debug_publisher.publish(debug_message)
 

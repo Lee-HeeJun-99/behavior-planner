@@ -75,6 +75,8 @@ private:
     declare_parameter<int>("planning_period_ms", 50);
     declare_parameter<std::vector<double>>("lateral_offsets", {-1.2, -0.9, -0.6, -0.3, 0.0, 0.3, 0.6, 0.9, 1.2});
     declare_parameter<int>("transition_points", 120);
+    declare_parameter<double>("avoidance_start_distance", 10.0);
+    declare_parameter<double>("obstacle_pass_margin", 3.0);
     declare_parameter<double>("road_left_bound", 1.5);
     declare_parameter<double>("road_right_bound", 1.5);
     declare_parameter<double>("vehicle_half_width", 0.6);
@@ -112,6 +114,8 @@ private:
     context_manager_ = ContextManager(context_config);
 
     BehaviorConfig behavior_config;
+    behavior_config.obstacle_lookahead = get_parameter("avoidance_start_distance").as_double();
+    behavior_config.obstacle_pass_margin = get_parameter("obstacle_pass_margin").as_double();
     behavior_config.detection_confirmation_count = get_parameter("detection_confirmation_count").as_int();
     behavior_config.clear_confirmation_count = get_parameter("clear_confirmation_count").as_int();
     behavior_config.minimum_behavior_duration =
@@ -119,6 +123,8 @@ private:
     behavior_planner_ = BehaviorPlanner(behavior_config);
 
     PathGeneratorConfig generator_config;
+    generator_config.avoidance_start_distance = get_parameter("avoidance_start_distance").as_double();
+    generator_config.obstacle_pass_margin = get_parameter("obstacle_pass_margin").as_double();
     generator_config.lateral_offsets = get_parameter("lateral_offsets").as_double_array();
     generator_config.transition_points = static_cast<std::size_t>(get_parameter("transition_points").as_int());
     CollisionConfig collision_config;

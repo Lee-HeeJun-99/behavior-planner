@@ -2,7 +2,8 @@
 import math
 
 import rclpy
-from geometry_msgs.msg import Point, PointStamped
+from geometry_msgs.msg import Point, PointStamped, TransformStamped
+from tf2_ros import TransformBroadcaster
 from rclpy.node import Node
 from rclpy.qos import QoSHistoryPolicy, QoSProfile, QoSReliabilityPolicy
 from std_msgs.msg import Float64, Float64MultiArray, String
@@ -41,6 +42,9 @@ class DebugVisualizer(Node):
         self.relative_pub = self.create_publisher(
             MarkerArray, '/Visualization/lidar_relative_objects', 2)
         self.utm_pub = self.create_publisher(MarkerArray, '/Visualization/obstacles_utm', 2)
+        self.declare_parameter('sensor_offset_x', 0.35)
+        self.declare_parameter('sensor_offset_y', 0.0)
+        self.tf_broadcaster = TransformBroadcaster(self)
         self.position = None
         self.heading = None
         self.behavior = 'UNKNOWN'
@@ -117,6 +121,17 @@ class DebugVisualizer(Node):
         stamp = self.get_clock().now().to_msg()
         x, y = self.position
         yaw = self.heading
+        transform = TransformStamped()
+        transform.header.stamp = stamp
+        transform.header.frame_id = 'map'
+        transform.child_frame_id = 'velodyne'
+        offset_x = float(self.get_parameter('sensor_offset_x').value)
+        offset_y = float(self.get_parameter('sensor_offset_y').value)
+        transform.transform.translation.x = x + offset_x * math.cos(yaw) - offset_y * math.sin(yaw)
+        transform.transform.translation.y = y + offset_x * math.sin(yaw) + offset_y * math.cos(yaw)
+        transform.transform.rotation.z = math.sin(yaw * 0.5)
+        transform.transform.rotation.w = math.cos(yaw * 0.5)
+        self.tf_broadcaster.sendTransform(transform)
         array = MarkerArray()
 
         footprint = Marker()

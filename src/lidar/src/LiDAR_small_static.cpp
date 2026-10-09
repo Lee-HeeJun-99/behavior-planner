@@ -28,8 +28,8 @@ void LiDAR_small_static::callback(const sensor_msgs::msg::PointCloud2::SharedPtr
   // 3. Crop 필터
   auto cloud_filtered2 = util_func_.CropFilter(
       cloud_filtered,
-      Eigen::Vector4f(-0, -2.5, -0.35, 0), // ROI 영역(LiDAR 높이(z축)가 지면으로부터 0.65m일 때)
-      Eigen::Vector4f(15, 2, 1.0, 0));     // x, y, z, 1
+      Eigen::Vector4f(0, -3.5, -0.35, 0), // ROI 영역(LiDAR 높이(z축)가 지면으로부터 0.65m일 때)
+      Eigen::Vector4f(20, 3.5, 1.8, 0));     // x, y, z, 1
 
   //////////////////////// < ROI를 나타내는 직육면체 마커 > //////////////////////////////////
   // visualization_msgs::msg::Marker marker;
@@ -53,7 +53,7 @@ void LiDAR_small_static::callback(const sensor_msgs::msg::PointCloud2::SharedPtr
   /////////////////////////////////////////////////////////////////////////////////////
 
   // 4. 클러스터링
-  auto cluster_indices = util_func_.ClusterEuclidean(cloud_filtered2, false, 0.3, 3, 1000);
+  auto cluster_indices = util_func_.ClusterEuclidean(cloud_filtered2, false, 0.4, 3, 20000);
 
   // 5. 클러스터 추출 및 색 입히기
   pcl::PointCloud<pcl::PointXYZI> TotalCloud;
@@ -72,8 +72,14 @@ void LiDAR_small_static::callback(const sensor_msgs::msg::PointCloud2::SharedPtr
     float cen_x = center_point.x;
     float cen_y = center_point.y;
 
-    // 좌우(y축) 폭이 0.5m 초과 && 1.5m 미만  &&  상하(z축) 높이가 0.95m 미만 (LiDAR 높이(z축)가 지면으로부터 0.65m일 때)
-    if ((max_point.y - min_point.y) > 0.5 && (max_point.y - min_point.y) < 1.5 && max_point.z < 0.3)
+    // Broad passenger-car envelope, including partial visible surfaces.
+    // These are detection limits, not a vehicle collision footprint.
+    const double width = max_point.y - min_point.y;
+    const double length = max_point.x - min_point.x;
+    const bool small_object = width > 0.5 && width < 1.5 && max_point.z < 0.3;
+    const bool passenger_car = width >= 0.3 && width <= 5.5 &&
+      length <= 5.5 && max_point.z <= 1.8 && (width >= 0.8 || length >= 0.8);
+    if (small_object || passenger_car)
     {
       obj.data.push_back(cen_x);
       obj.data.push_back(cen_y);
@@ -82,6 +88,9 @@ void LiDAR_small_static::callback(const sensor_msgs::msg::PointCloud2::SharedPtr
     }
   }
 
+  RCLCPP_INFO_THROTTLE(this->get_logger(), *this->get_clock(), 2000,
+    "Obstacle detection: input=%zu roi=%zu clusters=%zu accepted=%zu",
+    cloud->size(), cloud_filtered2->size(), clusters.size(), obj.data.size() / 2);
   obj.data.push_back(-1000);
   object_->publish(obj);
 

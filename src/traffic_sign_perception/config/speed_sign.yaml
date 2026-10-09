@@ -1,8 +1,8 @@
 speed_sign_node:
   ros__parameters:
-    # Only YOLO classes speed_20 and speed_50 are published; all others become 0.
+    # Only speed limits 20 and 50 are published; all others become 0.
     image_topic: /camera/image_raw
-    weights_path: ""
+    weights_path: /home/wgr/behavior_ws/traffic_sign_detector.pt
     confidence_threshold: 0.6
     device: ""
     roi_enabled: true

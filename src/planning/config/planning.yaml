@@ -15,10 +15,12 @@ planning_node:
     avoid_max_velocity: 2.5
 
     # path generation
-    lateral_offsets: [-1.2, -0.9, -0.6, -0.3, 0.0, 0.3, 0.6, 0.9, 1.2]
+    lateral_offsets: [-1.8, -1.5, -1.2, -0.9, -0.6, -0.3, 0.0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8]
     transition_points: 120
-    road_left_bound: 1.5
-    road_right_bound: 1.5
+    avoidance_start_distance: 10.0
+    obstacle_pass_margin: 3.0
+    road_left_bound: 3.0
+    road_right_bound: 3.0
 
     # vehicle and collision
     vehicle_half_width: 0.6

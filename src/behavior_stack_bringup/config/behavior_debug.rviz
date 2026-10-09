@@ -1,67 +1,115 @@
 Panels:
-  - Class: rviz_common/Displays
-    Name: Displays
+- Class: rviz_common/Displays
+  Name: Displays
+- Class: rviz_common/Views
+  Name: Views
 Visualization Manager:
-  Class: ""
+  Class: ''
   Displays:
-    - Alpha: 0.5
-      Cell Size: 1
-      Class: rviz_default_plugins/Grid
-      Color: 160; 160; 164
-      Enabled: true
-      Name: Grid
-      Plane: XY
-      Value: true
-    - Alpha: 1
-      Class: rviz_default_plugins/PointCloud2
-      Color Transformer: Intensity
-      Enabled: true
-      Name: Raw LiDAR
-      Size (Pixels): 2
-      Style: Points
-      Topic: /velodyne_points
-      Value: true
-    - Alpha: 1
-      Buffer Length: 1
-      Class: rviz_default_plugins/Path
-      Color: 80; 160; 255
-      Enabled: true
-      Name: Global Path
-      Topic: /Planning/debug/global_path
-      Value: true
-    - Alpha: 1
-      Buffer Length: 1
-      Class: rviz_default_plugins/Path
-      Color: 0; 255; 0
-      Enabled: true
-      Name: Selected Local Path
-      Topic: /Planning/debug/local_path
-      Value: true
-    - Class: rviz_default_plugins/MarkerArray
-      Enabled: true
-      Name: Candidate Paths
-      Topic: /Planning/debug/candidate_paths
-      Value: true
-    - Class: rviz_default_plugins/MarkerArray
-      Enabled: true
-      Name: Ego
-      Topic: /Planning/debug/ego
-      Value: true
-    - Class: rviz_default_plugins/MarkerArray
-      Enabled: true
-      Name: UTM Obstacles
-      Topic: /Visualization/obstacles_utm
-      Value: true
-    - Class: rviz_default_plugins/MarkerArray
-      Enabled: true
-      Name: Relative LiDAR Objects
-      Topic: /Visualization/lidar_relative_objects
-      Value: true
-    - Class: rviz_default_plugins/Marker
-      Enabled: true
-      Name: Behavior
-      Topic: /Visualization/behavior
-      Value: true
+  - Alpha: 0.5
+    Cell Size: 1
+    Class: rviz_default_plugins/Grid
+    Color: 160; 160; 164
+    Enabled: true
+    Name: Grid
+    Plane: XY
+    Value: true
+  - Alpha: 1
+    Class: rviz_default_plugins/PointCloud2
+    Color Transformer: Intensity
+    Enabled: true
+    Name: Raw LiDAR
+    Size (Pixels): 2
+    Style: Points
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Best Effort
+      Value: /velodyne_points
+    Value: true
+  - Alpha: 1
+    Buffer Length: 1
+    Class: rviz_default_plugins/Path
+    Color: 80; 160; 255
+    Enabled: true
+    Name: Global Path
+    Topic:
+      Depth: 1
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /Planning/debug/global_path
+    Value: true
+    Line Style: Billboards
+    Line Width: 0.15
+    Pose Style: None
+  - Alpha: 1
+    Buffer Length: 1
+    Class: rviz_default_plugins/Path
+    Color: 0; 255; 0
+    Enabled: true
+    Name: Selected Local Path
+    Topic:
+      Depth: 1
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Best Effort
+      Value: /Planning/debug/local_path
+    Value: true
+    Line Style: Billboards
+    Line Width: 0.15
+    Pose Style: None
+  - Class: rviz_default_plugins/MarkerArray
+    Enabled: true
+    Name: Candidate Paths
+    Topic:
+      Depth: 1
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Best Effort
+      Value: /Planning/debug/candidate_paths
+    Value: true
+  - Class: rviz_default_plugins/MarkerArray
+    Enabled: true
+    Name: Ego
+    Topic:
+      Depth: 1
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /Planning/debug/ego
+    Value: true
+  - Class: rviz_default_plugins/MarkerArray
+    Enabled: true
+    Name: UTM Obstacles
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /Visualization/obstacles_utm
+    Value: true
+  - Class: rviz_default_plugins/MarkerArray
+    Enabled: true
+    Name: Relative LiDAR Objects
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /Visualization/lidar_relative_objects
+    Value: true
+  - Class: rviz_default_plugins/Marker
+    Enabled: true
+    Name: Behavior
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /Visualization/behavior
+    Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -69,21 +117,24 @@ Visualization Manager:
     Frame Rate: 30
   Name: root
   Tools:
-    - Class: rviz_default_plugins/Interact
-    - Class: rviz_default_plugins/MoveCamera
-    - Class: rviz_default_plugins/Select
-    - Class: rviz_default_plugins/FocusCamera
-    - Class: rviz_default_plugins/Measure
+  - Class: rviz_default_plugins/Interact
+  - Class: rviz_default_plugins/MoveCamera
+  - Class: rviz_default_plugins/Select
+  - Class: rviz_default_plugins/FocusCamera
+  - Class: rviz_default_plugins/Measure
   Value: true
-Views:
-  Current:
-    Class: rviz_default_plugins/Orbit
-    Distance: 30
-    Focal Point:
-      X: 0
-      Y: 0
-      Z: 0
-    Name: Current View
-    Pitch: 0.785
-    Target Frame: map
-    Yaw: 0.785
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 40
+      Focal Point:
+        X: 346267.55
+        Y: 4069681.08
+        Z: 0
+      Name: Current View
+      Near Clip Distance: 0.01
+      Pitch: 1.2
+      Target Frame: <Fixed Frame>
+      Value: Orbit (rviz)
+      Yaw: 0.785398
+    Saved: null

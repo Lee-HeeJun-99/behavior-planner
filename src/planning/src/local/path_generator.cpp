@@ -34,7 +34,7 @@ void recomputeGeometry(Path & path)
 PathGenerator::PathGenerator(PathGeneratorConfig config) : config_(std::move(config)) {}
 
 std::vector<CandidatePath> PathGenerator::generate(
-  const Path & reference, std::size_t start_index, bool avoidance, double start_lateral_offset) const
+  const Path & reference, std::size_t start_index, bool avoidance, double start_lateral_offset, double return_start_distance) const
 {
   std::vector<CandidatePath> candidates;
   if (start_index >= reference.size()) {return candidates;}
@@ -44,11 +44,24 @@ std::vector<CandidatePath> PathGenerator::generate(
     CandidatePath candidate;
     candidate.lateral_offset = target_offset;
     candidate.path.reserve(count);
+    double travelled = 0.0;
+    const std::size_t transition_index = std::min(config_.transition_points, count - 1);
+    double transition_distance = 0.0;
+    for (std::size_t j = 1; j <= transition_index; ++j) {
+      transition_distance += std::hypot(reference[start_index + j].x - reference[start_index + j - 1].x,
+        reference[start_index + j].y - reference[start_index + j - 1].y);
+    }
     for (std::size_t i = 0; i < count; ++i) {
+      if (i > 0) {
+        travelled += std::hypot(reference[start_index + i].x - reference[start_index + i - 1].x,
+          reference[start_index + i].y - reference[start_index + i - 1].y);
+      }
       const auto & ref = reference[start_index + i];
       const double enter = smoothStep(static_cast<double>(i) / std::max<std::size_t>(1, config_.transition_points));
       const std::size_t remaining = count - i - 1;
-      const double exit = smoothStep(static_cast<double>(remaining) / std::max<std::size_t>(1, config_.transition_points));
+      const double exit = return_start_distance >= 0.0 ?
+        1.0 - smoothStep((travelled - return_start_distance) / std::max(0.1, transition_distance)) :
+        smoothStep(static_cast<double>(remaining) / std::max<std::size_t>(1, config_.transition_points));
       const double offset = start_lateral_offset * (1.0 - enter) +
         target_offset * std::min(enter, exit);
       candidate.path.push_back({ref.x - std::sin(ref.yaw) * offset,

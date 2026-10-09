@@ -2,7 +2,10 @@ from dataclasses import dataclass
 from typing import Iterable, Optional, Tuple
 
 
-CLASS_TO_LIMIT = {'speed_20': 20, 'speed_50': 50}
+CLASS_TO_LIMIT = {
+    'speed_20': 20, 'speed_50': 50,
+    'speed limit 20': 20, 'speed limit 50': 50,
+}
 
 
 @dataclass(frozen=True)

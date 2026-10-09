@@ -198,21 +198,21 @@ class IMUDriverNode(Node):
         
         # IMU 메시지 업데이트
         self.imu_msg.header.stamp = self.get_clock().now().to_msg()
-        self.imu_msg.linear_acceleration.x = accel_x
-        self.imu_msg.linear_acceleration.y = accel_y
-        self.imu_msg.linear_acceleration.z = accel_z
-        self.imu_msg.angular_velocity.x = gyro_x
-        self.imu_msg.angular_velocity.y = gyro_y
-        self.imu_msg.angular_velocity.z = gyro_z
+        self.imu_msg.linear_acceleration.x = float(accel_x)
+        self.imu_msg.linear_acceleration.y = float(accel_y)
+        self.imu_msg.linear_acceleration.z = float(accel_z)
+        self.imu_msg.angular_velocity.x = float(gyro_x)
+        self.imu_msg.angular_velocity.y = float(gyro_y)
+        self.imu_msg.angular_velocity.z = float(gyro_z)
         
         # 쿼터니언 변환
         angle_radian = [angle_degree[i] * math.pi / 180 for i in range(3)]
         qua = get_quaternion_from_euler(angle_radian[0], angle_radian[1], angle_radian[2])
         
-        self.imu_msg.orientation.x = qua[0]
-        self.imu_msg.orientation.y = qua[1]
-        self.imu_msg.orientation.z = qua[2]
-        self.imu_msg.orientation.w = qua[3]
+        self.imu_msg.orientation.x = float(qua[0])
+        self.imu_msg.orientation.y = float(qua[1])
+        self.imu_msg.orientation.z = float(qua[2])
+        self.imu_msg.orientation.w = float(qua[3])
         
         self.imu_pub.publish(self.imu_msg)
 
