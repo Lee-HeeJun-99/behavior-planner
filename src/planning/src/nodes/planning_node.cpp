@@ -1,4 +1,7 @@
 #include <chrono>
+#include <cmath>
+#include "planning_pkg_2025/behavior/recovery_guard.hpp"
+#include "std_msgs/msg/float32_multi_array.hpp"
 #include <memory>
 #include <string>
 #include <vector>
@@ -41,7 +44,8 @@ public:
         heading_ = msg->data; heading_received_ = true;});
     small_obstacles_sub_ = create_subscription<std_msgs::msg::Float64MultiArray>(
       "/Convert/small_object_UTM", qos, [this](std_msgs::msg::Float64MultiArray::SharedPtr msg) {
-        small_obstacles_ = decodePoints(msg->data);});
+        small_obstacles_ = decodePoints(msg->data);
+        last_obstacle_time_ = std::chrono::steady_clock::now();});
     big_obstacles_sub_ = create_subscription<std_msgs::msg::Float64MultiArray>(
       "/Convert/big_object_UTM", qos, [this](std_msgs::msg::Float64MultiArray::SharedPtr msg) {
         big_obstacles_ = decodePoints(msg->data);});
@@ -51,6 +55,12 @@ public:
       "/Perception/speed_limit", qos, [this](std_msgs::msg::Int16::SharedPtr msg) {
         context_manager_.updateSpeedLimitDetection(msg->data);});
 
+    feedback_sub_ = create_subscription<std_msgs::msg::Float32MultiArray>(
+      "/ERP/serial_data", qos, [this](std_msgs::msg::Float32MultiArray::SharedPtr msg) {
+        if (msg->data.size() > 3 && std::isfinite(msg->data[3])) {
+          feedback_speed_ = msg->data[3]; last_feedback_time_ = std::chrono::steady_clock::now();
+        }
+      });
     path_pub_ = create_publisher<std_msgs::msg::Float64MultiArray>("/Planning/local_path", qos);
     yaw_pub_ = create_publisher<std_msgs::msg::Float64MultiArray>("/Planning/path_yaw", qos);
     curvature_pub_ = create_publisher<std_msgs::msg::Float64MultiArray>("/Planning/curvature", qos);
@@ -73,6 +83,13 @@ private:
   {
     declare_parameter<std::string>("global_path_file", "map/map_final_0921/0-0.txt");
     declare_parameter<int>("planning_period_ms", 50);
+    declare_parameter<double>("close_obstacle_stop_distance", 3.0);
+    declare_parameter<double>("obstacle_stability_tolerance", 0.35);
+    declare_parameter<int>("recovery_hold_ms", 1000);
+    declare_parameter<int>("obstacle_stable_ms", 1000);
+    declare_parameter<int>("recovery_feasible_count", 10);
+    declare_parameter<double>("recovery_max_velocity", 0.5 / 3.6);
+    declare_parameter<double>("global_path_smoothing_distance", 0.75);
     declare_parameter<std::vector<double>>("lateral_offsets", {-1.2, -0.9, -0.6, -0.3, 0.0, 0.3, 0.6, 0.9, 1.2});
     declare_parameter<int>("transition_points", 120);
     declare_parameter<double>("avoidance_start_distance", 10.0);
@@ -87,7 +104,8 @@ private:
     declare_parameter<int>("detection_confirmation_count", 3);
     declare_parameter<int>("clear_confirmation_count", 5);
     declare_parameter<int>("minimum_behavior_duration_ms", 500);
-    declare_parameter<int>("default_speed_limit_kph", 20);
+    declare_parameter<int>("default_speed_limit_kph", 0);
+    declare_parameter<double>("default_target_velocity", 1.0 / 3.6);
     declare_parameter<int>("speed_sign_confirmation_count", 3);
     declare_parameter<double>("speed_limit_20_target", 2.5);
     declare_parameter<double>("speed_limit_50_target", 4.5);
@@ -96,15 +114,26 @@ private:
 
   void configureModules()
   {
+    RecoveryConfig recovery;
+    recovery.close_distance = get_parameter("close_obstacle_stop_distance").as_double();
+    recovery.stability_tolerance = get_parameter("obstacle_stability_tolerance").as_double();
+    recovery.hold_duration = std::chrono::milliseconds(get_parameter("recovery_hold_ms").as_int());
+    recovery.stable_duration = std::chrono::milliseconds(get_parameter("obstacle_stable_ms").as_int());
+    recovery.feasible_confirmation_count = get_parameter("recovery_feasible_count").as_int();
+    recovery.recovery_velocity = get_parameter("recovery_max_velocity").as_double();
+    recovery.corridor_half_width = get_parameter("vehicle_half_width").as_double() + get_parameter("safety_margin").as_double();
+    recovery_guard_ = RecoveryGuard(recovery);
     ContextConfig context_config;
     context_config.road_left_bound = get_parameter("road_left_bound").as_double();
     context_config.road_right_bound = get_parameter("road_right_bound").as_double();
+    context_config.default_target_velocity = get_parameter("default_target_velocity").as_double();
     context_config.default_speed_limit_kph = get_parameter("default_speed_limit_kph").as_int();
     context_config.speed_sign_confirmation_count = get_parameter("speed_sign_confirmation_count").as_int();
     context_config.speed_limit_20_target = get_parameter("speed_limit_20_target").as_double();
     context_config.speed_limit_50_target = get_parameter("speed_limit_50_target").as_double();
     context_config.avoid_max_velocity = get_parameter("avoid_max_velocity").as_double();
-    if (context_config.default_speed_limit_kph != 20 &&
+    if (context_config.default_speed_limit_kph != 0 &&
+      context_config.default_speed_limit_kph != 20 &&
       context_config.default_speed_limit_kph != 50)
     {
       RCLCPP_WARN(
@@ -143,7 +172,7 @@ private:
       file = ament_index_cpp::get_package_share_directory("planning_pkg_2025") + "/" + file;
     }
     std::string error;
-    if (!global_path_.load(file, &error)) {throw std::runtime_error(error);}
+    if (!global_path_.load(file, &error, get_parameter("global_path_smoothing_distance").as_double())) {throw std::runtime_error(error);}
     RCLCPP_INFO(get_logger(), "Loaded %zu preferred-path points from %s", global_path_.path().size(), file.c_str());
   }
 
@@ -246,14 +275,35 @@ private:
     obstacles.insert(obstacles.end(), big_obstacles_.begin(), big_obstacles_.end());
     context_manager_.updateObstacles(obstacles);
     context_manager_.setEmergencyStop(emergency_stop_);
-    const auto context = context_manager_.build(global_path_.path(), nearest_index_);
+    auto context = context_manager_.build(global_path_.path(), nearest_index_);
     Behavior behavior = behavior_planner_.update(context, std::chrono::steady_clock::now());
     LocalPlan plan = local_planner_.plan(behavior, context);
     if (!plan.feasible && behavior == Behavior::CRUISE && !context.obstacles.empty()) {
       plan = local_planner_.plan(Behavior::AVOID, context);
+      if (plan.feasible) {behavior = Behavior::AVOID;}
     }
     if (!plan.feasible) {
+      std::string reasons;
+      for (const auto & candidate : plan.candidates) {
+        reasons += std::to_string(candidate.lateral_offset) + ":" + candidate.invalid_reason + " ";
+      }
+      RCLCPP_WARN_THROTTLE(get_logger(), *get_clock(), 2000,
+        "No feasible path: index=%zu remaining=%zu obstacles=%zu reasons=%s",
+        nearest_index_, global_path_.path().size() - nearest_index_, context.obstacles.size(), reasons.c_str());
       behavior = Behavior::EMERGENCY_STOP;
+    }
+    const auto now = std::chrono::steady_clock::now();
+    const bool fresh_feedback = now - last_feedback_time_ < std::chrono::milliseconds(300);
+    const bool fresh_obstacles = now - last_obstacle_time_ < std::chrono::milliseconds(500);
+    const bool was_holding = recovery_guard_.holding();
+    behavior = recovery_guard_.apply(context, behavior, plan.feasible,
+      fresh_feedback && std::abs(feedback_speed_) < 0.05, fresh_feedback && fresh_obstacles, now);
+    if (was_holding != recovery_guard_.holding()) {
+      RCLCPP_INFO(get_logger(), "Recovery: %s", recovery_guard_.holding() ? "holding stop" : "confirmed low-speed restart");
+    }
+    if (recovery_guard_.lowSpeed()) {
+      context.speed.target_velocity = std::min(context.speed.target_velocity, recovery_guard_.speedCap());
+      context.speed.avoid_max_velocity = std::min(context.speed.avoid_max_velocity, recovery_guard_.speedCap());
     }
     publish(plan, behavior, context);
   }
@@ -301,6 +351,10 @@ private:
   bool heading_received_{false};
   bool emergency_stop_{false};
   std::size_t nearest_index_{0};
+  RecoveryGuard recovery_guard_;
+  double feedback_speed_{0.0};
+  std::chrono::steady_clock::time_point last_feedback_time_{}, last_obstacle_time_{};
+  rclcpp::Subscription<std_msgs::msg::Float32MultiArray>::SharedPtr feedback_sub_;
   std::vector<Point2d> small_obstacles_;
   std::vector<Point2d> big_obstacles_;
   rclcpp::Subscription<geometry_msgs::msg::PointStamped>::SharedPtr position_sub_;

@@ -13,6 +13,7 @@ struct ContextConfig
   double road_left_bound{1.5};
   double road_right_bound{1.5};
   int default_speed_limit_kph{20};
+  double default_target_velocity{-1.0};
   int speed_sign_confirmation_count{3};
   double speed_limit_20_target{2.5};
   double speed_limit_50_target{4.5};

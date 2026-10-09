@@ -5,14 +5,22 @@ planning_node:
 
     # runtime
     planning_period_ms: 50
+    global_path_smoothing_distance: 0.75
+    close_obstacle_stop_distance: 3.0
+    obstacle_stability_tolerance: 0.35
+    recovery_hold_ms: 1000
+    obstacle_stable_ms: 1000
+    recovery_feasible_count: 10
+    recovery_max_velocity: 0.1388888888888889  # 0.5 km/h
 
     # speed-limit signs and vehicle target mapping
-    default_speed_limit_kph: 20
+    default_speed_limit_kph: 0
+    default_target_velocity: 0.2777777777777778  # 1 km/h; targets below are m/s
     speed_sign_confirmation_count: 3
-    # Provisional values: calibrate on ERP42 in a later vehicle-test phase.
-    speed_limit_20_target: 2.5
-    speed_limit_50_target: 4.5
-    avoid_max_velocity: 2.5
+    # Confirmed 20 sign raises the target to 2 km/h.
+    speed_limit_20_target: 0.5555555555555556
+    speed_limit_50_target: 0.5555555555555556
+    avoid_max_velocity: 0.5555555555555556
 
     # path generation
     lateral_offsets: [-1.8, -1.5, -1.2, -0.9, -0.6, -0.3, 0.0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8]

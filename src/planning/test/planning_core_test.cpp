@@ -1,8 +1,11 @@
 #include <algorithm>
+#include "planning_pkg_2025/behavior/recovery_guard.hpp"
 #include <chrono>
 #include <cmath>
 #include <cstdlib>
 #include <iostream>
+#include <fstream>
+#include <cstdio>
 #include <gtest/gtest.h>
 #include "planning_pkg_2025/behavior/behavior_planner.hpp"
 #include "planning_pkg_2025/context/context_manager.hpp"
@@ -225,6 +228,72 @@ TEST(DistanceAvoidance, ContinuousActualMapApproachPassAndReturn) {
   if(index>420&&std::abs(lateral)<.15&&b==Behavior::CRUISE){returned=true;break;}
  }
  EXPECT_TRUE(returned);
+}
+
+TEST(GlobalPathGeometry, SmoothsSurveyNoiseAndRecomputesStaleYaw) {
+ const std::string filename="/tmp/planning_survey_noise_regression.csv";
+ {std::ofstream f(filename);for(int i=0;i<500;++i)f<<i*.05<<","<<.01*std::sin(i*.5)<<",1.5,99\n";}
+ GlobalPath raw,smoothed;std::string error;
+ ASSERT_TRUE(raw.load(filename,&error,0.0))<<error;
+ ASSERT_TRUE(smoothed.load(filename,&error,.75))<<error;
+ std::remove(filename.c_str());
+ BehaviorContext c;c.vehicle.localization_valid=true;c.free_space={3,3};c.path={&raw.path(),100};
+ c.vehicle.position={raw.path()[100].x,raw.path()[100].y};
+ EXPECT_FALSE(LocalPlanner{}.plan(Behavior::CRUISE,c).feasible);
+ c.path={&smoothed.path(),100};c.vehicle.position={smoothed.path()[100].x,smoothed.path()[100].y};
+ EXPECT_TRUE(LocalPlanner{}.plan(Behavior::CRUISE,c).feasible);
+ EXPECT_LT(std::abs(smoothed.path()[100].yaw),.01);
+ for(size_t j=0;j<raw.path().size();++j){
+  EXPECT_LE(std::hypot(raw.path()[j].x-smoothed.path()[j].x,raw.path()[j].y-smoothed.path()[j].y),.300001);
+ }
+ EXPECT_DOUBLE_EQ(raw.path().front().x,smoothed.path().front().x);
+ EXPECT_DOUBLE_EQ(raw.path().back().x,smoothed.path().back().x);
+}
+
+TEST(SpeedContext, OneKphDefaultAndConfirmedTwentyRaisesToTwoKph) {
+ auto path=straightPath();ContextConfig config;config.default_speed_limit_kph=0;
+ config.default_target_velocity=1.0/3.6;config.speed_limit_20_target=2.0/3.6;
+ config.avoid_max_velocity=2.0/3.6;ContextManager manager(config);manager.updateVehicle({0,0},0);
+ EXPECT_EQ(manager.build(path,0).speed.active_limit_kph,0);
+ EXPECT_DOUBLE_EQ(calculateTargetVelocity(Behavior::CRUISE,manager.build(path,0)),1.0/3.6);
+ manager.updateSpeedLimitDetection(20);manager.updateSpeedLimitDetection(20);
+ EXPECT_DOUBLE_EQ(manager.build(path,0).speed.target_velocity,1.0/3.6);
+ manager.updateSpeedLimitDetection(20);
+ EXPECT_DOUBLE_EQ(calculateTargetVelocity(Behavior::CRUISE,manager.build(path,0)),2.0/3.6);
+ manager.updateSpeedLimitDetection(0);
+ EXPECT_DOUBLE_EQ(manager.build(path,0).speed.target_velocity,2.0/3.6);
+ EXPECT_DOUBLE_EQ(calculateTargetVelocity(Behavior::AVOID,manager.build(path,0)),2.0/3.6);
+ EXPECT_DOUBLE_EQ(calculateTargetVelocity(Behavior::EMERGENCY_STOP,manager.build(path,0)),0.0);
+}
+
+TEST(RecoveryGuard, CloseObstacleStopsThenRequiresStoppedStableFeasibleConfirmation) {
+ BehaviorContext c;c.vehicle.localization_valid=true;c.obstacles={{{2,0},.35}};
+ RecoveryGuard guard;auto now=std::chrono::steady_clock::now();
+ EXPECT_EQ(guard.apply(c,Behavior::AVOID,true,false,true,now),Behavior::EMERGENCY_STOP);
+ for(int i=1;i<=30;++i)EXPECT_EQ(guard.apply(c,Behavior::AVOID,true,false,true,now+std::chrono::milliseconds(i*50)),Behavior::EMERGENCY_STOP);
+ for(int i=31;i<40;++i)EXPECT_EQ(guard.apply(c,Behavior::AVOID,true,true,true,now+std::chrono::milliseconds(i*50)),Behavior::EMERGENCY_STOP);
+ EXPECT_EQ(guard.apply(c,Behavior::AVOID,true,true,true,now+std::chrono::milliseconds(2000)),Behavior::AVOID);
+ EXPECT_TRUE(guard.lowSpeed());EXPECT_DOUBLE_EQ(guard.speedCap(),.5/3.6);
+ EXPECT_EQ(guard.apply(c,Behavior::AVOID,true,false,true,now+std::chrono::milliseconds(2050)),Behavior::AVOID);
+}
+TEST(RecoveryGuard, ChangingObstacleSetsAndStaleInputCannotReleaseStop) {
+ BehaviorContext c;c.vehicle.localization_valid=true;c.obstacles={{{2,0},.35}};
+ RecoveryGuard guard;auto now=std::chrono::steady_clock::now();
+ for(int i=0;i<100;++i){c.obstacles[0].center.y=i%2?.7:0;
+ EXPECT_EQ(guard.apply(c,Behavior::AVOID,true,true,true,now+std::chrono::milliseconds(i*50)),Behavior::EMERGENCY_STOP);}
+ for(int i=100;i<140;++i)EXPECT_EQ(guard.apply(c,Behavior::AVOID,true,true,false,now+std::chrono::milliseconds(i*50)),Behavior::EMERGENCY_STOP);
+}
+TEST(RecoveryGuard, AlternatingFeasiblePathsNeverReachRestartThreshold) {
+ BehaviorContext c;c.vehicle.localization_valid=true;c.obstacles={{{9,0},.35}};
+ RecoveryGuard guard;auto now=std::chrono::steady_clock::now();
+ for(int i=0;i<100;++i)EXPECT_EQ(guard.apply(c,Behavior::AVOID,i%2==1,true,true,now+std::chrono::milliseconds(i*50)),Behavior::EMERGENCY_STOP);
+}
+TEST(RecoveryGuard, ExplicitEmergencyAndCollisionRemainStopped) {
+ BehaviorContext c;c.vehicle.localization_valid=true;c.emergency_stop=true;
+ RecoveryGuard guard;auto now=std::chrono::steady_clock::now();
+ for(int i=0;i<100;++i)EXPECT_EQ(guard.apply(c,Behavior::CRUISE,true,true,true,now+std::chrono::milliseconds(i*50)),Behavior::EMERGENCY_STOP);
+ c.emergency_stop=false;
+ for(int i=100;i<120;++i)EXPECT_EQ(guard.apply(c,Behavior::AVOID,false,true,true,now+std::chrono::milliseconds(i*50)),Behavior::EMERGENCY_STOP);
 }
 
 }

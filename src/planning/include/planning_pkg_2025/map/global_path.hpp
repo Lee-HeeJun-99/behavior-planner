@@ -11,6 +11,7 @@ class GlobalPath
 {
 public:
   bool load(const std::string & file_path, std::string * error = nullptr);
+  bool load(const std::string & file_path, std::string * error, double smoothing_distance);
   void setPath(Path path);
   const Path & path() const { return path_; }
   bool empty() const { return path_.empty(); }

@@ -9,9 +9,10 @@ namespace {double distance(const Point2d & a, const Point2d & b) {return std::hy
 
 ContextManager::ContextManager(ContextConfig config) : config_(config)
 {
-  speed_.active_limit_kph = isSupportedSpeedLimit(config_.default_speed_limit_kph) ?
+  speed_.active_limit_kph = (config_.default_speed_limit_kph == 0 || isSupportedSpeedLimit(config_.default_speed_limit_kph)) ?
     config_.default_speed_limit_kph : 20;
-  speed_.target_velocity = targetVelocityForLimit(speed_.active_limit_kph);
+  speed_.target_velocity = config_.default_target_velocity >= 0.0 ?
+    config_.default_target_velocity : targetVelocityForLimit(speed_.active_limit_kph);
   speed_.avoid_max_velocity = std::max(0.0, config_.avoid_max_velocity);
 }
 
