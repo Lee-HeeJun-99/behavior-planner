@@ -1,0 +1,18 @@
+Starting >>> lidar
+Starting >>> planning_pkg_2025
+Finished <<< planning_pkg_2025 [0.17s]
+--- stderr: lidar
+Errors while running CTest
+---
+Finished <<< lidar [1.58s]	[ with test failures ]
+Starting >>> behavior_stack_bringup
+--- stderr: behavior_stack_bringup
+Errors while running CTest
+---
+[Processing: behavior_stack_bringup]
+[Processing: behavior_stack_bringup]
+Finished <<< behavior_stack_bringup [1min 0s]	[ with test failures ]
+
+Summary: 3 packages finished [1min 2s]
+  2 packages had stderr output: behavior_stack_bringup lidar
+  2 packages had test failures: behavior_stack_bringup lidar

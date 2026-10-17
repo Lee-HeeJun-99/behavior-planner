@@ -22,7 +22,13 @@ double CostEvaluator::evaluate(CandidatePath & candidate) const
   const double count = std::max<std::size_t>(1, candidate.path.size());
   const double clearance = std::isfinite(candidate.minimum_clearance) ?
     1.0 / std::max(0.05, candidate.minimum_clearance) : 0.0;
-  candidate.cost = config_.deviation_weight * candidate.lateral_offset * candidate.lateral_offset +
+  double deviation = candidate.lateral_offset * candidate.lateral_offset;
+  if (!candidate.lateral_profile.empty()) {
+    deviation = 0.0;
+    for (double offset : candidate.lateral_profile) {deviation += offset * offset;}
+    deviation /= candidate.lateral_profile.size();
+  }
+  candidate.cost = config_.deviation_weight * deviation +
     config_.curvature_weight * curvature / count +
     config_.smoothness_weight * smoothness / count + config_.clearance_weight * clearance;
   return candidate.cost;

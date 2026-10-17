@@ -32,10 +32,10 @@ class DebugVisualizer(Node):
             Float64MultiArray, '/LiDAR/object_cen', self.relative_obstacles_cb, qos)
         self.create_subscription(
             Float64MultiArray, '/Convert/small_object_UTM',
-            lambda msg: self.utm_obstacles_cb(msg, 'small', (1.0, 0.4, 0.0)), qos)
+            lambda msg: self.utm_obstacles_cb(msg, 'obstacles', (1.0, 0.4, 0.0)), qos)
         self.create_subscription(
             Float64MultiArray, '/Convert/big_object_UTM',
-            lambda msg: self.utm_obstacles_cb(msg, 'big', (0.8, 0.0, 1.0)), qos)
+            lambda msg: self.utm_obstacles_cb(msg, 'legacy_obstacles', (0.8, 0.0, 1.0)), qos)
 
         self.ego_pub = self.create_publisher(MarkerArray, '/Planning/debug/ego', 2)
         self.behavior_pub = self.create_publisher(Marker, '/Visualization/behavior', 2)
@@ -48,7 +48,7 @@ class DebugVisualizer(Node):
         self.position = None
         self.heading = None
         self.behavior = 'UNKNOWN'
-        self.utm_groups = {'small': [], 'big': []}
+        self.utm_groups = {'obstacles': [], 'legacy_obstacles': []}
         self.create_timer(1.0 / rate, self.publish_vehicle_debug)
 
     @staticmethod
@@ -71,7 +71,7 @@ class DebugVisualizer(Node):
 
     def relative_obstacles_cb(self, message):
         markers = self.obstacle_markers(
-            self.pairs(message.data), 'velodyne', 'relative_small', (1.0, 0.3, 0.0))
+            self.pairs(message.data), 'velodyne', 'relative_obstacles', (1.0, 0.3, 0.0))
         self.relative_pub.publish(markers)
 
     def utm_obstacles_cb(self, message, namespace, color):
@@ -83,7 +83,7 @@ class DebugVisualizer(Node):
         markers.markers.append(clear)
         marker_id = 0
         for group, points in self.utm_groups.items():
-            group_color = color if group == namespace else ((1.0, 0.4, 0.0) if group == 'small' else (0.8, 0.0, 1.0))
+            group_color = color if group == namespace else ((1.0, 0.4, 0.0) if group == 'obstacles' else (0.8, 0.0, 1.0))
             generated = self.obstacle_markers(
                 points, 'map', 'utm_' + group, group_color, marker_id, clear_first=False)
             markers.markers.extend(generated.markers)

@@ -4,10 +4,10 @@ int main(int argc, char *argv[])
 {
   rclcpp::init(argc, argv);
 
-  auto small_static = std::make_shared<LiDAR_small_static>();
+  auto detector = std::make_shared<LidarObstacleDetector>();
 
   rclcpp::executors::MultiThreadedExecutor executor;
-  executor.add_node(small_static);
+  executor.add_node(detector);
 
   executor.spin();
 

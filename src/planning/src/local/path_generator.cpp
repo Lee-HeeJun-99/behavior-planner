@@ -72,4 +72,56 @@ std::vector<CandidatePath> PathGenerator::generate(
   }
   return candidates;
 }
+std::vector<CandidatePath> PathGenerator::generateCornerTransitions(
+  const Path & reference, std::size_t start_index, double start_lateral_offset) const
+{
+  std::vector<CandidatePath> candidates;
+  if (start_index >= reference.size()) {return candidates;}
+  const std::size_t count = std::min(config_.horizon_points, reference.size() - start_index);
+  if (count < 3) {return candidates;}
+  std::vector<double> arc(count, 0.0);
+  for (std::size_t i = 1; i < count; ++i) {
+    arc[i] = arc[i - 1] + std::hypot(reference[start_index + i].x - reference[start_index + i - 1].x,
+      reference[start_index + i].y - reference[start_index + i - 1].y);
+  }
+  // A coarse corner lattice bounds the fallback cost; keep the configured
+  // passing offsets so narrow obstacle clearances retain their normal resolution.
+  std::vector<double> corner_offsets;
+  for (std::size_t i = 0; i < config_.lateral_offsets.size(); i += 2) {
+    corner_offsets.push_back(config_.lateral_offsets[i]);
+  }
+  if (!config_.lateral_offsets.empty() &&
+    (corner_offsets.empty() || corner_offsets.back() != config_.lateral_offsets.back()))
+  {
+    corner_offsets.push_back(config_.lateral_offsets.back());
+  }
+  // Reach a passing offset first, then independently choose the corner offset.
+  // Keep the entire horizon: a short collision-free prefix is not a turn solution.
+  for (double first_distance : {3.0, 5.0, 7.0}) {
+    for (double second_distance : {4.0, 8.0}) {
+      for (double passing_offset : config_.lateral_offsets) {
+        for (double corner_offset : corner_offsets) {
+          if (std::abs(passing_offset - corner_offset) < 0.1) {continue;}
+          CandidatePath candidate;
+          candidate.lateral_offset = passing_offset;
+          candidate.path.reserve(count);
+          candidate.lateral_profile.reserve(count);
+          for (std::size_t i = 0; i < count; ++i) {
+            const double enter = smoothStep(arc[i] / first_distance);
+            const double turn = smoothStep((arc[i] - first_distance) / second_distance);
+            const double offset = start_lateral_offset + (passing_offset - start_lateral_offset) * enter +
+              (corner_offset - passing_offset) * turn;
+            const auto & ref = reference[start_index + i];
+            candidate.path.push_back({ref.x - std::sin(ref.yaw) * offset,
+              ref.y + std::cos(ref.yaw) * offset, ref.yaw, ref.curvature});
+            candidate.lateral_profile.push_back(offset);
+          }
+          recomputeGeometry(candidate.path);
+          candidates.push_back(std::move(candidate));
+        }
+      }
+    }
+  }
+  return candidates;
+}
 }  // namespace planning

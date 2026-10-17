@@ -36,4 +36,5 @@
   <export>
     <build_type>ament_cmake</build_type>
   </export>
+  <test_depend>ament_cmake_test</test_depend>
 </package>

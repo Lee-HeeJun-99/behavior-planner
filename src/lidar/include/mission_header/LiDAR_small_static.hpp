@@ -1,10 +1,10 @@
 #include "data_header/mission.hpp"
 #include "data_header/utility_function.hpp"
 
-class LiDAR_small_static : public Mission
+class LidarObstacleDetector : public Mission
 {
 public:
-    LiDAR_small_static();
+    LidarObstacleDetector();
 
 private:
     // func

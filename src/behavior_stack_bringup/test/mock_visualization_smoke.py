@@ -78,6 +78,27 @@ class Probe(Node):
             assert invalid > 0
             assert any('selected' in m.text for m in candidate_markers)
             assert selected[2] >= 0.0
+        if scenario == 'off_path_obstacles':
+            assert selected and abs(selected[0]) < 1e-9
+        if scenario == 'avoid_with_side_obstacle':
+            # Independently check selected geometry against every published obstacle,
+            # using the unchanged mock vehicle footprint + margin + obstacle radius.
+            obstacles = [m.pose.position for m in
+                         self.messages['/Visualization/obstacles_utm'].markers
+                         if m.action == Marker.ADD]
+            assert len(obstacles) == 2
+            for pose in local_path.poses:
+                point = pose.pose.position
+                q = pose.pose.orientation
+                yaw_point = math.atan2(2 * q.w * q.z, 1 - 2 * q.z * q.z)
+                for obstacle in obstacles:
+                    dx, dy = obstacle.x - point.x, obstacle.y - point.y
+                    along = math.cos(yaw_point) * dx + math.sin(yaw_point) * dy
+                    lateral = -math.sin(yaw_point) * dx + math.cos(yaw_point) * dy
+                    assert not (abs(along) <= (1.6 if along >= 0 else 0.7) + 0.6
+                                and abs(lateral) <= 1.2), 'Selected path collides'
+            assert any(metadata[i] < 0 and metadata[i + 1] < 0
+                       for i in range(0, len(metadata), 3)), 'Right candidates not rejected'
         ego = get('debug/ego').markers
         assert any(m.type == Marker.ARROW for m in ego)
         assert any(m.type == Marker.CUBE for m in ego)
@@ -86,7 +107,7 @@ class Probe(Node):
                     if m.action == Marker.ADD]
         utm = [m for m in self.messages['/Visualization/obstacles_utm'].markers
                if m.action == Marker.ADD]
-        obstacle_scenario = scenario.startswith('avoid_') or scenario == 'blocked'
+        obstacle_scenario = scenario.startswith('avoid_') or scenario in ('blocked', 'off_path_obstacles')
         assert len(relative) == len(utm)
         assert bool(utm) == obstacle_scenario
         assert all(m.header.frame_id == 'map' for m in utm)
@@ -121,6 +142,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--scenarios', nargs='+', default=[
         'cruise', 'avoid_center', 'avoid_left', 'avoid_right', 'blocked',
+        'off_path_obstacles', 'avoid_with_side_obstacle',
         'emergency', 'speed_20', 'speed_50'])
     args = parser.parse_args()
     failures = []

@@ -1,0 +1,212 @@
+[
+  {
+    "topic": "/imu",
+    "type": "sensor_msgs/msg/Imu",
+    "count": 20396,
+    "first_ns": 1791201997485062427,
+    "last_ns": 1791202099100846263
+  },
+  {
+    "topic": "/Cluster/small_static",
+    "type": "sensor_msgs/msg/PointCloud2",
+    "count": 836,
+    "first_ns": 1791201997485114299,
+    "last_ns": 1791202099002447755
+  },
+  {
+    "topic": "/LiDAR/object_cen",
+    "type": "std_msgs/msg/Float64MultiArray",
+    "count": 836,
+    "first_ns": 1791201997485127599,
+    "last_ns": 1791202099002479408
+  },
+  {
+    "topic": "/velodyne_points",
+    "type": "sensor_msgs/msg/PointCloud2",
+    "count": 1008,
+    "first_ns": 1791201997489999336,
+    "last_ns": 1791202099102198786
+  },
+  {
+    "topic": "/Planning/behavior",
+    "type": "std_msgs/msg/String",
+    "count": 0,
+    "first_ns": null,
+    "last_ns": null
+  },
+  {
+    "topic": "/Planning/target_velocity",
+    "type": "std_msgs/msg/Float64",
+    "count": 0,
+    "first_ns": null,
+    "last_ns": null
+  },
+  {
+    "topic": "/Planning/mission",
+    "type": "std_msgs/msg/Int16",
+    "count": 0,
+    "first_ns": null,
+    "last_ns": null
+  },
+  {
+    "topic": "/Planning/debug/local_path",
+    "type": "nav_msgs/msg/Path",
+    "count": 0,
+    "first_ns": null,
+    "last_ns": null
+  },
+  {
+    "topic": "/parameter_events",
+    "type": "rcl_interfaces/msg/ParameterEvent",
+    "count": 0,
+    "first_ns": null,
+    "last_ns": null
+  },
+  {
+    "topic": "/Planning/curvature",
+    "type": "std_msgs/msg/Float64MultiArray",
+    "count": 0,
+    "first_ns": null,
+    "last_ns": null
+  },
+  {
+    "topic": "/Planning/debug/candidates",
+    "type": "std_msgs/msg/Float64MultiArray",
+    "count": 0,
+    "first_ns": null,
+    "last_ns": null
+  },
+  {
+    "topic": "/Marker/small_static_ROI",
+    "type": "visualization_msgs/msg/Marker",
+    "count": 0,
+    "first_ns": null,
+    "last_ns": null
+  },
+  {
+    "topic": "/Planning/local_path",
+    "type": "std_msgs/msg/Float64MultiArray",
+    "count": 0,
+    "first_ns": null,
+    "last_ns": null
+  },
+  {
+    "topic": "/Planning/path_yaw",
+    "type": "std_msgs/msg/Float64MultiArray",
+    "count": 0,
+    "first_ns": null,
+    "last_ns": null
+  },
+  {
+    "topic": "/rosout",
+    "type": "rcl_interfaces/msg/Log",
+    "count": 11102,
+    "first_ns": 1791201997494415043,
+    "last_ns": 1791202099096010918
+  },
+  {
+    "topic": "/Marker/small_static_object",
+    "type": "visualization_msgs/msg/MarkerArray",
+    "count": 835,
+    "first_ns": 1791201997585875215,
+    "last_ns": 1791202099002499537
+  },
+  {
+    "topic": "/diagnostics",
+    "type": "diagnostic_msgs/msg/DiagnosticArray",
+    "count": 610,
+    "first_ns": 1791201997648378775,
+    "last_ns": 1791202099051648672
+  },
+  {
+    "topic": "/Local/utm",
+    "type": "geometry_msgs/msg/PointStamped",
+    "count": 0,
+    "first_ns": null,
+    "last_ns": null
+  },
+  {
+    "topic": "/LiDAR/dynamic_stop",
+    "type": "std_msgs/msg/Bool",
+    "count": 0,
+    "first_ns": null,
+    "last_ns": null
+  },
+  {
+    "topic": "/Local/heading",
+    "type": "std_msgs/msg/Float64",
+    "count": 0,
+    "first_ns": null,
+    "last_ns": null
+  },
+  {
+    "topic": "/Convert/small_object_UTM",
+    "type": "std_msgs/msg/Float64MultiArray",
+    "count": 0,
+    "first_ns": null,
+    "last_ns": null
+  },
+  {
+    "topic": "/Convert/big_object_UTM",
+    "type": "std_msgs/msg/Float64MultiArray",
+    "count": 0,
+    "first_ns": null,
+    "last_ns": null
+  },
+  {
+    "topic": "/Perception/speed_limit",
+    "type": "std_msgs/msg/Int16",
+    "count": 0,
+    "first_ns": null,
+    "last_ns": null
+  },
+  {
+    "topic": "/velodyne_packets",
+    "type": "velodyne_msgs/msg/VelodyneScan",
+    "count": 1007,
+    "first_ns": 1791201997616684195,
+    "last_ns": 1791202099097012405
+  },
+  {
+    "topic": "/beta",
+    "type": "std_msgs/msg/Float64",
+    "count": 0,
+    "first_ns": null,
+    "last_ns": null
+  },
+  {
+    "topic": "/Control/center_speed",
+    "type": "std_msgs/msg/Float64",
+    "count": 0,
+    "first_ns": null,
+    "last_ns": null
+  },
+  {
+    "topic": "/Control/tmp_plot_val",
+    "type": "std_msgs/msg/Float64MultiArray",
+    "count": 0,
+    "first_ns": null,
+    "last_ns": null
+  },
+  {
+    "topic": "/Control/rel_path",
+    "type": "std_msgs/msg/Float64MultiArray",
+    "count": 0,
+    "first_ns": null,
+    "last_ns": null
+  },
+  {
+    "topic": "/ERP/serial_data",
+    "type": "std_msgs/msg/Float32MultiArray",
+    "count": 0,
+    "first_ns": null,
+    "last_ns": null
+  },
+  {
+    "topic": "/Control/serial_data",
+    "type": "std_msgs/msg/Float32MultiArray",
+    "count": 0,
+    "first_ns": null,
+    "last_ns": null
+  }
+]

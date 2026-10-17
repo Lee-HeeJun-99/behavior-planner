@@ -1,0 +1,47 @@
+{
+  "frame_id": "velodyne",
+  "height": 1822,
+  "width": 16,
+  "is_dense": false,
+  "is_bigendian": false,
+  "point_step": 22,
+  "row_step": 352,
+  "fields": [
+    {
+      "name": "x",
+      "offset": 0,
+      "datatype": 7,
+      "count": 1
+    },
+    {
+      "name": "y",
+      "offset": 4,
+      "datatype": 7,
+      "count": 1
+    },
+    {
+      "name": "z",
+      "offset": 8,
+      "datatype": 7,
+      "count": 1
+    },
+    {
+      "name": "intensity",
+      "offset": 12,
+      "datatype": 7,
+      "count": 1
+    },
+    {
+      "name": "ring",
+      "offset": 16,
+      "datatype": 4,
+      "count": 1
+    },
+    {
+      "name": "time",
+      "offset": 18,
+      "datatype": 7,
+      "count": 1
+    }
+  ]
+}

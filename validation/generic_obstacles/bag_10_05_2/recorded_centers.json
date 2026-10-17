@@ -1,0 +1,5018 @@
+[
+  {
+    "timestamp_ns": 1791201997485127599,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791201997585849366,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791201997686400554,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791201997824679735,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791201997887819547,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791201997988598507,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791201998089535072,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791201998228262595,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791201998291220176,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791201998492404049,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791201998628767641,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791201998693888502,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791201998794916609,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791201998895578980,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791201999034690991,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791201999097171797,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791201999197740240,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791201999298966788,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791201999435970212,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791201999500026697,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791201999600983952,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791201999701499172,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791201999839712700,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791201999903053724,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202000004402490,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202000104742934,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202000243593220,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202000306117277,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202000407250616,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202000507487549,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202000608886116,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202000709240346,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202000810396777,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202000910807325,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202001048348700,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202001113055063,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202001213710341,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202001314178728,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202001451384553,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202001515911458,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202001616478714,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202001817921936,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202001930353387,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202002019196398,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202002120851326,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202002256282419,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202002321815287,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202002423175806,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202002524623088,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202002660493801,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202002826685016,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202003467010727,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202003869240622,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202004360012841,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202004539306243,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202004677177346,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202004741787987,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202004943198295,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202005144146216,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202005244704758,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202005648242722,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202005749055864,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202005849739621,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202006153516441,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202006656163370,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202006959009982,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202007059798342,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202007160939505,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202007260918802,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202007361434433,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202007499959259,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202007664152325,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202007764688570,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202007901588375,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202007966584122,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202008066645686,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202008167835413,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202008304458067,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202008369285133,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202008469880840,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202008570556905,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202008709754514,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202008772244174,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202008873920791,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202008974097118,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202009113464450,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202009175371707,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202009276515665,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202009377078289,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202009515716515,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202009578567384,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202009680073620,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202009781733658,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202009880979464,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202009982104484,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202010082968644,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202010183465868,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202010320435746,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202010385369877,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202010486032104,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202010586533357,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202010724083694,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202010790302076,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202010889386348,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202010989373294,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202011090935862,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202011291907236,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202011494308828,
+    "count": 1,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202011595229503,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202012098616831,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202012199268941,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202012336549461,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202012904956078,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202013307952602,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202013409000150,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202013546161979,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202013611049547,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202013711183307,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202013812156741,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202013949310513,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202014114848171,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202014215643930,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202014353451485,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202014416993217,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202014517870401,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202014618525247,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202014756360208,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202014820019538,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202014921178002,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202015022316001,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202015159060922,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202015223930321,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202015324729779,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202015425198000,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202015563444385,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202015626902609,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202015727345735,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202015828145559,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202015965945620,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202016029713048,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202016130953649,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202016231999658,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202016368727145,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202016433730410,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202016534326092,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202016634632085,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202016773656572,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202016836478097,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202016937661581,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202017038133585,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202017743550650,
+    "count": 1,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202018046181347,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202018651246142,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202018788844562,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202018852433894,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202019660218494,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202020264712517,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202020400573081,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202020466556111,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202020768529439,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202020970661395,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202021071394781,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202021171430855,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202021272055759,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202021373442052,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202021473885753,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202021574587893,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202021675809765,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202021776788029,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202022019498470,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202022078761873,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202022179537571,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202022280236819,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202022419400883,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202022482738159,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202022583280259,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202022685112925,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202022821599371,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202022884946729,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202022986391697,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202023087594246,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202023224442956,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202023288716838,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202023389610546,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202023490552637,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202023591564782,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202023692238311,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202023792979436,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202023894056378,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202023994424249,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202024095422058,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202024196549304,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202024297421648,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202024397833185,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202024498408576,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202024599449239,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202024700564862,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202024800693447,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202024901838756,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202025002597710,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202025103295548,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202025204832339,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202025305382960,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202025406527292,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202025507162815,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202025647355717,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202025708355900,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202025809105703,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202025909805391,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202026047882896,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202026113026866,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202026212107268,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202026313420724,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202026413971023,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202026514978418,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202026616111630,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202026717131274,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202026817380373,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202026918662498,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202027019455381,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202027256777262,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202027321460736,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202027422132162,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202027522669576,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202027660207792,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202027725058230,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202027825408948,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202027926681150,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202028066781078,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202028128070320,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202028228908608,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202028329752387,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202028466859880,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202028531556124,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202028632405513,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202028733010775,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202028870458055,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202028934578887,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202029035320378,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202029136446529,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202029273463069,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202029337549499,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202029439046875,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202029539595615,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202029676626745,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202029741206523,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202029841923484,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202029942515030,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202030081889850,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202030146004145,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202030245069380,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202030346520184,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202030447385274,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202030547563879,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202030650861694,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202030749687204,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202030850307661,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202030950903231,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202031052159826,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202031152712559,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202031290031091,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202031354433363,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202031455540781,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202031556361681,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202031693682360,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202031757211324,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202031858748300,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202031958890027,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202032091821378,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202032160704386,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202032261787352,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202032362357874,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202032499955898,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202032564659039,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202032664690799,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202032867247017,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202033068242646,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202033168926579,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202033311134579,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202033371265268,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202033572292030,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202033709290461,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202033774782323,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202033875341216,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202034077038538,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202034278594317,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202034380064533,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202034984452884,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202035085525495,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202035185495603,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202035286806292,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202035418087975,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202035488767240,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202035588827145,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202035690201981,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202035791027918,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202035892177399,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202035992775375,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202036094040861,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202036229241949,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202036295061751,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202036395835162,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202036536243350,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202036597671637,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202036697886397,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202036799359602,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202036940045475,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202037000196694,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202037202374050,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202037340378866,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202037403824122,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202038145616152,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202038211192246,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202039420512290,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202039521855822,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202040025481897,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202040127097426,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202040227204849,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202040328472187,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202040428971217,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202040530345285,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202040650421565,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202040731849947,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202040833060650,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202040933404790,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202041033568185,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202041135746517,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202041235835749,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202041373014264,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202041437348230,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202041538259362,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202041638555814,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202041776025810,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202041840793283,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202041941612228,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202042042259594,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202042143329549,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202042243762241,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202042345118141,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202042445350105,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202042582246671,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202042646841901,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202042748512559,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202042848606951,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202042985859104,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202043050221813,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202043151592988,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202043252656820,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202043389407447,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202043453432534,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202043555329828,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202043655660351,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202043792648606,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202043858457115,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202043958116000,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202044059104042,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202044196167367,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202044260631494,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202044361431800,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202044462413207,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202044599383664,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202044664185587,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202044764974394,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202044865730367,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202045004504801,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202045067290382,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202045168341664,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202045269462848,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202045370273176,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202045471010395,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202045571768444,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202045672514567,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202045808273309,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202045874307080,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202045974964003,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202046076267146,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202046176628190,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202046277258139,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202046378357145,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202046478854604,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202046579686658,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202046681440299,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202046781290015,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202046882487903,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202047018224838,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202047083832216,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202047185925767,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202047287056615,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202047424748342,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202047487067594,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202047588544209,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202047689421022,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202047991882177,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202048092546613,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202048229165505,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202048294056980,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202048394925854,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202048495397158,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202048633967921,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202048799137559,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202048899136583,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202049036068376,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202049100851001,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202049201217186,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202049301923370,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202049439582011,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202049503789087,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202049605231418,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202049706067086,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202049843653340,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202049907632623,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202050008925644,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202050109702495,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202050247196711,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202050311222108,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202050411910934,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202050512449220,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202050613900296,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202050714591644,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202050815109500,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202050916849571,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202051016479212,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202051117768547,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202051218719670,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202051318965890,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202051520489246,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202051622043592,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202051722503178,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202051923904061,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202052025162349,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202052125521383,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202052263452819,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202052327740312,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202052428333745,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202052529358332,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202052665829831,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202052730411033,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202052831299270,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202052932889954,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202053070314884,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202053134475365,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202053234909463,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202053336150524,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202053472617778,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202053537897943,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202053638111031,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202053739610677,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202053876665848,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202053940989333,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202054041351541,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202054142788934,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202054280569325,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202054343806293,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202054444996317,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202054545910699,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202054683369771,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202054748133491,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202054848571227,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202055554697739,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202055655349655,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202055755862056,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202055892859490,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202055957997029,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202056059390065,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202056159733120,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202056296720462,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202056362554442,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202056463161321,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202056564377791,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202056700551845,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202056765208873,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202056865603162,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202057469944060,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202057570715659,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202057672088871,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202057873938262,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202057974394700,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202058075494423,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202058176371278,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202058312832509,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202058377801304,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202058479520876,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202058579704788,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202058716785595,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202058781071316,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202058881958957,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202058983437460,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202059083553783,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202059215303363,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202059285171638,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202059386521771,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202059487179128,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202059588190332,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202059688833816,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202059789814449,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202059926695139,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202059991126677,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202060091764632,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202060193006206,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202060394910496,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202060495945951,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202060596444250,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202060696936181,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202060798302304,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202060899065423,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202060999753113,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202061100585975,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202061201064137,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202061301956585,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202061403020395,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202061504201698,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202061605171766,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202061705568058,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202061806333370,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202062008283182,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202062209913793,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202062346538528,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202062411021094,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202062512219974,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202062613117863,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202062745235958,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202062814710827,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202062916083486,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202063016439066,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202063154359870,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202063218337103,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202063319028404,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202063420585451,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202063520804816,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202063621537175,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202063722438233,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202063823208079,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202063923769472,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202064024703069,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202064125944091,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202064226673160,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202064363624723,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202064427993407,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202064529250931,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202064630334966,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202064767583307,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202064832123954,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202064933109731,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202065033850549,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202065170802419,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202065234968982,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202065336171540,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202065436973956,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202065574267484,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202065638502371,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202065738891202,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202065840414059,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202065941246817,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202066041815649,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202066142946039,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202066243597085,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202066379403774,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202066444966502,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202066546236760,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202066647318146,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202066747652675,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202066848465874,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202066949820934,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202067050402703,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202067191241640,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202067252338436,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202067352837305,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202067453626589,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202067554785005,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202067671308694,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202067756559773,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202067857470920,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202067992892737,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202068059182292,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202068159553462,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202068260995656,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202068361780629,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202068461913201,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202068563007102,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202068663734669,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202068800095251,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202068865154040,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202068966656787,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202069068217256,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202069205214265,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202069269146306,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202069471231885,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202069608164034,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202069673082528,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202069773222909,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202069874313296,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202070010643617,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202070075692164,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202070176510209,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202070277951701,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202070414652589,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202070580391455,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202070681069796,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202070882573846,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202070983756449,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202071220685067,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202071285912086,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202071387242451,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202071487455837,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202071625072479,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202071789900467,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202071891192684,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202072028036434,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202072092353810,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202072294193576,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202072431154738,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202072496257884,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202072597277488,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202072697812714,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202072798999072,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202072899997368,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202073000182881,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202073100966568,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202073237294418,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202073303011063,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202073404021169,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202073504737380,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202073640764248,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202073706360805,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202073807372587,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202073907643070,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202074045537654,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202074109768135,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202074210635113,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202074310913080,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202074449875221,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202074715278249,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202074815263657,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202074916247555,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202075017179019,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202075118188198,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202075255753628,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202075320009873,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202075420856729,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202075521440689,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202075658795080,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202075723053912,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202075824190835,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202075925041005,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202076062497101,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202076126758492,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202076227241115,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202076328618080,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202076465994143,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202076529889959,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202076630678906,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202076731636047,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202076868742728,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202076932992107,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202077034469685,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202077135203660,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202078143565086,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202078244085102,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202078345317430,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202078482797564,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202078547224263,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202078648094248,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202078748956693,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202078849032548,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202078950261735,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202079151872462,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202079253010630,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202079362811649,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202079454916187,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202079555618138,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202079656247865,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202079757328019,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202079858219267,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202079958521514,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202080059573596,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202080160557386,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202080261311160,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202080361963808,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202080463198700,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202080564246396,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202080664449862,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202080765530537,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202081068214031,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202081169212518,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202081305217924,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202081370214301,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202081471696214,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202081572054522,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202081672849639,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202081773815432,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202081874807545,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202081975801591,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202082076976929,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202082177387970,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202082378722645,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202082515752474,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202082581129025,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202082681662524,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202082782727612,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202082920103411,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202082984516616,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202083084786332,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202083186076069,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202083323033675,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202083387344399,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202083488100124,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202083589368570,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202083725993342,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202083791164853,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202083891520517,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202083992855215,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202084131458651,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202084195339562,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202084296091999,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202084397337318,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202084497579362,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202084598279897,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202084699395989,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202084799788447,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202084900606806,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202085001669975,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202085103024244,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202085204048453,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202085341164183,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202085404343054,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202085505298860,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202085606786461,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202085707400140,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202085807872465,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202085908755060,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202086110358739,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202086212008120,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202086312568410,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202086412752692,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202086514284597,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202086615402019,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202086816260316,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202086917286901,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202087018698288,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202087219831041,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202087321295782,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202087523216385,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202087624177581,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202087724508094,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202087825529296,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202087926477366,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202088027027811,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202088161036348,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202088228146661,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202088329346382,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202088430289620,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202088567933706,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202088631716268,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202088732600293,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202088833581582,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202088971969887,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202089035470065,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202089135798422,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202089236939917,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202089375573383,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202089438499438,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202089539235968,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202089640659790,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202089777604469,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202090043967654,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202090181114373,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202090447342068,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202090584558221,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202090649131820,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202090750022311,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202090850900096,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202090987845713,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202091052194299,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202091152794226,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202091253747758,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202091391300461,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202091455405553,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202091556599076,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202092198569387,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202092262969120,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202092464359339,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202092601797733,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202092666137642,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202092767264020,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202092867268159,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202093004949002,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202093069505904,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202093169980475,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202093271003034,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202093398727617,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202093472500220,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202093572943316,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202093674428173,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202093811327829,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202093876052083,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202093977520307,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202094077425620,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202094216614464,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202094279069781,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202094380367131,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202094480930604,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202094618127736,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202094783583397,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202094884587212,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202095088982900,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202095191794925,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202095606184715,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202095848934531,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202095915996023,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202096019346413,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202096122687026,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202096262737361,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202096328787664,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202096432056303,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202096535109916,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202096675273286,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202096741386119,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202096844606223,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202096947503708,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202097087787811,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202097153107962,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202097255690300,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202097359166149,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202097500329942,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202097564906120,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202097667581878,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202097770493709,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202097910649424,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202097976746949,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202098078518044,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202098181632322,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202098322656548,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202098731547736,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202098796684427,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202098899738277,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  },
+  {
+    "timestamp_ns": 1791202099002479408,
+    "count": 0,
+    "trailing_sentinel": true,
+    "finite": true
+  }
+]

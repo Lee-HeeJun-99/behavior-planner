@@ -23,6 +23,7 @@ public:
 
 private:
   mutable Path committed_avoidance_path_;
+  mutable std::vector<double> committed_lateral_profile_;
   mutable double committed_offset_{0.0};
   mutable bool committed_is_avoidance_{false};
   PathGenerator generator_;

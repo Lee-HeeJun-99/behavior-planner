@@ -1,0 +1,1018 @@
+build/behavior_stack_bringup/Testing/20261017-0534/Test.xml: 1 test, 0 errors, 1 failure, 0 skipped
+- mock_visualization_smoke
+  <<< failure message
+    -- run_test.py: invoking following command in '/home/wgr/behavior_ws/build/behavior_stack_bringup':
+     - /usr/bin/python3.8 /home/wgr/behavior_ws/behavior-planner/src/behavior_stack_bringup/test/mock_visualization_smoke.py
+    getifaddrs: Operation not permitted
+    -- run_test.py: return code 1
+    -- run_test.py: generate result file '/home/wgr/behavior_ws/build/behavior_stack_bringup/test_results/behavior_stack_bringup/mock_visualization_smoke.xml' with failed test
+    -- run_test.py: verify result file '/home/wgr/behavior_ws/build/behavior_stack_bringup/test_results/behavior_stack_bringup/mock_visualization_smoke.xml'
+  >>>
+build/behavior_stack_bringup/test_results/behavior_stack_bringup/mock_visualization_smoke.xml: 1 test, 1 error, 0 failures, 0 skipped
+- behavior_stack_bringup mock_visualization_smoke.missing_result
+  <<< error message
+    The test did not generate a result file:
+    
+    getifaddrs: Operation not permitted
+  >>>
+build/lidar/Testing/20261017-0533/Test.xml: 7 tests, 0 errors, 4 failures, 0 skipped
+- copyright
+  <<< failure message
+    -- run_test.py: invoking following command in '/home/wgr/behavior_ws/behavior-planner/src/lidar':
+     - /opt/ros/foxy/bin/ament_copyright --xunit-file /home/wgr/behavior_ws/build/lidar/test_results/lidar/copyright.xunit.xml
+    include/data_header/generic_obstacle.hpp: could not find copyright notice
+    include/data_header/mission.hpp: could not find copyright notice
+    include/data_header/qos_utils.hpp: could not find copyright notice
+    include/data_header/utility_function.hpp: could not find copyright notice
+    include/mission_header/LiDAR_small_static.hpp: could not find copyright notice
+    src/LiDAR_small_static.cpp: could not find copyright notice
+    src/main.cpp: could not find copyright notice
+    test/generic_obstacle_test.cpp: could not find copyright notice
+    8 errors, checked 8 files
+    -- run_test.py: return code 1
+    -- run_test.py: verify result file '/home/wgr/behavior_ws/build/lidar/test_results/lidar/copyright.xunit.xml'
+  >>>
+- cpplint
+  <<< failure message
+    -- run_test.py: invoking following command in '/home/wgr/behavior_ws/behavior-planner/src/lidar':
+     - /opt/ros/foxy/bin/ament_cpplint --xunit-file /home/wgr/behavior_ws/build/lidar/test_results/lidar/cpplint.xunit.xml
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/generic_obstacle.hpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/generic_obstacle.hpp:1:  #ifndef header guard has wrong style, please use: DATA_HEADER__GENERIC_OBSTACLE_HPP_  [build/header_guard] [5]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/generic_obstacle.hpp:40:  #endif line should be "#endif  // DATA_HEADER__GENERIC_OBSTACLE_HPP_"  [build/header_guard] [5]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/generic_obstacle.hpp:6:  Found C system header after other header. Should be: generic_obstacle.h, c system, c++ system, other.  [build/include_order] [4]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/generic_obstacle.hpp:7:  Found C system header after other header. Should be: generic_obstacle.h, c system, c++ system, other.  [build/include_order] [4]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/generic_obstacle.hpp:32:  Missing username in TODO; it should look like "// TODO(my_username): Stuff."  [readability/todo] [2]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/generic_obstacle.hpp:25:  Add #include <vector> for vector<>  [build/include_what_you_use] [4]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/mission.hpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/mission.hpp:1:  #ifndef header guard has wrong style, please use: DATA_HEADER__MISSION_HPP_  [build/header_guard] [5]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/mission.hpp:29:  #endif line should be "#endif  // DATA_HEADER__MISSION_HPP_"  [build/header_guard] [5]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/mission.hpp:8:  Found C system header after C++ system header. Should be: mission.h, c system, c++ system, other.  [build/include_order] [4]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/mission.hpp:9:  Found C system header after C++ system header. Should be: mission.h, c system, c++ system, other.  [build/include_order] [4]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/qos_utils.hpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/qos_utils.hpp:3:  #ifndef header guard has wrong style, please use: DATA_HEADER__QOS_UTILS_HPP_  [build/header_guard] [5]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/qos_utils.hpp:37:  #endif line should be "#endif  // DATA_HEADER__QOS_UTILS_HPP_"  [build/header_guard] [5]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/qos_utils.hpp:35:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/qos_utils.hpp:37:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/qos_utils.hpp:37:  Could not find a newline character at the end of the file.  [whitespace/ending_newline] [5]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:12:  #ifndef header guard has wrong style, please use: DATA_HEADER__UTILITY_FUNCTION_HPP_  [build/header_guard] [5]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:240:  #endif line should be "#endif  // DATA_HEADER__UTILITY_FUNCTION_HPP_"  [build/header_guard] [5]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:27:  Found C system header after C++ system header. Should be: utility_function.h, c system, c++ system, other.  [build/include_order] [4]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:28:  Found C system header after C++ system header. Should be: utility_function.h, c system, c++ system, other.  [build/include_order] [4]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:29:  Found C system header after C++ system header. Should be: utility_function.h, c system, c++ system, other.  [build/include_order] [4]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:30:  Found C system header after C++ system header. Should be: utility_function.h, c system, c++ system, other.  [build/include_order] [4]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:31:  Found C system header after C++ system header. Should be: utility_function.h, c system, c++ system, other.  [build/include_order] [4]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:32:  Found C system header after C++ system header. Should be: utility_function.h, c system, c++ system, other.  [build/include_order] [4]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:33:  Found C system header after C++ system header. Should be: utility_function.h, c system, c++ system, other.  [build/include_order] [4]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:34:  Found C system header after C++ system header. Should be: utility_function.h, c system, c++ system, other.  [build/include_order] [4]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:35:  Found C system header after C++ system header. Should be: utility_function.h, c system, c++ system, other.  [build/include_order] [4]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:37:  Do not use namespace using-directives.  Use using-declarations instead.  [build/namespaces] [5]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:42:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:54:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:65:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:70:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:76:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:83:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:98:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:111:  Using C-style cast.  Use static_cast<float>(...) instead  [readability/casting] [4]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:122:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:140:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:153:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:215:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:223:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:217:  Add #include <vector> for vector<>  [build/include_what_you_use] [4]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:224:  Add #include <utility> for make_pair  [build/include_what_you_use] [4]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:228:  Add #include <algorithm> for sort  [build/include_what_you_use] [4]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/mission_header/LiDAR_small_static.hpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/include/mission_header/LiDAR_small_static.hpp:0:  No #ifndef header guard found, suggested CPP variable is: MISSION_HEADER__LIDAR_SMALL_STATIC_HPP_  [build/header_guard] [5]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/src/LiDAR_small_static.cpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/src/LiDAR_small_static.cpp:7:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/src/LiDAR_small_static.cpp:8:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/src/LiDAR_small_static.cpp:9:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/src/LiDAR_small_static.cpp:10:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/src/LiDAR_small_static.cpp:32:  Lines should be <= 100 characters long  [whitespace/line_length] [2]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/src/LiDAR_small_static.cpp:32:  Add #include <vector> for vector<>  [build/include_what_you_use] [4]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/src/main.cpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/src/main.cpp:7:  Add #include <memory> for make_shared<>  [build/include_what_you_use] [4]
+    /home/wgr/behavior_ws/behavior-planner/src/lidar/test/generic_obstacle_test.cpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+    Category 'build/header_guard' errors found: 9
+    Category 'build/include_order' errors found: 13
+    Category 'build/include_what_you_use' errors found: 6
+    Category 'build/namespaces' errors found: 1
+    Category 'legal/copyright' errors found: 8
+    Category 'readability/casting' errors found: 1
+    Category 'readability/todo' errors found: 1
+    Category 'whitespace/comments' errors found: 4
+    Category 'whitespace/ending_newline' errors found: 1
+    Category 'whitespace/line_length' errors found: 15
+    Total errors found: 59
+    Using '--root=/home/wgr/behavior_ws/behavior-planner/src/lidar/include' argument
+    
+    Done processing /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/generic_obstacle.hpp
+    
+    Done processing /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/mission.hpp
+    
+    Done processing /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/qos_utils.hpp
+    
+    Done processing /home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp
+    
+    Done processing /home/wgr/behavior_ws/behavior-planner/src/lidar/include/mission_header/LiDAR_small_static.hpp
+    
+    Using '--root=/home/wgr/behavior_ws/behavior-planner/src/lidar/src' argument
+    
+    Done processing /home/wgr/behavior_ws/behavior-planner/src/lidar/src/LiDAR_small_static.cpp
+    
+    Done processing /home/wgr/behavior_ws/behavior-planner/src/lidar/src/main.cpp
+    
+    Using '--root=/home/wgr/behavior_ws/behavior-planner/src/lidar/test' argument
+    
+    Done processing /home/wgr/behavior_ws/behavior-planner/src/lidar/test/generic_obstacle_test.cpp
+    
+    -- run_test.py: return code 1
+    -- run_test.py: verify result file '/home/wgr/behavior_ws/build/lidar/test_results/lidar/cpplint.xunit.xml'
+  >>>
+- uncrustify
+  <<< failure message
+    -- run_test.py: invoking following command in '/home/wgr/behavior_ws/behavior-planner/src/lidar':
+     - /opt/ros/foxy/bin/ament_uncrustify --xunit-file /home/wgr/behavior_ws/build/lidar/test_results/lidar/uncrustify.xunit.xml
+    Code style divergence in file 'include/data_header/generic_obstacle.hpp':
+    
+    --- include/data_header/generic_obstacle.hpp
+    +++ include/data_header/generic_obstacle.hpp.uncrustify
+    @@ -34 +34,2 @@
+    -  roi = utility.CropFilter(voxel, Eigen::Vector4f(0, -3.5, -0.35, 0),
+    +  roi = utility.CropFilter(
+    +    voxel, Eigen::Vector4f(0, -3.5, -0.35, 0),
+    
+    Code style divergence in file 'include/data_header/qos_utils.hpp':
+    
+    --- include/data_header/qos_utils.hpp
+    +++ include/data_header/qos_utils.hpp.uncrustify
+    @@ -11,11 +11,11 @@
+    -    // QoS settings for robust network
+    -    inline rclcpp::QoS reliable_qos()
+    -    {
+    -        return rclcpp::QoS(rclcpp::KeepLast(1))
+    -            .reliable()
+    -            .durability_volatile();
+    -            // .deadline(rclcpp::Duration(1, 0)) // 1 second
+    -            // .lifespan(rclcpp::Duration(5, 0)) // 5 seconds
+    -            // .liveliness(rclcpp::LivelinessPolicy::Automatic)
+    -            // .liveliness_lease_duration(rclcpp::Duration(2, 0)); // 2 seconds
+    -    }
+    +// QoS settings for robust network
+    +inline rclcpp::QoS reliable_qos()
+    +{
+    +  return rclcpp::QoS(rclcpp::KeepLast(1))
+    +         .reliable()
+    +         .durability_volatile();
+    +  // .deadline(rclcpp::Duration(1, 0)) // 1 second
+    +  // .lifespan(rclcpp::Duration(5, 0)) // 5 seconds
+    +  // .liveliness(rclcpp::LivelinessPolicy::Automatic)
+    +  // .liveliness_lease_duration(rclcpp::Duration(2, 0)); // 2 seconds
+    +}
+    @@ -23,11 +23,11 @@
+    -    // QoS settings for non-robust network
+    -    inline rclcpp::QoS best_effort_qos()
+    -    {
+    -        return rclcpp::QoS(rclcpp::KeepLast(1))
+    -            .best_effort()
+    -            .durability_volatile();
+    -        // .deadline(rclcpp::Duration(0.5, 0)) // 0.5 seconds
+    -        // .lifespan(rclcpp::Duration(2, 0)) // 2 seconds
+    -        // .liveliness(rclcpp::LivelinessPolicy::ManualByTopic)
+    -        // .liveliness_lease_duration(rclcpp::Duration(2, 0)); // 5 seconds
+    -    }
+    +// QoS settings for non-robust network
+    +inline rclcpp::QoS best_effort_qos()
+    +{
+    +  return rclcpp::QoS(rclcpp::KeepLast(1))
+    +         .best_effort()
+    +         .durability_volatile();
+    +  // .deadline(rclcpp::Duration(0.5, 0)) // 0.5 seconds
+    +  // .lifespan(rclcpp::Duration(2, 0)) // 2 seconds
+    +  // .liveliness(rclcpp::LivelinessPolicy::ManualByTopic)
+    +  // .liveliness_lease_duration(rclcpp::Duration(2, 0)); // 5 seconds
+    +}
+    @@ -37 +37 @@
+    -#endif // LIDAR_QOS_UTILS_HPP_
+    +#endif // LIDAR_QOS_UTILS_HPP_
+    
+    Code style divergence in file 'include/data_header/utility_function.hpp':
+    
+    --- include/data_header/utility_function.hpp
+    +++ include/data_header/utility_function.hpp.uncrustify
+    @@ -42 +42 @@
+    -    // std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr, Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr>> clusters;
+    +  // std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr, Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr>> clusters;
+    @@ -45,194 +45,200 @@
+    -    pcl::PointCloud<pcl::PointXYZI>::Ptr PointCloudROS(
+    -        const sensor_msgs::msg::PointCloud2::SharedPtr &input)
+    -    {
+    -        pcl::PointCloud<pcl::PointXYZI>::Ptr cloud_origin(new pcl::PointCloud<pcl::PointXYZI>);
+    -        pcl::fromROSMsg(*input, *cloud_origin);
+    -        return cloud_origin;
+    -    }
+    -
+    -    pcl::PointCloud<pcl::PointXYZI>::Ptr DownSamplingVoxel(
+    -        const pcl::PointCloud<pcl::PointXYZI>::Ptr &cloud_origin, float size_x, float size_y, float size_z)
+    -    {
+    -        pcl::PointCloud<pcl::PointXYZI>::Ptr cloud_down(new pcl::PointCloud<pcl::PointXYZI>);
+    -        pcl::VoxelGrid<pcl::PointXYZI> VG;
+    -        VG.setInputCloud(cloud_origin);
+    -        VG.setLeafSize(size_x, size_y, size_z);
+    -        VG.filter(*cloud_down);
+    -        return cloud_down;
+    -    }
+    -
+    -    pcl::PointCloud<pcl::PointXYZI>::Ptr CropFilter(
+    -        const pcl::PointCloud<pcl::PointXYZI>::Ptr &cloud_down, Eigen::Vector4f min_pt, Eigen::Vector4f max_pt)
+    -    {
+    -        pcl::PointCloud<pcl::PointXYZI>::Ptr cloud_crop(new pcl::PointCloud<pcl::PointXYZI>);
+    -        pcl::CropBox<pcl::PointXYZI> cropFilter;
+    -        cropFilter.setInputCloud(cloud_down);
+    -        cropFilter.setMin(min_pt); // x,y,z,1
+    -        cropFilter.setMax(max_pt);
+    -        cropFilter.filter(*cloud_crop);
+    -        return cloud_crop;
+    -    }
+    -    std::vector<pcl::PointIndices> ClusterEuclidean(
+    -        const pcl::PointCloud<pcl::PointXYZI>::Ptr &cloud_crop, bool max_ok, float tolerance, int min_size, int max_size)
+    -    {
+    -        pcl::search::KdTree<pcl::PointXYZI>::Ptr tree(new pcl::search::KdTree<pcl::PointXYZI>);
+    -        tree->setInputCloud(cloud_crop);
+    -        std::vector<pcl::PointIndices> cloud_clust;
+    -        pcl::EuclideanClusterExtraction<pcl::PointXYZI> ec;
+    -        ec.setInputCloud(cloud_crop);
+    -        ec.setClusterTolerance(tolerance); // 여기도 수정해야 함.
+    -        ec.setMinClusterSize(min_size);
+    -        if (max_ok)
+    -        {
+    -            ec.setMaxClusterSize(max_size);
+    -        }
+    -        ec.setSearchMethod(tree);
+    -        ec.extract(cloud_clust);
+    -
+    -        return cloud_clust;
+    -    }
+    -    void ExtractClusters(
+    -        pcl::PointCloud<pcl::PointXYZI> &TotalCloud,
+    -        const pcl::PointCloud<pcl::PointXYZI>::Ptr &cloud_crop,
+    -        const std::vector<pcl::PointIndices> &cloud_clust,
+    -        std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr, Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr>> &clusters)
+    -    {
+    -        int ii = 0;
+    -        clusters.clear();
+    -        for (auto it = cloud_clust.begin(); it != cloud_clust.end(); ++it, ++ii)
+    -        {
+    -            pcl::PointCloud<pcl::PointXYZI>::Ptr cluster(new pcl::PointCloud<pcl::PointXYZI>);
+    -            for (auto pit = it->indices.begin(); pit != it->indices.end(); ++pit)
+    -            {
+    -                cluster->points.push_back(cloud_crop->points[*pit]);
+    -                pcl::PointXYZI pt = cloud_crop->points[*pit];
+    -                pcl::PointXYZI pt2;
+    -                pt2.x = pt.x, pt2.y = pt.y, pt2.z = pt.z;
+    -                pt2.intensity = (float)(ii + 1);
+    -                TotalCloud.push_back(pt2);
+    -            }
+    -            cluster->width = cluster->size();
+    -            cluster->height = 1;
+    -            cluster->is_dense = true;
+    -            clusters.push_back(cluster);
+    -        }
+    -    }
+    -
+    -    void GetMinMaxCloudPoint(
+    -        std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr, Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr>> &clusters,
+    -        geometry_msgs::msg::Point &min_point,
+    -        geometry_msgs::msg::Point &max_point,
+    -        size_t i)
+    -    {
+    -        Eigen::Vector4f min_p, max_p;
+    -
+    -        pcl::getMinMax3D(*clusters[i], min_p, max_p);
+    -
+    -        min_point.x = min_p[0];
+    -        min_point.y = min_p[1];
+    -        min_point.z = min_p[2];
+    -
+    -        max_point.x = max_p[0];
+    -        max_point.y = max_p[1];
+    -        max_point.z = max_p[2];
+    -    }
+    -    void GetSenCloudPoint(
+    -        std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr, Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr>> &clusters,
+    -        geometry_msgs::msg::Point &center_point,
+    -        size_t i)
+    -    {
+    -        Eigen::Vector4f centroid;
+    -        pcl::compute3DCentroid(*clusters[i], centroid);
+    -        center_point.x = centroid[0];
+    -        center_point.y = centroid[1];
+    -        center_point.z = centroid[2];
+    -    }
+    -
+    -    visualization_msgs::msg::Marker showRoi_CUBE(
+    -        std::string ns_, int32_t id_, Eigen::Vector4f min_pt, Eigen::Vector4f max_pt,
+    -        std::string frameid = "velodyne", double color_r = 0.0, double color_g = 1.0, double color_b = 0.0, double color_a = 0.3)
+    -    {
+    -        visualization_msgs::msg::Marker marker;
+    -        marker.header.frame_id = frameid;
+    -        marker.ns = ns_;
+    -        marker.id = id_;
+    -        marker.header.stamp = rclcpp::Clock(RCL_ROS_TIME).now();
+    -        marker.action = visualization_msgs::msg::Marker::ADD;
+    -        marker.type = visualization_msgs::msg::Marker::CUBE;
+    -        marker.scale.x = max_pt[0] - min_pt[0];
+    -        marker.scale.y = max_pt[1] - min_pt[1];
+    -        marker.scale.z = max_pt[2] - min_pt[2];
+    -        marker.pose.position.x = (max_pt[0] + min_pt[0]) / 2;
+    -        marker.pose.position.y = (max_pt[1] + min_pt[1]) / 2;
+    -        marker.pose.position.z = (max_pt[2] + min_pt[2]) / 2;
+    -        marker.color.r = color_r;
+    -        marker.color.g = color_g;
+    -        marker.color.b = color_b;
+    -        marker.color.a = color_a;
+    -        return marker;
+    -    }
+    -
+    -    visualization_msgs::msg::Marker showRoi_POINT(
+    -        std::string ns_, int32_t id_,
+    -        double color_r = 0.5, double color_g = 0.5, double color_b = 0.5, double color_a = 1,
+    -        std::string frameid = "velodyne")
+    -    {
+    -        visualization_msgs::msg::Marker marker;
+    -        marker.header.frame_id = frameid;
+    -        marker.ns = ns_;
+    -        marker.id = id_;
+    -        marker.header.stamp = rclcpp::Clock(RCL_ROS_TIME).now();
+    -        marker.action = visualization_msgs::msg::Marker::ADD;
+    -        marker.type = visualization_msgs::msg::Marker::POINTS;
+    -        marker.scale.x = 0.5;
+    -        marker.scale.y = 0.5;
+    -        marker.color.r = color_r;
+    -        marker.color.g = color_g;
+    -        marker.color.b = color_b;
+    -        marker.color.a = color_a;
+    -        return marker;
+    -    }
+    -
+    -    visualization_msgs::msg::Marker showRoi_LINE(
+    -        std::string ns_, int32_t id_,
+    -        double color_r = 0.5, double color_g = 0.5, double color_b = 0.5, double color_a = 0.4,
+    -        std::string frameid = "velodyne")
+    -    {
+    -        visualization_msgs::msg::Marker marker;
+    -        marker.header.frame_id = frameid;
+    -        marker.ns = ns_;
+    -        marker.id = id_;
+    -        marker.header.stamp = rclcpp::Clock(RCL_ROS_TIME).now();
+    -        marker.action = visualization_msgs::msg::Marker::ADD;
+    -        marker.type = visualization_msgs::msg::Marker::LINE_STRIP;
+    -        marker.scale.x = 0.1;
+    -        marker.color.r = color_r;
+    -        marker.color.g = color_g;
+    -        marker.color.b = color_b;
+    -        marker.color.a = color_a;
+    -        return marker;
+    -    }
+    -    void sortClustersByDistance(std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr, Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr>> &clusters)
+    -    {
+    -        std::vector<std::pair<float, pcl::PointCloud<pcl::PointXYZI>::Ptr>> distance_cluster_pairs;
+    -
+    -        for (const auto &cluster : clusters)
+    -        {
+    -            Eigen::Vector4f centroid;
+    -            pcl::compute3DCentroid(*cluster, centroid);
+    -            float distance = std::sqrt(centroid[0] * centroid[0] + centroid[1] * centroid[1] + centroid[2] * centroid[2]);
+    -            distance_cluster_pairs.push_back(std::make_pair(distance, cluster));
+    -        }
+    -
+    -        // 거리 기준으로 정렬
+    -        std::sort(distance_cluster_pairs.begin(), distance_cluster_pairs.end(),
+    -                  [](const auto &a, const auto &b)
+    -                  { return a.first < b.first; });
+    -
+    -        // 정렬된 클러스터를 다시 clusters 벡터에 저장
+    -        clusters.clear();
+    -        for (const auto &pair : distance_cluster_pairs)
+    -        {
+    -            clusters.push_back(pair.second);
+    -        }
+    -    }
+    +  pcl::PointCloud<pcl::PointXYZI>::Ptr PointCloudROS(
+    +    const sensor_msgs::msg::PointCloud2::SharedPtr & input)
+    +  {
+    +    pcl::PointCloud<pcl::PointXYZI>::Ptr cloud_origin(new pcl::PointCloud<pcl::PointXYZI>);
+    +    pcl::fromROSMsg(*input, *cloud_origin);
+    +    return cloud_origin;
+    +  }
+    +
+    +  pcl::PointCloud<pcl::PointXYZI>::Ptr DownSamplingVoxel(
+    +    const pcl::PointCloud<pcl::PointXYZI>::Ptr & cloud_origin, float size_x, float size_y,
+    +    float size_z)
+    +  {
+    +    pcl::PointCloud<pcl::PointXYZI>::Ptr cloud_down(new pcl::PointCloud<pcl::PointXYZI>);
+    +    pcl::VoxelGrid<pcl::PointXYZI> VG;
+    +    VG.setInputCloud(cloud_origin);
+    +    VG.setLeafSize(size_x, size_y, size_z);
+    +    VG.filter(*cloud_down);
+    +    return cloud_down;
+    +  }
+    +
+    +  pcl::PointCloud<pcl::PointXYZI>::Ptr CropFilter(
+    +    const pcl::PointCloud<pcl::PointXYZI>::Ptr & cloud_down, Eigen::Vector4f min_pt,
+    +    Eigen::Vector4f max_pt)
+    +  {
+    +    pcl::PointCloud<pcl::PointXYZI>::Ptr cloud_crop(new pcl::PointCloud<pcl::PointXYZI>);
+    +    pcl::CropBox<pcl::PointXYZI> cropFilter;
+    +    cropFilter.setInputCloud(cloud_down);
+    +    cropFilter.setMin(min_pt);     // x,y,z,1
+    +    cropFilter.setMax(max_pt);
+    +    cropFilter.filter(*cloud_crop);
+    +    return cloud_crop;
+    +  }
+    +  std::vector<pcl::PointIndices> ClusterEuclidean(
+    +    const pcl::PointCloud<pcl::PointXYZI>::Ptr & cloud_crop, bool max_ok, float tolerance,
+    +    int min_size, int max_size)
+    +  {
+    +    pcl::search::KdTree<pcl::PointXYZI>::Ptr tree(new pcl::search::KdTree<pcl::PointXYZI>);
+    +    tree->setInputCloud(cloud_crop);
+    +    std::vector<pcl::PointIndices> cloud_clust;
+    +    pcl::EuclideanClusterExtraction<pcl::PointXYZI> ec;
+    +    ec.setInputCloud(cloud_crop);
+    +    ec.setClusterTolerance(tolerance);     // 여기도 수정해야 함.
+    +    ec.setMinClusterSize(min_size);
+    +    if (max_ok) {
+    +      ec.setMaxClusterSize(max_size);
+    +    }
+    +    ec.setSearchMethod(tree);
+    +    ec.extract(cloud_clust);
+    +
+    +    return cloud_clust;
+    +  }
+    +  void ExtractClusters(
+    +    pcl::PointCloud<pcl::PointXYZI> & TotalCloud,
+    +    const pcl::PointCloud<pcl::PointXYZI>::Ptr & cloud_crop,
+    +    const std::vector<pcl::PointIndices> & cloud_clust,
+    +    std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr,
+    +    Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr>> & clusters)
+    +  {
+    +    int ii = 0;
+    +    clusters.clear();
+    +    for (auto it = cloud_clust.begin(); it != cloud_clust.end(); ++it, ++ii) {
+    +      pcl::PointCloud<pcl::PointXYZI>::Ptr cluster(new pcl::PointCloud<pcl::PointXYZI>);
+    +      for (auto pit = it->indices.begin(); pit != it->indices.end(); ++pit) {
+    +        cluster->points.push_back(cloud_crop->points[*pit]);
+    +        pcl::PointXYZI pt = cloud_crop->points[*pit];
+    +        pcl::PointXYZI pt2;
+    +        pt2.x = pt.x, pt2.y = pt.y, pt2.z = pt.z;
+    +        pt2.intensity = (float)(ii + 1);
+    +        TotalCloud.push_back(pt2);
+    +      }
+    +      cluster->width = cluster->size();
+    +      cluster->height = 1;
+    +      cluster->is_dense = true;
+    +      clusters.push_back(cluster);
+    +    }
+    +  }
+    +
+    +  void GetMinMaxCloudPoint(
+    +    std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr,
+    +    Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr>> & clusters,
+    +    geometry_msgs::msg::Point & min_point,
+    +    geometry_msgs::msg::Point & max_point,
+    +    size_t i)
+    +  {
+    +    Eigen::Vector4f min_p, max_p;
+    +
+    +    pcl::getMinMax3D(*clusters[i], min_p, max_p);
+    +
+    +    min_point.x = min_p[0];
+    +    min_point.y = min_p[1];
+    +    min_point.z = min_p[2];
+    +
+    +    max_point.x = max_p[0];
+    +    max_point.y = max_p[1];
+    +    max_point.z = max_p[2];
+    +  }
+    +  void GetSenCloudPoint(
+    +    std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr,
+    +    Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr>> & clusters,
+    +    geometry_msgs::msg::Point & center_point,
+    +    size_t i)
+    +  {
+    +    Eigen::Vector4f centroid;
+    +    pcl::compute3DCentroid(*clusters[i], centroid);
+    +    center_point.x = centroid[0];
+    +    center_point.y = centroid[1];
+    +    center_point.z = centroid[2];
+    +  }
+    +
+    +  visualization_msgs::msg::Marker showRoi_CUBE(
+    +    std::string ns_, int32_t id_, Eigen::Vector4f min_pt, Eigen::Vector4f max_pt,
+    +    std::string frameid = "velodyne", double color_r = 0.0, double color_g = 1.0,
+    +    double color_b = 0.0, double color_a = 0.3)
+    +  {
+    +    visualization_msgs::msg::Marker marker;
+    +    marker.header.frame_id = frameid;
+    +    marker.ns = ns_;
+    +    marker.id = id_;
+    +    marker.header.stamp = rclcpp::Clock(RCL_ROS_TIME).now();
+    +    marker.action = visualization_msgs::msg::Marker::ADD;
+    +    marker.type = visualization_msgs::msg::Marker::CUBE;
+    +    marker.scale.x = max_pt[0] - min_pt[0];
+    +    marker.scale.y = max_pt[1] - min_pt[1];
+    +    marker.scale.z = max_pt[2] - min_pt[2];
+    +    marker.pose.position.x = (max_pt[0] + min_pt[0]) / 2;
+    +    marker.pose.position.y = (max_pt[1] + min_pt[1]) / 2;
+    +    marker.pose.position.z = (max_pt[2] + min_pt[2]) / 2;
+    +    marker.color.r = color_r;
+    +    marker.color.g = color_g;
+    +    marker.color.b = color_b;
+    +    marker.color.a = color_a;
+    +    return marker;
+    +  }
+    +
+    +  visualization_msgs::msg::Marker showRoi_POINT(
+    +    std::string ns_, int32_t id_,
+    +    double color_r = 0.5, double color_g = 0.5, double color_b = 0.5, double color_a = 1,
+    +    std::string frameid = "velodyne")
+    +  {
+    +    visualization_msgs::msg::Marker marker;
+    +    marker.header.frame_id = frameid;
+    +    marker.ns = ns_;
+    +    marker.id = id_;
+    +    marker.header.stamp = rclcpp::Clock(RCL_ROS_TIME).now();
+    +    marker.action = visualization_msgs::msg::Marker::ADD;
+    +    marker.type = visualization_msgs::msg::Marker::POINTS;
+    +    marker.scale.x = 0.5;
+    +    marker.scale.y = 0.5;
+    +    marker.color.r = color_r;
+    +    marker.color.g = color_g;
+    +    marker.color.b = color_b;
+    +    marker.color.a = color_a;
+    +    return marker;
+    +  }
+    +
+    +  visualization_msgs::msg::Marker showRoi_LINE(
+    +    std::string ns_, int32_t id_,
+    +    double color_r = 0.5, double color_g = 0.5, double color_b = 0.5, double color_a = 0.4,
+    +    std::string frameid = "velodyne")
+    +  {
+    +    visualization_msgs::msg::Marker marker;
+    +    marker.header.frame_id = frameid;
+    +    marker.ns = ns_;
+    +    marker.id = id_;
+    +    marker.header.stamp = rclcpp::Clock(RCL_ROS_TIME).now();
+    +    marker.action = visualization_msgs::msg::Marker::ADD;
+    +    marker.type = visualization_msgs::msg::Marker::LINE_STRIP;
+    +    marker.scale.x = 0.1;
+    +    marker.color.r = color_r;
+    +    marker.color.g = color_g;
+    +    marker.color.b = color_b;
+    +    marker.color.a = color_a;
+    +    return marker;
+    +  }
+    +  void sortClustersByDistance(
+    +    std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr,
+    +    Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr>> & clusters)
+    +  {
+    +    std::vector<std::pair<float, pcl::PointCloud<pcl::PointXYZI>::Ptr>> distance_cluster_pairs;
+    +
+    +    for (const auto & cluster : clusters) {
+    +      Eigen::Vector4f centroid;
+    +      pcl::compute3DCentroid(*cluster, centroid);
+    +      float distance = std::sqrt(
+    +        centroid[0] * centroid[0] + centroid[1] * centroid[1] + centroid[2] * centroid[2]);
+    +      distance_cluster_pairs.push_back(std::make_pair(distance, cluster));
+    +    }
+    +
+    +    // 거리 기준으로 정렬
+    +    std::sort(
+    +      distance_cluster_pairs.begin(), distance_cluster_pairs.end(),
+    +      [](const auto & a, const auto & b)
+    +      {return a.first < b.first;});
+    +
+    +    // 정렬된 클러스터를 다시 clusters 벡터에 저장
+    +    clusters.clear();
+    +    for (const auto & pair : distance_cluster_pairs) {
+    +      clusters.push_back(pair.second);
+    +    }
+    +  }
+    
+    Code style divergence in file 'include/mission_header/LiDAR_small_static.hpp':
+    
+    --- include/mission_header/LiDAR_small_static.hpp
+    +++ include/mission_header/LiDAR_small_static.hpp.uncrustify
+    @@ -7 +7 @@
+    -    LidarObstacleDetector();
+    +  LidarObstacleDetector();
+    @@ -10,2 +10,2 @@
+    -    // func
+    -    void callback(const sensor_msgs::msg::PointCloud2::SharedPtr input) override;
+    +  // func
+    +  void callback(const sensor_msgs::msg::PointCloud2::SharedPtr input) override;
+    @@ -13,5 +13,5 @@
+    -    // pub
+    -    rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr pub_;
+    -    rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr object_;
+    -    rclcpp::Publisher<visualization_msgs::msg::Marker>::SharedPtr marker_pub_;
+    -    rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr marker_array_;
+    +  // pub
+    +  rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr pub_;
+    +  rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr object_;
+    +  rclcpp::Publisher<visualization_msgs::msg::Marker>::SharedPtr marker_pub_;
+    +  rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr marker_array_;
+    @@ -19,2 +19,2 @@
+    -    // var
+    -    int check_pointcloud = 0;
+    +  // var
+    +  int check_pointcloud = 0;
+    @@ -22 +22 @@
+    -    Utility_Function util_func_;
+    +  Utility_Function util_func_;
+    
+    Code style divergence in file 'src/LiDAR_small_static.cpp':
+    
+    --- src/LiDAR_small_static.cpp
+    +++ src/LiDAR_small_static.cpp.uncrustify
+    @@ -5 +5 @@
+    -    : Mission("lidar_obstacle_detector")
+    +: Mission("lidar_obstacle_detector")
+    @@ -7,4 +7,12 @@
+    -  pub_ = this->create_publisher<sensor_msgs::msg::PointCloud2>("/Cluster/obstacles", lidar::best_effort_qos());
+    -  object_ = this->create_publisher<std_msgs::msg::Float64MultiArray>("/LiDAR/object_cen", lidar::best_effort_qos());
+    -  marker_pub_ = this->create_publisher<visualization_msgs::msg::Marker>("/Marker/obstacle_roi", lidar::best_effort_qos());
+    -  marker_array_ = this->create_publisher<visualization_msgs::msg::MarkerArray>("/Marker/obstacles", lidar::best_effort_qos());
+    +  pub_ = this->create_publisher<sensor_msgs::msg::PointCloud2>(
+    +    "/Cluster/obstacles",
+    +    lidar::best_effort_qos());
+    +  object_ = this->create_publisher<std_msgs::msg::Float64MultiArray>(
+    +    "/LiDAR/object_cen",
+    +    lidar::best_effort_qos());
+    +  marker_pub_ = this->create_publisher<visualization_msgs::msg::Marker>(
+    +    "/Marker/obstacle_roi",
+    +    lidar::best_effort_qos());
+    +  marker_array_ = this->create_publisher<visualization_msgs::msg::MarkerArray>(
+    +    "/Marker/obstacles",
+    +    lidar::best_effort_qos());
+    @@ -17,2 +25 @@
+    -  if (check_pointcloud == 0)
+    -  {
+    +  if (check_pointcloud == 0) {
+    @@ -32 +39,2 @@
+    -  std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr, Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr>> clusters;
+    +  std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr,
+    +    Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr>> clusters;
+    @@ -37,2 +45 @@
+    -  for (size_t i = 0; i < clusters.size(); i++)
+    -  {
+    +  for (size_t i = 0; i < clusters.size(); i++) {
+    @@ -52 +59,2 @@
+    -  RCLCPP_INFO_THROTTLE(this->get_logger(), *this->get_clock(), 2000,
+    +  RCLCPP_INFO_THROTTLE(
+    +    this->get_logger(), *this->get_clock(), 2000,
+    
+    Code style divergence in file 'src/main.cpp':
+    
+    --- src/main.cpp
+    +++ src/main.cpp.uncrustify
+    @@ -3 +3 @@
+    -int main(int argc, char *argv[])
+    +int main(int argc, char * argv[])
+    
+    Code style divergence in file 'test/generic_obstacle_test.cpp':
+    
+    --- test/generic_obstacle_test.cpp
+    +++ test/generic_obstacle_test.cpp.uncrustify
+    @@ -8 +8,2 @@
+    -pcl::PointCloud<pcl::PointXYZI>::Ptr box(float length, float width, float height,
+    +pcl::PointCloud<pcl::PointXYZI>::Ptr box(
+    +  float length, float width, float height,
+    
+    7 files with code style divergence
+    No code style divergence in file 'include/data_header/mission.hpp'
+    
+    -- run_test.py: return code 1
+    -- run_test.py: verify result file '/home/wgr/behavior_ws/build/lidar/test_results/lidar/uncrustify.xunit.xml'
+  >>>
+- xmllint
+  <<< failure message
+    -- run_test.py: invoking following command in '/home/wgr/behavior_ws/behavior-planner/src/lidar':
+     - /opt/ros/foxy/bin/ament_xmllint --xunit-file /home/wgr/behavior_ws/build/lidar/test_results/lidar/xmllint.xunit.xml
+    File 'package.xml' is invalid:
+    warning: failed to load external entity "http://download.ros.org/schema/package_format3.xsd"
+    Schemas parser error : Failed to locate the main schema resource at 'http://download.ros.org/schema/package_format3.xsd'.
+    WXS schema http://download.ros.org/schema/package_format3.xsd failed to compile
+    
+    1 files are invalid
+    -- run_test.py: return code 1
+    -- run_test.py: verify result file '/home/wgr/behavior_ws/build/lidar/test_results/lidar/xmllint.xunit.xml'
+  >>>
+build/lidar/test_results/lidar/copyright.xunit.xml: 8 tests, 0 errors, 8 failures, 0 skipped
+- lidar.copyright include/data_header/generic_obstacle.hpp
+  <<< failure message
+    could not find copyright notice
+  >>>
+- lidar.copyright include/data_header/mission.hpp
+  <<< failure message
+    could not find copyright notice
+  >>>
+- lidar.copyright include/data_header/qos_utils.hpp
+  <<< failure message
+    could not find copyright notice
+  >>>
+- lidar.copyright include/data_header/utility_function.hpp
+  <<< failure message
+    could not find copyright notice
+  >>>
+- lidar.copyright include/mission_header/LiDAR_small_static.hpp
+  <<< failure message
+    could not find copyright notice
+  >>>
+- lidar.copyright src/LiDAR_small_static.cpp
+  <<< failure message
+    could not find copyright notice
+  >>>
+- lidar.copyright src/main.cpp
+  <<< failure message
+    could not find copyright notice
+  >>>
+- lidar.copyright test/generic_obstacle_test.cpp
+  <<< failure message
+    could not find copyright notice
+  >>>
+build/lidar/test_results/lidar/cpplint.xunit.xml: 59 tests, 0 errors, 59 failures, 0 skipped
+- lidar.cpplint legal/copyright [5] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/generic_obstacle.hpp:0)
+  <<< failure message
+    No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"
+  >>>
+- lidar.cpplint build/header_guard [5] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/generic_obstacle.hpp:1)
+  <<< failure message
+    #ifndef header guard has wrong style, please use: DATA_HEADER__GENERIC_OBSTACLE_HPP_
+  >>>
+- lidar.cpplint build/header_guard [5] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/generic_obstacle.hpp:40)
+  <<< failure message
+    #endif line should be "#endif  // DATA_HEADER__GENERIC_OBSTACLE_HPP_"
+  >>>
+- lidar.cpplint build/include_order [4] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/generic_obstacle.hpp:6)
+  <<< failure message
+    Found C system header after other header. Should be: generic_obstacle.h, c system, c++ system, other.
+  >>>
+- lidar.cpplint build/include_order [4] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/generic_obstacle.hpp:7)
+  <<< failure message
+    Found C system header after other header. Should be: generic_obstacle.h, c system, c++ system, other.
+  >>>
+- lidar.cpplint readability/todo [2] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/generic_obstacle.hpp:32)
+  <<< failure message
+    Missing username in TODO; it should look like "// TODO(my_username): Stuff."
+  >>>
+- lidar.cpplint build/include_what_you_use [4] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/generic_obstacle.hpp:25)
+  <<< failure message
+    Add #include <vector> for vector<>
+  >>>
+- lidar.cpplint legal/copyright [5] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/mission.hpp:0)
+  <<< failure message
+    No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"
+  >>>
+- lidar.cpplint build/header_guard [5] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/mission.hpp:1)
+  <<< failure message
+    #ifndef header guard has wrong style, please use: DATA_HEADER__MISSION_HPP_
+  >>>
+- lidar.cpplint build/header_guard [5] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/mission.hpp:29)
+  <<< failure message
+    #endif line should be "#endif  // DATA_HEADER__MISSION_HPP_"
+  >>>
+- lidar.cpplint build/include_order [4] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/mission.hpp:8)
+  <<< failure message
+    Found C system header after C++ system header. Should be: mission.h, c system, c++ system, other.
+  >>>
+- lidar.cpplint build/include_order [4] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/mission.hpp:9)
+  <<< failure message
+    Found C system header after C++ system header. Should be: mission.h, c system, c++ system, other.
+  >>>
+- lidar.cpplint legal/copyright [5] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/qos_utils.hpp:0)
+  <<< failure message
+    No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"
+  >>>
+- lidar.cpplint build/header_guard [5] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/qos_utils.hpp:3)
+  <<< failure message
+    #ifndef header guard has wrong style, please use: DATA_HEADER__QOS_UTILS_HPP_
+  >>>
+- lidar.cpplint build/header_guard [5] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/qos_utils.hpp:37)
+  <<< failure message
+    #endif line should be "#endif  // DATA_HEADER__QOS_UTILS_HPP_"
+  >>>
+- lidar.cpplint whitespace/comments [2] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/qos_utils.hpp:35)
+  <<< failure message
+    At least two spaces is best between code and comments
+  >>>
+- lidar.cpplint whitespace/comments [2] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/qos_utils.hpp:37)
+  <<< failure message
+    At least two spaces is best between code and comments
+  >>>
+- lidar.cpplint whitespace/ending_newline [5] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/qos_utils.hpp:37)
+  <<< failure message
+    Could not find a newline character at the end of the file.
+  >>>
+- lidar.cpplint legal/copyright [5] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:0)
+  <<< failure message
+    No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"
+  >>>
+- lidar.cpplint build/header_guard [5] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:12)
+  <<< failure message
+    #ifndef header guard has wrong style, please use: DATA_HEADER__UTILITY_FUNCTION_HPP_
+  >>>
+- lidar.cpplint build/header_guard [5] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:240)
+  <<< failure message
+    #endif line should be "#endif  // DATA_HEADER__UTILITY_FUNCTION_HPP_"
+  >>>
+- lidar.cpplint build/include_order [4] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:27)
+  <<< failure message
+    Found C system header after C++ system header. Should be: utility_function.h, c system, c++ system, other.
+  >>>
+- lidar.cpplint build/include_order [4] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:28)
+  <<< failure message
+    Found C system header after C++ system header. Should be: utility_function.h, c system, c++ system, other.
+  >>>
+- lidar.cpplint build/include_order [4] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:29)
+  <<< failure message
+    Found C system header after C++ system header. Should be: utility_function.h, c system, c++ system, other.
+  >>>
+- lidar.cpplint build/include_order [4] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:30)
+  <<< failure message
+    Found C system header after C++ system header. Should be: utility_function.h, c system, c++ system, other.
+  >>>
+- lidar.cpplint build/include_order [4] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:31)
+  <<< failure message
+    Found C system header after C++ system header. Should be: utility_function.h, c system, c++ system, other.
+  >>>
+- lidar.cpplint build/include_order [4] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:32)
+  <<< failure message
+    Found C system header after C++ system header. Should be: utility_function.h, c system, c++ system, other.
+  >>>
+- lidar.cpplint build/include_order [4] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:33)
+  <<< failure message
+    Found C system header after C++ system header. Should be: utility_function.h, c system, c++ system, other.
+  >>>
+- lidar.cpplint build/include_order [4] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:34)
+  <<< failure message
+    Found C system header after C++ system header. Should be: utility_function.h, c system, c++ system, other.
+  >>>
+- lidar.cpplint build/include_order [4] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:35)
+  <<< failure message
+    Found C system header after C++ system header. Should be: utility_function.h, c system, c++ system, other.
+  >>>
+- lidar.cpplint build/namespaces [5] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:37)
+  <<< failure message
+    Do not use namespace using-directives.  Use using-declarations instead.
+  >>>
+- lidar.cpplint whitespace/line_length [2] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:42)
+  <<< failure message
+    Lines should be <= 100 characters long
+  >>>
+- lidar.cpplint whitespace/line_length [2] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:54)
+  <<< failure message
+    Lines should be <= 100 characters long
+  >>>
+- lidar.cpplint whitespace/line_length [2] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:65)
+  <<< failure message
+    Lines should be <= 100 characters long
+  >>>
+- lidar.cpplint whitespace/comments [2] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:70)
+  <<< failure message
+    At least two spaces is best between code and comments
+  >>>
+- lidar.cpplint whitespace/line_length [2] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:76)
+  <<< failure message
+    Lines should be <= 100 characters long
+  >>>
+- lidar.cpplint whitespace/comments [2] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:83)
+  <<< failure message
+    At least two spaces is best between code and comments
+  >>>
+- lidar.cpplint whitespace/line_length [2] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:98)
+  <<< failure message
+    Lines should be <= 100 characters long
+  >>>
+- lidar.cpplint readability/casting [4] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:111)
+  <<< failure message
+    Using C-style cast.  Use static_cast<float>(...) instead
+  >>>
+- lidar.cpplint whitespace/line_length [2] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:122)
+  <<< failure message
+    Lines should be <= 100 characters long
+  >>>
+- lidar.cpplint whitespace/line_length [2] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:140)
+  <<< failure message
+    Lines should be <= 100 characters long
+  >>>
+- lidar.cpplint whitespace/line_length [2] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:153)
+  <<< failure message
+    Lines should be <= 100 characters long
+  >>>
+- lidar.cpplint whitespace/line_length [2] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:215)
+  <<< failure message
+    Lines should be <= 100 characters long
+  >>>
+- lidar.cpplint whitespace/line_length [2] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:223)
+  <<< failure message
+    Lines should be <= 100 characters long
+  >>>
+- lidar.cpplint build/include_what_you_use [4] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:217)
+  <<< failure message
+    Add #include <vector> for vector<>
+  >>>
+- lidar.cpplint build/include_what_you_use [4] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:224)
+  <<< failure message
+    Add #include <utility> for make_pair
+  >>>
+- lidar.cpplint build/include_what_you_use [4] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/data_header/utility_function.hpp:228)
+  <<< failure message
+    Add #include <algorithm> for sort
+  >>>
+- lidar.cpplint legal/copyright [5] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/mission_header/LiDAR_small_static.hpp:0)
+  <<< failure message
+    No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"
+  >>>
+- lidar.cpplint build/header_guard [5] (/home/wgr/behavior_ws/behavior-planner/src/lidar/include/mission_header/LiDAR_small_static.hpp:0)
+  <<< failure message
+    No #ifndef header guard found, suggested CPP variable is: MISSION_HEADER__LIDAR_SMALL_STATIC_HPP_
+  >>>
+- lidar.cpplint legal/copyright [5] (/home/wgr/behavior_ws/behavior-planner/src/lidar/src/LiDAR_small_static.cpp:0)
+  <<< failure message
+    No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"
+  >>>
+- lidar.cpplint whitespace/line_length [2] (/home/wgr/behavior_ws/behavior-planner/src/lidar/src/LiDAR_small_static.cpp:7)
+  <<< failure message
+    Lines should be <= 100 characters long
+  >>>
+- lidar.cpplint whitespace/line_length [2] (/home/wgr/behavior_ws/behavior-planner/src/lidar/src/LiDAR_small_static.cpp:8)
+  <<< failure message
+    Lines should be <= 100 characters long
+  >>>
+- lidar.cpplint whitespace/line_length [2] (/home/wgr/behavior_ws/behavior-planner/src/lidar/src/LiDAR_small_static.cpp:9)
+  <<< failure message
+    Lines should be <= 100 characters long
+  >>>
+- lidar.cpplint whitespace/line_length [2] (/home/wgr/behavior_ws/behavior-planner/src/lidar/src/LiDAR_small_static.cpp:10)
+  <<< failure message
+    Lines should be <= 100 characters long
+  >>>
+- lidar.cpplint whitespace/line_length [2] (/home/wgr/behavior_ws/behavior-planner/src/lidar/src/LiDAR_small_static.cpp:32)
+  <<< failure message
+    Lines should be <= 100 characters long
+  >>>
+- lidar.cpplint build/include_what_you_use [4] (/home/wgr/behavior_ws/behavior-planner/src/lidar/src/LiDAR_small_static.cpp:32)
+  <<< failure message
+    Add #include <vector> for vector<>
+  >>>
+- lidar.cpplint legal/copyright [5] (/home/wgr/behavior_ws/behavior-planner/src/lidar/src/main.cpp:0)
+  <<< failure message
+    No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"
+  >>>
+- lidar.cpplint build/include_what_you_use [4] (/home/wgr/behavior_ws/behavior-planner/src/lidar/src/main.cpp:7)
+  <<< failure message
+    Add #include <memory> for make_shared<>
+  >>>
+- lidar.cpplint legal/copyright [5] (/home/wgr/behavior_ws/behavior-planner/src/lidar/test/generic_obstacle_test.cpp:0)
+  <<< failure message
+    No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"
+  >>>
+build/lidar/test_results/lidar/uncrustify.xunit.xml: 8 tests, 0 errors, 7 failures, 0 skipped
+- lidar.uncrustify include/data_header/generic_obstacle.hpp
+  <<< failure message
+    Diff with 6 lines
+  >>>
+- lidar.uncrustify include/data_header/qos_utils.hpp
+  <<< failure message
+    Diff with 51 lines
+  >>>
+- lidar.uncrustify include/data_header/utility_function.hpp
+  <<< failure message
+    Diff with 400 lines
+  >>>
+- lidar.uncrustify include/mission_header/LiDAR_small_static.hpp
+  <<< failure message
+    Diff with 29 lines
+  >>>
+- lidar.uncrustify src/LiDAR_small_static.cpp
+  <<< failure message
+    Diff with 38 lines
+  >>>
+- lidar.uncrustify src/main.cpp
+  <<< failure message
+    Diff with 5 lines
+  >>>
+- lidar.uncrustify test/generic_obstacle_test.cpp
+  <<< failure message
+    Diff with 6 lines
+  >>>
+build/lidar/test_results/lidar/xmllint.xunit.xml: 1 test, 0 errors, 1 failure, 0 skipped
+- lidar.xmllint package.xml
+  <<< failure message
+    Diff with 295 lines
+  >>>
+
+Summary: 129 tests, 1 error, 80 failures, 0 skipped

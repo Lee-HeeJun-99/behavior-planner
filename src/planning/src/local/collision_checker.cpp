@@ -15,6 +15,14 @@ bool CollisionChecker::validate(CandidatePath & candidate, const BehaviorContext
     candidate.lateral_offset < -context.free_space.right_bound + config_.vehicle_half_width + config_.safety_margin) {
     candidate.invalid_reason = "static_boundary"; return false;
   }
+  for (double offset : candidate.lateral_profile) {
+    if (!std::isfinite(offset) ||
+      offset > context.free_space.left_bound - config_.vehicle_half_width - config_.safety_margin ||
+      offset < -context.free_space.right_bound + config_.vehicle_half_width + config_.safety_margin)
+    {
+      candidate.invalid_reason = "static_boundary"; return false;
+    }
+  }
   candidate.minimum_clearance = std::numeric_limits<double>::infinity();
   for (std::size_t i = 0; i < candidate.path.size(); ++i) {
     const auto & point = candidate.path[i];

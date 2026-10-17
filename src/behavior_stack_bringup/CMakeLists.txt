@@ -16,4 +16,12 @@ install(FILES ../planning/test/integration_planning.yaml
 install(FILES ../planning/test/ros2_local_planner_integration.py
   DESTINATION lib/${PROJECT_NAME} RENAME planning_test_scenarios.py)
 
+if(BUILD_TESTING)
+  find_package(ament_cmake_test REQUIRED)
+  find_package(Python3 REQUIRED COMPONENTS Interpreter)
+  ament_add_test(mock_visualization_smoke
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test/mock_visualization_smoke.py
+    TIMEOUT 180)
+endif()
+
 ament_package()

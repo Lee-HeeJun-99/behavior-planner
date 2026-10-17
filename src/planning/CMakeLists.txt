@@ -42,7 +42,9 @@ install(DIRECTORY config launch map DESTINATION share/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_cmake_gtest REQUIRED)
-  ament_add_gtest(planning_core_test test/planning_core_test.cpp)
+  ament_add_gtest(planning_core_test test/planning_core_test.cpp test/corner_transition_test.cpp)
+  target_compile_definitions(planning_core_test PRIVATE
+    PLANNING_TEST_DATA_DIR="${CMAKE_CURRENT_SOURCE_DIR}/test/data")
   target_link_libraries(planning_core_test planning_core)
   target_include_directories(planning_core_test PRIVATE include)
   set_tests_properties(planning_core_test PROPERTIES

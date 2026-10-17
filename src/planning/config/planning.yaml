@@ -1,13 +1,20 @@
 planning_node:
   ros__parameters:
     # map
-    global_path_file: map/map_final_0921/0-0.txt
+    global_path_file: map/map_final_0921/0-0_loop.txt
+    closed_loop: true
+    auto_entry_max_distance: 0.5
+    auto_entry_max_heading_deg: 15.0
+    auto_entry_stable_ms: 1000
+    auto_entry_confirm_count: 10
 
     # runtime
     planning_period_ms: 50
     global_path_smoothing_distance: 0.75
     close_obstacle_stop_distance: 3.0
     obstacle_stability_tolerance: 0.35
+    recovery_stability_lookahead: 6.0
+    recovery_stability_margin: 0.5
     recovery_hold_ms: 1000
     obstacle_stable_ms: 1000
     recovery_feasible_count: 10

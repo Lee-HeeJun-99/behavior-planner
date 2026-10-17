@@ -1,0 +1,105 @@
+{
+  "bag": "/home/wgr/behavior_ws/10_05_2",
+  "method": "Read-only SQLite/CDR -> actual lidar::obstacleClusters; no ROS node/DDS",
+  "frames": 1008,
+  "raw_lidar_duration_s": 101.612199424,
+  "input_points": {
+    "min": 29152.0,
+    "mean": 29181.26984126984,
+    "median": 29184.0,
+    "p95": 29184.0,
+    "max": 29184.0
+  },
+  "finite_points": {
+    "min": 13887.0,
+    "mean": 14834.742063492064,
+    "median": 14989.5,
+    "p95": 15502.25,
+    "max": 15668.0
+  },
+  "roi_points": {
+    "min": 76.0,
+    "mean": 161.1845238095238,
+    "median": 173.0,
+    "p95": 184.0,
+    "max": 356.0
+  },
+  "generic_clusters_per_frame": {
+    "min": 1.0,
+    "mean": 5.724206349206349,
+    "median": 6.0,
+    "p95": 8.0,
+    "max": 12.0
+  },
+  "generic_cluster_observations": 5770,
+  "frames_with_generic_detection": 1008,
+  "previous_source_gate_clusters_per_frame": {
+    "min": 0.0,
+    "mean": 3.7192460317460316,
+    "median": 4.0,
+    "p95": 6.0,
+    "max": 10.0
+  },
+  "previous_source_gate_observations": 3749,
+  "newly_accepted_observations": 2021,
+  "frames_with_additional_clusters": 1008,
+  "processing_ms": {
+    "min": 2.22592,
+    "mean": 2.4090562698412703,
+    "median": 2.41426,
+    "p95": 2.4993365,
+    "max": 2.84577
+  },
+  "cluster_point_count": {
+    "min": 3.0,
+    "mean": 26.338821490467936,
+    "median": 19.0,
+    "p95": 70.0,
+    "max": 183.0
+  },
+  "cluster_min_z": {
+    "min": -0.3499920666,
+    "mean": 0.017337494188145584,
+    "median": -0.3203545809,
+    "p95": 1.760703087,
+    "max": 1.795923352
+  },
+  "cluster_max_z": {
+    "min": -0.3448427618,
+    "mean": 0.08065710402348353,
+    "median": -0.2369669825,
+    "p95": 1.763506174,
+    "max": 1.799823165
+  },
+  "cluster_height": {
+    "min": 0.000255972147,
+    "mean": 0.06331960985844275,
+    "median": 0.03778445721,
+    "p95": 0.14322105796,
+    "max": 2.008100748
+  },
+  "clusters_entirely_below_sensor_z_zero": 4720,
+  "clusters_max_z_at_most_minus_0_2": 3915,
+  "new_clusters_max_z_at_most_minus_0_2": 924,
+  "clusters_at_minimum_three_points": 186,
+  "centers_finite": true,
+  "minimum_points_preserved": true,
+  "all_z_bounds_inside_roi": true,
+  "recorded_center_messages": 836,
+  "recorded_center_messages_nonempty": 2,
+  "recorded_center_count": {
+    "min": 0.0,
+    "mean": 0.0023923444976076554,
+    "median": 0.0,
+    "p95": 0.0,
+    "max": 1.0
+  },
+  "recorded_sentinels_valid": true,
+  "missing_for_real_planning": [
+    "/Planning/behavior",
+    "/Local/utm",
+    "/Local/heading",
+    "/Convert/small_object_UTM"
+  ],
+  "interpretation": "Observation counts are repeated detections, not distinct objects. Low z/height can be ground residual; no semantic ground truth in this bag. Previous source gate replay is not the recorded detector output."
+}

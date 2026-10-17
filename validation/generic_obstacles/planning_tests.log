@@ -1,0 +1,111 @@
+Running main() from /opt/ros/foxy/src/gtest_vendor/src/gtest_main.cc
+[==========] Running 31 tests from 7 test cases.
+[----------] Global test environment set-up.
+[----------] 1 test from BehaviorPlanner
+[ RUN      ] BehaviorPlanner.ConfirmsAndClearsAvoidance
+[       OK ] BehaviorPlanner.ConfirmsAndClearsAvoidance (1 ms)
+[----------] 1 test from BehaviorPlanner (1 ms total)
+
+[----------] 12 tests from SpeedContext
+[ RUN      ] SpeedContext.StartsAtDefaultSpeed
+[       OK ] SpeedContext.StartsAtDefaultSpeed (0 ms)
+[ RUN      ] SpeedContext.ConfirmsTwentySign
+[       OK ] SpeedContext.ConfirmsTwentySign (0 ms)
+[ RUN      ] SpeedContext.IgnoresSingleFalseFiftyDetection
+[       OK ] SpeedContext.IgnoresSingleFalseFiftyDetection (0 ms)
+[ RUN      ] SpeedContext.InterruptedDetectionsDoNotConfirm
+[       OK ] SpeedContext.InterruptedDetectionsDoNotConfirm (0 ms)
+[ RUN      ] SpeedContext.DifferentSupportedSignResetsCandidate
+[       OK ] SpeedContext.DifferentSupportedSignResetsCandidate (0 ms)
+[ RUN      ] SpeedContext.ActivatesConfirmedFiftyLimit
+[       OK ] SpeedContext.ActivatesConfirmedFiftyLimit (0 ms)
+[ RUN      ] SpeedContext.KeepsActiveLimitWhenDetectionDisappears
+[       OK ] SpeedContext.KeepsActiveLimitWhenDetectionDisappears (0 ms)
+[ RUN      ] SpeedContext.RejectsUnsupportedDetection
+[       OK ] SpeedContext.RejectsUnsupportedDetection (0 ms)
+[ RUN      ] SpeedContext.InvalidDefaultFallsBackConsistently
+[       OK ] SpeedContext.InvalidDefaultFallsBackConsistently (0 ms)
+[ RUN      ] SpeedContext.AvoidancePreservesActiveLimit
+[       OK ] SpeedContext.AvoidancePreservesActiveLimit (0 ms)
+[ RUN      ] SpeedContext.EmergencyStopPreservesLimitAndResumesIt
+[       OK ] SpeedContext.EmergencyStopPreservesLimitAndResumesIt (0 ms)
+[ RUN      ] SpeedContext.OneKphDefaultAndConfirmedTwentyRaisesToTwoKph
+[       OK ] SpeedContext.OneKphDefaultAndConfirmedTwentyRaisesToTwoKph (0 ms)
+[----------] 12 tests from SpeedContext (0 ms total)
+
+[----------] 5 tests from LocalPlanner
+[ RUN      ] LocalPlanner.SelectsCollisionFreeOffsetAndRecovers
+[       OK ] LocalPlanner.SelectsCollisionFreeOffsetAndRecovers (0 ms)
+[ RUN      ] LocalPlanner.RejectsCandidatesOutsideBoundary
+[       OK ] LocalPlanner.RejectsCandidatesOutsideBoundary (0 ms)
+[ RUN      ] LocalPlanner.RejectsAllCandidatesWhenCorridorIsBlocked
+[       OK ] LocalPlanner.RejectsAllCandidatesWhenCorridorIsBlocked (0 ms)
+[ RUN      ] LocalPlanner.ReportsProductionGeometryForCentralObstacle
+offset=-1.5 valid=1 reason= clearance=0.3 cost=15.6712
+offset=-1.2 valid=0 reason=obstacle_collision clearance=0 cost=inf
+offset=-0.9 valid=0 reason=obstacle_collision clearance=0 cost=inf
+offset=-0.6 valid=0 reason=obstacle_collision clearance=0 cost=inf
+offset=-0.3 valid=0 reason=obstacle_collision clearance=0 cost=inf
+offset=0 valid=0 reason=obstacle_collision clearance=0 cost=inf
+offset=0.3 valid=0 reason=obstacle_collision clearance=0 cost=inf
+offset=0.6 valid=0 reason=obstacle_collision clearance=0 cost=inf
+offset=0.9 valid=0 reason=obstacle_collision clearance=0 cost=inf
+offset=1.2 valid=0 reason=obstacle_collision clearance=0 cost=inf
+offset=1.5 valid=1 reason= clearance=0.3 cost=15.6712
+[       OK ] LocalPlanner.ReportsProductionGeometryForCentralObstacle (1 ms)
+[ RUN      ] LocalPlanner.ReportsSurveyedMapGeometryWhenRequested
+offset=-1.5 valid=0 reason=curvature clearance=0.192325 cost=inf
+offset=-1.2 valid=0 reason=obstacle_collision clearance=0 cost=inf
+offset=-0.9 valid=0 reason=obstacle_collision clearance=0 cost=inf
+offset=-0.6 valid=0 reason=obstacle_collision clearance=0 cost=inf
+offset=-0.3 valid=0 reason=obstacle_collision clearance=0 cost=inf
+offset=0 valid=0 reason=obstacle_collision clearance=0 cost=inf
+offset=0.3 valid=0 reason=obstacle_collision clearance=0 cost=inf
+offset=0.6 valid=0 reason=obstacle_collision clearance=0 cost=inf
+offset=0.9 valid=0 reason=obstacle_collision clearance=0 cost=inf
+offset=1.2 valid=0 reason=obstacle_collision clearance=0 cost=inf
+offset=1.5 valid=1 reason= clearance=0.299998 cost=15.6898
+[       OK ] LocalPlanner.ReportsSurveyedMapGeometryWhenRequested (5 ms)
+[----------] 5 tests from LocalPlanner (7 ms total)
+
+[----------] 5 tests from DistanceAvoidance
+[ RUN      ] DistanceAvoidance.ApproachesBeforeActivationAndHoldsUntilRearClearance
+[       OK ] DistanceAvoidance.ApproachesBeforeActivationAndHoldsUntilRearClearance (0 ms)
+[ RUN      ] DistanceAvoidance.DoesNotReturnBeforeFarObstacle
+[       OK ] DistanceAvoidance.DoesNotReturnBeforeFarObstacle (1 ms)
+[ RUN      ] DistanceAvoidance.CloseObstacleStillStopsWhenNoCollisionFreePathExists
+[       OK ] DistanceAvoidance.CloseObstacleStillStopsWhenNoCollisionFreePathExists (0 ms)
+[ RUN      ] DistanceAvoidance.RechecksCommittedPathForNewCollision
+[       OK ] DistanceAvoidance.RechecksCommittedPathForNewCollision (0 ms)
+[ RUN      ] DistanceAvoidance.ContinuousActualMapApproachPassAndReturn
+[       OK ] DistanceAvoidance.ContinuousActualMapApproachPassAndReturn (14 ms)
+[----------] 5 tests from DistanceAvoidance (15 ms total)
+
+[----------] 1 test from GlobalPathGeometry
+[ RUN      ] GlobalPathGeometry.SmoothsSurveyNoiseAndRecomputesStaleYaw
+[       OK ] GlobalPathGeometry.SmoothsSurveyNoiseAndRecomputesStaleYaw (2 ms)
+[----------] 1 test from GlobalPathGeometry (2 ms total)
+
+[----------] 4 tests from RecoveryGuard
+[ RUN      ] RecoveryGuard.CloseObstacleStopsThenRequiresStoppedStableFeasibleConfirmation
+[       OK ] RecoveryGuard.CloseObstacleStopsThenRequiresStoppedStableFeasibleConfirmation (0 ms)
+[ RUN      ] RecoveryGuard.ChangingObstacleSetsAndStaleInputCannotReleaseStop
+[       OK ] RecoveryGuard.ChangingObstacleSetsAndStaleInputCannotReleaseStop (0 ms)
+[ RUN      ] RecoveryGuard.AlternatingFeasiblePathsNeverReachRestartThreshold
+[       OK ] RecoveryGuard.AlternatingFeasiblePathsNeverReachRestartThreshold (0 ms)
+[ RUN      ] RecoveryGuard.ExplicitEmergencyAndCollisionRemainStopped
+[       OK ] RecoveryGuard.ExplicitEmergencyAndCollisionRemainStopped (0 ms)
+[----------] 4 tests from RecoveryGuard (0 ms total)
+
+[----------] 3 tests from GenericObstacles
+[ RUN      ] GenericObstacles.OffPathRemainInContextWithoutAvoidance
+[       OK ] GenericObstacles.OffPathRemainInContextWithoutAvoidance (0 ms)
+[ RUN      ] GenericObstacles.SideObstacleInvalidatesCandidatesAndSelectedPathIsSafe
+[       OK ] GenericObstacles.SideObstacleInvalidatesCandidatesAndSelectedPathIsSafe (1 ms)
+[ RUN      ] GenericObstacles.SevenScenarioRegression
+[       OK ] GenericObstacles.SevenScenarioRegression (2 ms)
+[----------] 3 tests from GenericObstacles (3 ms total)
+
+[----------] Global test environment tear-down
+[==========] 31 tests from 7 test cases ran. (28 ms total)
+[  PASSED  ] 31 tests.

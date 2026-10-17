@@ -17,7 +17,7 @@ def generate_launch_description():
         DeclareLaunchArgument('speed_sign_weights', default_value=''),
         DeclareLaunchArgument('speed_sign_roi_enabled', default_value='true'),
         DeclareLaunchArgument('speed_sign_publish_debug', default_value='true'),
-        Node(package='lidar', executable='start', name='lidar_small_static',
+        Node(package='lidar', executable='start', name='lidar_obstacle_detector',
              condition=IfCondition(LaunchConfiguration('enable_lidar_perception'))),
         Node(package='kroad_planning_utm_pkg', executable='relative_2_UTM',
              name='relative_2_utm',

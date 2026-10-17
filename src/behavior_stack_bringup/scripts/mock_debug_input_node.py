@@ -14,7 +14,7 @@ from planning_test_scenarios import load_path, offset_obstacles
 
 
 SCENARIOS = ('cruise', 'avoid_center', 'avoid_left', 'avoid_right',
-             'blocked', 'emergency', 'speed_20', 'speed_50')
+             'off_path_obstacles', 'avoid_with_side_obstacle', 'blocked', 'emergency', 'speed_20', 'speed_50')
 
 
 class MockDebugInput(Node):
@@ -97,7 +97,9 @@ class MockDebugInput(Node):
             self.get_logger().info(f'Mock scenario: {effective}')
             self.last_scenario = scenario
         offsets = {'avoid_center': [0.0], 'avoid_left': [0.75],
-                   'avoid_right': [-0.75], 'blocked': self.blocked_offsets}.get(effective, [])
+                   'avoid_right': [-0.75], 'off_path_obstacles': [-3.0, -2.5, 2.5, 3.0],
+                   'avoid_with_side_obstacle': [0.0, -1.8],
+                   'blocked': self.blocked_offsets}.get(effective, [])
         obstacles = offset_obstacles(self.path, self.obstacle_index, offsets)
         x, y, yaw = self.vehicle
         relative = []

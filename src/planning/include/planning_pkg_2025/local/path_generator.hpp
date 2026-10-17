@@ -24,6 +24,10 @@ public:
     const Path & reference, std::size_t start_index, bool avoidance, double start_lateral_offset,
     double return_start_distance = -1.0) const;
 
+  // Multi-stage lateral profiles for corners where a constant offset is infeasible.
+  std::vector<CandidatePath> generateCornerTransitions(
+    const Path & reference, std::size_t start_index, double start_lateral_offset) const;
+
 private:
   PathGeneratorConfig config_;
 };

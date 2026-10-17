@@ -1,6 +1,7 @@
 #include "planning_pkg_2025/local/local_planner.hpp"
 
 #include <cmath>
+#include <iterator>
 #include <utility>
 
 namespace planning
@@ -30,6 +31,10 @@ LocalPlan LocalPlanner::plan(Behavior behavior, const BehaviorContext & context)
       CandidatePath retained;
       retained.lateral_offset = committed_offset_;
       retained.path.assign(committed_avoidance_path_.begin() + nearest, committed_avoidance_path_.end());
+      if (committed_lateral_profile_.size() == committed_avoidance_path_.size()) {
+        retained.lateral_profile.assign(committed_lateral_profile_.begin() + nearest,
+          committed_lateral_profile_.end());
+      }
       if (checker_.validate(retained, context)) {
         evaluator_.evaluate(retained);
         result.path = retained.path;
@@ -96,6 +101,18 @@ LocalPlan LocalPlanner::plan(Behavior behavior, const BehaviorContext & context)
     evaluator_.evaluate(candidate);
     if (!best || candidate.cost < best->cost) {best = &candidate;}
   }
+  if (!best && avoidance) {
+    auto transitions = generator_.generateCornerTransitions(
+      reference, context.path.nearest_index, start_lateral_offset);
+    // Appending may invalidate pointers into candidates; select only after insertion.
+    result.candidates.insert(result.candidates.end(),
+      std::make_move_iterator(transitions.begin()), std::make_move_iterator(transitions.end()));
+    for (auto & candidate : result.candidates) {
+      if (!checker_.validate(candidate, context)) {continue;}
+      evaluator_.evaluate(candidate);
+      if (!best || candidate.cost < best->cost) {best = &candidate;}
+    }
+  }
   if (best) {
     result.path = best->path;
     result.selected_offset = best->lateral_offset;
@@ -104,6 +121,7 @@ LocalPlan LocalPlanner::plan(Behavior behavior, const BehaviorContext & context)
       committed_is_avoidance_ = avoidance;
       committed_avoidance_path_ = result.path;
       committed_offset_ = result.selected_offset;
+      committed_lateral_profile_ = best->lateral_profile;
     }
   }
   return result;

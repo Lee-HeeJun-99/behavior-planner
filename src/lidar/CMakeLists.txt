@@ -50,6 +50,10 @@ install(TARGETS
 )
 
 if(BUILD_TESTING)
+  find_package(ament_cmake_gtest REQUIRED)
+  ament_add_gtest(generic_obstacle_test test/generic_obstacle_test.cpp)
+  ament_target_dependencies(generic_obstacle_test ${dependencies})
+  target_link_libraries(generic_obstacle_test ${PCL_LIBRARIES})
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
   # uncomment the line when a copyright and license is not present in all source files

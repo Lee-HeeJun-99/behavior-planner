@@ -47,6 +47,9 @@ struct SpeedContext
   bool detection_valid{false};
 };
 
+// Generic static detection, independent of semantic class. All relevant detections
+// are available to local collision checks; behavior decides global-path relevance.
+// TODO: carry measured bbox/radius from perception (current wire interface is XY only).
 struct ObstacleContext
 {
   Point2d center;
@@ -100,6 +103,7 @@ struct CandidatePath
 {
   Path path;
   double lateral_offset{0.0};
+  std::vector<double> lateral_profile;
   double minimum_clearance{std::numeric_limits<double>::infinity()};
   double cost{std::numeric_limits<double>::infinity()};
   bool valid{false};

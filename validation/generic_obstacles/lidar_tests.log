@@ -1,0 +1,20 @@
+Running main() from /opt/ros/foxy/src/gtest_vendor/src/gtest_main.cc
+[==========] Running 3 tests from 1 test case.
+[----------] Global test environment set-up.
+[----------] 3 tests from GenericObstacle
+[ RUN      ] GenericObstacle.AcceptsValidClustersAcrossSizes
+[       OK ] GenericObstacle.AcceptsValidClustersAcrossSizes (22 ms)
+[ RUN      ] GenericObstacle.RejectsNoiseOutsideRoiAndGroundCrop
+[pcl::KdTreeFLANN::setInputCloud] Cannot create a KDTree with an empty input cloud!
+[pcl::KdTreeFLANN::setInputCloud] Cannot create a KDTree with an empty input cloud!
+[pcl::KdTreeFLANN::setInputCloud] Cannot create a KDTree with an empty input cloud!
+[pcl::KdTreeFLANN::setInputCloud] Cannot create a KDTree with an empty input cloud!
+[       OK ] GenericObstacle.RejectsNoiseOutsideRoiAndGroundCrop (0 ms)
+[ RUN      ] GenericObstacle.RejectsNonFiniteEvenWhenMarkedDense
+[pcl::KdTreeFLANN::setInputCloud] Cannot create a KDTree with an empty input cloud!
+[       OK ] GenericObstacle.RejectsNonFiniteEvenWhenMarkedDense (0 ms)
+[----------] 3 tests from GenericObstacle (22 ms total)
+
+[----------] Global test environment tear-down
+[==========] 3 tests from 1 test case ran. (22 ms total)
+[  PASSED  ] 3 tests.

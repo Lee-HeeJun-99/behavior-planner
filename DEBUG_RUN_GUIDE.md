@@ -362,3 +362,79 @@ Planning GTest 17개, Perception helper 6개, Localization split test 1개는 PA
 Mock camera는 syntax/launch 검사를 통과했으나 사용자 이미지와 PT가 없어 실제 정적 이미지
 발행 및 YOLO inference는 실행하지 않았다. CAN/Control/vehicle interface node는 mock launch와
 smoke에서 실행하지 않았고 `/Control/vehicle_cmd`와 `/erp42pro/cmd_debug` 부재도 확인했다.
+
+## Generic LiDAR obstacles: perception / planning boundary
+
+Perception responsibility: **Detect all relevant non-ground obstacles in the sensor ROI.**
+Planning responsibility: **Determine whether detected obstacles affect the current global path or candidate local paths.**
+LiDAR가 global path 위의 obstacle만 검출하는 구조가 아니다. 물체 종류를 인식해서
+회피하는 대신, 주변의 유효 cluster를 전달하고 Planning에서 주행 가능 공간을 판단한다.
+
+실제 pipeline:
+`/velodyne_points` → finite XYZ 제거 → 0.1 m voxel → ROI crop → Euclidean clustering
+→ 모든 유효 cluster centroid → `/LiDAR/object_cen` → `relative_2_UTM`
+→ `/Convert/small_object_UTM` → ContextManager → BehaviorPlanner / LocalPlanner.
+
+기존 category gate는 다음 둘 중 하나를 요구했다:
+- `small_object`: `0.5 < width < 1.5`, `max_z < 0.3`
+- `passenger_car`: `0.3 <= width <= 5.5`, `length <= 5.5`, `max_z <= 1.8`,
+  그리고 `width >= 0.8 || length >= 0.8`
+
+이 gate를 제거했다. 현재 acceptance는 finite XYZ, 기존 ROI
+x=[0,20], y=[-3.5,3.5], z=[-0.35,1.8] m, voxel 후 연결점 최소 3개,
+Euclidean tolerance 0.4 m이다. 별도 치수 기반 noise gate는 없다. 겹치는 점은 voxel로
+합쳐지고 sparse cluster는 최소 점 수로 제거된다. 기존 `max_ok=false`이므로
+`20000` 인자는 실제 최대 점 수 제한이 아니며, 이번에도 별도 상한을 활성화하지 않았다.
+Ground plane segmentation은 없고 기존 z crop만 유지한다. 경사/센서 자세 때문에
+ground가 crop 내부에 들어오면 검출될 수 있다.
+
+`/LiDAR/object_cen`의 Float64MultiArray `[x1,y1,...,-1000]`, 빈 검출 `[-1000]`,
+best-effort QoS 및 convertcs 연결은 그대로다. UTM topic의 `small_object` 이름은
+호환성 이름이며 semantic class가 아니다. executable `start` 및 소스 파일명
+`LiDAR_small_static.cpp/.hpp`는 유지했다. 내부 class는 `LidarObstacleDetector`,
+node는 `lidar_obstacle_detector`, debug cloud는 `/Cluster/obstacles`, 중심점 marker는
+`/Marker/obstacles`이다. 이전 small_static debug topic은 새 이름으로 전환했다.
+
+ContextManager는 차량으로부터 20 m 이내의 장애물을 보존한다. 여기서 path 기준으로
+장애물을 선별하지 않는다. BehaviorPlanner의 기존 pathBlocked는 nearest global index,
+전방 검사, 10 m lookahead 및 corridor half-width 0.8 m + obstacle radius를 사용한다.
+기존 AVOID 중 통과 margin/hysteresis도 유지한다. 경로 밖 장애물은 context에 존재해도
+CRUISE→AVOID 원인이 되지 않는다. LocalPlanner는 모든 relevant obstacle을 그대로
+CollisionChecker에 전달하며 각 candidate 전체와 차량 footprint 충돌을 검사한다.
+State machine, lateral candidate 정책, collision footprint, cost, control은 변경하지 않았다.
+
+RViz 예시:
+```bash
+ros2 launch behavior_stack_bringup mock_visualization.launch.py scenario:=off_path_obstacles
+ros2 launch behavior_stack_bringup mock_visualization.launch.py scenario:=avoid_with_side_obstacle
+```
+첫 시나리오는 좌우 2.5/3 m의 장애물 4개, CRUISE, 중앙 selected path를 보여준다.
+둘째는 중앙 장애물과 오른쪽(-1.8 m) 장애물, AVOID, invalid candidate 및 안전한
+selected path를 보여준다. 선택 offset의 특정 값은 요구하지 않는다.
+RViz config는 raw `/velodyne_points`, `/Cluster/obstacles`, relative / UTM centers,
+global path, candidate paths, selected path, behavior를 제공한다. Mock은 중심점 입력을
+직접 생성하므로 raw/cluster cloud는 실제 LiDAR 실행 시 확인한다. Candidate label의
+`invalid obstacle_collision` 및 selected 표시로 경로와 장애물의 관계를 확인한다.
+
+검증:
+```bash
+colcon test --packages-select lidar planning_pkg_2025 behavior_stack_bringup
+colcon test-result --verbose
+python3 behavior-planner/src/behavior_stack_bringup/test/mock_visualization_smoke.py
+```
+bringup의 colcon test에도 실제 PlanningNode + mock + visualizer smoke가 등록되어 있다.
+LiDAR synthetic 테스트는 실제 노드와 동일한 필터 pipeline을 사용하며 드럼/사람 폭/
+차량/작은 박스 크기의 cluster 수용, sparse noise/ROI 밖/ground crop 밖/non-finite
+제거를 확인한다. 사람/차량이라는 이름은 테스트 크기를 설명하며 acceptance class가 아니다.
+
+한계와 후속 TODO:
+- 실제 도로 폭/candidate 영역보다 ROI가 충분히 넓은지 실차 확인 필요. 이번에 ROI 튜닝 없음.
+- 최소 3 voxel 점, tolerance 0.4 m에서 실제 소물체 재현율/노이즈/붙은 cluster 확인 필요.
+- 지면 높이, 경사, 센서 장착 자세 및 ground 유입 검증 필요.
+- center-only interface이며 현재 기본 obstacle_radius=0.35 m를 모든 물체에 동일 적용한다.
+  큰 차량/팔레트 등의 실제 점유 공간을 충분히 표현하지 못한다. bbox min/max는 이미
+  계산되므로 후속 `(x,y,radius)` 또는 center/width/length/radius interface 및
+  footprint-aware collision 확장에 활용 가능하다. 이번에는 message를 변경하지 않는다.
+- 보행자/동적 물체의 미래 경로 prediction 없음. 현재 검출은 static obstacle point/radius로
+  취급하며 path 밖 사람이 움직여 들어올 가능성은 모델링하지 않는다.
+  실제 사람 주변 실차 주행은 별도 dynamic safety policy가 필요하다.

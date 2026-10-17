@@ -1,0 +1,29 @@
+Starting >>> control
+Starting >>> erp42pro_interface
+Starting >>> kroad_planning_utm_pkg
+Starting >>> lidar
+Starting >>> local_pkg1
+Starting >>> nmea_navsat_driver
+Starting >>> planning_pkg_2025
+Starting >>> traffic_sign_perception
+Starting >>> wit_ros2_imu
+Starting >>> erp_ros2_bridge
+Finished <<< control [1.28s]
+Finished <<< lidar [1.28s]
+Finished <<< kroad_planning_utm_pkg [1.29s]
+Finished <<< planning_pkg_2025 [1.28s]
+Finished <<< local_pkg1 [1.84s]
+Finished <<< erp42pro_interface [1.86s]
+Finished <<< nmea_navsat_driver [1.84s]
+Finished <<< traffic_sign_perception [1.84s]
+Finished <<< erp_ros2_bridge [1.83s]
+Finished <<< wit_ros2_imu [1.84s]
+Starting >>> behavior_stack_bringup
+[Processing: behavior_stack_bringup]
+[Processing: behavior_stack_bringup]
+[Processing: behavior_stack_bringup]
+[Processing: behavior_stack_bringup]
+[Processing: behavior_stack_bringup]
+Finished <<< behavior_stack_bringup [2min 30s]
+
+Summary: 11 packages finished [2min 32s]

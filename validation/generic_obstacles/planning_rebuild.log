@@ -1,0 +1,20 @@
+Scanning dependencies of target planning_core
+[ 12%] Built target gtest
+[ 18%] Building CXX object CMakeFiles/planning_core.dir/src/map/global_path.cpp.o
+[ 31%] Built target gtest_main
+[ 37%] Building CXX object CMakeFiles/planning_core.dir/src/context/context_manager.cpp.o
+[ 43%] Building CXX object CMakeFiles/planning_core.dir/src/behavior/behavior_planner.cpp.o
+[ 50%] Building CXX object CMakeFiles/planning_core.dir/src/local/path_generator.cpp.o
+[ 56%] Building CXX object CMakeFiles/planning_core.dir/src/local/collision_checker.cpp.o
+[ 62%] Building CXX object CMakeFiles/planning_core.dir/src/local/cost_evaluator.cpp.o
+[ 68%] Building CXX object CMakeFiles/planning_core.dir/src/local/local_planner.cpp.o
+[ 75%] Linking CXX static library libplanning_core.a
+[ 75%] Built target planning_core
+Scanning dependencies of target planning_core_test
+[ 81%] Building CXX object CMakeFiles/planning_core_test.dir/test/planning_core_test.cpp.o
+Scanning dependencies of target planning_node
+[ 87%] Building CXX object CMakeFiles/planning_node.dir/src/nodes/planning_node.cpp.o
+[ 93%] Linking CXX executable planning_core_test
+[ 93%] Built target planning_core_test
+[100%] Linking CXX executable planning_node
+[100%] Built target planning_node

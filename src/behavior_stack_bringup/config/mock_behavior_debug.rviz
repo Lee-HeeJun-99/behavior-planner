@@ -10,6 +10,22 @@ Visualization Manager:
       Cell Size: 1
       Plane: XY
       Value: true
+    - Class: rviz_default_plugins/PointCloud2
+      Name: Raw LiDAR
+      Enabled: true
+      Size (m): 0.03
+      Topic:
+        Value: /velodyne_points
+        Reliability Policy: Best Effort
+      Value: true
+    - Class: rviz_default_plugins/PointCloud2
+      Name: Generic Clustered Obstacles
+      Enabled: true
+      Size (m): 0.06
+      Topic:
+        Value: /Cluster/obstacles
+        Reliability Policy: Best Effort
+      Value: true
     - Class: rviz_default_plugins/Path
       Name: Global Path
       Enabled: true

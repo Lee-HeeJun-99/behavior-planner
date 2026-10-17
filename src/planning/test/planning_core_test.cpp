@@ -1,4 +1,5 @@
 #include <algorithm>
+#include "planning_pkg_2025/behavior/auto_entry_guard.hpp"
 #include "planning_pkg_2025/behavior/recovery_guard.hpp"
 #include <chrono>
 #include <cmath>
@@ -131,7 +132,7 @@ TEST(LocalPlanner, RejectsAllCandidatesWhenCorridorIsBlocked) {
   PathGeneratorConfig gen; gen.lateral_offsets={-1.5,-1.2,-0.9,-0.6,-0.3,0,0.3,0.6,0.9,1.2,1.5};
   auto result=LocalPlanner(PathGenerator(gen),CollisionChecker{},CostEvaluator{}).plan(Behavior::AVOID,c);
   EXPECT_FALSE(result.feasible);
-  EXPECT_EQ(result.candidates.size(),11u);
+  EXPECT_GE(result.candidates.size(),11u);
   const auto valid_count = std::count_if(
     result.candidates.begin(), result.candidates.end(),
     [](const CandidatePath & candidate) {return candidate.valid;});
@@ -296,4 +297,230 @@ TEST(RecoveryGuard, ExplicitEmergencyAndCollisionRemainStopped) {
  for(int i=100;i<120;++i)EXPECT_EQ(guard.apply(c,Behavior::AVOID,false,true,true,now+std::chrono::milliseconds(i*50)),Behavior::EMERGENCY_STOP);
 }
 
+}
+
+namespace planning {
+TEST(GenericObstacles, OffPathRemainInContextWithoutAvoidance) {
+  auto path = straightPath();
+  ContextManager manager(speedConfig());
+  manager.updateVehicle({0, 0}, 0);
+  manager.updateObstacles({{8, -3}, {8, -2.5}, {8, 2.5}, {8, 3}, {30, 0}});
+  auto context = manager.build(path, 0);
+  ASSERT_EQ(context.obstacles.size(), 4u);
+  BehaviorPlanner behavior;
+  for (int i = 0; i < 10; ++i) {
+    EXPECT_EQ(behavior.update(context, std::chrono::steady_clock::now()), Behavior::CRUISE);
+  }
+  EXPECT_DOUBLE_EQ(calculateTargetVelocity(Behavior::CRUISE, context), 2.5);
+  LocalPlanner local;
+  auto plan = local.plan(Behavior::CRUISE, context);
+  EXPECT_TRUE(plan.feasible);
+  EXPECT_DOUBLE_EQ(plan.selected_offset, 0.0);
+}
+
+TEST(GenericObstacles, SideObstacleInvalidatesCandidatesAndSelectedPathIsSafe) {
+  auto path = straightPath();
+  auto config = speedConfig();
+  config.road_left_bound = config.road_right_bound = 2.5;
+  ContextManager manager(config);
+  manager.updateVehicle({0, 0}, 0);
+  manager.updateObstacles({{8, 0}, {8, -1.8}});
+  auto context = manager.build(path, 0);
+  BehaviorPlanner behavior;
+  for (int i = 0; i < 3; ++i) {
+    behavior.update(context, std::chrono::steady_clock::now());
+  }
+  ASSERT_EQ(behavior.current(), Behavior::AVOID);
+  PathGeneratorConfig generator_config;
+  generator_config.lateral_offsets = {-1.5, -1.2, -0.9, 0.0, 0.9, 1.2, 1.5};
+  LocalPlanner local{PathGenerator(generator_config), CollisionChecker{}, CostEvaluator{}};
+  auto plan = local.plan(behavior.current(), context);
+  ASSERT_TRUE(plan.feasible);
+  bool side_collision = false;
+  auto side_only = context;
+  side_only.obstacles.erase(side_only.obstacles.begin());
+  CollisionChecker checker;
+  for (auto candidate : plan.candidates) {
+    if (candidate.lateral_offset < 0 && !checker.validate(candidate, side_only) &&
+      candidate.invalid_reason == "obstacle_collision") {side_collision = true;}
+  }
+  EXPECT_TRUE(side_collision);
+  CandidatePath selected;
+  selected.path = plan.path;
+  selected.lateral_offset = plan.selected_offset;
+  EXPECT_TRUE(checker.validate(selected, context));
+}
+}  // namespace planning
+
+namespace planning {
+TEST(GenericObstacles, SevenScenarioRegression) {
+  const std::vector<std::pair<std::string, std::vector<Point2d>>> scenarios = {
+    {"cruise", {}}, {"avoid_center", {{8, 0}}},
+    {"avoid_left", {{8, 0.75}}}, {"avoid_right", {{8, -0.75}}},
+    {"blocked", {{8, -2.5}, {8, -2}, {8, -1.5}, {8, -1}, {8, -0.5},
+      {8, 0}, {8, 0.5}, {8, 1}, {8, 1.5}, {8, 2}, {8, 2.5}}},
+    {"off_path_obstacles", {{8, -3}, {8, -2.5}, {8, 2.5}, {8, 3}}},
+    {"avoid_with_side_obstacle", {{8, 0}, {8, -1.8}}}
+  };
+  auto path = straightPath();
+  for (const auto & scenario : scenarios) {
+    SCOPED_TRACE(scenario.first);
+    auto config = speedConfig();
+    config.road_left_bound = config.road_right_bound = 2.5;
+    ContextManager manager(config);
+    manager.updateVehicle({0, 0}, 0);
+    manager.updateObstacles(scenario.second);
+    auto context = manager.build(path, 0);
+    ASSERT_EQ(context.obstacles.size(), scenario.second.size());
+    BehaviorPlanner behavior;
+    for (int i = 0; i < 3; ++i) {
+      behavior.update(context, std::chrono::steady_clock::now());
+    }
+    const bool cruise = scenario.first == "cruise" || scenario.first == "off_path_obstacles";
+    EXPECT_EQ(behavior.current(), cruise ? Behavior::CRUISE : Behavior::AVOID);
+    PathGeneratorConfig generator;
+    generator.lateral_offsets = {-1.5, -1.2, -0.9, -0.6, -0.3, 0, 0.3, 0.6, 0.9, 1.2, 1.5};
+    LocalPlanner local{PathGenerator(generator), CollisionChecker{}, CostEvaluator{}};
+    auto plan = local.plan(behavior.current(), context);
+    if (scenario.first == "blocked") {
+      EXPECT_FALSE(plan.feasible);
+      EXPECT_TRUE(plan.path.empty());
+      const auto valid = std::count_if(plan.candidates.begin(), plan.candidates.end(),
+        [](const CandidatePath & candidate) {return candidate.valid;});
+      EXPECT_EQ(valid, 0);
+      // PlanningNode maps an infeasible LocalPlan to EMERGENCY_STOP.
+      EXPECT_DOUBLE_EQ(calculateTargetVelocity(Behavior::EMERGENCY_STOP, context), 0.0);
+    } else {
+      EXPECT_TRUE(plan.feasible);
+      if (cruise) {EXPECT_DOUBLE_EQ(plan.selected_offset, 0.0);}
+    }
+  }
+}
+}  // namespace planning
+
+namespace planning {
+TEST(RecoveryCorridor, DistantSceneChangesDoNotPreventConfirmedRestart) {
+ BehaviorContext c;c.vehicle.localization_valid=true;c.obstacles={{{2,0},.35}};
+ auto path=straightPath();RecoveryGuard guard;auto now=std::chrono::steady_clock::now();
+ Behavior result=Behavior::CRUISE;
+ for(int i=0;i<31;++i){
+  c.obstacles={{{2,0},.35},{{15,3.+i},.35}};
+  if(i%2)c.obstacles.push_back({{19,-3},.35});
+  result=guard.apply(c,Behavior::AVOID,true,true,true,now+std::chrono::milliseconds(i*50),&path);
+ }
+ EXPECT_EQ(result,Behavior::AVOID);EXPECT_TRUE(guard.lowSpeed());EXPECT_EQ(guard.relevantCount(),1u);
+}
+TEST(RecoveryCorridor, TurningPathKeepsObstaclesOutsideStraightBodyCorridorRelevant) {
+ BehaviorContext c;c.vehicle.localization_valid=true;
+ Path path;for(int i=0;i<=60;++i)path.push_back({0,i*.1,M_PI/2,0});
+ RecoveryGuard guard;auto now=std::chrono::steady_clock::now();
+ c.obstacles={{{0,5},.35}};
+ EXPECT_EQ(guard.apply(c,Behavior::AVOID,false,true,true,now-std::chrono::milliseconds(50),&path),Behavior::EMERGENCY_STOP);
+ for(int i=0;i<100;++i){c.obstacles={{{i%2?.7:0,5},.35}};
+ EXPECT_EQ(guard.apply(c,Behavior::AVOID,true,true,true,now+std::chrono::milliseconds(i*50),&path),Behavior::EMERGENCY_STOP);
+ EXPECT_EQ(guard.relevantCount(),1u);}
+}
+TEST(RecoveryCorridor, IgnoredStabilityObstacleStillStopsWhenPathValidationFails) {
+ BehaviorContext c;c.vehicle.localization_valid=true;c.obstacles={{{12,0},.35}};
+ auto path=straightPath();RecoveryGuard guard;auto now=std::chrono::steady_clock::now();
+ for(int i=0;i<100;++i)EXPECT_EQ(guard.apply(c,Behavior::AVOID,false,true,true,now+std::chrono::milliseconds(i*50),&path),Behavior::EMERGENCY_STOP);
+ EXPECT_EQ(guard.relevantCount(),0u);
+}
+}
+
+namespace planning {
+TEST(RecoveryCorridor, ReturnsToNormalAfterClearCorridorDespiteDistantObstacles) {
+ BehaviorContext c;c.vehicle.localization_valid=true;c.obstacles={{{15,4},.35}};
+ auto path=straightPath();RecoveryGuard guard;auto now=std::chrono::steady_clock::now();
+ EXPECT_EQ(guard.apply(c,Behavior::CRUISE,false,true,true,now,&path),Behavior::EMERGENCY_STOP);
+ for(int i=1;i<=29;++i)guard.apply(c,Behavior::CRUISE,true,true,true,now+std::chrono::milliseconds(i*50),&path);
+ EXPECT_FALSE(guard.holding());EXPECT_TRUE(guard.lowSpeed());
+ guard.apply(c,Behavior::CRUISE,true,true,true,now+std::chrono::milliseconds(2000),&path);
+ EXPECT_TRUE(guard.lowSpeed());
+ guard.apply(c,Behavior::CRUISE,true,true,true,now+std::chrono::milliseconds(2500),&path);
+ EXPECT_FALSE(guard.lowSpeed());EXPECT_EQ(c.obstacles.size(),1u);
+}
+}
+
+namespace planning {
+Path circleRoute() {
+ Path p;const int n=800;for(int i=0;i<n;++i){double a=2*M_PI*i/n;p.push_back({8*std::cos(a),8*std::sin(a),a+M_PI/2,1./8});}return p;
+}
+TEST(ClosedLoop, IndexAndLocalHorizonWrapForThreeLaps) {
+ GlobalPath global;global.setClosed(true);global.setPath(circleRoute());
+ EXPECT_EQ(global.routeSize(),800u);EXPECT_GE(global.path().size(),1100u);
+ PathGeneratorConfig config;LocalPlanner planner{PathGenerator(config),CollisionChecker{},CostEvaluator{}};
+ std::size_t hint=global.routeSize()-20;int wraps=0;
+ for(std::size_t progress=global.routeSize()-20;progress<global.routeSize()*4-20;progress+=5){
+  auto expected=progress%global.routeSize();const auto &p=global.path()[expected];
+  const auto index=global.nearestIndex({p.x,p.y},hint);if(index<hint)++wraps;
+  EXPECT_EQ(index,expected);hint=index;BehaviorContext c;c.path={&global.path(),index};c.vehicle.localization_valid=true;
+  c.vehicle.position={p.x,p.y};c.vehicle.yaw=p.yaw;c.free_space={3,3};
+  const auto plan=planner.plan(Behavior::CRUISE,c);ASSERT_TRUE(plan.feasible)<<index;
+  EXPECT_EQ(plan.path.size(),300u);
+ }
+ EXPECT_EQ(wraps,3);
+}
+TEST(ClosedLoop, LoadingDuplicateEndpointUsesPeriodicGeometry) {
+ const std::string filename="/tmp/planning_closed_circle_regression.csv";const auto circle=circleRoute();
+ {std::ofstream f(filename);f.precision(17);for(const auto &p:circle)f<<p.x<<","<<p.y<<",0,0\n";f<<circle.front().x<<","<<circle.front().y<<",0,0\n";}
+ GlobalPath global;global.setClosed(true);std::string error;ASSERT_TRUE(global.load(filename,&error,.75))<<error;std::remove(filename.c_str());
+ EXPECT_EQ(global.routeSize(),circle.size());
+ for(auto index:{size_t(0),size_t(1),global.routeSize()-1}){
+  EXPECT_NEAR(global.path()[index].curvature,1./8,.02);
+  const auto &a=global.path()[index];const auto &b=global.path()[index+1];
+  EXPECT_LT(std::hypot(a.x-b.x,a.y-b.y),.1);
+ }
+}
+TEST(ClosedLoop, RejectsUnmappedClosingGap) {
+ const std::string filename="/tmp/planning_open_gap_regression.csv";
+ {std::ofstream f(filename);f<<"0,0,0,0\n1,0,0,0\n2,0,0,0\n";}
+ GlobalPath global;global.setClosed(true);std::string error;EXPECT_FALSE(global.load(filename,&error));std::remove(filename.c_str());
+ EXPECT_NE(error.find("endpoint gap"),std::string::npos);
+}
+}
+
+namespace planning {
+TEST(AutoEntry, UnknownAndManualModeNeverQualify) {
+ AutoEntryGuard guard;auto now=std::chrono::steady_clock::now();
+ EXPECT_FALSE(guard.update(true,true,true,.1,0,now));
+ guard.observeMode(0,now);
+ for(int i=0;i<100;++i)EXPECT_FALSE(guard.update(true,true,true,.1,0,now+std::chrono::milliseconds(i*50)));
+ EXPECT_TRUE(guard.holding());
+}
+TEST(AutoEntry, RecordedFarManualToAutoReentryRemainsStopped) {
+ AutoEntryGuard guard;auto now=std::chrono::steady_clock::now();guard.observeMode(0,now);
+ guard.observeMode(1,now+std::chrono::seconds(5));
+ for(int i=0;i<200;++i)EXPECT_FALSE(guard.update(true,true,true,2.816,22.13*M_PI/180,
+   now+std::chrono::milliseconds(5000+i*50)));
+ EXPECT_TRUE(guard.holding());
+}
+TEST(AutoEntry, QualifiesStoppedAlignedThenCapsAndRequalifiesAfterModeEdge) {
+ AutoEntryGuard guard;auto now=std::chrono::steady_clock::now();guard.observeMode(1,now);
+ for(int i=0;i<29;++i)EXPECT_FALSE(guard.update(true,true,true,.1,.05,now+std::chrono::milliseconds(i*50)));
+ EXPECT_TRUE(guard.update(true,true,true,.1,.05,now+std::chrono::milliseconds(1450)));
+ EXPECT_TRUE(guard.lowSpeed(now+std::chrono::milliseconds(1500)));
+ EXPECT_DOUBLE_EQ(guard.speedCap(),.5/3.6);
+ EXPECT_FALSE(guard.lowSpeed(now+std::chrono::milliseconds(2500)));
+ // Normal avoidance must not be mistaken for a fresh mode entry.
+ EXPECT_TRUE(guard.update(true,false,true,1.8,.6,now+std::chrono::milliseconds(2550)));
+ guard.observeMode(0,now+std::chrono::milliseconds(2600));
+ guard.observeMode(1,now+std::chrono::milliseconds(2610));
+ EXPECT_FALSE(guard.update(true,true,true,.1,.05,now+std::chrono::milliseconds(2650)));
+}
+TEST(AutoEntry, StaleMovingMisalignedAndInfeasibleCannotQualify) {
+ AutoEntryGuard guard;auto now=std::chrono::steady_clock::now();guard.observeMode(1,now);
+ for(int i=0;i<80;++i) {
+  EXPECT_FALSE(guard.update(i%4!=0,i%4!=1,i%4!=2,.1,i%4==3?1.:0.,now+std::chrono::milliseconds(i*50)));
+ }
+ guard.observeMode(-1,now+std::chrono::seconds(10));
+ EXPECT_FALSE(guard.update(true,true,true,.1,0,now+std::chrono::seconds(20)));
+}
+TEST(RecoveryGuard, ManualModeCannotReleaseRecoveryEvenWithValidPath) {
+ RecoveryGuard guard;BehaviorContext c;c.vehicle.localization_valid=true;
+ auto now=std::chrono::steady_clock::now();
+ for(int i=0;i<100;++i)EXPECT_EQ(guard.apply(c,Behavior::CRUISE,true,true,true,
+  now+std::chrono::milliseconds(i*50),nullptr,false),Behavior::EMERGENCY_STOP);
+ EXPECT_TRUE(guard.holding());
+}
 }
