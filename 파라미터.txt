@@ -1,0 +1,31 @@
+| Global Path | `src/planning/map/...` |
+| Global Path 파일 선택 | `src/planning/config/planning.yaml` |
+| 순환 여부 | `src/planning/config/planning.yaml` |
+| 초기 Path 진입 거리/Heading | `src/planning/config/planning.yaml` |
+| AVOID 시작거리 | `src/planning/config/planning.yaml` |
+| 후보 lateral offset | `src/planning/config/planning.yaml` |
+| 도로 좌우 폭 | `src/planning/config/planning.yaml` |
+| 차량 footprint | `src/planning/config/planning.yaml` |
+| collision safety margin | `src/planning/config/planning.yaml` |
+| 최대 곡률 | `src/planning/config/planning.yaml` |
+| CRUISE/AVOID 속도 | `src/planning/config/planning.yaml` |
+| Behavior 확인 횟수 | `src/planning/config/planning.yaml` |
+| Recovery 수치 | `src/planning/config/planning.yaml` |
+| Camera ROI | `src/traffic_sign_perception/config/speed_sign.yaml` |
+| YOLO confidence | `src/traffic_sign_perception/config/speed_sign.yaml` |
+| YOLO PT 경로 | `src/traffic_sign_perception/config/speed_sign.yaml` |
+| Camera topic | `speed_sign.yaml` 또는 launch argument |
+| LiDAR ROI | `src/lidar/include/data_header/generic_obstacle.hpp` |
+| LiDAR voxel | `src/lidar/include/data_header/generic_obstacle.hpp` |
+| LiDAR clustering 거리 | `src/lidar/include/data_header/generic_obstacle.hpp` |
+| LiDAR 최소 cluster points | `src/lidar/include/data_header/generic_obstacle.hpp` |
+| LiDAR 장착 offset | `src/convertcs/include/relative_2_utm/relative_2_UTM.hpp` / ROS param |
+| GPS heading 보정 시작속도 | `src/local_pkg1/local_pkg/tae_localization.py` |
+| Heading filter | `src/local_pkg1/local_pkg/tae_localization.py` |
+| CAN speed limit | `src/erp42pro_interface/config/erp42pro_bridge.yaml` |
+| CAN steering sign | `src/erp42pro_interface/config/erp42pro_bridge.yaml` |
+| CAN speed scale | `src/erp42pro_interface/config/erp42pro_bridge.yaml` |
+| Wheelbase | `src/control/include/control/vehicle_param.hpp` |
+| Steering delay | `src/control/include/control/vehicle_param.hpp` |
+| Control gains | runtime expects `control/config/B_wynz.json` |
+| RViz 표시 설정 | `src/behavior_stack_bringup/config/behavior_debug.rviz` |
