@@ -1,0 +1,70 @@
+sudo ip link set can0 up type can bitrate 500000
+ip -details link show can0
+
+
+1. **GPS·IMU·LiDAR·헤딩·위치·CAN 수신**
+
+```
+bash /home/wgr/behavior_ws/validation/heading/start_inputs.sh
+```
+
+2. **헤딩 확인**
+
+```
+source /home/wgr/behavior_ws/validation/heading/env.sh
+ros2 topic echo /Local/heading
+```
+
+초기 보정이 필요하면 안전한 구간에서 수동으로 **7km/h 이상 직진**하세요. 헤딩 값이 나오면 확인 명령만 `Ctrl+C`로 종료합니다. 입력 노드는 유지하세요.
+
+3. **Planning·Control**
+
+```
+bash /home/wgr/behavior_ws/validation/heading/start_planning_control.sh
+```
+
+4. **카메라**
+
+```
+bash /home/wgr/behavior_ws/validation/heading/start_camera.sh
+```
+
+5. **모델 로딩·표지판 인식·바운딩 박스 발행**
+
+```
+bash /home/wgr/behavior_ws/validation/heading/start_camera_sign.sh
+```
+
+6. **카메라·바운딩 박스 보기**
+
+```
+source /home/wgr/behavior_ws/validation/heading/env.sh
+ros2 run rqt_image_view rqt_image_view
+```
+
+토픽에서 `/camera/image_raw` 또는 `/Perception/speed_sign/debug_image`를 선택하세요. Transport는 `raw`입니다.
+
+7. **RViz 경로·장애물 표시**
+
+```
+source /home/wgr/behavior_ws/validation/heading/env.sh
+ros2 launch behavior_stack_bringup visualization.launch.py
+```
+
+8. **마지막으로 CAN 제어 송신 전환**
+
+이 단계부터 차량에 제어 명령이 전달됩니다. 경로·장애물 표시를 확인한 뒤 실행하세요.
+
+```
+source /home/wgr/behavior_ws/validation/heading/env.sh
+
+# 기존 CAN 브리지만 종료
+pkill -INT -f '^/usr/bin/python3 .*erp42pro_interface/can_bridge_node'
+
+# 송신 모드로 실행
+ros2 run erp42pro_interface can_bridge_node --ros-args \
+  -p can_channel:=can0 \
+  -p receive_only:=false \
+  -p max_speed_kph:=10.0
+
+```
