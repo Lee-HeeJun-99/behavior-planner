@@ -81,6 +81,8 @@ public:
       "/Planning/debug/global_path", rclcpp::QoS(1).reliable().transient_local());
     candidate_paths_pub_ = create_publisher<visualization_msgs::msg::MarkerArray>(
       "/Planning/debug/candidate_paths", qos);
+    route_obstacles_pub_ = create_publisher<visualization_msgs::msg::MarkerArray>(
+      "/Planning/debug/route_obstacles", qos);
     publishGlobalPath();
     timer_ = create_wall_timer(std::chrono::milliseconds(get_parameter("planning_period_ms").as_int()),
       std::bind(&PlanningNode::onTimer, this));
@@ -98,6 +100,12 @@ private:
     declare_parameter<int>("auto_entry_confirm_count", 10);
     declare_parameter<double>("close_obstacle_stop_distance", 3.0);
     declare_parameter<double>("obstacle_stability_tolerance", 0.35);
+    declare_parameter<double>("obstacle_width", 1.0);
+    declare_parameter<double>("obstacle_height", 0.8);
+    declare_parameter<bool>("filter_obstacles_by_global_path", false);
+    declare_parameter<double>("obstacle_path_margin", 0.0);
+    declare_parameter<double>("obstacle_path_lookahead", 6.0);
+    declare_parameter<double>("obstacle_path_lookbehind", 1.5);
     declare_parameter<double>("recovery_stability_lookahead", 6.0);
     declare_parameter<double>("recovery_stability_margin", 0.5);
     declare_parameter<int>("recovery_hold_ms", 1000);
@@ -108,6 +116,7 @@ private:
     declare_parameter<std::vector<double>>("lateral_offsets", {-1.2, -0.9, -0.6, -0.3, 0.0, 0.3, 0.6, 0.9, 1.2});
     declare_parameter<int>("transition_points", 120);
     declare_parameter<double>("avoidance_start_distance", 10.0);
+    declare_parameter<double>("preferred_avoidance_offset", 0.0);
     declare_parameter<double>("obstacle_pass_margin", 3.0);
     declare_parameter<double>("road_left_bound", 1.5);
     declare_parameter<double>("road_right_bound", 1.5);
@@ -115,9 +124,12 @@ private:
     declare_parameter<double>("vehicle_front", 1.6);
     declare_parameter<double>("vehicle_rear", 0.7);
     declare_parameter<double>("safety_margin", 0.25);
+    declare_parameter<double>("minimum_clearance", 0.15);
     declare_parameter<double>("maximum_curvature", 0.45);
     declare_parameter<int>("detection_confirmation_count", 3);
     declare_parameter<int>("clear_confirmation_count", 5);
+    declare_parameter<double>("avoid_return_max_distance", 0.2);
+    declare_parameter<double>("avoid_return_max_heading_deg", 10.0);
     declare_parameter<int>("minimum_behavior_duration_ms", 500);
     declare_parameter<int>("default_speed_limit_kph", 0);
     declare_parameter<double>("default_target_velocity", 1.0 / 3.6);
@@ -149,6 +161,17 @@ private:
     recovery.corridor_half_width = get_parameter("vehicle_half_width").as_double() + get_parameter("safety_margin").as_double();
     recovery_guard_ = RecoveryGuard(recovery);
     ContextConfig context_config;
+    const double obstacle_width=get_parameter("obstacle_width").as_double();
+    const double obstacle_height=get_parameter("obstacle_height").as_double();
+    if(!std::isfinite(obstacle_width) || obstacle_width<=0 ||
+      !std::isfinite(obstacle_height) || obstacle_height<=0) {
+      throw std::invalid_argument("obstacle_width and obstacle_height must be finite and positive");
+    }
+    context_config.obstacle_radius=obstacle_width*0.5;
+    context_config.filter_obstacles_by_path=get_parameter("filter_obstacles_by_global_path").as_bool();
+    context_config.obstacle_path_margin=get_parameter("obstacle_path_margin").as_double();
+    context_config.obstacle_path_lookahead=get_parameter("obstacle_path_lookahead").as_double();
+    context_config.obstacle_path_lookbehind=get_parameter("obstacle_path_lookbehind").as_double();
     context_config.road_left_bound = get_parameter("road_left_bound").as_double();
     context_config.road_right_bound = get_parameter("road_right_bound").as_double();
     context_config.default_target_velocity = get_parameter("default_target_velocity").as_double();
@@ -170,6 +193,8 @@ private:
     BehaviorConfig behavior_config;
     behavior_config.obstacle_lookahead = get_parameter("avoidance_start_distance").as_double();
     behavior_config.obstacle_pass_margin = get_parameter("obstacle_pass_margin").as_double();
+    behavior_config.return_max_distance=get_parameter("avoid_return_max_distance").as_double();
+    behavior_config.return_max_heading_error=get_parameter("avoid_return_max_heading_deg").as_double()*M_PI/180.0;
     behavior_config.detection_confirmation_count = get_parameter("detection_confirmation_count").as_int();
     behavior_config.clear_confirmation_count = get_parameter("clear_confirmation_count").as_int();
     behavior_config.minimum_behavior_duration =
@@ -178,6 +203,7 @@ private:
 
     PathGeneratorConfig generator_config;
     generator_config.avoidance_start_distance = get_parameter("avoidance_start_distance").as_double();
+    generator_config.preferred_avoidance_offset = get_parameter("preferred_avoidance_offset").as_double();
     generator_config.obstacle_pass_margin = get_parameter("obstacle_pass_margin").as_double();
     generator_config.lateral_offsets = get_parameter("lateral_offsets").as_double_array();
     generator_config.transition_points = static_cast<std::size_t>(get_parameter("transition_points").as_int());
@@ -186,6 +212,7 @@ private:
     collision_config.vehicle_front = get_parameter("vehicle_front").as_double();
     collision_config.vehicle_rear = get_parameter("vehicle_rear").as_double();
     collision_config.safety_margin = get_parameter("safety_margin").as_double();
+    collision_config.minimum_clearance = get_parameter("minimum_clearance").as_double();
     collision_config.maximum_curvature = get_parameter("maximum_curvature").as_double();
     local_planner_ = LocalPlanner(PathGenerator(generator_config), CollisionChecker(collision_config), CostEvaluator{});
   }
@@ -314,6 +341,25 @@ private:
     candidate_paths_pub_->publish(markers);
   }
 
+  void publishRouteObstacles(const BehaviorContext & context) {
+    visualization_msgs::msg::MarkerArray markers;
+    visualization_msgs::msg::Marker clear;clear.header.frame_id="map";clear.action=3;
+    markers.markers.push_back(clear);
+    for(std::size_t i=0;i<context.obstacles.size();++i) {
+      const auto & obstacle=context.obstacles[i];
+      visualization_msgs::msg::Marker marker;
+      marker.header.frame_id="map";marker.header.stamp=now();marker.ns="route_obstacles";
+      marker.id=static_cast<int>(i);marker.type=visualization_msgs::msg::Marker::CYLINDER;
+      marker.pose.position.x=obstacle.center.x;marker.pose.position.y=obstacle.center.y;
+      marker.scale.x=marker.scale.y=obstacle.radius*2;
+      marker.scale.z=get_parameter("obstacle_height").as_double();
+      marker.pose.position.z=marker.scale.z*.5;marker.pose.orientation.w=1;
+      marker.color.g=1;marker.color.r=.2;marker.color.a=.7;
+      markers.markers.push_back(marker);
+    }
+    route_obstacles_pub_->publish(markers);
+  }
+
   void onTimer()
   {
     if (!position_received_ || !heading_received_) {
@@ -326,6 +372,11 @@ private:
     context_manager_.updateObstacles(obstacles);
     context_manager_.setEmergencyStop(emergency_stop_);
     auto context = context_manager_.build(global_path_.path(), nearest_index_);
+    publishRouteObstacles(context);
+    RCLCPP_INFO_THROTTLE(get_logger(),*get_clock(),2000,
+      "Route obstacle filter: kept=%zu raw=%zu width=%.2f height=%.2f",
+      context.obstacles.size(),obstacles.size(),get_parameter("obstacle_width").as_double(),
+      get_parameter("obstacle_height").as_double());
     Behavior behavior = behavior_planner_.update(context, std::chrono::steady_clock::now());
     LocalPlan plan = local_planner_.plan(behavior, context);
     if (!plan.feasible && behavior == Behavior::CRUISE && !context.obstacles.empty()) {
@@ -451,7 +502,7 @@ private:
   rclcpp::Publisher<std_msgs::msg::String>::SharedPtr behavior_pub_;
   rclcpp::Publisher<nav_msgs::msg::Path>::SharedPtr debug_path_pub_;
   rclcpp::Publisher<nav_msgs::msg::Path>::SharedPtr global_path_pub_;
-  rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr candidate_paths_pub_;
+  rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr candidate_paths_pub_, route_obstacles_pub_;
   rclcpp::TimerBase::SharedPtr timer_;
 };
 }  // namespace planning

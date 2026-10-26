@@ -95,11 +95,22 @@ LocalPlan LocalPlanner::plan(Behavior behavior, const BehaviorContext & context)
   result.candidates = generator_.generate(
     *planning_reference, context.path.nearest_index, avoidance, start_lateral_offset,
     avoidance ? return_start : -1.0);
+  const bool prefer_wide = avoidance && std::isfinite(nearest_ahead) &&
+    nearest_ahead <= generator_config_.avoidance_start_distance + generator_config_.obstacle_pass_margin;
+  const auto preferCandidate = [&](const CandidatePath & candidate, const CandidatePath * current) {
+    if (!current) {return true;}
+    const auto preferred = [&](const CandidatePath & path) {
+      return prefer_wide && std::abs(path.lateral_offset) + 1e-6 >=
+        generator_config_.preferred_avoidance_offset;
+    };
+    if (preferred(candidate) != preferred(*current)) {return preferred(candidate);}
+    return candidate.cost < current->cost;
+  };
   CandidatePath * best = nullptr;
   for (auto & candidate : result.candidates) {
     if (!checker_.validate(candidate, context)) {continue;}
     evaluator_.evaluate(candidate);
-    if (!best || candidate.cost < best->cost) {best = &candidate;}
+    if (preferCandidate(candidate, best)) {best = &candidate;}
   }
   if (!best && avoidance) {
     auto transitions = generator_.generateCornerTransitions(
@@ -110,7 +121,22 @@ LocalPlan LocalPlanner::plan(Behavior behavior, const BehaviorContext & context)
     for (auto & candidate : result.candidates) {
       if (!checker_.validate(candidate, context)) {continue;}
       evaluator_.evaluate(candidate);
-      if (!best || candidate.cost < best->cost) {best = &candidate;}
+      if (preferCandidate(candidate, best)) {best = &candidate;}
+    }
+  }
+  if (!best) {
+    // A single fixed merge distance can sharpen a corner or delay a close pass.
+    // Keep the full horizon and run every alternate profile through the same
+    // collision, clearance, boundary and curvature checks before selecting one.
+    auto variants = generator_.generateTransitionVariants(
+      *planning_reference, context.path.nearest_index, avoidance, start_lateral_offset,
+      avoidance ? return_start : -1.0);
+    result.candidates.insert(result.candidates.end(),
+      std::make_move_iterator(variants.begin()), std::make_move_iterator(variants.end()));
+    for (auto & candidate : result.candidates) {
+      if (!checker_.validate(candidate, context)) {continue;}
+      evaluator_.evaluate(candidate);
+      if (preferCandidate(candidate, best)) {best = &candidate;}
     }
   }
   if (best) {

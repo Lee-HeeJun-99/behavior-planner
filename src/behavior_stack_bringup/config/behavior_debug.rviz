@@ -62,6 +62,16 @@ Visualization Manager:
     Pose Style: None
   - Class: rviz_default_plugins/MarkerArray
     Enabled: true
+    Name: Route Obstacles (used by planner)
+    Topic:
+      Depth: 1
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Best Effort
+      Value: /Planning/debug/route_obstacles
+    Value: true
+  - Class: rviz_default_plugins/MarkerArray
+    Enabled: true
     Name: Candidate Paths
     Topic:
       Depth: 1
@@ -126,15 +136,15 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 40
+      Distance: 60
       Focal Point:
-        X: 346267.55
-        Y: 4069681.08
+        X: 0
+        Y: 0
         Z: 0
       Name: Current View
       Near Clip Distance: 0.01
       Pitch: 1.2
-      Target Frame: <Fixed Frame>
+      Target Frame: velodyne
       Value: Orbit (rviz)
       Yaw: 0.785398
     Saved: null

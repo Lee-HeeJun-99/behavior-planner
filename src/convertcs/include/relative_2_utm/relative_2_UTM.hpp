@@ -20,7 +20,7 @@ private:
   double heading_{0.0};
   bool position_received_{false};
   bool heading_received_{false};
-  double sensor_offset_x_{0.35};
+  double sensor_offset_x_{0.80};
   double sensor_offset_y_{0.0};
 
   rclcpp::Subscription<geometry_msgs::msg::PointStamped>::SharedPtr position_subscriber_;

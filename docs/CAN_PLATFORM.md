@@ -62,7 +62,7 @@ CAN protocol 6개 + 브리지 모드 4개 테스트 통과. 수신 전용 타이
 - 속도 명령은 목표 속도를 직접 전달한다. 예전 가속용 PD 증폭은 제거했다.
 - `speed_scale=1.146`을 적용하며, 송신 속도는 실제 기준 속도/scale, 피드백은 센서 속도*scale이다.
 - Localization과 Controller에서 차량 중심 속도를 왼쪽 바퀴 속도로 간주하던 환산을 제거했다.
-- 기존 `B_wynz.json` 게인을 유지하며 ament package share 경로로 로드한다. 백업의 A_KCITY 게인으로 바꾸지 않았다.
+- wego_ws 제어 코드로 교체되어 `include/control/A_KCITY_9th_misson2.json` 게인을 소스 폴더에서 직접 읽는다 (json 수정 시 재빌드 불필요).
 - 기존 수신 전용 기본값과 10 km/h 상한을 유지했다. 백업의 자동 sudo CAN bringup은 기본 false로 두고 CAN은 일반 터미널에서 설정한다.
 - 종료 시 CAN 수신 스레드를 먼저 정리한다.
 - debug 배열은 `[valid, 실제기준속도_kph, 조향_deg, 브레이크_pct, Pro_gear, CAN속도_kph]`다.

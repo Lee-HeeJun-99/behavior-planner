@@ -182,6 +182,8 @@ TEST(DistanceAvoidance, ApproachesBeforeActivationAndHoldsUntilRearClearance) {
   c.path.nearest_index=140;c.vehicle.position={14,1.5};
   EXPECT_EQ(behavior.update(c,now),Behavior::AVOID);
   c.path.nearest_index=170;c.vehicle.position={17,1.5};
+  EXPECT_EQ(behavior.update(c,now),Behavior::AVOID);
+  c.vehicle.position={17,.1};
   EXPECT_EQ(behavior.update(c,now),Behavior::CRUISE);
 }
 TEST(DistanceAvoidance, DoesNotReturnBeforeFarObstacle) {

@@ -22,27 +22,28 @@ Python `utm`, PCL, `cv_bridge`, `rviz2`, `rqt_image_view`이다. YOLO를 사용�
 
 | Node (`ros2 run`) | Input | Output | 역할 |
 |---|---|---|---|
-| `nmea_navsat_driver nmea_serial_driver` | GPS serial | `/fix` | NMEA GPS |
+| `nmea_navsat_driver nmea_serial_driver` | GPS serial, `/rtcm` | `/fix`, `/nmea` | NMEA GPS (wego_ws 버전: RTCM 보정을 수신기에 write) |
+| `ntrip_client ntrip_ros.py` | `/gga` | `/rtcm` | 국토지리정보원(NGII) VRS RTK 보정 수신 |
+| `local_pkg1 gga_relay` | `/fix` | `/gga` | VRS 서버로 보낼 GGA 생성 |
 | `wit_ros2_imu wit_ros2_imu` | IMU serial | `/imu` | WIT IMU |
-| `local_pkg1 heading_estimator` | `/fix`, `/imu`, `/ERP/serial_data` | `/Local/heading` | 기존 heading 계산 |
-| `local_pkg1 position_estimator` | `/fix`, `/imu`, `/ERP/serial_data` | `/Local/utm`, `/beta` | 기존 position/DR 계산 |
+| `local_pkg1 tae_localization` | `/fix`, `/imu`, `/ERP/serial_data` | `/Local/utm`, `/Local/heading`, `/beta` | wego_ws 측위 (GPS 튐 처리 포함) |
 | `lidar start` | `/velodyne_points` | `/LiDAR/object_cen`, `/Cluster/small_static` | 정적 장애물 clustering |
 | `kroad_planning_utm_pkg relative_2_UTM` | `/Local/utm`, `/Local/heading`, `/LiDAR/object_cen` | `/Convert/small_object_UTM` | 상대좌표→UTM |
 | `traffic_sign_perception speed_sign_node` | `/camera/image_raw` | `/Perception/speed_limit`, `/Perception/speed_sign/debug_image` | ROI/YOLO raw 20·50 표지판 |
 | `planning_pkg_2025 planning_node` | localization, obstacle, speed sign | `/Planning/*` | Context→Behavior→Local path |
-| `control car_control` | localization, planning, ERP feedback | `/Control/vehicle_cmd` | 기존 제어기 |
+| `control car_control` | localization, planning, ERP feedback | `/Control/vehicle_cmd` | wego_ws 제어기 (게인: `A_KCITY_9th_misson2.json`) |
 | `erp42pro_interface can_bridge_node` | `/Control/vehicle_cmd`, CAN RX | `/ERP/serial_data`, CAN TX | ERP42 Pro CAN bridge |
 | `behavior_stack_bringup debug_visualizer_node` | debug/runtime topics | Marker topics | RViz용 표시 |
 
 `src/convertcs`는 디렉터리 이름이고 실제 ROS package 이름은
-`kroad_planning_utm_pkg`이다. `local_pkg1 tae_localization`은 compatibility executable로
-유지한다. 분리 노드는 수치 회귀를 피하기 위해 같은 기존 계산 core를 사용한다.
+`kroad_planning_utm_pkg`이다. 측위(`local_pkg1`)와 제어(`control`)는 wego_ws의
+`local_pkg_2025`, `control_pkg_2025` 코드로 교체되었다. 측위는 `tae_localization` 한 노드가
+세 토픽을 모두 발행한다 (예전 heading/position 분리 노드는 제거).
 
 ## 3. 노드별 실행
 
 ```bash
-ros2 run local_pkg1 heading_estimator
-ros2 run local_pkg1 position_estimator
+ros2 run local_pkg1 tae_localization
 ros2 run lidar start
 ros2 run kroad_planning_utm_pkg relative_2_UTM
 ros2 run traffic_sign_perception speed_sign_node

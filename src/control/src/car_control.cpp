@@ -50,6 +50,7 @@ D, I 제어는 연산 주기에 매우 영향을 많이 받는다.
 namespace
 {
 const int CONTROL_PERIOD_MS = 10;   // 제어 주기 (100 Hz)
+const double CONTROL_DT = CONTROL_PERIOD_MS / 1000.0; // 제어 주기 [s]
 const int PRINT_EVERY_N_TICKS = 20; // 화면 출력 주기 (5 Hz)
 const bool IS_PRINT = true;
 
@@ -198,9 +199,17 @@ public:
             {
                 lat_control->set_stanley_integral_val(0.0);
             }
+            // 10/9 추가: 자율 모드가 아니거나 경로에서 멀면 적분을 비운다.
+            // (수동 주행 중이나 경로 시작점 앞에서 적분이 한계까지 차서, 경로에 올라탄 뒤 크게 흔들리던 문제)
+            if (!cb_data->is_auto_mode() || abs(lat_error) > lat_control->get_integral_reset_error())
+            {
+                lat_control->reset_stanley_state();
+            }
+            // 10/9 추가: 위치가 튀어서 보호 중이면 적분을 멈춘다 (튄 오차가 적분에 쌓여 반대쪽으로 넘어가지 않게)
+            lat_control->set_integral_freeze(cb_data->is_position_jump_active());
             lat_control->set_stanly_data(curr_speed, pd_path_yaw, yaw, lat_error);
             lat_control->set_pp_data(curr_speed, yaw, odom, cb_data->get_relative_path());
-            steer = lat_control->calc_combined_steer();
+            steer = lat_control->calc_combined_steer(CONTROL_DT);
         }
 
         // 목표 속도 정하기
@@ -313,6 +322,7 @@ public:
         tmp_plot_val_msg.data.push_back(lat_control->get_stanley_integral_val()); // 20 Stanley 적분값
         tmp_plot_val_msg.data.push_back(curr_speed);                       // 21 차량 속도 [m/s]
         tmp_plot_val_msg.data.push_back(steer);                            // 22 조향 명령 [rad]
+        tmp_plot_val_msg.data.push_back(cb_data->get_position_jump_offset()); // 23 위치 튐 보호 offset [m] (10/9 추가)
         tmp_data_pub->publish(tmp_plot_val_msg);
 
         // ------------------------------------------------ </ros topic pub>
@@ -325,6 +335,11 @@ public:
             cout << "yawrate : " << yaw_rate << endl;
             cout << "yaw : " << yaw << endl;
             cout << "lat_error : " << lat_error << endl;
+            cout << "auto mode : " << (cb_data->is_auto_mode() ? "yes" : "no") << ", stanley integral : " << lat_control->get_stanley_integral_val() << endl;
+            if (cb_data->is_position_jump_active())
+            {
+                cout << "[위치 튐 보호 중] offset : " << cb_data->get_position_jump_offset() * 100.0 << " cm (적분 멈춤)" << endl;
+            }
             cout << "LD distance : " << lat_control->get_LA_distance() << endl;
             cout << "path_yaw_nearest(rad) : " << pd_path_yaw << endl;
             cout << "brake cmd : " << acc_val.brake << " %" << endl

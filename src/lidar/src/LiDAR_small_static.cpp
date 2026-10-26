@@ -9,7 +9,11 @@ LidarObstacleDetector::LidarObstacleDetector()
   marker_pub_ = this->create_publisher<visualization_msgs::msg::Marker>("/Marker/obstacle_roi", lidar::best_effort_qos());
   marker_array_ = this->create_publisher<visualization_msgs::msg::MarkerArray>("/Marker/obstacles", lidar::best_effort_qos());
 
-  RCLCPP_INFO(this->get_logger(), "Generic obstacle detector is ready");
+  RCLCPP_INFO(this->get_logger(),
+    "Generic obstacle detector is ready: ROI x=[0, %.1f] y=[-%.1f, %.1f] m (LiDAR frame)",
+    static_cast<double>(lidar::kObstacleForwardRange),
+    static_cast<double>(lidar::kObstacleRoadHalfWidth),
+    static_cast<double>(lidar::kObstacleRoadHalfWidth));
 }
 
 void LidarObstacleDetector::callback(const sensor_msgs::msg::PointCloud2::SharedPtr input)

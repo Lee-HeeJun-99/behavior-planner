@@ -72,6 +72,24 @@ std::vector<CandidatePath> PathGenerator::generate(
   }
   return candidates;
 }
+std::vector<CandidatePath> PathGenerator::generateTransitionVariants(
+  const Path & reference, std::size_t start_index, bool avoidance,
+  double start_lateral_offset, double return_start_distance) const
+{
+  std::vector<CandidatePath> candidates;
+  std::vector<std::size_t> tried{config_.transition_points};
+  for (double scale : {1.0 / 3.0, 0.5, 2.0 / 3.0, 5.0 / 6.0, 1.5, 2.0}) {
+    auto config = config_;
+    config.transition_points = std::max<std::size_t>(3,
+      static_cast<std::size_t>(std::lround(config_.transition_points * scale)));
+    if (std::find(tried.begin(), tried.end(), config.transition_points) != tried.end()) {continue;}
+    tried.push_back(config.transition_points);
+    auto variants = PathGenerator(config).generate(
+      reference, start_index, avoidance, start_lateral_offset, return_start_distance);
+    for (auto & candidate : variants) {candidates.push_back(std::move(candidate));}
+  }
+  return candidates;
+}
 std::vector<CandidatePath> PathGenerator::generateCornerTransitions(
   const Path & reference, std::size_t start_index, double start_lateral_offset) const
 {

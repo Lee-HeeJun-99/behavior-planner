@@ -17,18 +17,12 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(ament_index_cpp REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
-find_package(nav_msgs REQUIRED)
-# find_package(erp_msg REQUIRED)
-
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
-
+# json 파일을 읽는 nlohmann/json.hpp 는 헤더만 있는 라이브러리다.
+#   sudo apt install nlohmann-json3-dev
 
 include_directories(
   include
@@ -37,24 +31,12 @@ include_directories(
 # Add executable
 add_executable(car_control src/car_control.cpp)
 target_include_directories(car_control PRIVATE include)
-ament_target_dependencies(car_control ament_index_cpp rclcpp std_msgs geometry_msgs sensor_msgs nav_msgs)
-
-
+ament_target_dependencies(car_control rclcpp std_msgs geometry_msgs sensor_msgs)
 
 install(TARGETS
   car_control
   DESTINATION lib/${PROJECT_NAME}/
 )
-
-install(FILES
-  include/control/A.json
-  include/control/B.json
-  include/control/B_wynz.json
-  DESTINATION share/${PROJECT_NAME}/config
-)
-
-# Link libraries
-
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

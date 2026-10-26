@@ -49,8 +49,8 @@ No workspace custom-message package is required. The retained graph uses standar
 - `lidar`: removed big-static, parking, U-turn, tunnel/dynamic, delivery, examples, and mission RViz files.
 - `kroad_planning_utm_pkg`: removed narrow-road executable and mission-specific conversion branches;
   retained the existing small-static coordinate transform.
-- `local_pkg1`: retained only `tae_localization` and its executable entry point.
-- `control`: removed IDE and PlotJuggler artifacts; retained A/B/B_wynz vehicle calibration files.
+- `local_pkg1`: replaced with wego_ws `local_pkg_2025` code (package name kept as `local_pkg1`); `tae_localization` publishes `/Local/utm`, `/Local/heading`, `/beta`.
+- `control`: replaced with wego_ws `control_pkg_2025/control` code; gains are read from `include/control/A_KCITY_9th_misson2.json` in the source tree.
 - `planning_pkg_2025`: retained the verified V1 code/tests/config/docs and only the active 1,389-point map.
 - `traffic_sign_perception`: new narrow package containing only image subscription, YOLO class mapping,
   normalized ROI/bbox processing, and raw `/Perception/speed_limit` publication. Temporal confirmation

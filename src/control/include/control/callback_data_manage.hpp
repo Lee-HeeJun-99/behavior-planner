@@ -1,6 +1,7 @@
 #ifndef DATA_MANAGE_HPP
 #define DATA_MANAGE_HPP
 
+#include <algorithm>
 #include <cmath>
 #include <vector>
 #include <iostream>
@@ -48,6 +49,22 @@ private:
 
     int closest_index;
     bool path_too_far = false;
+    double yaw_lookahead_m_ = 0.0; // 경로 방향을 가장 가까운 점보다 이만큼 앞에서 읽는다 [m] (게인 파일)
+
+    // 위치 튐 보호 (10/9 추가). /Local/utm 이 차가 움직일 수 없을 만큼 갑자기 바뀌면 그만큼을 offset 으로 빼 두고
+    // pos_jump_tau_ 초의 시간 상수로 천천히 0 으로 줄인다. 로컬라이제이션의 GPS 튐 처리가 놓친 것을 막는 안전장치.
+    Point raw_odom_prev_{0.0, 0.0};
+    double raw_odom_stamp_prev_ = -1.0;
+    bool has_raw_odom_prev_ = false;
+    Point pos_jump_offset_{0.0, 0.0};
+    int pos_jump_count_ = 0;
+    // [m] 한 메시지 사이에 예상보다 (pos_jump_gate_ + pos_jump_gate_per_speed_ x 속도[m/s]) 넘게 움직이면 튄 것으로 본다.
+    //     (10/5, 10/9 기록에서 튐이 아닐 때 한 메시지의 최대 어긋남은 8.4 cm (7.2 km/h). 빠를수록 추측항법 오차가 커서 속도에 비례해 늘린다)
+    double pos_jump_gate_ = 0.10;
+    double pos_jump_gate_per_speed_ = 0.03;
+    double pos_jump_max_ = 2.0;     // [m] 이보다 크게 튀면 (재초기화 등) 보호하지 않고 그대로 따라간다
+    double pos_jump_tau_ = 1.0;     // [s] offset 을 줄이는 시간 상수
+    double pos_jump_active_ = 0.03; // [m] offset 이 이보다 크면 '보호 중' (Stanley 적분을 멈춘다)
     double pridict_dist;
     double path_curvature = 0.0;
     double pre_path_curvature = 0.0;
@@ -108,9 +125,59 @@ public:
     void lo_odom_cb(const geometry_msgs::msg::PointStamped::SharedPtr msg)
     {
         // info : [x, y], UTM coordinate
-        this->lo_odom.x = msg->point.x;
-        this->lo_odom.y = msg->point.y;
+        Point raw{msg->point.x, msg->point.y};
+
+        // 메시지 사이 시간 (로컬라이제이션이 찍은 시각, 없으면 200 Hz 로 본다)
+        double stamp = static_cast<double>(msg->header.stamp.sec) + 1e-9 * static_cast<double>(msg->header.stamp.nanosec);
+        double dt = 0.005;
+        if (stamp > 0.0 && raw_odom_stamp_prev_ > 0.0)
+        {
+            dt = clip(stamp - raw_odom_stamp_prev_, 0.001, 0.1);
+        }
+        raw_odom_stamp_prev_ = stamp;
+
+        if (has_raw_odom_prev_)
+        {
+            // 예상 이동 (지금 속도와 헤딩) 과 실제 이동의 차이
+            double jx = (raw.x - raw_odom_prev_.x) - this->speed * cos(lo_yaw) * dt;
+            double jy = (raw.y - raw_odom_prev_.y) - this->speed * sin(lo_yaw) * dt;
+            double jump = std::hypot(jx, jy);
+            double gate = pos_jump_gate_ + pos_jump_gate_per_speed_ * std::abs(this->speed);
+            if (jump > gate && jump < pos_jump_max_)
+            {
+                pos_jump_offset_.x += jx;
+                pos_jump_offset_.y += jy;
+                pos_jump_count_++;
+                std::cout << "[위치 튐] /Local/utm 이 " << jump * 100.0 << " cm 튐 -> " << pos_jump_tau_
+                          << " 초 시간 상수로 천천히 따라감 (" << pos_jump_count_ << " 번째)" << std::endl;
+            }
+            else if (jump >= pos_jump_max_)
+            {
+                pos_jump_offset_ = {0.0, 0.0}; // 너무 크면 그대로 따라간다
+            }
+        }
+        raw_odom_prev_ = raw;
+        has_raw_odom_prev_ = true;
+
+        // offset 을 시간 상수 pos_jump_tau_ 로 줄인다
+        double decay = std::exp(-dt / pos_jump_tau_);
+        pos_jump_offset_.x *= decay;
+        pos_jump_offset_.y *= decay;
+
+        this->lo_odom.x = raw.x - pos_jump_offset_.x;
+        this->lo_odom.y = raw.y - pos_jump_offset_.y;
         this->odom_sub_flag = true;
+    }
+
+    // 위치 튐 보호 중인지 (offset 이 남아 있는지)
+    bool is_position_jump_active()
+    {
+        return std::hypot(pos_jump_offset_.x, pos_jump_offset_.y) > pos_jump_active_;
+    }
+
+    double get_position_jump_offset()
+    {
+        return std::hypot(pos_jump_offset_.x, pos_jump_offset_.y);
     }
 
     void lo_yaw_cb(const std_msgs::msg::Float64::SharedPtr msg)
@@ -178,17 +245,10 @@ public:
             return;
         }
 
-        // 주의: 2번 칸부터 두 칸씩 건너뛰며 읽는다 (예전 코드 그대로).
-        //       그래서 yaws[k] 는 경로의 (2 + 2k) 번째 점의 방향이다.
-        //       지금 게인은 이 읽기 방식에 맞춰져 있으므로, 바꿀 때는 게인을 다시 맞춰야 한다.
-        vector<double> yaws;
-
-        for (size_t i = 2; i < msg->data.size(); i += 2)
-        {
-            yaws.push_back(msg->data[i]);
-        }
-
-        this->pl_local_path_yaw = yaws;
+        // 플래닝은 local_path 의 점마다 방향을 하나씩 보낸다. yaws[k] = k 번째 점의 방향.
+        // (10/9 수정: 예전에는 2번 칸부터 두 칸씩 건너뛰어 읽어서 약 2배 먼 점의 방향을 썼다.
+        //  그 '앞을 미리 보는' 효과는 이제 게인 파일의 stanley_yaw_lookahead 로 명시적으로 준다.)
+        this->pl_local_path_yaw = msg->data;
     }
 
     void pl_mission_num_cb(const std_msgs::msg::Int16::SharedPtr msg)
@@ -261,8 +321,46 @@ public:
         }
         this->path_too_far = false;
 
-        // lat_error의 좌 우를 구분함. (가장 가까운 점이 경로의 마지막 점이면 그 앞 구간의 방향을 쓴다)
-        int seg = std::min(closest_index, static_cast<int>(pl_local_path.size()) - 2);
+        // 경로 선까지의 수직 거리 (+ = 차가 경로 오른쪽).
+        // 10/9 수정: 예전에는 가장 가까운 '점'까지의 거리를 썼다. 점 간격(5 cm) 때문에 앞뒤 거리가 섞여
+        // 0 근처에서 값이 튀었다. 가장 가까운 점 앞뒤 두 구간 중 차가 수직으로 내려앉는 구간을 쓴다.
+        // 차가 경로 시작점보다 뒤에 있거나 끝점보다 앞에 있으면 (수직으로 내려앉을 구간이 없으면)
+        // 예전처럼 점까지의 거리를 쓴다. (경로 시작점 앞에서 출발할 때 오차가 크게 보여야 적분을 비울 수 있다.)
+        const int n = static_cast<int>(pl_local_path.size());
+        double best_abs = 1e9;
+        double signed_err = 0.0;
+        bool found = false;
+        for (int seg = std::max(0, closest_index - 1); seg <= std::min(closest_index, n - 2); seg++)
+        {
+            const Point &a = pl_local_path[seg];
+            const Point &b = pl_local_path[seg + 1];
+            double tx = b.x - a.x, ty = b.y - a.y;
+            double len2 = tx * tx + ty * ty;
+            if (len2 < 1e-12)
+            {
+                continue;
+            }
+            double u = ((pridict_pose.x - a.x) * tx + (pridict_pose.y - a.y) * ty) / len2;
+            if (u < 0.0 || u > 1.0)
+            {
+                continue;
+            }
+            double cross = tx * (pridict_pose.y - a.y) - ty * (pridict_pose.x - a.x);
+            double e = -cross / std::sqrt(len2);
+            if (std::abs(e) < best_abs)
+            {
+                best_abs = std::abs(e);
+                signed_err = e;
+                found = true;
+            }
+        }
+        if (found)
+        {
+            return signed_err;
+        }
+
+        // 수직으로 내려앉을 구간이 없을 때: 예전 방식 (가장 가까운 점까지의 거리, 좌우 부호)
+        int seg = std::min(closest_index, n - 2);
         double l_or_r = determine_side(pl_local_path[seg + 1], pridict_pose, pl_local_path[seg]);
         if (l_or_r > 0)
         {
@@ -311,7 +409,7 @@ public:
         {
             return path_curvature;
         }
-        // path_yaw 를 읽는 방식 때문에 yaw 개수가 경로 점 개수보다 적다. 범위를 넘지 않게 한다.
+        // path_yaw 개수가 경로 점 개수와 다를 때를 대비해 범위를 넘지 않게 한다.
         int last_yaw_index = static_cast<int>(pl_local_path_yaw.size()) - 1;
         f_pri_yaw_index = std::min(f_pri_yaw_index, last_yaw_index);
         s_pri_yaw_index = std::min(s_pri_yaw_index, last_yaw_index);
@@ -327,26 +425,28 @@ public:
 
     void calc_predict_odometry_for_stanley(float dt, int n)
     {
+        // i x dt 초 뒤의 위치와 헤딩을 예측한다 (차 기준 좌표, x 앞 / y 왼쪽).
+        // 지금 진행 방향(beta)으로 출발해서 지금 회전 속도로 원호를 그린다고 본다.
+        // 10/9 수정: 예전에는 헤딩을 모든 i 에서 (yaw + yaw_rate x dt) 로 같게 두었고 (x i 가 빠짐),
+        //            위치도 회전 없이 직선으로만 예측했다.
         vector<Point> predict_pos;
-
-        double dx = cos(lo_beta - lo_yaw) * this->speed * dt;
-        double dy = sin(lo_beta - lo_yaw) * this->speed * dt;
-
-        for (int i = 1; i <= n; i++)
-        {
-            Point tmp_odom;
-
-            tmp_odom.x = dx * i;
-            tmp_odom.y = dy * i;
-            predict_pos.push_back(tmp_odom);
-        }
-
         vector<float> predict_yaw;
 
+        double slip = nomalize_angle(lo_beta - lo_yaw); // 차 방향 대비 진행 방향
+
         for (int i = 1; i <= n; i++)
         {
-            float tmp_yaw = this->lo_yaw + this->lo_yaw_rate * dt;
-            predict_yaw.push_back(tmp_yaw);
+            double t = dt * i;
+            double turn = this->lo_yaw_rate * t;    // t 초 동안 도는 각도
+            double dist = this->speed * t;          // t 초 동안 가는 거리 (짧은 원호라 현 길이와 같다고 본다)
+            double chord_dir = slip + 0.5 * turn;   // 원호의 시작점→끝점 방향
+
+            Point tmp_odom;
+            tmp_odom.x = dist * cos(chord_dir);
+            tmp_odom.y = dist * sin(chord_dir);
+            predict_pos.push_back(tmp_odom);
+
+            predict_yaw.push_back(static_cast<float>(this->lo_yaw + turn));
         }
 
         this->stanley_predict_pos = predict_pos;
@@ -409,15 +509,42 @@ public:
         return this->steer;
     }
 
+    // yaw_lookahead_m_ 를 경로 점 개수로 바꾼다 (점 간격은 경로 앞 두 점에서 잰다).
+    size_t lookahead_points()
+    {
+        if (this->yaw_lookahead_m_ <= 0.0 || pl_local_path.size() < 2)
+        {
+            return 0;
+        }
+        double spacing = std::hypot(pl_local_path[1].x - pl_local_path[0].x, pl_local_path[1].y - pl_local_path[0].y);
+        if (spacing < 1e-3)
+        {
+            return 0;
+        }
+        return static_cast<size_t>(std::lround(this->yaw_lookahead_m_ / spacing));
+    }
+
     double get_pd_path_yaw()
     {
         if (this->pl_local_path_yaw.empty())
         {
             return 404;
         }
-        // path_yaw 를 읽는 방식 때문에 yaw 개수가 경로 점 개수보다 적다. 범위를 넘지 않게 한다.
-        size_t index = std::min(static_cast<size_t>(this->closest_index), this->pl_local_path_yaw.size() - 1);
+        // 가장 가까운 점에서 yaw_lookahead_m_ 만큼 앞의 점 방향을 쓴다.
+        size_t index = static_cast<size_t>(std::max(this->closest_index, 0)) + lookahead_points();
+        index = std::min(index, this->pl_local_path_yaw.size() - 1);
         return this->pl_local_path_yaw[index];
+    }
+
+    // 차량 모드 (/ERP/serial_data[0], 1 = 자율)
+    bool is_auto_mode()
+    {
+        return this->control_mode == 1.0F;
+    }
+
+    void set_yaw_lookahead(double lookahead_m)
+    {
+        this->yaw_lookahead_m_ = std::max(0.0, lookahead_m);
     }
 
     int get_mission_num()

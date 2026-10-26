@@ -1,8 +1,6 @@
 #ifndef GAIN_TUNING_HPP
 #define GAIN_TUNING_HPP
 
-#include <ament_index_cpp/get_package_share_directory.hpp>
-
 #include <climits>
 #include <cstdlib>
 #include <fstream>
@@ -19,9 +17,9 @@
 
 using json = nlohmann::json;
 
-// 게인 파일 이름 (확장자 제외). 설치된 control/config의 json을 읽는다.
-// 현재 워크스페이스의 B_wynz 게인을 유지한다.
-const std::string GAIN_FILE_NAME = "B_wynz";
+// 게인 파일 이름 (확장자 제외). 이 헤더와 같은 폴더(include/control)에 있는 json 을 읽는다.
+// 소스 폴더의 파일을 직접 읽으므로, json 만 고쳤을 때는 다시 빌드하지 않고 컨트롤만 다시 켜면 된다.
+const std::string GAIN_FILE_NAME = "A_KCITY_9th_misson2";
 
 /*
 제작 : 예원태
@@ -46,6 +44,14 @@ json 파일을 읽기 위해 nlohmann 모듈이 필요하다.
                     "combine_PP_ratio": 1.0
                 }
             },
+
+횡방향(______---------------______) 의 단위 (10/9 개정, 시간 기준)
+    "stanly_gain": [kp, ki, kd]      kp [1/m] (e [m] 에 곱함), ki [1/(m*s)], kd [s/m]
+                                     ki 는 횡오차의 '시간 적분 [m*s]' 에, kd 는 횡오차의 '변화 속도 [m/s]' 에 곱한다.
+                                     (예전 값은 100 Hz 호출 횟수 기준이었다: 새 ki = 예전 ki x 100, 새 kd = 예전 kd x 0.01)
+    "anti_windup_val": 값            적분값 한계 [m*s] (예전 값 x 0.01)
+    "integral_reset_error": 값       |횡오차| 가 이보다 크면 적분을 비운다 [m]. 수동 모드일 때도 비운다.
+    "stanley_yaw_lookahead": 값      경로 방향을 가장 가까운 점보다 이만큼 앞에서 읽는다 [m]
 
 종방향(______lllllllllllllll______) 에서 읽는 값 (ERP42 Pro)
     "PD_brake_gain": [P, D]     목표보다 많이 빠를 때 거는 브레이크의 게인
@@ -72,8 +78,17 @@ private:
 
     static std::string gain_file_path()
     {
-        return ament_index_cpp::get_package_share_directory("control") +
-            "/config/" + GAIN_FILE_NAME + ".json";
+        // 이 헤더 파일이 있는 폴더
+        std::string src(__FILE__);
+        size_t slash = src.find_last_of('/');
+        std::string dir = (slash == std::string::npos) ? "." : src.substr(0, slash);
+
+        char resolved[PATH_MAX];
+        if (realpath(dir.c_str(), resolved) != nullptr)
+        {
+            dir = resolved;
+        }
+        return dir + "/" + GAIN_FILE_NAME + ".json";
     }
 
 public:
@@ -129,6 +144,8 @@ public:
         lat_con_->set_stanly_gain(lat_param.at("stanly_gain").at(0), lat_param.at("stanly_gain").at(1), lat_param.at("stanly_gain").at(2));
         lat_con_->set_heading_gain(lat_param.at("stanly_heading_gain"));
         lat_con_->set_anti_windup_max(lat_param.at("anti_windup_val"));
+        lat_con_->set_integral_reset_error(lat_param.at("integral_reset_error"));
+        cb_data_->set_yaw_lookahead(lat_param.at("stanley_yaw_lookahead"));
 
         // preview
         std::vector<float> preview_gain = lat_param.at("stanley_preview_gain");
@@ -189,6 +206,16 @@ public:
             {
                 param_change_count++;
                 lat_con_->set_anti_windup_max(lat_param.at("anti_windup_val"));
+            }
+            if (lat_param.find("integral_reset_error") != lat_param.end())
+            {
+                param_change_count++;
+                lat_con_->set_integral_reset_error(lat_param.at("integral_reset_error"));
+            }
+            if (lat_param.find("stanley_yaw_lookahead") != lat_param.end())
+            {
+                param_change_count++;
+                cb_data_->set_yaw_lookahead(lat_param.at("stanley_yaw_lookahead"));
             }
             if (lat_param.find("stanly_heading_gain") != lat_param.end())
             {

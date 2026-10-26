@@ -42,7 +42,7 @@ class DebugVisualizer(Node):
         self.relative_pub = self.create_publisher(
             MarkerArray, '/Visualization/lidar_relative_objects', 2)
         self.utm_pub = self.create_publisher(MarkerArray, '/Visualization/obstacles_utm', 2)
-        self.declare_parameter('sensor_offset_x', 0.35)
+        self.declare_parameter('sensor_offset_x', 0.80)
         self.declare_parameter('sensor_offset_y', 0.0)
         self.tf_broadcaster = TransformBroadcaster(self)
         self.position = None

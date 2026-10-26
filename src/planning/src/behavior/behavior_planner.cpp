@@ -49,7 +49,16 @@ Behavior BehaviorPlanner::update(const BehaviorContext & context, std::chrono::s
   const bool duration_met = last_transition_.time_since_epoch().count() == 0 ||
     now - last_transition_ >= config_.minimum_behavior_duration;
   if (current_ == Behavior::AVOID) {
-    if (clear_count_ >= config_.clear_confirmation_count && duration_met) {transition(Behavior::CRUISE, now);}
+    bool returned=false;
+    if(context.path.global_path && context.path.nearest_index<context.path.global_path->size()) {
+      const auto & ref=(*context.path.global_path)[context.path.nearest_index];
+      returned=std::hypot(context.vehicle.position.x-ref.x,context.vehicle.position.y-ref.y)<=config_.return_max_distance &&
+        std::abs(std::remainder(context.vehicle.yaw-ref.yaw,2.0*M_PI))<=config_.return_max_heading_error;
+    }
+    // Retain the avoidance/return path until the vehicle has rejoined the route.
+    if (clear_count_ >= config_.clear_confirmation_count && duration_met && returned) {
+      transition(Behavior::CRUISE, now);
+    }
   } else if (detection_count_ >= config_.detection_confirmation_count && duration_met) {
     transition(Behavior::AVOID, now);
   } else if (current_ == Behavior::STOP || current_ == Behavior::WAIT || current_ == Behavior::EMERGENCY_STOP) {

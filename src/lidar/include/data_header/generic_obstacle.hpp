@@ -8,6 +8,8 @@
 
 namespace lidar
 {
+constexpr float kObstacleForwardRange = 5.0f;
+constexpr float kObstacleRoadHalfWidth = 3.0f;
 // Explicitly reject non-finite coordinates even when the driver marks is_dense=true.
 inline pcl::PointCloud<pcl::PointXYZI>::Ptr finitePoints(
   const pcl::PointCloud<pcl::PointXYZI>::Ptr & input)
@@ -31,8 +33,8 @@ inline std::vector<pcl::PointIndices> obstacleClusters(
   auto voxel = utility.DownSamplingVoxel(finite, 0.1f, 0.1f, 0.1f);
   // TODO: verify ROI covers actual road width and candidate area on vehicle.
   // Z crop is the existing ground suppression; no ground-plane segmentation.
-  roi = utility.CropFilter(voxel, Eigen::Vector4f(0, -3.5, -0.35, 0),
-    Eigen::Vector4f(20, 3.5, 1.8, 0));
+  roi = utility.CropFilter(voxel, Eigen::Vector4f(0, -kObstacleRoadHalfWidth, -0.35, 0),
+    Eigen::Vector4f(kObstacleForwardRange, kObstacleRoadHalfWidth, 1.8, 0));
   // max_ok=false intentionally preserves the existing absence of a size cap.
   return utility.ClusterEuclidean(roi, false, 0.4, 3, 20000);
 }

@@ -26,8 +26,12 @@ def generate_launch_description():
         DeclareLaunchArgument('enable_vehicle_interface', default_value='false'),
         DeclareLaunchArgument('enable_visualization', default_value='false'),
         DeclareLaunchArgument('enable_rviz', default_value='true'),
-        DeclareLaunchArgument('gps_port', default_value='/dev/ttyUSB0'),
-        DeclareLaunchArgument('imu_port', default_value='/dev/ttyUSB1'),
+        DeclareLaunchArgument('enable_rtk', default_value='true'),  # NGII VRS RTK 보정 (wego_ws 와 동일)
+        DeclareLaunchArgument(
+            'gps_port',
+            default_value='/dev/serial/by-id/usb-u-blox_AG_-_www.u-blox.com_u-blox_GNSS_receiver-if00'),
+        DeclareLaunchArgument(
+            'imu_port', default_value='/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0'),
         DeclareLaunchArgument('velodyne_ip', default_value='192.168.1.201'),
         DeclareLaunchArgument('camera_image_topic', default_value='/camera/image_raw'),
         DeclareLaunchArgument('speed_sign_weights', default_value=''),
@@ -42,6 +46,7 @@ def generate_launch_description():
     includes = [
         subsystem('sensors.launch.py', {
             'enable_gps': LaunchConfiguration('enable_gps'),
+            'enable_rtk': LaunchConfiguration('enable_rtk'),
             'enable_imu': LaunchConfiguration('enable_imu'),
             'enable_lidar_sensor': LaunchConfiguration('enable_lidar_sensor'),
             'gps_port': LaunchConfiguration('gps_port'),

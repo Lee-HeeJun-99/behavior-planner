@@ -13,6 +13,8 @@ struct BehaviorConfig
   double obstacle_corridor_half_width{0.8};
   double obstacle_lookahead{10.0};
   double obstacle_pass_margin{3.0};
+  double return_max_distance{0.2};
+  double return_max_heading_error{0.17453292519943295};
   std::chrono::milliseconds minimum_behavior_duration{500};
 };
 

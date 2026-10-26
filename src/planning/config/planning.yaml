@@ -1,7 +1,7 @@
 planning_node:
   ros__parameters:
     # map
-    global_path_file: map/map_final_0921/0-0_loop.txt
+    global_path_file: map/map_final_0921/0-0.txt
     closed_loop: true
     auto_entry_max_distance: 0.5
     auto_entry_max_heading_deg: 15.0
@@ -13,38 +13,49 @@ planning_node:
     global_path_smoothing_distance: 0.75
     close_obstacle_stop_distance: 3.0
     obstacle_stability_tolerance: 0.35
-    recovery_stability_lookahead: 6.0
+    # Fixed obstacle model; use road_left/right_bound for the active road corridor.
+    obstacle_width: 1.0
+    obstacle_height: 0.8
+    filter_obstacles_by_global_path: true
+    obstacle_path_margin: 0.0
+    obstacle_path_lookahead: 6.0
+    obstacle_path_lookbehind: 1.5
+    recovery_stability_lookahead: 5.0
     recovery_stability_margin: 0.5
     recovery_hold_ms: 1000
     obstacle_stable_ms: 1000
     recovery_feasible_count: 10
-    recovery_max_velocity: 0.1388888888888889  # 0.5 km/h
+    recovery_max_velocity: 0.2777777777777778  # 1 km/h
 
     # speed-limit signs and vehicle target mapping
     default_speed_limit_kph: 0
-    default_target_velocity: 0.2777777777777778  # 1 km/h; targets below are m/s
+    default_target_velocity: 0.2777777777777778  # 2 km/h; targets below are m/s
     speed_sign_confirmation_count: 3
     # Confirmed 20 sign raises the target to 2 km/h.
-    speed_limit_20_target: 0.5555555555555556
+    speed_limit_20_target: 0.2777777777777778
     speed_limit_50_target: 0.5555555555555556
     avoid_max_velocity: 0.5555555555555556
 
     # path generation
     lateral_offsets: [-1.8, -1.5, -1.2, -0.9, -0.6, -0.3, 0.0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8]
     transition_points: 120
-    avoidance_start_distance: 10.0
+    avoidance_start_distance: 5.0
+    preferred_avoidance_offset: 1.2  # prefer wider passing like manual bag/6
     obstacle_pass_margin: 3.0
     road_left_bound: 3.0
     road_right_bound: 3.0
 
     # vehicle and collision
-    vehicle_half_width: 0.6
-    vehicle_front: 1.6
-    vehicle_rear: 0.7
-    safety_margin: 0.25
-    maximum_curvature: 0.45
+    vehicle_half_width: 0.45
+    vehicle_front: 1.05
+    vehicle_rear: 0.95
+    safety_margin: 0.0
+    minimum_clearance: 0.0
+    maximum_curvature: 0.50
 
     # behavior
     detection_confirmation_count: 3
     clear_confirmation_count: 5
+    avoid_return_max_distance: 0.2
+    avoid_return_max_heading_deg: 10.0
     minimum_behavior_duration_ms: 500

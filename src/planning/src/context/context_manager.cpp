@@ -5,7 +5,49 @@
 
 namespace planning
 {
-namespace {double distance(const Point2d & a, const Point2d & b) {return std::hypot(a.x - b.x, a.y - b.y);}}
+namespace {
+double distance(const Point2d & a, const Point2d & b) {return std::hypot(a.x - b.x, a.y - b.y);}
+Point2d position(const PathPoint & p) {return {p.x,p.y};}
+bool segmentOverlapsRoad(const Point2d & point, const Point2d & a, const Point2d & b,
+  const ContextConfig & config, bool forward=true) {
+  const double dx=b.x-a.x,dy=b.y-a.y;
+  const double length2=dx*dx+dy*dy;
+  const double cap=config.obstacle_radius+config.obstacle_path_margin;
+  if(length2<1e-12)return distance(point,a)<=cap;
+  const double t=((point.x-a.x)*dx+(point.y-a.y)*dy)/length2;
+  if(t<0)return distance(point,a)<=cap;
+  if(t>1)return distance(point,b)<=cap;
+  const double lateral=(forward ? 1.0 : -1.0)*
+    (dx*(point.y-a.y)-dy*(point.x-a.x))/std::sqrt(length2);
+  return lateral<=config.road_left_bound+config.obstacle_path_margin &&
+    lateral>=-config.road_right_bound-config.obstacle_path_margin;
+}
+// Restrict matching to the active route branch, not all nearby map segments.
+bool overlapsActivePath(const Point2d & point, const Path & path, std::size_t index,
+  const ContextConfig & config) {
+  if(index>=path.size())return false;
+  const double radius=config.obstacle_radius+config.obstacle_path_margin;
+  const auto scan=[&](bool forward,double limit) {
+    std::size_t current=index;double arc=0.0;
+    while(arc<limit && (forward ? current+1<path.size() : current>0)) {
+      const std::size_t next=forward ? current+1 : current-1;
+      const auto a=position(path[current]);auto b=position(path[next]);const double length=distance(a,b);
+      if(length>limit-arc) {const double t=(limit-arc)/length;b={a.x+t*(b.x-a.x),a.y+t*(b.y-a.y)};}
+      if(segmentOverlapsRoad(point,a,b,config,forward))return true;
+      arc+=length;current=next;
+    }
+    // At the route seam, retain just-passed detections in a short rear corridor.
+    if(!forward && current==0 && arc<limit) {
+      const auto a=position(path.front());const double rear=limit-arc;
+      const Point2d b{a.x-rear*std::cos(path.front().yaw),a.y-rear*std::sin(path.front().yaw)};
+      if(segmentOverlapsRoad(point,a,b,config,false))return true;
+    }
+    return false;
+  };
+  return distance(point,position(path[index]))<=radius ||
+    scan(true,config.obstacle_path_lookahead) || scan(false,config.obstacle_path_lookbehind);
+}
+}  // namespace
 
 ContextManager::ContextManager(ContextConfig config) : config_(config)
 {
@@ -66,9 +108,15 @@ BehaviorContext ContextManager::build(const Path & global_path, std::size_t near
   context.free_space = {config_.road_left_bound, config_.road_right_bound};
   context.emergency_stop = emergency_stop_;
   for (const auto & point : raw_obstacles_) {
-    if (distance(vehicle_.position, point) <= config_.obstacle_relevance_distance) {
-      context.obstacles.push_back({point, config_.obstacle_radius});
+    if (!std::isfinite(point.x) || !std::isfinite(point.y) ||
+      distance(vehicle_.position, point) > config_.obstacle_relevance_distance) {continue;}
+    if (config_.filter_obstacles_by_path) {
+      const double dx=point.x-vehicle_.position.x,dy=point.y-vehicle_.position.y;
+      const double lateral=-std::sin(vehicle_.yaw)*dx+std::cos(vehicle_.yaw)*dy;
+      if(lateral>config_.road_left_bound || lateral< -config_.road_right_bound ||
+        !overlapsActivePath(point,global_path,nearest_index,config_)) {continue;}
     }
+    context.obstacles.push_back({point, config_.obstacle_radius});
   }
   return context;
 }

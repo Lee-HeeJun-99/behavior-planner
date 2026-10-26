@@ -10,6 +10,10 @@ struct ContextConfig
 {
   double obstacle_radius{0.35};
   double obstacle_relevance_distance{20.0};
+  bool filter_obstacles_by_path{false};
+  double obstacle_path_margin{0.0};
+  double obstacle_path_lookahead{6.0};
+  double obstacle_path_lookbehind{1.5};
   double road_left_bound{1.5};
   double road_right_bound{1.5};
   int default_speed_limit_kph{20};

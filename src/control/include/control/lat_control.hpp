@@ -33,8 +33,12 @@ private:
     double kd_;             // Derivative gain
     double target_heading_; // Target heading
     double prevCrossTrackError;
-    double integral;
-    double default_i_val = 90;
+    double integral;            // 횡오차의 시간 적분 [m*s]
+    bool has_prev_ = false;     // 미분용 직전 값이 있는지
+    bool freeze_integral_ = false; // true 면 적분값을 더하지 않는다 (위치 튐 보호 중)
+    double derivative_lpf_ = 0.0;
+    // 미분값 저역통과 (차단 약 5 Hz, 100 Hz 기준). GPS 가 10 Hz 로 위치를 맞출 때 생기는 계단을 누른다.
+    double derivative_cutoff_hz_ = 5.0;
 
     double anti_windup_max_;
 
@@ -91,7 +95,8 @@ public:
         this->curvature_ = curvature; // 튜닝에 사용하는 param 일단은 0.0
     }
 
-    double calc_stanly_steer(double dt = 1)
+    // dt : 이 함수를 부르는 주기 [s]. (10/9 수정: 예전에는 기본값 1 이 쓰여 적분·미분이 '호출 횟수' 기준이었다.)
+    double calc_stanly_steer(double dt)
     {
         // Calculate the heading error
         double tmp_headin_error = nomalize_angle(target_heading_ - ego_heading_);
@@ -104,17 +109,20 @@ public:
         // Calculate the proportional term
         double proportionalTerm = kp_ * crossTrackError_;
 
-        // Calculate the cross track error derivative
-        double crossTrackErrorDerivative = (crossTrackError_ - prevCrossTrackError) / dt;
+        // 미분 (횡오차가 변하는 속도 [m/s]), 저역통과
+        double raw_derivative = has_prev_ ? (crossTrackError_ - prevCrossTrackError) / dt : 0.0;
+        double d_alpha = dt / (dt + 1.0 / (2.0 * M_PI * derivative_cutoff_hz_));
+        derivative_lpf_ = d_alpha * raw_derivative + (1.0 - d_alpha) * derivative_lpf_;
+        double derivativeTerm = kd_ * derivative_lpf_;
 
-        // Calculate the derivative term
-        double derivativeTerm = kd_ * crossTrackErrorDerivative;
-
-        // Update the previous cross track error for the next iteration
         prevCrossTrackError = crossTrackError_;
+        has_prev_ = true;
 
-        // Calculate the integral term
-        integral += crossTrackError_ * dt;
+        // 적분 (횡오차 x 시간 [m*s]), 한계 +-anti_windup_max_. 위치 튐 보호 중에는 멈춘다.
+        if (!freeze_integral_)
+        {
+            integral += crossTrackError_ * dt;
+        }
         integral = clip(integral, -anti_windup_max_, anti_windup_max_);
 
         if (this->speed_ < 1)
@@ -151,6 +159,19 @@ public:
     void set_stanley_integral_val(double inte_init)
     {
         this->integral = inte_init;
+    }
+
+    void set_integral_freeze(bool freeze)
+    {
+        this->freeze_integral_ = freeze;
+    }
+
+    // 적분값과 미분 상태를 비운다 (수동 모드, 경로에서 멀 때).
+    void reset_stanley_state()
+    {
+        this->integral = 0.0;
+        this->has_prev_ = false;
+        this->derivative_lpf_ = 0.0;
     }
 };
 
@@ -300,6 +321,7 @@ private:
 
     double PP_steer;
     double stanly_steer;
+    double integral_reset_error_ = 1.0; // 횡오차가 이보다 크면 적분을 비운다 [m] (게인 파일)
 
     Stanley preview_instance;
     float preview_dt = 0.0;
@@ -341,18 +363,30 @@ public:
         this->preview_h_e_gain = h_e_g;
     }
 
-    double calc_combined_steer()
+    void set_integral_reset_error(double err)
+    {
+        this->integral_reset_error_ = err;
+    }
+
+    double get_integral_reset_error()
+    {
+        return this->integral_reset_error_;
+    }
+
+    // dt : 제어 주기 [s]
+    double calc_combined_steer(double dt)
     {
         double purePursuitSteering = calc_PP_Steer();
         PP_steer = clip(purePursuitSteering, -deltaMax, deltaMax);
 
-        if (cb_data_->get_odom_sub_flag())
+        // 10/9 수정: 예전에는 새 위치(/Local/utm)가 들어온 틱에만 Stanley 를 계산했다.
+        // 적분·미분을 시간 기준으로 바꾸면서 매 틱 계산한다 (위치는 200 Hz 로 들어온다).
         {
             // stanley preview
-            double preview_steer = this->calc_stanly_preview();
+            double preview_steer = this->calc_stanly_preview(dt);
             preview_steer = clip(preview_steer, -deltaMax, deltaMax);
             // stanley
-            double now_stanley_steer = calc_stanly_steer();
+            double now_stanley_steer = calc_stanly_steer(dt);
             now_stanley_steer = clip(now_stanley_steer, -deltaMax, deltaMax);
 
             float sum_preview_gain = 0.0;
@@ -378,7 +412,7 @@ public:
         return com_lpf_steer;
     }
 
-    double calc_stanly_preview()
+    double calc_stanly_preview(double dt)
     {
         this->steers.clear();
 
@@ -401,7 +435,7 @@ public:
             double target_yaw = cb_data_->get_pd_path_yaw();
 
             preview_instance.set_stanly_data(tmp_speed, target_yaw, predict_yaw[i], lat_error);
-            double steer = preview_instance.calc_stanly_steer();
+            double steer = preview_instance.calc_stanly_steer(dt);
             steer = clip(steer, -deltaMax, deltaMax);
 
             sum_preview_steer += steer * this->preview_gain[i];

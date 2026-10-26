@@ -6,7 +6,7 @@
 namespace
 {
 pcl::PointCloud<pcl::PointXYZI>::Ptr box(float length, float width, float height,
-  float x = 5.0f, float y = 0.0f, float z = 0.0f)
+  float x = 0.25f, float y = 0.0f, float z = 0.0f)
 {
   pcl::PointCloud<pcl::PointXYZI>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZI>);
   for (float dx = 0; dx <= length; dx += 0.15f) {
@@ -40,10 +40,17 @@ TEST(GenericObstacle, RejectsNoiseOutsideRoiAndGroundCrop)
 {
   EXPECT_EQ(0u, detect(box(0, 0, 0)));
   EXPECT_EQ(0u, detect(box(0.15f, 0, 0)));  // fewer than three voxel points
-  EXPECT_EQ(0u, detect(box(0.3f, 0.3f, 0.3f, 21)));
-  EXPECT_EQ(0u, detect(box(0.3f, 0.3f, 0.3f, 5, 4)));
+  EXPECT_EQ(0u, detect(box(0.3f, 0.3f, 0.3f, 5.2f)));
+  EXPECT_EQ(0u, detect(box(0.3f, 0.3f, 0.3f, 4, 3.1f)));
   EXPECT_EQ(0u, detect(box(0.3f, 0.3f, 0, 5, 0, -0.65f)));
   EXPECT_EQ(0u, detect(box(0.3f, 0.3f, 0.3f, 5, 0, 2)));
+}
+
+TEST(GenericObstacle, KeepsNearObstacleWhileRejectingFarObstacle)
+{
+  auto cloud = box(0.3f, 0.3f, 0.3f, 4.5f);
+  *cloud += *box(0.3f, 0.3f, 0.3f, 5.2f);
+  EXPECT_EQ(1u, detect(cloud));
 }
 
 TEST(GenericObstacle, RejectsNonFiniteEvenWhenMarkedDense)
